@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { StarDragon } from './stardragon';
+
 import { GemExchangeAPI } from './../../../api.service';
 
 @Component({
@@ -11,7 +13,7 @@ export class StarDragonListComponent {
 
   title = 'StarDragons';
 
-  public stardragons:any;
+  public stardragons:Array<StarDragon> = [];
 
   constructor(private gem: GemExchangeAPI){}
 

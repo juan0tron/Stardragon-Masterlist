@@ -1,4 +1,16 @@
-<div id="stardragon-list">
+<style>
+  #stardragon-list{
+    max-width:  1000px;
+    margin:     auto;
+    background: #fafafa;
+  }
+  #stardragon-list .row{
+    margin:  5px 0;
+    padding: 5px;
+  }
+</style>
+<div id="stardragon-list" *ngIf="stardragons.length > 0">
+  <h3>List of StarDragons ({{stardragons.length}})</h3>
   <div class="row" *ngFor="let stardragon of stardragons">
     <div class="col-md-2">{{stardragon.name}}</div>
   </div>

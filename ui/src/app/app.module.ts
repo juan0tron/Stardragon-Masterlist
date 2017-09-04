@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 // Pages
 import { DashboardComponent }      from './views/dashboard/dashboard.component';
 import { StarDragonListComponent } from './views/stardragons/stardragon-list.component';
+import { StarDragonDetailsComponent } from './views/stardragons/details/stardragon-details.component';
 
 import { AppComponent } from './app.component';
 
@@ -13,6 +14,7 @@ import { AppComponent } from './app.component';
     // Pages
     DashboardComponent,
     StarDragonListComponent,
+    StarDragonDetailsComponent,
 
     AppComponent
   ],
