@@ -8,7 +8,8 @@ module.exports = function(app) {
   app.route('/stardragon/create')
     .post(starDragons.create)
 
-  // app.route('/stardragon/:id')
+  app.route('/stardragon/details')
+    .post(starDragons.details)
   //   .get(stardragons.read_a_task)
   //   .put(stardragons.update_a_task)
   //   .delete(stardragons.delete_a_task);

@@ -1,6 +1,6 @@
 'use strict';
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+var Schema   = mongoose.Schema;
 
 var StarDragonSchema = new Schema({
   name: {
@@ -20,7 +20,7 @@ var StarDragonSchema = new Schema({
         'StarDasher',
         'StarFisher',
         'StarWeaver',
-        'StarRobber', 
+        'StarRobber',
         'StarCrafter',
         'StarShooter'
       ]
@@ -42,8 +42,9 @@ var StarDragonSchema = new Schema({
   sex:{
     type: [{
       type: String,
-      enum: ['Male', 'Female', 'N/A']
-    }]
+      enum: ['male', 'female', 'n/a']
+    }],
+    default:['n/a']
   },
   gender: {type: String},
 

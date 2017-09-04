@@ -1,6 +1,7 @@
 'use strict';
 
 var mongoose   = require('mongoose'),
+    ObjectId   = mongoose.Types.ObjectId,
     StarDragon = mongoose.model('StarDragons');
 
 exports.list = function(req, res) {
@@ -13,14 +14,22 @@ exports.list = function(req, res) {
 
 exports.create = function(req, res) {
   var new_dragon = new StarDragon(req.body);
-  new_dragon.save(function(err, task) {
+  new_dragon.save(function(err, dragon) {
     if (err)
       res.send(err);
-    res.json(task);
+    res.json(dragon);
   });
 }
 
-// exports.details
+exports.details = function(req, res) {
+  var stardragon_id = new ObjectId(req.body.id)
+  StarDragon.findById(stardragon_id, function(err, dragon){
+    if(err)
+      res.send(err);
+    res.json(dragon);
+  })
+
+}
 
 // exports.update
 
