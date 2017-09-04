@@ -1,0 +1,30 @@
+# sensitive info
+aws.json
+
+# Compiled Output
+/dist
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
+.grunt
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Typescript v1 declaration files
+typings/
+
+# Optional npm cache directory
+.npm
+
+# test directories
+api/todo-api/
+
+# Output of 'npm pack'
+*.tgz
