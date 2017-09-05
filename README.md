@@ -1,15 +1,12 @@
-# Stardragon-Masterlist
+# The Gem Exchange
 
-A public database for all existing Stardragons.
-
-Will replace https://docs.google.com/spreadsheets/d/1_EqVHX6UD0vAtiZnu3fjqwn1pIlKCjLMNsREkhejIDM/edit#gid=0
+This site will be the future home for everything related to the closed species Stardragons. Built on a MEAN stack - MongoDB, Express, Angular 4, and Node.js.
 
 # To Do
 
 - Everything
-- Set up Angular CLI / Mongo DB
-- Create DB schema
-- Import spreadsheet to DB
-- Filtered list view
+- Create table in the UI with filters and sorting
 - Details view for each Dragon, with wiki-like options for bios, details, etc.
 - Create Admin accounts that can add new Stardragons and modify existing ones
+- Import the Stardragon master list spreadsheet to MongoDB
+- Find hosting for the DB/API server.
