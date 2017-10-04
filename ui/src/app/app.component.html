@@ -1,17 +1,17 @@
 <header>
-  <ul class="horizontal-links">
-    <li><a href="http://toyhou.se/~world/1420.gemexchange-jo-arca"><i class="fa fa-home"></i> Toyhouse</a></li>
-    <li><a href="https://docs.google.com/spreadsheets/d/1_EqVHX6UD0vAtiZnu3fjqwn1pIlKCjLMNsREkhejIDM/edit#gid=0"><i class="fa fa-list"></i> Master List</a></li>
-    <li><a href="https://www.furaffinity.net/user/gemexchange"><i class="fa fa-paw"></i> Fur Affinity</a></li>
-    <li><a href="https://github.com/juan0tron/the-gem-exchange"><i class="fa fa-github"></i> Github</a></li>
-    <li><a href="https://twitter.com/Gem_Exchange"><i class="fa fa-twitter"></i> Twitter</a></li>
-  </ul>
+  <div class="navigation">
+    <ul class="horizontal-links">
+      <li><a href="/home"><i class="fa fa-home"></i> Home</a></li>
+      <li><a href="/discord"><i class="fa fa-commenting"></i> Discord Server</a></li>
+    </ul>
+  </div>
 </header>
 
 <div id="body">
-  <dashboard></dashboard>
+  <router-outlet></router-outlet>
+  <!-- <dashboard></dashboard>
   <stardragon-list></stardragon-list>
-  <stardragon-details [id]="'59adb15ce6a36c3634fae7ab'"></stardragon-details>
+  <stardragon-details [id]="'59adb15ce6a36c3634fae7ab'"></stardragon-details> -->
 </div>
 
 <footer></footer>
