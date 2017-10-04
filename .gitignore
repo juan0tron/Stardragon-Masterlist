@@ -1,5 +1,6 @@
 # sensitive info
 aws.json
+deploy-config.json
 
 # Compiled Output
 /dist
