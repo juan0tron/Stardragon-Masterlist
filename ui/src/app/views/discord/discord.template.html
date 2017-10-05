@@ -1,114 +1,72 @@
-<div align="center">
-
-  <h1>Please read the rules before joining!</h1>
-
-  <img src="http://orig09.deviantart.net/9343/f/2017/145/2/1/_layout_discord_banner_1_by_milay-dbafclu.png" />
-
-  <br><br>
-
-  <a href="https://discord.gg/T9Xrjs5" target="blank">
-    <img src="http://orig05.deviantart.net/6989/f/2017/145/8/c/_layout_discord_logo_s4_by_milay-dbafeoc.png"/>
-  </a>
-
-  <br>
-
-  <a href="https://discordapp.com/">[Download Discord]</a>
-
-  <br><br>
-
-  <table style="background-color:#666;width:600px;">
-    <tr>
-      <th>
-        <div align="center">
-          <p style="color:#fff;"><b>What is Discord?</b></p>
-          <p style="color:#fff;width:500px;">
-            Discord is a free voice and text chat app, similar to Skype. It is designed specifically for gaming, but it's features like multiple servers make it very handy for large communities. Please read all of the rules before joining!
-          </p>
-        </div>
-      </th>
-    </tr>
-  </table>
-
-  <p><b>Discord Formatting</b></p>
-
-  <table style="border:0px solid transparent;background-color:transparent;">
-    <tr>
-      <th style="font-weight:normal;">
-        <ul>
-          <li><i>italics</i> = *italics*</li>
-          <li><b>bold</b>  = **bold**</li>
-          <li><i><b>bold italics</b></i> = ***bold italics***</li>
-          <li><s>strikeout</s> = ~~strikeout~~</li>
-          <li><u>underline</u> = __underline__</li>
-          <li>deactivating *italics* or emotes = \:D \*no italics*</li>
-          <li>deactivating preview images on links = <img src="http://orig05.deviantart.net/b947/f/2017/145/3/e/screen__2017_05_26_3485_by_milay-dbafn9q.jpg"/></li>
-        </ul>
-      </th>
-    </tr>
-  </table>
-  <p>
-    <a href="https://support.discordapp.com/hc/en-us/articles/210298617-Markdown-Text-101-Chat-Formatting-Bold-Italic-Underline-?page=4">For more formatting options, see here.</a>
-  </p>
-
-  <br><hr><br>
-
-  <table style="border:0px solid transparent;background-color:#fff;width:600px;">
-    <tr>
-      <th style="font-weight:normal;">
-        <div align="center">
-          <p><b>Name/Role Color Index</b></p>
-        </div>
-        <div align="center">
-          <p style="width:500px;">
-            <font color="#9b59b6"><b>Purple:</b></font> Admins<br>
-            <font color="#1f8b46"><b>Dark Green</b></font>: Has no Stardragon yet - <font color="#2ecc71"><b>Light Green:</b></font> Has Stardragon(s)<br>
-            <font color="#8a8a8a"><b>Neutral</b></font> (black/white): New member, just joined Discord<br>
-            <font color="#e5c40f"><b>Yellow:</b></font> SHAME CORNER (joke time-out corner)
-          </p>
-        </div>
-      </th>
-    </tr>
-  </table>
-
-  <br><hr><br>
-
-  <p><b>Discord Layout Explanation</b></p>
-
-  <table style="border:2px solid #fff;width:600px;">
-    <tr *ngFor="let item of discord_layout">
-      <td><img [src]="item.img"></td>
-      <td>{{item.description}}</td>
-    </tr>
-  </table>
-
-  <hr>
-
-  <div style="background-color:#666;max-width:1000px;text-align:left; color:#fff;">
-    <h2 style="text-align:center">RULES</h2>
-    <p>New rules are added when we feel that they need to be, or a certain instance requires them to be put in place. If you receive a warning, it is not a personal attack, simply correct it and move on. However if you feel you are being warned unfairly, or that the rules were not clear enough, we're open to listen to debates. Feel free to message an admin privately.</p>
-    <p><b>We’ll give warnings for rules broken, but repeated offenders will be removed from the group</b></p>
-    <br>
-    <p *ngFor="let rule of rules; let i=index;"><b>#{{i}}:</b> <span [innerHTML]="rule"></span></p>
-  </div>
-
-  <hr>
-
-  <div class="row content" style="background-color:#fff;max-width:1000px;text-align:left;margin:15px;">
+<div class="content">
+  <div class="row">
     <div class="col-md-12">
-      <h2>GemExchange Room Breakdown</h2>
-      <p *ngFor="let channel of discord_channels"><b>#{{channel.name}}</b><span [innerHTML]="channel.description"></span></p>
+      <img src="./../assets/img/join_stardragons_discord.png" title="Join the Gem Exchange Discord Server!" alt="A banner advertising the Gem Exchange Discord server, featuring its mascot, Discord-Chan."/>
     </div>
   </div>
-
-</div>
-
-<br>
-
-<div style="text-align:center">
-  <img src="http://www.labellezzawithin.co.uk/images/horizontaldivider.png" width="600px">
-  <br><br>
-  <a href="http://toyhou.se/~world/1420.gemexchange-jo-arca">
-    <img src="http://orig07.deviantart.net/6655/f/2017/140/f/1/blue_by_cuttleskulls-db9ug5s.png" width="200px">
-  </a>
-  <br><br>
+  <!--
+  Hash links not supported in Angular by default, commenting for now
+  <div class="row">
+    <div class="col-md-12" style="text-align:center">
+      <ul class="horizontal-links">
+        <li><a href="#description">What is Discord?</a></li>
+        <li>|</li>
+        <li><a href="#rules">Server Rules</a></li>
+        <li>|</li>
+        <li><a href="#roles">Server Roles</a></li>
+        <li>|</li>
+        <li><a href="#channels">Channel Breakdown</a></li>
+      </ul>
+    </div>
+  </div> -->
+  <div id="description" class="row">
+    <div class="col-md-12">
+      <h2>What is Discord?</h2>
+    </div>
+    <div class="col-md-6">
+      <p>Discord is a free voice and text chat app, similar to Skype. It is designed specifically for gaming, but it's features like multiple servers make it very handy for large communities. Please read all of the rules before joining!</p>
+      <p><a href="https://discordapp.com/">[Download Discord]</a> | <a href="https://support.discordapp.com/">[Discord Help]</a></p>
+    </div>
+    <div class="col-md-6">
+      <a href="https://discord.gg/T9Xrjs5" target="blank" style="float:right;">
+        <img src="http://orig05.deviantart.net/6989/f/2017/145/8/c/_layout_discord_logo_s4_by_milay-dbafeoc.png"/>
+      </a>
+    </div>
+  </div>
+  <hr>
+  <div id="rules" class="row">
+    <div class="col-md-12">
+      <h2>Discord Server Rules</h2>
+      <p>New rules are added when we feel that they need to be, or a certain instance requires them to be put in place. If you receive a warning, it is not a personal attack, simply correct it and move on. However if you feel you are being warned unfairly, or that the rules were not clear enough, we're open to listen to debates. Feel free to message an admin privately.</p>
+      <p><b>We’ll give warnings for rules broken, but repeated offenders will be removed from the group</b></p>
+      <ng-container *ngFor="let rule of rules; let i=index;">
+        <h5>#{{i+1}}: {{rule.rule}}</h5>
+        <p [innerHTML]="rule.description"></p>
+      </ng-container>
+    </div>
+  </div>
+  <hr>
+  <div id="roles" class="row">
+    <div class="col-md-6">
+      <h2>Name/Role Color Index</h2>
+      <ul style="text-decoration:none">
+        <li *ngFor="let role of roles">
+          <b [style.color]="role.color">{{role.name}}:</b> {{role.description}}
+        </li>
+      </ul>
+    </div>
+  </div>
+  <hr>
+  <div id="channels" class="row">
+    <div class="col-md-12">
+      <h2>Channel Breakdown</h2>
+      <ng-container *ngFor="let channel of discord_channels">
+        <div style="display:block;">
+          <h5 style="float:left">#{{channel.name}} <small *ngIf="channel.topic">({{channel.topic}})</small></h5>
+          <br>
+          <p [innerHTML]="channel.description" style="clear:both;"></p>
+        </div>
+      </ng-container>
+    </div>
+  </div>
 </div>

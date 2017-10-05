@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 
 import { StarDragon } from './../stardragon';
 
-import { GemExchangeAPI } from './../../../../api.service';
+import { GemExchangeAPI } from './../../../../services/api.service';
 
 @Component({
   selector:    'stardragon-details',

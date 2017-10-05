@@ -1,10 +1,9 @@
-import { Component }      from '@angular/core';
-import { GemExchangeAPI } from './../../../api.service';
+import { Component }  from '@angular/core';
 
 @Component({
   selector: 'discord',
   templateUrl: './discord.template.html',
-  providers: [GemExchangeAPI]
+  providers: []
 })
 export class DiscordComponent {
 
@@ -17,61 +16,94 @@ export class DiscordComponent {
     },
     {
       name:        "AskTheAdmins",
-      description: "(Allows non-StarDragons) Questions for the ADMINS. Be it a question ABOUT the Admins, or about the StarDragon world or... whatever else you have in mind. To prevent any confusion or misinformation, please refrain from answering any questions posted in here unless you are, obviously, an admin."
+      topic:       "Allows non-StarDragons",
+      description: " Questions for the ADMINS. Be it a question ABOUT the Admins, or about the StarDragon world or... whatever else you have in mind. To prevent any confusion or misinformation, please refrain from answering any questions posted in here unless you are, obviously, an admin."
     },
     {
       name:        "Gemeral",
-      description: "(Allows non-StarDragons) Channel for miscellaneous discussions. Feel free to talk about whatever, just keep it SFW."
+      topic:       "Allows non-StarDragons",
+      description: "Channel for miscellaneous discussions. Feel free to talk about whatever, just keep it SFW."
     },
     {
       name:        "ArtCorner",
-      description: "(Allows non-StarDragons) Channel for you to post your art, or art you got commissioned! You’re free to have discussions about that art as well! This room is not just, ‘post art then get out!’"
+      topic:       "Allows non-StarDragons",
+      description: "Channel for you to post your art, or art you got commissioned! You’re free to have discussions about that art as well! This room is not just, ‘post art then get out!’"
     },
     {
       name:        "MemeCorner",
-      description: "(Allows non-StarDragons) Channel for y’all to post your weird meme jokes, ya crazy kids."
+      topic:       "Allows non-StarDragons",
+      description: "Channel for y’all to post your weird meme jokes, ya crazy kids."
     },
     {
       name:        "AnxietyCorner",
-      description: "(Allows non-StarDragons) Channel for your stress. Real life sucks, and sometimes you just need somewhere to get it out. Feel free to vent your concerns and frustrations here."
+      topic:       "Allows non-StarDragons",
+      description: "Channel for your stress. Real life sucks, and sometimes you just need somewhere to get it out. Feel free to vent your concerns and frustrations here."
     },
     {
       name:        "CuddleCorner",
-      description: "(Allows non-StarDragons) To post all your cutesy pictures for people to look at and maybe find some peace from the day. We like to post cute animal pictures in here."
+      topic:       "Allows non-StarDragons",
+      description: "To post all your cutesy pictures for people to look at and maybe find some peace from the day. We like to post cute animal pictures in here."
     },
     {
       name:        "AdvertisementCorner",
-      description: "(StarDragons PREFERRED) Place for you to post your sales, trades, commissions, what ever. We’d PREFER it to be StarDragon related, but not mandatory. If we feel that someone is posting non-Stardragon related ads too frequently, we will ask them to take it easy."
+      topic:       "StarDragons PREFERRED",
+      description: "Place for you to post your sales, trades, commissions, what ever. We’d PREFER it to be StarDragon related, but not mandatory. If we feel that someone is posting non-Stardragon related ads too frequently, we will ask them to take it easy."
     },
     {
       name:        "SinnerChurch",
-      description: "(Allows non-StarDragons) FOR NSFW art and conversations. NSFW means porn, gore, violence, and things related. Keep in mind, we do NOT allow REAL LIFE gore or violence. Real life porn is okay, however you may not post nsfw pictures of yourself. You're more than welcome to talk about your personal experiences, but keep the sexting to private DMs ya filthy hooligans."
+      topic:       "Allows non-StarDragons",
+      description: "FOR NSFW art and conversations. NSFW means porn, gore, violence, and things related. Keep in mind, we do NOT allow REAL LIFE gore or violence. Real life porn is okay, however you may not post nsfw pictures of yourself. You're more than welcome to talk about your personal experiences, but keep the sexting to private DMs ya filthy hooligans."
     },
     {
       name:        "CharacterDiscussion",
-      description: "(StarDragons ONLY) Talk about your characters! Tell us about your characters! Get to know everyone’s characters and build relationships."
+      topic:       "StarDragons ONLY",
+      description: "Talk about your characters! Tell us about your characters! Get to know everyone’s characters and build relationships."
     },
     {
       name:        "StarDragonTinder",
-      description: "(StarDragons ONLY) For those who are more interested in looking for intimacy and dating opportunities for their StarDragons. ;)"
+      topic:       "StarDragons ONLY",
+      description: "For those who are more interested in looking for intimacy and dating opportunities for their StarDragons. ;)"
     },
     {
       name:        "RPDiscussions",
-      description: "(StarDragons ONLY) To discuss the RPs going on. Remember, out of character communication is key!"
+      topic:       "StarDragons ONLY",
+      description: "To discuss the RPs going on. Remember, out of character communication is key!"
     },
     {
       name:        "Roleplay_(Name)",
-      description: "(StarDragon ONLY) Roleplay rooms! The RP rooms have names that generally explain the topic of the room. Feel free to make an RP, or join in if one is already going!"
+      topic:       "StarDragons ONLY",
+      description: "Roleplay rooms! The RP rooms have names that generally explain the topic of the room. Feel free to make an RP, or join in if one is already going!"
     },
   ];
   public rules = [
-    "No sexist, religious, or racist jokes please.",
-    "While religion/politics are the two big no-nos when it comes to talk around the Thanksgiving table, we’ll accept it but if things get too heated, the admins reserve the rights to stop the discussion, or ask it to be moved to Private Messages. (But also try being mindful yourselves and we’ll avoid admins getting involved!)",
-    "No real life animal abuse/gore. No real life human abuse/gore either. Artistic guro/gore should be kept exclusively to the NSFW room and behind brackets and warnings. The death and mutilation of REAL creatures is not, by any means, funny or something to make light of. Those are real creatures with real feelings, and real fears. Their horror is not our comedy.",
-    "No pedophilia related talk or pictures. Be it real children or fictional children. Might want to avoid any dark humor in regards to children all together honestly. We have many parents in GemExchange, and it’s not exactly tasteful for parents to see such things. <br/></br> That being said, something for RP discussion specifically is okay (IE: Your character was abused as a child, or the village your character lived in was pillaged and children died.)",
-    "Keep micromodding to a minimum. We understand intervening during the rare times when no admins are online, but if there is an issue and the admins are not already handling it, please let one of them know. It is their job to resolve issues, multiple people jumping in to 'help' will overwhelm and agitate a situation. <br/><br/> PLEASE keep in mind everyone is human and mistakes happen. People are FAR more willing to listen and learn when someone sits them down and speaks to them politely. When multiple people are talking to one person, they start to feel attacked and sometimes attack back.",
-    "Overall, be nice. We’re fine with debates and playful bickering, but when things become legitimate arguments, you’re gunna have a bad time. Additionally, sometimes sarcasm and jokes are hard to ‘hear’ over the internet. Be patient if someone misinterprets what you’re trying to say.<br/><br/>The admins are not referees or therapists. Please try and keep disagreements civil and handle issues like adults. This is a big group, so play nice.",
-    "You’re free to post pictures of other species that are not StarDragons. You’re free to have full on discussions of non-StarDragon species too! The only areas this is not allowed is StarDragon only rooms (IE: RP rooms, RP discussion rooms, character discussion rooms, world building rooms)"
+    {
+      rule:"No sexist, religious, or racist jokes.",
+      description:"",
+    },
+    {
+      rule:        "Keep it civil!",
+      description: "While religion/politics are the two big no-nos when it comes to talk around the Thanksgiving table, we’ll accept it but if things get too heated, the admins reserve the rights to stop the discussion, or ask it to be moved to Private Messages. (But also try being mindful yourselves and we’ll avoid admins getting involved!)",
+    },
+    {
+      rule: "No real life animal abuse/gore. No real life human abuse/gore either. ",
+      description:"Artistic guro/gore should be kept exclusively to the NSFW room and behind brackets and warnings. The death and mutilation of REAL creatures is not, by any means, funny or something to make light of. Those are real creatures with real feelings, and real fears. Their horror is not our comedy.",
+    },
+    {
+      rule: "No pedophilia related talk or pictures. Be it real children or fictional children. ",
+      description: "Might want to avoid any dark humor in regards to children all together honestly. We have many parents in GemExchange, and it’s not exactly tasteful for parents to see such things. <br/></br> That being said, something for RP discussion specifically is okay (IE: Your character was abused as a child, or the village your character lived in was pillaged and children died.)",
+    },
+    {
+      rule:"Keep micromodding to a minimum.",
+      description:"We understand intervening during the rare times when no admins are online, but if there is an issue and the admins are not already handling it, please let one of them know. It is their job to resolve issues, multiple people jumping in to 'help' will overwhelm and agitate a situation. <br/><br/> PLEASE keep in mind everyone is human and mistakes happen. People are FAR more willing to listen and learn when someone sits them down and speaks to them politely. When multiple people are talking to one person, they start to feel attacked and sometimes attack back.",
+    },
+    {
+      rule:"Be nice!",
+      description:" We’re fine with debates and playful bickering, but when things become legitimate arguments, you’re gunna have a bad time. Additionally, sometimes sarcasm and jokes are hard to ‘hear’ over the internet. Be patient if someone misinterprets what you’re trying to say.<br/><br/>The admins are not referees or therapists. Please try and keep disagreements civil and handle issues like adults. This is a big group, so play nice.",
+    },
+    {
+      rule: "Non-StarDragon discussion is allowed.",
+      description: "You’re free to post pictures of other species that are not StarDragons. You’re free to have full on discussions of non-StarDragon species too! The only areas this is not allowed is StarDragon only rooms (IE: RP rooms, RP discussion rooms, character discussion rooms, world building rooms)"
+    }
   ];
   public discord_layout = [
     {
@@ -111,10 +143,45 @@ export class DiscordComponent {
       description: "Hover over your post and click the three dots (on mobile hold down on your post for a few moments) toedit or delete your message",
     },
   ];
+  public roles = [
+    {
+      name:        "Sour Cream",
+      color:       "#e32260",
+      description: "Ryn"
+    },
+    {
+      name:        "Inside the Bun",
+      color:       "orange",
+      description: "Users that have been grounded.",
+    },
+    {
+      name:        "Cheesy Gordita Crunch",
+      color:       "#b550df",
+      description: "Admins",
+    },
+    {
+      name:        "Doritos locos tacos",
+      color:       "#b487ff",
+      description: "Moderators",
+    },
+    {
+      name:        "Little Burritos",
+      color:       "#3fc8f1",
+      description: "Users that have at least one StarDragon.",
+    },
+    {
+      name:        "Waiting Line",
+      color:       "#3c99b6",
+      description: "Users that don't have a StarDragon yet.",
+    },
+    {
+      name:        "Beefy 5 Layer Burrito",
+      color:       "#FFCC00",
+      description: "¯\\_(ツ)_/¯",
+    }
+  ];
 
-  constructor(private gem: GemExchangeAPI){}
+  constructor(){}
 
-  ngOnInit(){
-  }
-
+  ngOnInit(){}
 }
