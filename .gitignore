@@ -3,7 +3,7 @@ aws.json
 deploy-config.json
 
 # Compiled Output
-/dist
+dist
 
 # Runtime data
 pids

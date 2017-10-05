@@ -138,7 +138,7 @@ if(fs.existsSync("./deploy-config.json") && fs.existsSync("./dist")){
   var s3     = new AWS.S3();
   var bucket = config.bucket;
   // Cloudfront
-  if(config.distID){
+  if(config.distID != undefined){
     var cloudfront = new AWS.CloudFront();
     var distID = config.distID;
     cloudfront_enabled = true;
@@ -151,7 +151,7 @@ if(fs.existsSync("./deploy-config.json") && fs.existsSync("./dist")){
       console.log('There was a problem uploading the files. Please try again. Error: '.error, upload_err);
       process.exit(1);
     }
-    else if(cloudfront_enabled = true) {
+    else if(cloudfront_enabled == true) {
       invalidate_cloudfront(function (invalidate_cloudfront_err) {
         if (invalidate_cloudfront_err) {
           console.log('There was a problem invalidating Cloudfront. Please try again. Error: '.error, invalidate_cloudfront_err);
