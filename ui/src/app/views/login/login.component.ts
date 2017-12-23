@@ -11,6 +11,8 @@ import { GemExchangeAPI } from './../../../services/api.service';
 
 export class LoginComponent {
 
+  private login_type = "";
+
   constructor(
     private api:    GemExchangeAPI,
     private router: Router

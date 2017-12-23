@@ -1,1 +1,37 @@
-login here bitch
+<style>
+  #login-form{
+    max-width: 500px;
+    padding: 30px 15px;
+    margin: 50px auto;
+    background: #FFF;
+    border-radius: 2px;
+    text-align: center;
+  }
+  #login-form hr{
+    margin: 30px 0;
+  }
+
+  .form-control, .btn{
+    margin: 15px 0;
+  }
+</style>
+
+<div class="wrapper">
+  <div id="login-form">
+    <h2>The Gem Exchange</h2>
+    <p>Log in here.</p>
+    <hr/>
+    <ng-container *ngIf="login_type == ''">
+      <button class="btn btn-primary btn-block" (click)="login_type = 'email'"><i class="fa fa-envelope"></i> Login With Email</button>
+      <button class="btn btn-primary btn-block"><i class="fa fa-facebook"></i> Login With Facebook</button>
+      <button class="btn btn-primary btn-block"><i class="fa fa-google"></i> Login With Google</button>
+    </ng-container>
+    <ng-container *ngIf="login_type == 'email'">
+      <form>
+        <input type="text" class="form-control" placeholder="Email" />
+        <input type="text" class="form-control" placeholder="Password"/>
+        <button class="btn btn-primary btn-block" type="submit">Login</button>
+      </form>
+    </ng-container>
+  </div>
+</div>
