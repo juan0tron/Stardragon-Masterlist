@@ -10,8 +10,18 @@ import { DiscordComponent }           from './views/discord/discord.component';
 import { StarDragonListComponent }    from './views/stardragons/stardragon-list.component';
 import { StarDragonDetailsComponent } from './views/stardragons/details/stardragon-details.component';
 
+// Auth Pages
+import { LoginComponent }     from "./views/login/login.component";
+
 // 3rd Party Modules
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
+
+// Routing Guards
+import { LoggedInGuard } from "./guards/logged-in.guard";
+import { DevGuard }      from "./guards/dev.guard";
+
+// Services
+import { GemExchangeAPI } from './../services/api.service';
 
 import { ROUTES }       from "./app.routes";
 import { AppComponent } from './app.component';
@@ -23,6 +33,9 @@ import { AppComponent } from './app.component';
     DiscordComponent,
     StarDragonListComponent,
     StarDragonDetailsComponent,
+
+    // Auth Pages
+    LoginComponent,
 
     AppComponent
   ],
@@ -40,7 +53,14 @@ import { AppComponent } from './app.component';
         cancelButtonClass: 'btn'
     }),
   ],
-  providers: [],
+  providers: [
+    // Guards
+    DevGuard,
+    LoggedInGuard,
+
+    // Services
+    GemExchangeAPI
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
