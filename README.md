@@ -4,9 +4,4 @@ This site will be the future home for everything related to the closed species S
 
 # To Do
 
-- Everything
-- Create table in the UI with filters and sorting
-- Details view for each Dragon, with wiki-like options for bios, details, etc.
-- Create Admin accounts that can add new Stardragons and modify existing ones
-- Import the Stardragon master list spreadsheet to MongoDB
-- Find hosting for the DB/API server.
+Progress for the site can be tracked on this [Trello board](https://trello.com/b/htEnUyCt). 
