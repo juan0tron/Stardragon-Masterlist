@@ -9,6 +9,7 @@ import { DashboardComponent }         from './views/dashboard/dashboard.componen
 import { DiscordComponent }           from './views/discord/discord.component';
 import { StarDragonListComponent }    from './views/stardragons/stardragon-list.component';
 import { StarDragonDetailsComponent } from './views/stardragons/details/stardragon-details.component';
+import { UserComponent }              from "./views/user/user.component";
 
 // Auth Pages
 import { LoginComponent }     from "./views/login/login.component";
@@ -33,6 +34,7 @@ import { AppComponent } from './app.component';
     DiscordComponent,
     StarDragonListComponent,
     StarDragonDetailsComponent,
+    UserComponent,
 
     // Auth Pages
     LoginComponent,
