@@ -1,5 +1,4 @@
-const router = require('express').Router();
-
+const router  = require('express').Router();
 
 // Middleware for all requests
 router.use(function(req, res, next){
@@ -12,8 +11,14 @@ router.get('/', function(req, res){
   res.status(200).json({message:"API Works Bitch"})
 });
 
-// "/users" --> Users Router
-const users = require('./user');
+// Include other routers
+// const auth        = require('./auth');
+// const stardragons = require('./stardragon');
+const users       = require('./user');
+
+// router.use('/auth', auth);
+// router.use('/stardragon', stardragons);
 router.use('/users', users);
+
 
 module.exports = router;

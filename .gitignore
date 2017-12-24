@@ -1,6 +1,7 @@
 # sensitive info
 aws.json
 deploy-config.json
+api/api/config/discord_credentials.json
 
 # Compiled Output
 dist
