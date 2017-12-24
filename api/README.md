@@ -5,6 +5,7 @@ To run, you will need:
 - A MongoDB server connection
 - NodeJS
 
-# Documentation
+# Running the API locally
 
-- TBA
+- Start MongoDB with command `mongod`
+- Start the API with command `node server.js`
