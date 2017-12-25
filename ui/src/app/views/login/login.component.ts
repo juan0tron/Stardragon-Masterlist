@@ -12,9 +12,10 @@ import { GemExchangeAPI } from './../../../services/api.service';
 export class LoginComponent {
 
   private show_form:boolean    = false;
-  private requires_2fa         = false;
-  public loginError            = false;
-  public loginErrorDescription = '';
+  private requires_2fa:boolean = false;
+  public loginError:boolean    = false;
+  public loginSuccess:boolean  = false;
+  public loginMessage:string   = '';
 
   constructor(
     private api:    GemExchangeAPI,
@@ -34,17 +35,21 @@ export class LoginComponent {
 
     this.api.api("/auth/login", post_data, "POST").subscribe(
       data => {
-        if (data === true) {
-          this.router.navigate(['']);
-        }
-        if (data === 'requires_2fa') {
-          this.requires_2fa = true;
-        }
+        this.loginMessage = data.message;
+        this.loginSuccess = true;
+        this.loginError   = false;
+
+        // if (data === true) {
+        //   this.router.navigate(['']);
+        // }
+        // if (data === 'requires_2fa') {
+        //   this.requires_2fa = true;
+        // }
       },
       err => {
-        console.log(err);
-        this.loginErrorDescription = err.message;
-        this.loginError = true;
+        this.loginMessage = err.message;
+        this.loginSuccess = false;
+        this.loginError   = true;
       }
     );
   }

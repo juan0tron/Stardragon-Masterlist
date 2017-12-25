@@ -31,7 +31,7 @@ exports.authenticate = function(email, password){
         if(password == decrypt(user.password)){
           return resolve({
             valid:   true,
-            message: 'Login success',
+            message: 'Login success!',
           })
         }
         else{
