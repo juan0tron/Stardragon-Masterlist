@@ -21,14 +21,6 @@ const mongoose = require('mongoose');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// Set headers
-app.use(function(req,res,next){
-  res.header('Access-Control-Allow-Origin', 'localhost:4200');
-  res.header('Access-Control-Allow-Methods', 'GET,HEAD,POST,PUT,DELETE');
-  res.header('Content-Type', 'application/json');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, auth-token, accept, Access-Control-Allow-Headers, Authorization, X-Requested-With');
-});
-
 // ROUTES
 const routes = require('./api/routes')
 app.use('/', routes);
