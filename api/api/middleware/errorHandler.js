@@ -2,15 +2,26 @@ var _       = require('lodash');
 var discord = require('../config/discord');
 
 function onError(err, req, res, next) {
+  // If status or message are missing, send these by default.
+  if(!err.status)
+    err.status = 500;
+  if(!err.message)
+    err.message = "Something went wrong!";
 
-  console.error('API ERROR:', req.method + ' ' + req.url + '\n' + err.message);
+  // Log to console
+  console.error('API ERROR:', req.method + ' ' + req.url + '\n' + err.status + ": " + err.message);
+
+  // Log to Discord
   discord.sendError(
     '```md\nAPI ERROR:\n------------------------\n' +
     '\n<CALL> * ' + req.method + ' ' + req.url + ' * ' +
     '\n<API_ENV> * ' + req.headers.host + ' * ' +
-    '\n\n' + err.message + '' +
+    '\n\n' + err.status + ": " + err.message + '' +
     '```'
   );
+
+  // Send error to requester
+  res.status(err.status).json(err);
 
   next();
 }

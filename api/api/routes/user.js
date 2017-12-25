@@ -1,25 +1,38 @@
 const router = require('express').Router();
 const User   = require('./../models/user');
+const authController = require('./../controllers/auth');
 
 // Routes for /users
 router.route('/')
   .post(function(req, res, next){
-    var user  = new User();
-    user.name = req.body.name;
-
-    user.save(function(err){
-      if(err){
-        return next(err);
+    // Look up if this user already exists
+    User.findOne({email:req.body.email}, function(err, user){
+      // If user exists, return error.
+      if(user){
+        return next({message:"User already exists.", status:400});
       }
-      res.json({message:"User created!"})
-    });
+      // If user does not exist, create a new one.
+      else{
+        var new_user  = new User();
+            new_user.name     = req.body.name;
+            new_user.email    = req.body.email;
+            new_user.password = authController.encrypt(req.body.password);
+
+        new_user.save(function(err){
+          if(err){
+            return next(err);
+          }
+          res.json({message:"User created!"})
+        });
+      }
+    })
+
   })
   .get(function(req, res, next){
     User.find(function(err, users){
       if(err){
         return next(err);
       }
-
       res.json(users)
     })
   })

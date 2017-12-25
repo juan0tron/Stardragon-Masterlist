@@ -14,6 +14,28 @@
   .form-control, .btn{
     margin: 15px 0;
   }
+
+  .hr-container{
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+  }
+  .hr-segment{
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+    margin-right: 11px;
+    margin-left: 11px;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+  }
+  .hr-segment.left{
+    margin-left: 0;
+  }
+  .hr-segment.right{
+    margin-right: 0;
+  }
+
 </style>
 
 <div class="wrapper">
@@ -21,17 +43,25 @@
     <h2>The Gem Exchange</h2>
     <p>Log in here.</p>
     <hr/>
-    <ng-container *ngIf="login_type == ''">
-      <button class="btn btn-primary btn-block" (click)="login_type = 'email'"><i class="fa fa-envelope"></i> Login With Email</button>
-      <button class="btn btn-primary btn-block"><i class="fa fa-facebook"></i> Login With Facebook</button>
-      <button class="btn btn-primary btn-block"><i class="fa fa-google"></i> Login With Google</button>
-    </ng-container>
-    <ng-container *ngIf="login_type == 'email'">
-      <form>
-        <input type="text" class="form-control" placeholder="Email" />
-        <input type="text" class="form-control" placeholder="Password"/>
-        <button class="btn btn-primary btn-block" type="submit">Login</button>
+    <button class="btn btn-primary btn-block"><i class="fa fa-facebook"></i> Login With Facebook</button>
+    <button class="btn btn-primary btn-block" style="background:#FFF; border-color:#AAA; color:#000"><i class="fa fa-google"></i> Login With Google</button>
+    <button class="btn btn-primary btn-block" (click)="show_form = true;" *ngIf="!show_form" style="background:#790e8b; border-color:#790e8b"><i class="fa fa-envelope"></i> Login With Email</button>
+    <ng-container *ngIf="show_form">
+      <div class="hr-container">
+        <span class="hr-segment left"></span>
+        <span class="text-muted">OR</span>
+        <span class="hr-segment right"></span>
+      </div>
+      <form role="form" (submit)="login($event, email.value, password.value)">
+        <input #email    type="text" class="form-control" placeholder="Email" />
+        <input #password type="text" class="form-control" placeholder="Password"/>
+        <button class="btn btn-primary btn-block" type="submit" style="background:#790e8b; border-color:#790e8b">Login</button>
+        <div class="alert alert-danger" [hidden]="!loginError">{{loginErrorDescription}}</div>
       </form>
+      <p class="text-muted text-center">
+        <small>Don't have an account?</small><br/>
+        <a href="/register">Create account</a>
+      </p>
     </ng-container>
   </div>
 </div>

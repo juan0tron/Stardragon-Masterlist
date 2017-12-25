@@ -12,6 +12,7 @@
     "body-parser": "^1.17.2",
     "btoa": "^1.1.2",
     "cors": "^2.8.4",
+    "crypto": "^1.0.1",
     "discord.js": "^11.2.1",
     "express": "^4.15.4",
     "fast-sha256": "^1.1.0",
