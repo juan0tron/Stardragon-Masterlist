@@ -3,6 +3,8 @@ import 'rxjs/add/operator/timeout';
 
 import sha256, { Hash, HMAC } from "fast-sha256";
 
+import { Observable } from 'rxjs/Rx';
+
 import { Injectable }              from '@angular/core';
 import {
   Headers,
@@ -43,7 +45,7 @@ export class GemExchangeAPI {
       }
 
       if(this.isDev()){
-        console.log("API CALL:", environment.api_url + params, headers, body);
+        console.log(request_type+":", environment.api_url + params, headers, body);
       }
 
       // Determine Request type and make the appropriate call
@@ -67,10 +69,22 @@ export class GemExchangeAPI {
       }
 
       // Modify API Response
-      return api_request.map((res:any) => {
-        console.log("RESPONSE:", params, res);
-        return res;
-      });
+      return api_request
+        // Success
+        .map((res:Response) => {
+          console.log("RESPONSE:", params, res);
+          return res;
+        })
+        // Error
+        .catch((error:any) => {
+          console.error("API ERROR:", params, error);
+          // 401: Unauthorized
+          if(error.status === 401){
+            console.error("Unauthorized request. Logging out.");
+            this.logout();
+          }
+          return Observable.throw(error.error);
+        });
     }
 
     register(form_data){}
@@ -94,7 +108,10 @@ export class GemExchangeAPI {
     }
 
     /**
-      */
+     *  @function isDev
+     *  @description Checks if the current environment or user is dev
+     *  @return {boolean}
+     */
     isDev(){
       if(!environment.production){
         return true;
