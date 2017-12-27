@@ -1,7 +1,8 @@
-var mongoose   = require('mongoose'),
-    ObjectId   = mongoose.Types.ObjectId,
-    User       = mongoose.model('User'),
-    authController = require('./../controllers/auth');
+const _          = require('lodash'),
+      mongoose   = require('mongoose'),
+      ObjectId   = mongoose.Types.ObjectId,
+      User       = mongoose.model('User'),
+      authController = require('./../controllers/auth');
 
 /**
  *  @description Create a new user

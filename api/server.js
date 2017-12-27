@@ -10,10 +10,8 @@ var mongo_url = 'mongodb://localhost:27017/devDB',
     bodyParser = require('body-parser'),
     app        = express(),
 
-    colors     = require('colors'),
+    colors     = require('colors')
 
-    cors       = require('cors'),
-    jwt        = require('jsonwebtoken')
 
 // Use Mongoose to connect API to MongoDB
 const mongoose = require('mongoose');

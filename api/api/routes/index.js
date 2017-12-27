@@ -5,7 +5,7 @@ router.use(function(req, res, next){
   // Log all calls
   console.log(req.method + ": " + req.originalUrl);
 
-  // Set headers
+  // Set response headers
   res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
   res.header('Access-Control-Allow-Methods', 'GET,HEAD,POST,PUT,DELETE');
   res.header('Content-Type', 'application/json');
