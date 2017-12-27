@@ -1,4 +1,3 @@
-'use strict';
 var mongoose = require('mongoose');
 var Schema   = mongoose.Schema;
 
@@ -63,4 +62,4 @@ var StarDragonSchema = new Schema({
   link: {type:String}
 });
 
-module.exports = mongoose.model('StarDragons', StarDragonSchema);
+module.exports = mongoose.model('Stardragon', StarDragonSchema);

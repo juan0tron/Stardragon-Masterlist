@@ -20,13 +20,13 @@ router.get('/', function(req, res){
 });
 
 // Include other routers
-const auth       = require('./auth');
-const stardragon = require('./stardragon');
-const users      = require('./user');
+const auth        = require('./auth');
+const stardragons = require('./stardragon');
+const users       = require('./user');
 
 // Use routers
-router.use('/auth',       auth);
-router.use('/stardragon', stardragon);
-router.use('/users',      users);
+router.use('/auth',        auth);
+router.use('/stardragons', stardragons);
+router.use('/users',       users);
 
 module.exports = router;

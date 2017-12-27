@@ -1,16 +1,14 @@
-'use strict';
-module.exports = function(app) {
-  var starDragons = require('../controllers/starDragonController');
+const router       = require('express').Router();
+const Stardragon   = require('../models/stardragon');
+const sdController = require('../controllers/stardragon');
 
-  app.route('/stardragon/list')
-    .get(starDragons.list)
+// Routes for /stardragons
+router.route("/")
+  .get(sdController.list)
+  .post(sdController.create)
 
-  app.route('/stardragon/create')
-    .post(starDragons.create)
+// Routes for /stardragons/:stardragon_id
+router.route("/:stardragon_id")
+  .post(sdController.details)
 
-  app.route('/stardragon/details')
-    .post(starDragons.details)
-  //   .get(stardragons.read_a_task)
-  //   .put(stardragons.update_a_task)
-  //   .delete(stardragons.delete_a_task);
-};
+module.exports = router;
