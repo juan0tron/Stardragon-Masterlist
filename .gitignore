@@ -2,7 +2,8 @@
 aws.json
 deploy-config.json
 api/api/config/discord_credentials.json
-api/api/config/encryption_key.key
+api/api/config/encryption.key
+api/api/config/secret.key
 
 # Compiled Output
 dist
