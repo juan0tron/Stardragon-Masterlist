@@ -8,6 +8,7 @@
 const fs      = require("fs");         // To read the credentials file
 const Discord = require("discord.js"); // The bot
 const client  = new Discord.Client();
+const colors  = require('colors');
 
 var ErrorChannel; // The channel we will log errors to.
 
@@ -20,14 +21,10 @@ client.login(credentials.token);
 *   Creates an instance of the Discord bot. Should only be called on app startup.
 */
 exports.initBot = () => {
-
-  console.log("Waking Discord Chan.");
-
   client.on("ready", () => {
-    console.log("Discord Chan ready to log errors!");
+    console.log("Discord Chan ready to log errors!".magenta);
     ErrorChannel = client.channels.find("id", credentials.error_channel);
   });
-
 };
 
 exports.sendError = (error_message) => {

@@ -1,5 +1,5 @@
-var _       = require('lodash');
-var discord = require('../config/discord');
+const discord = require('../config/discord');
+const colors  = require('colors');
 
 function onError(err, req, res, next) {
   // If status or message are missing, send these by default.
@@ -9,7 +9,7 @@ function onError(err, req, res, next) {
     err.message = "Something went wrong!";
 
   // Log to console
-  console.error('API ERROR:', req.method + ' ' + req.url + '\n' + err.status + ": " + err.message);
+  console.error(colors.red('API ERROR:', req.method + ' ' + req.url + '\n    ' + err.status + ": " + err.message));
 
   // Log to Discord
   discord.sendError(

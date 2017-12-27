@@ -5,12 +5,15 @@ var mongo_url = 'mongodb://localhost:27017/devDB',
     ui_url    = 'http://localhost:4200',
     port      = process.env.PORT || 3000,
 
-    cors       = require('cors'),
-
     // Express
     express    = require('express'),
     bodyParser = require('body-parser'),
-    app        = express()
+    app        = express(),
+
+    colors     = require('colors'),
+
+    cors       = require('cors'),
+    jwt        = require('jsonwebtoken')
 
 // Use Mongoose to connect API to MongoDB
 const mongoose = require('mongoose');
@@ -36,4 +39,4 @@ discord.initBot();
 // START SERVER
 app.listen(port);
 
-console.log('Gem Exchange API server started on port ' + port);
+console.log(colors.green('Gem Exchange API server started on port ' + port));
