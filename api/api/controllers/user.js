@@ -1,6 +1,7 @@
 var mongoose   = require('mongoose'),
     ObjectId   = mongoose.Types.ObjectId,
-    User       = mongoose.model('User');
+    User       = mongoose.model('User'),
+    authController = require('./../controllers/auth');
 
 /**
  *  @description Create a new user
@@ -27,6 +28,47 @@ exports.create = function(req, res, next){
       });
     }
   })
+}
+
+/**
+ *  @description create a sample user
+ */
+exports.createTestUser = function(req, res, next){
+  // Look up if a test user already exists
+  User.findOne({email:"gemexchangetest@test.com"}, function(err, user){
+    // If test user exists, delete so we can create a new one.
+    if(user){
+      deleteTestUser();
+    }
+
+    var test_pw = authController.hash("password")
+        test_pw = authController.encrypt(test_pw)
+
+    var test_user  = new User({
+      name:     "Test User",
+      email:    "gemexchangetest@test.com",
+      password: test_pw
+    });
+
+    test_user.save(function(err){
+      if(err){
+        return next(err);
+      }
+      res.json({message:"Test user created!"})
+    });
+  })
+}
+
+/**
+ *  @description Delete the sample user
+ */
+exports.deleteTestUser = function(req, res, next){
+  User.remove({ email: "gemexchangetest@test.com" }, function(err, user) {
+    if (err){
+      return next(err);
+    }
+    res.json({ message: 'Test user deleted!' });
+  });
 }
 
 /**

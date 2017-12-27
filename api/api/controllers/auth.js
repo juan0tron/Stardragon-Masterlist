@@ -72,3 +72,14 @@ function decrypt(text){
       dec += decipher.final('utf8');
   return dec;
 }
+
+/**
+ *  @function hash
+ *  @description Hash a string (SHA256). For creating user passwords server-side.
+ *  @param  {string} text The string being hashed.
+ *  @return {string}      The hash.
+ */
+exports.hash = function(text){
+  var pw_hash = sha256(text);
+  return btoa(String.fromCharCode.apply(null, pw_hash));
+}

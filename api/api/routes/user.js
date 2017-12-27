@@ -1,12 +1,16 @@
 const router = require('express').Router();
-const User   = require('./../models/user');
 const userController = require('./../controllers/user');
-const authController = require('./../controllers/auth');
 
 // Routes for /users
 router.route('/')
   .post(userController.create)
   .get(userController.list)
+
+// Routes for /users/"test_case"
+router.route("/test")
+  .get(userController.createTestUser)
+router.route("/deletetest")
+  .get(userController.deleteTestUser)
 
 // Routes for /users/:user_id
 router.route('/:user_id')
