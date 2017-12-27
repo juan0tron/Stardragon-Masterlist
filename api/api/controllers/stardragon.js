@@ -8,7 +8,7 @@ exports.list = function(req, res, next) {
       next(err);
     res.json(stardragons);
   });
-};
+}
 
 exports.create = function(req, res, next) {
   var new_dragon = new StarDragon(req.body);
