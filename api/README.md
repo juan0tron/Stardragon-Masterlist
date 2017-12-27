@@ -9,3 +9,6 @@ To run, you will need:
 
 - Start MongoDB with command `mongod`
 - Start the API with command `node server.js`
+- To automatically restart the server as changes are made, start the server with `nodemon` instead:
+- Install: `npm install -g nodemon`
+- Run: `nodemon server.js`
