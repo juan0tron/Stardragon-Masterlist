@@ -17,6 +17,9 @@ export class LoginComponent {
   public loginSuccess:boolean  = false;
   public loginMessage:string   = '';
 
+  public email_invalid:boolean = false;
+  public password_invalid:boolean = false;
+
   constructor(
     private api:    GemExchangeAPI,
     private router: Router
@@ -51,6 +54,19 @@ export class LoginComponent {
         // }
       },
       err => {
+        if(err.message == "Invalid email." || err.message == "Email is required."){
+          this.email_invalid = true;
+          this.password_invalid = false;
+        }
+        else if(err.message == "Invalid password."){
+          this.email_invalid = false;
+          this.password_invalid = true;
+        }
+        else{
+          this.email_invalid = false;
+          this.password_invalid = false;
+        }
+
         this.loginMessage = err.message;
         this.loginSuccess = false;
         this.loginError   = true;

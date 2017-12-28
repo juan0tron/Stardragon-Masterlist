@@ -53,8 +53,8 @@
         <span class="hr-segment right"></span>
       </div>
       <form role="form" (submit)="login($event, email.value, password.value)">
-        <input #email    type="text"     class="form-control" placeholder="Email" />
-        <input #password type="password" class="form-control" placeholder="Password"/>
+        <input #email    type="text"     class="form-control" placeholder="Email" [ngClass]="{'is-invalid':email_invalid}" />
+        <input #password type="password" class="form-control" placeholder="Password" [ngClass]="{'is-invalid':password_invalid}" />
         <button class="btn btn-primary btn-block" type="submit" style="background:#790e8b; border-color:#790e8b">Login</button>
         <div class="alert alert-danger"  [hidden]="!loginError">{{loginMessage}}</div>
         <div class="alert alert-success" [hidden]="!loginSuccess">{{loginMessage}}</div>
