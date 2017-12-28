@@ -13,7 +13,9 @@ var UserSchema = new Schema({
   password: {
     type: String,
     required: "Password required."
-  }
+  },
+
+  facebook_uid: String,
 
   //
   // nickname: {

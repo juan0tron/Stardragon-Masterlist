@@ -42,11 +42,12 @@ exports.authenticate = function(req, res, next){
       // Login success!
       else{
         // Create an auth token
-        let payload    = { email:user.email }
+        let payload    = { id:user._id }
         let auth_token = jwt.sign(payload, secret_key, { expiresIn:1440 }); // Expires in 24 Hours
         res.status(200).json({
-          message: 'Login success!',
+          message:    'Login success!',
           auth_token: auth_token,
+          user_data:  payload,
         })
       }
     }
@@ -65,11 +66,11 @@ exports.verifyAuthToken = function(req, res, next){
   if(auth_token){
     jwt.verify(auth_token, secret_key, function(err, decoded){
       if(err){
-        return next(new Error("Auth token is invalid."))
+        return next({status:401, message:"Auth token is invalid."})
       }
       else{
         res.authenticated = true;
-        res.decoded       = decoded; // Decoded auth token
+        res.user_data     = decoded; // Decoded auth token
       }
     })
   }

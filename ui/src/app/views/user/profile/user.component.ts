@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { Router }    from '@angular/router';
+import { ActivatedRoute, Router }    from '@angular/router';
 
-import { GemExchangeAPI } from './../../../services/api.service';
-import { User } from './../../models/user'
+import { GemExchangeAPI } from './../../../../services/api.service';
+import { User } from './../../../models/user'
 
 @Component({
     selector:    'user',
@@ -12,20 +12,30 @@ import { User } from './../../models/user'
 
 export class UserComponent {
 
-  public user:User;
-  public user_id = "";
+  public user:User = new User;
+
+  private router_sub: any;
 
   constructor(
     private api:    GemExchangeAPI,
+    private route:  ActivatedRoute,
     private router: Router
   ) {}
+
+  ngOnInit(){
+    this.router_sub = this.route.params.subscribe(params => {
+      this.user.id = params['user_id'];
+      this.details();
+    });
+
+  }
 
   /**
    *  @function details
    *  @description Retrieve the user object from the API
    */
   details(){
-    this.api.api("/users/"+this.user_id, {}, "GET").subscribe(
+    this.api.api("/users/"+this.user.id, {}, "GET").subscribe(
       data => { this.user = data },
       err  => { console.error("Error getting user data.", err)},
       ()   => { console.log("Got user data.", this.user)}

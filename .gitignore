@@ -1,5 +1,6 @@
 # sensitive info
 aws.json
+config.json
 deploy-config.json
 api/api/config/discord_credentials.json
 api/api/config/encryption.key

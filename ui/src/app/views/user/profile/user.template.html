@@ -13,7 +13,7 @@
   <div class="row">
     <div id="avatar" class="col-md-4">
       <i class="fa fa-user" style="font-size:200px;"></i>
-      <p>Username</p>
+      <p>{{user.name || "Username"}}</p>
     </div>
     <div id="description" class="col-md-8">
       <!-- start slipsum code -->
@@ -34,7 +34,7 @@
 
   <hr/>
 
-  <input type="text" class="form-control" placeholder="Email"/>
+  <input type="text" class="form-control" placeholder="Email" [value]="user.email" />
 
   <hr/>
 

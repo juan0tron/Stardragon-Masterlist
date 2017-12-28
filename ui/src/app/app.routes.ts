@@ -8,7 +8,7 @@ import { DiscordComponent }   from "./views/discord/discord.component";
 // Auth views
 import { LoginComponent } from "./views/login/login.component";
 
-import { UserComponent } from "./views/user/user.component";
+import { UserComponent } from "./views/user/profile/user.component";
 
 // Routing Guards
 import { LoggedInGuard } from "./guards/logged-in.guard";
@@ -23,7 +23,9 @@ export const ROUTES: Routes = [
     { path: 'discord', component: DiscordComponent   },
 
     { path: 'login', component: LoginComponent, canActivate: [DevGuard]},
-    { path: 'user',  component: UserComponent,  canActivate: [DevGuard]},
+
+    { path: 'users',          component: UserComponent,  canActivate: [DevGuard]},
+    { path: 'users/:user_id', component: UserComponent,  canActivate: [DevGuard]},
 
     // Handle all other routes
     { path: '**', redirectTo: '' },

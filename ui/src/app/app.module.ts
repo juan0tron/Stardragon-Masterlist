@@ -9,12 +9,13 @@ import { DashboardComponent }         from './views/dashboard/dashboard.componen
 import { DiscordComponent }           from './views/discord/discord.component';
 import { StarDragonListComponent }    from './views/stardragons/stardragon-list.component';
 import { StarDragonDetailsComponent } from './views/stardragons/details/stardragon-details.component';
-import { UserComponent }              from "./views/user/user.component";
+import { UserComponent }              from "./views/user/profile/user.component";
 
 // Auth Pages
 import { LoginComponent }     from "./views/login/login.component";
 
 // 3rd Party Modules
+import { FacebookModule }    from 'ngx-facebook';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 
 // Routing Guards
@@ -48,6 +49,7 @@ import { AppComponent } from './app.component';
     RouterModule.forRoot(ROUTES),
 
     // 3rd Party Modules
+    FacebookModule.forRoot(),
     SweetAlert2Module.forRoot({
         buttonsStyling: false,
         customClass: 'modal-content',

@@ -7,6 +7,8 @@ var StarDragonSchema = new Schema({
     required: "Name required."
   },
 
+  owner:String, // A user ID
+
   image:     {type:String},
   image_url: {type:String},
 
@@ -25,12 +27,14 @@ var StarDragonSchema = new Schema({
       ]
     }]
   },
+
   rarity:{
     type: [{
       type: String,
       enum: ['common', 'uncommon', 'rare', 'legendary']
     }]
   },
+
   type:{
     type: [{
       type: String,
@@ -45,12 +49,14 @@ var StarDragonSchema = new Schema({
     }],
     default:['n/a']
   },
+
   gender: {type: String},
 
   created: {
     type: Date,
     default: Date.now
   },
+
   approved: {type:Date},
 
   designer: {type:String},
@@ -60,6 +66,7 @@ var StarDragonSchema = new Schema({
   description: {type:String},
 
   link: {type:String}
+
 });
 
 module.exports = mongoose.model('Stardragon', StarDragonSchema);
