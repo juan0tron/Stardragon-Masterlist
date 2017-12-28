@@ -16,12 +16,13 @@ function onError(err, req, res, next) {
     '```md\nAPI ERROR:\n------------------------\n' +
     '\n<CALL> * ' + req.method + ' ' + req.url + ' * ' +
     '\n<API_ENV> * ' + req.headers.host + ' * ' +
+    '\n<UI_ENV> * ' + req.headers.referer + ' * ' +
     '\n\n' + err.status + ": " + err.message + '' +
     '```'
   );
 
   // Send error to requester
-  res.status(err.status).json(err);
+  res.status(err.status).json({status:err.status, message:err.message});
 
   next();
 }

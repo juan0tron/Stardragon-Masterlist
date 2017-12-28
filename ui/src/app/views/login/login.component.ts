@@ -39,6 +39,10 @@ export class LoginComponent {
         this.loginSuccess = true;
         this.loginError   = false;
 
+        localStorage.clear();
+        localStorage.setItem("auth_token", data.auth_token);
+        localStorage.setItem("email", email);
+
         // if (data === true) {
         //   this.router.navigate(['']);
         // }

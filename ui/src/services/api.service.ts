@@ -5,18 +5,18 @@ import sha256, { Hash, HMAC } from "fast-sha256";
 
 import { Observable } from 'rxjs/Rx';
 
-import { Injectable }              from '@angular/core';
+import { Injectable } from '@angular/core';
 import {
   Headers,
   Response,
   RequestOptions,
-}                     from '@angular/http';
+} from '@angular/http';
 import {
   HttpClient,
   HttpHeaders,
   HttpRequest,
   HttpParams,
-}                     from '@angular/common/http';
+} from '@angular/common/http';
 
 import { environment } from './../environments/environment';
 
@@ -89,9 +89,9 @@ export class GemExchangeAPI {
 
     register(form_data){}
 
-    login(username, password){}
-
-    logout(){}
+    logout(){
+      localStorage.clear();
+    }
 
     /**
       *  @function    isLoggedIn

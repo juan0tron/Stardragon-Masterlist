@@ -9,13 +9,11 @@ const jwt            = require('jsonwebtoken');
 const moment         = require('moment');
 
 const mongoose = require('mongoose');
-const User = mongoose.model('User');
+const User = require("../models/user");
 
 /**
  *  @function authenticate
- *  @description
- *  @param {string} email
- *  @param {string} password
+ *  @description Log in a user and return an auth token
  */
 exports.authenticate = function(req, res, next){
   const email    = (typeof req.body.email    === 'string') ? req.body.email    : false;
@@ -43,8 +41,8 @@ exports.authenticate = function(req, res, next){
       }
       // Login success!
       else{
-        // Create an auth token, using the user's email + current time in MS as a payload
-        let payload    = { email:user.email, time:moment().millisecond() }
+        // Create an auth token
+        let payload    = { email:user.email }
         let auth_token = jwt.sign(payload, secret_key, { expiresIn:1440 }); // Expires in 24 Hours
         res.status(200).json({
           message: 'Login success!',
@@ -55,28 +53,25 @@ exports.authenticate = function(req, res, next){
   })
 }
 
+/**
+ *  @function verifyAuthToken
+ *  @description Check if a user's auth token is valid
+ */
 exports.verifyAuthToken = function(req, res, next){
   // Get auth token
-  let auth_token = req.headers['auth-token'] || false;
-
-  console.log("auth token is", auth_token);
+  let auth_token = req.headers['auth-token'];
 
   // Verify auth token
   if(auth_token){
     jwt.verify(auth_token, secret_key, function(err, decoded){
       if(err){
-        next(new Error("Failed to authenticate token"))
+        return next(new Error("Auth token is invalid."))
       }
       else{
-        return true;
+        res.authenticated = true;
+        res.decoded       = decoded; // Decoded auth token
       }
     })
-  }
-  else{
-    return res.status(403).send({
-      success: false,
-      message: 'Missing auth token.'
-    });
   }
 }
 
