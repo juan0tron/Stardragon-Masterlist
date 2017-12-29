@@ -1,19 +1,19 @@
 import { Component } from '@angular/core';
 
-import { StarDragon } from './stardragon';
+import { Stardragon } from './../../../models/stardragon';
 
-import { GemExchangeAPI } from './../../../services/api.service';
+import { GemExchangeAPI } from './../../../../services/api.service';
 
 @Component({
   selector: 'stardragon-list',
   templateUrl: './stardragon-list.template.html',
   providers: [GemExchangeAPI]
 })
-export class StarDragonListComponent {
+export class StardragonListComponent {
 
-  title = 'StarDragons';
+  title = 'Stardragons';
 
-  public stardragons:Array<StarDragon> = [];
+  public stardragons:Array<Stardragon> = [];
 
   constructor(private gem: GemExchangeAPI){}
 

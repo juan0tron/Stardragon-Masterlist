@@ -10,5 +10,8 @@ import { GemExchangeAPI } from './../services/api.service';
 export class AppComponent {
   title = 'app';
 
+  public user_id = localStorage.getItem('user_id');
+
   constructor(public api:GemExchangeAPI){}
+
 }

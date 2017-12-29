@@ -57,9 +57,9 @@ export class LoginComponent {
         this.password_invalid = false;
 
         localStorage.setItem("auth_token", data.auth_token);
-        localStorage.setItem("user_data",  data.user_data);
+        localStorage.setItem("user_id",  data.user_id);
 
-        this.router.navigate(['/users/' + data.user_data.id]);
+        this.router.navigate(['/users/' + data.user_id]);
       },
       err => {
         if(err.message == "Invalid email." || err.message == "Email is required."){
@@ -78,7 +78,8 @@ export class LoginComponent {
         this.loginMessage = err.message;
         this.loginSuccess = false;
         this.loginError   = true;
-      }
+      },
+
     );
   }
 

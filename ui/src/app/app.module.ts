@@ -5,11 +5,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule }     from "@angular/router";
 
 // Pages
-import { DashboardComponent }         from './views/dashboard/dashboard.component';
-import { DiscordComponent }           from './views/discord/discord.component';
-import { StarDragonListComponent }    from './views/stardragons/stardragon-list.component';
-import { StarDragonDetailsComponent } from './views/stardragons/details/stardragon-details.component';
-import { UserComponent }              from "./views/user/profile/user.component";
+import { DashboardComponent }      from './views/dashboard/dashboard.component';
+import { DiscordComponent }        from './views/discord/discord.component';
+import { StardragonListComponent } from './views/stardragon/list/stardragon-list.component';
+import { StardragonComponent }     from './views/stardragon/profile/stardragon.component';
+import { UserComponent }           from "./views/user/profile/user.component";
 
 // Auth Pages
 import { LoginComponent }     from "./views/login/login.component";
@@ -33,8 +33,8 @@ import { AppComponent } from './app.component';
     // Pages
     DashboardComponent,
     DiscordComponent,
-    StarDragonListComponent,
-    StarDragonDetailsComponent,
+    StardragonListComponent,
+    StardragonComponent,
     UserComponent,
 
     // Auth Pages

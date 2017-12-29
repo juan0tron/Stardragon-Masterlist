@@ -17,6 +17,10 @@ import {
   HttpRequest,
   HttpParams,
 } from '@angular/common/http';
+import { Router } from '@angular/router';
+
+import { default as swal} from 'sweetalert2';
+
 
 import { environment } from './../environments/environment';
 
@@ -24,111 +28,117 @@ import { environment } from './../environments/environment';
 
 export class GemExchangeAPI {
 
-    constructor(private http:HttpClient) { }
+  // public swal:any;
 
-    /**
-     *  @function    api
-     *  @description Calls the Wylei API.
-     *  @param {String} params       - A valid API endpoint, starting with a /
-     *  @param {String} body         - Any additional data to be sent with the API call (optional)
-     *  @param {String} request_type - PUT, DELETE, POST, GET, etc. Defaults to POST.
-     *  @return {Object}
-     */
-    api(params, body = {}, request_type = "POST") {
-      let headers = new HttpHeaders()
+  constructor(
+    private http:HttpClient,
+    public  router:Router
+  ) { }
+
+  /**
+   *  @function    api
+   *  @description Calls the Wylei API.
+   *  @param {String} params       - A valid API endpoint, starting with a /
+   *  @param {String} body         - Any additional data to be sent with the API call (optional)
+   *  @param {String} request_type - PUT, DELETE, POST, GET, etc. Defaults to POST.
+   *  @return {Object}
+   */
+  api(params, body = {}, request_type = "POST") {
+    let headers = new HttpHeaders()
+      .set('Content-Type', 'application/json');
+
+    if(localStorage.getItem("auth_token")){
+      headers = new HttpHeaders()
+        .set('auth-token', localStorage.getItem("auth_token"))
         .set('Content-Type', 'application/json');
-
-      if(localStorage.getItem("auth_token")){
-        headers = new HttpHeaders()
-          .set('auth-token', localStorage.getItem("auth_token"))
-          .set('Content-Type', 'application/json');
-      }
-
-      if(this.isDev()){
-        console.log(request_type+":", environment.api_url + params, headers, body);
-      }
-
-      // Determine Request type and make the appropriate call
-      var api_request;
-      switch(request_type){
-        case "GET":
-          api_request = this.http.get(environment.api_url + params, {headers:headers});
-          break;
-        case "POST":
-          api_request = this.http.post(environment.api_url + params, body, {headers:headers});
-          break;
-        case "PUT":
-          api_request = this.http.put(environment.api_url + params, body, {headers:headers});
-          break;
-        case "PATCH":
-          api_request = this.http.patch(environment.api_url + params, body, {headers:headers});
-          break;
-        case "DELETE":
-          api_request = this.http.delete(environment.api_url + params, {headers:headers});
-          break;
-      }
-
-      // Modify API Response
-      return api_request
-        // Success
-        .map((res:Response) => {
-          console.log("RESPONSE:", params, res);
-          return res;
-        })
-        // Error
-        .catch((error:any) => {
-          console.error("API ERROR:", params, error);
-          // 401: Unauthorized
-          if(error.status === 401){
-            console.error("Unauthorized request. Logging out.");
-            this.logout();
-          }
-          return Observable.throw(error.error);
-        });
     }
 
-    register(form_data){}
-
-    logout(){
-      localStorage.clear();
+    if(this.isDev()){
+      console.log(request_type+":", environment.api_url + params, headers, body);
     }
 
-    /**
-      *  @function    isLoggedIn
-      *  @description Checks localStorage to see if user is logged in
-      *  @return {boolean}
-      */
-    isLoggedIn(){
-      if(localStorage.getItem("logged_in") == "true"){
-        return true;
-      }
-      else{
-        return false;
-      }
+    // Determine Request type and make the appropriate call
+    var api_request;
+    switch(request_type){
+      case "GET":
+        api_request = this.http.get(environment.api_url + params, {headers:headers});
+        break;
+      case "POST":
+        api_request = this.http.post(environment.api_url + params, body, {headers:headers});
+        break;
+      case "PUT":
+        api_request = this.http.put(environment.api_url + params, body, {headers:headers});
+        break;
+      case "PATCH":
+        api_request = this.http.patch(environment.api_url + params, body, {headers:headers});
+        break;
+      case "DELETE":
+        api_request = this.http.delete(environment.api_url + params, {headers:headers});
+        break;
     }
 
-    /**
-     *  @function isDev
-     *  @description Checks if the current environment or user is dev
-     *  @return {boolean}
-     */
-    isDev(){
-      if(!environment.production){
-        return true;
-      }
+    // Modify API Response
+    return api_request
+      // Success
+      .map((res:Response) => {
+        console.log("RESPONSE:", params, res);
+        return res;
+      })
+      // Error
+      .catch((error:any) => {
+        console.error("API ERROR:", params, error);
+        // 401: Unauthorized
+        if(error.status === 401){
+          console.error("Session Expired","Your session has expired. Please log in again.","error");
+          this.logout();
+        }
+        return Observable.throw(error.error);
+      });
+  }
+
+  register(form_data){}
+
+  logout(){
+    localStorage.clear();
+    this.router.navigate(['/login']);
+  }
+
+  /**
+    *  @function    isLoggedIn
+    *  @description Checks localStorage to see if user is logged in
+    *  @return {boolean}
+    */
+  isLoggedIn(){
+    if(localStorage.getItem("auth_token")){
+      return true;
+    }
+    else{
       return false;
     }
+  }
 
-    /**
-      *  @function    hashPW
-      *  @description Hashes a password in SHA256
-      *  @param  {String} password
-      *  @return {String}
-      */
-    hashPW(password){
-      var pw_hash:any = sha256(password);
-          pw_hash     = btoa(String.fromCharCode.apply(null, pw_hash));
-
-      return pw_hash;
+  /**
+   *  @function isDev
+   *  @description Checks if the current environment or user is dev
+   *  @return {boolean}
+   */
+  isDev(){
+    if(!environment.production){
+      return true;
     }
+    return false;
+  }
+
+  /**
+    *  @function    hashPW
+    *  @description Hashes a password in SHA256
+    *  @param  {String} password
+    *  @return {String}
+    */
+  hashPW(password){
+    var pw_hash:any = sha256(password);
+        pw_hash     = btoa(String.fromCharCode.apply(null, pw_hash));
+
+    return pw_hash;
+  }
 }

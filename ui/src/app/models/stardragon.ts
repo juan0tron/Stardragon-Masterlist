@@ -1,4 +1,4 @@
-export class StarDragon{
+export class Stardragon{
   name:string;
 
   image:     string;

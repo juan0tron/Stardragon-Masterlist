@@ -47,7 +47,7 @@ exports.authenticate = function(req, res, next){
         res.status(200).json({
           message:    'Login success!',
           auth_token: auth_token,
-          user_data:  payload,
+          user_id:    user._id,
         })
       }
     }
@@ -70,7 +70,6 @@ exports.verifyAuthToken = function(req, res, next){
       }
       else{
         res.authenticated = true;
-        res.user_data     = decoded; // Decoded auth token
       }
     })
   }

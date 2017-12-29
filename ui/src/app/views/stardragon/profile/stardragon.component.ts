@@ -1,19 +1,19 @@
 import { Component, Input } from '@angular/core';
 
-import { StarDragon } from './../stardragon';
+import { Stardragon } from './../../../models/stardragon';
 
 import { GemExchangeAPI } from './../../../../services/api.service';
 
 @Component({
-  selector:    'stardragon-details',
-  templateUrl: './stardragon-details.template.html',
+  selector:    'stardragon',
+  templateUrl: './stardragon.template.html',
   providers:   [GemExchangeAPI]
 })
-export class StarDragonDetailsComponent {
-  title = 'StarDragon';
+export class StardragonComponent {
+  title = 'Stardragon';
 
   @Input() id:string;
-  public stardragon:StarDragon;
+  public stardragon:Stardragon;
 
   constructor(private gem: GemExchangeAPI){}
 
