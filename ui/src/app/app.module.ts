@@ -3,6 +3,7 @@ import { BrowserModule }    from '@angular/platform-browser';
 import { NgModule }         from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule }     from "@angular/router";
+import { FormsModule }      from '@angular/forms';
 
 // Pages
 import { DashboardComponent }      from './views/dashboard/dashboard.component';
@@ -11,12 +12,18 @@ import { StardragonListComponent } from './views/stardragon/list/stardragon-list
 import { StardragonComponent }     from './views/stardragon/profile/stardragon.component';
 import { UserComponent }           from "./views/user/profile/user.component";
 
+// About
+  // Traits
+  import { StarshooterTraitsComponent } from './views/about/species/starshooter/starshooter-traits.component';
+
 // Auth Pages
 import { LoginComponent }     from "./views/login/login.component";
 
 // 3rd Party Modules
 import { FacebookModule }    from 'ngx-facebook';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
+// Ngx bootstrap
+import { ButtonsModule } from 'ngx-bootstrap';
 
 // Routing Guards
 import { LoggedInGuard } from "./guards/logged-in.guard";
@@ -37,6 +44,9 @@ import { AppComponent } from './app.component';
     StardragonComponent,
     UserComponent,
 
+    // About Pages
+    StarshooterTraitsComponent,
+
     // Auth Pages
     LoginComponent,
 
@@ -47,6 +57,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(ROUTES),
+    FormsModule,
 
     // 3rd Party Modules
     FacebookModule.forRoot(),
@@ -56,6 +67,9 @@ import { AppComponent } from './app.component';
         confirmButtonClass: 'btn btn-primary',
         cancelButtonClass: 'btn'
     }),
+    // NGX Bootstrap
+    ButtonsModule.forRoot(),
+
   ],
   providers: [
     // Guards

@@ -1,5 +1,16 @@
 @import "dashboard.less";
 
+// Fonts
+@font-face {
+  font-family: "Frenchpress";
+  src: url('./../fonts/Frenchpress.otf');
+}
+@font-face {
+  font-family: "Futura";
+  src: url('./../fonts/FuturaLight.ttf');
+}
+
+
 body{
   background-image:  url('./../img/blue_space_background.png');
   background-repeat: repeat-y;
@@ -25,9 +36,16 @@ img{
 header{
   text-align: center;
   background: rgba(255,255,255,0.9);
+  position:   fixed;
+  z-index:    999;
+  width:      100%;
   .navigation{
     a{color:#000}
   }
+}
+
+#body{
+  padding-top: 70px;
 }
 
 .horizontal-links{

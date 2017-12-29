@@ -1,17 +1,31 @@
 <header>
-  <div class="navigation">
-    <ul class="horizontal-links">
+  <nav class="navbar navigation">
+    <ul class="horizontal-links pull-left">
       <li><a routerLink="/home"><i class="fa fa-home"></i> Home</a></li>
       <li><a routerLink="/discord"><i class="fa fa-commenting"></i> Discord Server</a></li>
-
-      <ng-container *ngIf="api.isDev()">
-        <li *ngIf="!api.isLoggedIn()"><a routerLink="/login"><i class="fa fa-envelope"></i> Login</a></li>
-        <li *ngIf="api.isLoggedIn()"><a (click)="api.logout()" href="#"><i class="fa fa-power-off"></i> Logout</a></li>
-        <li *ngIf="api.isLoggedIn()"><a [routerLink]="'/users/' + user_id"><i class="fa fa-user"></i> User Profile</a></li>
-      </ng-container>
-
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)"><i class="fa fa-user-circle-o"></i> Species</a>
+        <ul class="dropdown-menu">
+          <!-- <li><a routerLink="/home">Stareaters</a></li>
+          <li><a routerLink="/home">Starsweepers</a></li>
+          <li><a routerLink="/home">Stardashers</a></li>
+          <li><a routerLink="/home">Starfishers</a></li>
+          <li><a routerLink="/home">Starweavers</a></li>
+          <li><a routerLink="/home">Starrobbers</a></li>
+          <li><a routerLink="/home">Starcrafters</a></li> -->
+          <li><a routerLink="/species/starshooters">Starshooters</a></li>
+        </ul>
+      </li>
     </ul>
-  </div>
+
+    <ul class="horizontal-links pull-right">
+      <ng-container *ngIf="api.isDev()">
+        <li *ngIf="api.isLoggedIn()"><a [routerLink]="'/users/' + user_id"><i class="fa fa-user-circle"></i> My Profile</a></li>
+        <li *ngIf="api.isLoggedIn()"><a (click)="api.logout()" href="#"><i class="fa fa-sign-out"></i> Logout</a></li>
+        <li *ngIf="!api.isLoggedIn()"><a routerLink="/login"><i class="fa fa-sign-in"></i> Login</a></li>
+      </ng-container>
+    </ul>
+  </nav>
 </header>
 
 <div id="body">

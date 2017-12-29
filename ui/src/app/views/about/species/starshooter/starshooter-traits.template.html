@@ -1,0 +1,85 @@
+<style>
+  h1,h2,h3,h4{
+    font-family: "Futura", sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  p{
+    font-family: "Frenchpress";
+    font-size: 22px;
+    font-weight: bold;
+  }
+</style>
+
+<div class="content">
+  <a class="btn btn-primary" href="https://sta.sh/01z4b3hmqrbf" target="blank">Traits List</a>
+  <a class="btn btn-primary" href="https://sta.sh/21h6koqqj5dj?edit=1" target="blank">Trait Assets</a>
+
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Traits Compendium: Starshooters</h1>
+      <h2>Current Subtypes | Standard - Arctic <span style="color:#aaa" title="Coming soon!">- Desert - Sabertooth</span></h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <img src="{{img_directory}}/starshooters_header.png"/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <h3>Filter By Rarity:</h3>
+      <div class="row">
+        <div class="btn-group">
+          <label class="btn btn-primary" [(ngModel)]="rarity_filter" btnRadio="common">Common</label>
+          <label class="btn btn-primary" [(ngModel)]="rarity_filter" btnRadio="uncommon">Uncommon</label>
+          <label class="btn btn-primary" [(ngModel)]="rarity_filter" btnRadio="rare">Rare</label>
+          <label class="btn btn-primary" [(ngModel)]="rarity_filter" btnRadio="legendary">Legendary</label>
+          <label class="btn btn-primary" [(ngModel)]="rarity_filter" btnRadio="all">All</label>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h3>Filter By Type:</h3>
+      <div class="row">
+        <div class="btn-group">
+          <label class="btn btn-primary" style="text-transform:capitalize" *ngFor="let type of getTraitTypes()" [(ngModel)]="type_filter" [btnRadio]="type">{{type.replace("_"," ")}}</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-container *ngFor="let trait_type of getTraitTypes()">
+    <ng-container *ngIf="getTraitsByTypeAndRarity(trait_type, rarity_filter).length > 0 && (type_filter == trait_type || type_filter == 'all')">
+      <div class="row">
+        <div class="col-md-12">
+          <h3>{{trait_type.replace("_"," ")}}</h3>
+          <p>{{getTraitDescription(trait_type)}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <ng-container *ngFor="let trait of getTraitsByType(trait_type)">
+          <div *ngIf="rarity_filter == trait.rarity || rarity_filter == 'all'" class="col-md-3" style="text-align:center;">
+            <img src="{{img_directory}}{{trait.image}}"/>
+            <p><strong>{{trait.name}}</strong></p>
+          </div>
+        </ng-container>
+      </div>
+    </ng-container>
+  </ng-container>
+
+  <div class="row" *ngIf="getTraitsByTypeAndRarity(type_filter, rarity_filter).length == 0 && type_filter != 'all'">
+    <div class="col-md-12">
+      <div class="alert alert-danger" role="alert">
+        No <strong>
+          <span *ngIf="rarity_filter != 'all'">{{rarity_filter}} </span>
+          <span *ngIf="type_filter != 'all'">{{type_filter}}s</span>
+          <span *ngIf="type_filter == 'all'">traits</span>
+        </strong> found
+      </div>
+    </div>
+  </div>
+
+</div>
