@@ -15,8 +15,8 @@
 
   <div class="row">
     <div class="col-md-12">
-      <h1>Traits Compendium: Starshooters</h1>
-      <h2>Current Subtypes | Standard - Arctic <span style="color:#aaa" title="Coming soon!">- Desert - Sabertooth</span></h2>
+      <h1>Traits Compendium: {{species}}s</h1>
+      <h2>Current Subtypes <span *ngFor="let subtype of getSubspeciesTypes()"> | {{subtype}}</span></h2>
     </div>
   </div>
 
@@ -43,7 +43,8 @@
       <h3>Filter By Trait Type:</h3>
       <div class="row">
         <select class="form-control" [(ngModel)]="type_filter" style="text-transform:capitalize">
-          <option *ngFor="let type of getTraitTypes()" [value]="type">{{type.replace("_"," ")}}</option>
+          <option value="all">All</option>
+          <option [value]="type" *ngFor="let type of getTraitTypes()">{{type.replace("_"," ")}}</option>
         </select>
       </div>
     </div>
@@ -52,26 +53,23 @@
       <div class="row">
         <select class="form-control" [(ngModel)]="subtype_filter" style="text-transform:capitalize">
           <option value="all">All</option>
-          <option value="standard">Standard</option>
-          <option value="arctic">Arctic</option>
-          <option value="desert">Desert</option>
-          <option value="sabertooth" disabled title="Coming soon!">Sabertooth</option>
+          <option [value]="subtype" *ngFor="let subtype of getSubspeciesTypes()">{{subtype}}</option>
         </select>
       </div>
     </div>
   </div>
 
   <ng-container *ngFor="let trait_type of getTraitTypes()">
-    <ng-container *ngIf="getTraits(trait_type, rarity_filter, subtype_filter).length > 0 && (type_filter == trait_type || type_filter == 'all')">
+    <ng-container *ngIf="filterTraits(trait_type, rarity_filter, subtype_filter).length > 0 && (type_filter == trait_type || type_filter == 'all')">
       <div class="row">
         <div class="col-md-12">
-          <h3>{{trait_type.replace("_"," ")}}</h3>
-          <p>{{getTraitDescription(trait_type)}}</p>
+          <h3>{{getTraitDescription(trait_type,"title")}}</h3>
+          <p>{{getTraitDescription(trait_type, "description")}}</p>
         </div>
       </div>
       <div class="row">
-        <ng-container *ngFor="let trait of getTraitsByType(trait_type)">
-          <div *ngIf="(rarity_filter == trait.rarity || rarity_filter == 'all') && (subtype_filter == trait.subtype || subtype_filter == 'all')" class="col-6 col-md-3" style="text-align:center;">
+        <ng-container *ngFor="let trait of filterTraits(trait_type, rarity_filter, subtype_filter)">
+          <div class="col-6 col-md-3" style="text-align:center;">
             <img src="{{img_directory}}{{trait.image}}"/>
             <p>
               <strong>{{trait.name}}</strong><br/>
@@ -82,5 +80,11 @@
       </div>
     </ng-container>
   </ng-container>
+
+  <div class="row" *ngIf="filterTraits(type_filter, rarity_filter, subtype_filter).length == 0">
+    <div class="col-md-12">
+      <div class="alert alert-danger" role="alert">No traits found!</div>
+    </div>
+  </div>
 
 </div>

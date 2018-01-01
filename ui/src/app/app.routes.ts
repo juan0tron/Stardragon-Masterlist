@@ -30,7 +30,7 @@ export const ROUTES: Routes = [
     { path: 'users',          component: UserComponent,  canActivate: [DevGuard]},
     { path: 'users/:user_id', component: UserComponent,  canActivate: [DevGuard]},
 
-    // Species
+    // Species Traits Sheet
     { path: 'species/:species_name', component: TraitsComponent },
 
     // Handle all other routes

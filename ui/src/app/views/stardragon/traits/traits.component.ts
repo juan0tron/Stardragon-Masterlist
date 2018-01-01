@@ -16,6 +16,7 @@ import { GemExchangeAPI } from './../../../../services/api.service';
 export class TraitsComponent {
 
   public stardragon:Stardragon;
+  public species:string;
 
   public base_img_directory = './assets/img/';
   public img_directory:string = '';
@@ -51,6 +52,7 @@ export class TraitsComponent {
       }
       // Redirect home if not a real species name
       if(this.available_species.includes(species)){
+        this.species = species;
         this.getTraitsBySpecies(species)
       }
       else{
@@ -59,6 +61,12 @@ export class TraitsComponent {
     });
   }
 
+  /**
+   *  @function getTraitsBySpecies
+   *  @description Get a traits object for a specific species from the Traits service
+   *  @param {string} species
+   *  @TODO - Move this data to the API!
+   */
   getTraitsBySpecies(species){
     this.traitsService.getTraits(species).subscribe(
       data => {
@@ -71,47 +79,55 @@ export class TraitsComponent {
     );
   }
 
-  getTraits(type, rarity, subtype){
-    let traits = this.getTraitsByTypeAndRarity(type, rarity);
-    return traits.filter(function(trait, index, self){
-      if(subtype == 'all'){
+  /**
+   *  @function filterTraits
+   *  @description Filter the traits list by the following params:
+   *  @param {string} type
+   *  @param {string} rarity
+   *  @param {string} species
+   */
+  filterTraits(type, rarity, subtype){
+    return this.traits.filter(function(trait, index, self){
+      if(
+        (type    == trait.type    || this.type_filter    ==  trait.type || type == "all") &&
+        (rarity  == trait.rarity  || this.rarity_filter  == "all") &&
+        (subtype == trait.subtype || this.subtype_filter == "all")
+      ){
         return true;
       }
-      return trait.subtype == subtype;
-    });
+    }.bind(this));
   }
 
-  getTraitTypes(){
-    let types = this.traits.map(a => a.type);
+  /**
+   *  @function getSubspeciesTypes
+   *  @description Get a list of available Subspecies Types from the traits object
+   */
+  getSubspeciesTypes(){
+    let types = this.traits.map(a => a.subtype);
     let unique_types = types.filter(function(elem, index, self) {return index == self.indexOf(elem)});
-    unique_types.push('all');
     return unique_types;
   }
 
-  getTraitsByType(type){
-    return this.traits.filter(function(trait, index, self){
-      return trait.type == type;
-    });
+  /**
+   *  @function getSubspeciesTypes
+   *  @description Get a list of available Trait Types from the traits object
+   */
+  getTraitTypes(){
+    let types = this.traits.map(a => a.type);
+    let unique_types = types.filter(function(elem, index, self) {return index == self.indexOf(elem)});
+    return unique_types;
   }
 
-  getTraitsByTypeAndRarity(type, rarity){
-    let traits_by_type = this.getTraitsByType(type);
-    if(this.rarity_filter == 'all'){
-      return traits_by_type;
-    }
-    else{
-      return traits_by_type.filter(function(trait, index, self){
-        return trait.rarity == rarity;
-      })
-    }
-  }
-
-  getTraitDescription(type){
+  /**
+   *  @function getTraitDescription
+   *  @description Get the description for the specified trait type
+   */
+  getTraitDescription(type, field){
     let desc_obj = this.trait_descriptions.find(function(trait, index, self){
       return trait.type == type;
     });
     if(desc_obj){
-      return desc_obj.description;
+      return desc_obj[field];
     }
     else{
       return "";

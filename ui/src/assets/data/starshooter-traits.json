@@ -455,6 +455,13 @@
       "rarity": "rare",
       "image":  "tailplate_diamond3rd.png"
     },
+    {
+      "name":   "Scorned",
+      "type":   "tail_plate",
+      "subtype":"standard",
+      "rarity": "legendary",
+      "image":  "legendary_tailplates.png"
+    },
 
     {
       "name":   "Standard",
@@ -561,6 +568,13 @@
       "rarity": "uncommon",
       "image":  "tailshards_joinedcircle.png"
     },
+    {
+      "name":   "Scorned",
+      "type":   "tail_shard",
+      "subtype":"standard",
+      "rarity": "legendary",
+      "image":  "legendary_scornedtailplate.png"
+    },
 
     {
       "name":   "Horns",
@@ -591,25 +605,11 @@
       "image":  "legendary_necklace.png"
     },
     {
-      "name":   "Scorned Tailplates",
-      "type":   "legendary",
-      "subtype":"standard",
-      "rarity": "legendary",
-      "image":  "legendary_tailplates.png"
-    },
-    {
       "name":   "Scorned Hip Fringe",
       "type":   "legendary",
       "subtype":"standard",
       "rarity": "legendary",
       "image":  "legendary_hipfind.png"
-    },
-    {
-      "name":   "Scorned Tail Shards",
-      "type":   "legendary",
-      "subtype":"standard",
-      "rarity": "legendary",
-      "image":  "legendary_scornedtailplate.png"
     },
     {
       "name":   "Military Spurs",
