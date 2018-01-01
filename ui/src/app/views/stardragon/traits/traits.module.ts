@@ -2,11 +2,11 @@ import {NgModule}       from '@angular/core';
 import {BrowserModule}  from '@angular/platform-browser';
 import {RouterModule}   from '@angular/router';
 import {FormsModule}    from '@angular/forms';
-import {StarshooterTraitsComponent}  from './starshooter-traits.component';
+import {TraitsComponent}  from './traits.component';
 
 @NgModule({
-    declarations: [StarshooterTraitsComponent],
+    declarations: [TraitsComponent],
     imports     : [BrowserModule, RouterModule],
 })
 
-export class StarshooterTraitsModule {}
+export class TraitsModule {}

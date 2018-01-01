@@ -11,7 +11,7 @@ import { LoginComponent } from "./views/login/login.component";
 import { UserComponent } from "./views/user/profile/user.component";
 
 // Species traits
-import { StarshooterTraitsComponent } from './views/about/species/starshooter/starshooter-traits.component';
+import { TraitsComponent } from './views/stardragon/traits/traits.component';
 
 // Routing Guards
 import { LoggedInGuard } from "./guards/logged-in.guard";
@@ -31,7 +31,7 @@ export const ROUTES: Routes = [
     { path: 'users/:user_id', component: UserComponent,  canActivate: [DevGuard]},
 
     // Species
-    { path: 'species/starshooters', component: StarshooterTraitsComponent },
+    { path: 'species/:species_name', component: TraitsComponent },
 
     // Handle all other routes
     { path: '**', redirectTo: '' },

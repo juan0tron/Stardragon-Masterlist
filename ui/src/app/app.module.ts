@@ -10,11 +10,8 @@ import { DashboardComponent }      from './views/dashboard/dashboard.component';
 import { DiscordComponent }        from './views/discord/discord.component';
 import { StardragonListComponent } from './views/stardragon/list/stardragon-list.component';
 import { StardragonComponent }     from './views/stardragon/profile/stardragon.component';
+import { TraitsComponent }         from './views/stardragon/traits/traits.component';
 import { UserComponent }           from "./views/user/profile/user.component";
-
-// About
-  // Traits
-  import { StarshooterTraitsComponent } from './views/about/species/starshooter/starshooter-traits.component';
 
 // Auth Pages
 import { LoginComponent }     from "./views/login/login.component";
@@ -42,10 +39,8 @@ import { AppComponent } from './app.component';
     DiscordComponent,
     StardragonListComponent,
     StardragonComponent,
+    TraitsComponent,
     UserComponent,
-
-    // About Pages
-    StarshooterTraitsComponent,
 
     // Auth Pages
     LoginComponent,
