@@ -29,7 +29,7 @@ import { DevGuard }      from "./guards/dev.guard";
 // Services
 import { GemExchangeAPI } from './../services/api.service';
 
-import { ROUTES }       from "./app.routes";
+import { ROUTES }       from "./routes/app.routes";
 import { AppComponent } from './app.component';
 
 @NgModule({

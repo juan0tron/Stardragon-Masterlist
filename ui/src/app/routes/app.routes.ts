@@ -2,20 +2,20 @@
 import { Routes, RouterModule } from "@angular/router";
 
 // Public Views
-import { DashboardComponent } from "./views/dashboard/dashboard.component";
-import { DiscordComponent }   from "./views/discord/discord.component";
+import { DashboardComponent } from "app/views/dashboard/dashboard.component";
+import { DiscordComponent }   from "app/views/discord/discord.component";
 
 // Auth views
-import { LoginComponent } from "./views/login/login.component";
+import { LoginComponent } from "app/views/login/login.component";
 
-import { UserComponent } from "./views/user/profile/user.component";
+import { UserComponent } from "app/views/user/profile/user.component";
 
 // Species traits
-import { TraitsComponent } from './views/stardragon/traits/traits.component';
+import { TraitsComponent } from 'app/views/stardragon/traits/traits.component';
 
 // Routing Guards
-import { LoggedInGuard } from "./guards/logged-in.guard";
-import { DevGuard }      from "./guards/dev.guard";
+import { LoggedInGuard } from "app/guards/logged-in.guard";
+import { DevGuard }      from "app/guards/dev.guard";
 
 export const ROUTES: Routes = [
     // Main redirect

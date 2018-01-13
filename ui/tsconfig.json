@@ -5,6 +5,7 @@
     "baseUrl": "src",
     "sourceMap": true,
     "declaration": false,
+    "module": "es6",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
