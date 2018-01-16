@@ -12,6 +12,7 @@ import { StardragonListComponent } from './views/stardragon/list/stardragon-list
 import { StardragonComponent }     from './views/stardragon/profile/stardragon.component';
 import { TraitsComponent }         from './views/stardragon/traits/traits.component';
 import { UserComponent }           from "./views/user/profile/user.component";
+import { TosComponent }            from "app/views/tos/tos.component";
 
 // Auth Pages
 import { LoginComponent }     from "./views/login/login.component";
@@ -41,6 +42,7 @@ import { AppComponent } from './app.component';
     StardragonComponent,
     TraitsComponent,
     UserComponent,
+    TosComponent,
 
     // Auth Pages
     LoginComponent,
@@ -57,10 +59,10 @@ import { AppComponent } from './app.component';
     // 3rd Party Modules
     FacebookModule.forRoot(),
     SweetAlert2Module.forRoot({
-        buttonsStyling: false,
-        customClass: 'modal-content',
+        buttonsStyling:     false,
+        customClass:        'modal-content',
         confirmButtonClass: 'btn btn-primary',
-        cancelButtonClass: 'btn'
+        cancelButtonClass:  'btn'
     }),
     // NGX Bootstrap
     ButtonsModule.forRoot(),
