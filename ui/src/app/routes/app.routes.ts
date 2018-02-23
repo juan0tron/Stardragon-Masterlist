@@ -5,6 +5,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { DashboardComponent } from "app/views/dashboard/dashboard.component";
 import { DiscordComponent }   from "app/views/discord/discord.component";
 import { TosComponent }       from "app/views/tos/tos.component";
+import { MYOComponent }       from "app/views/myo/myo.component";
 
 // Auth views
 import { LoginComponent } from "app/views/login/login.component";
@@ -23,9 +24,10 @@ export const ROUTES: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
 
     // Public Pages
-    { path: 'home',    component: DashboardComponent },
-    { path: 'discord', component: DiscordComponent   },
+    { path: 'home',           component: DashboardComponent },
+    { path: 'discord',        component: DiscordComponent   },
     { path: 'termsofservice', component: TosComponent   },
+    { path: 'makeyourown',    component: MYOComponent   },
 
     { path: 'login', component: LoginComponent, canActivate: [DevGuard]},
 
