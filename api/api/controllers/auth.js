@@ -9,7 +9,7 @@ const jwt            = require('jsonwebtoken');
 const moment         = require('moment');
 
 const mongoose = require('mongoose');
-const User = require("../models/user");
+const User     = require("../models/user");
 
 /**
  *  @function authenticate

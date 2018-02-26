@@ -19,7 +19,8 @@
     "fast-sha256": "^1.1.0",
     "jsonwebtoken": "^8.1.0",
     "moment": "^2.20.1",
-    "mongoose": "^4.11.10"
+    "mongoose": "^4.11.10",
+    "order-id": "^1.1.0"
   },
   "devDependencies": {
     "nodemon": "^1.11.1"

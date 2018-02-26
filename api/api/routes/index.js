@@ -26,10 +26,12 @@ router.get('/', function(req, res){
 const auth        = require('./auth');
 const stardragons = require('./stardragon');
 const users       = require('./user');
+const traits      = require('./trait');
 
 // Use routers
 router.use('/auth',        auth);
 router.use('/stardragons', stardragons);
 router.use('/users',       users);
+router.use('/traits',      traits);
 
 module.exports = router;
