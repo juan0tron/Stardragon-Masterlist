@@ -33,28 +33,30 @@ export class TraitsComponent {
 
   public available_species = [
     'starshooter',
-    'starweaver'
+    'starweaver',
+    'starfisher'
   ];
 
   constructor(
-    private gem: GemExchangeAPI,
+    private gem:           GemExchangeAPI,
     private traitsService: TraitsService,
-    private route:  ActivatedRoute,
-    private router: Router
+    private route:         ActivatedRoute,
+    private router:        Router
   ){}
 
   ngOnInit(){
     this.router_sub = this.route.params.subscribe(params => {
       let species = params['species_name'];
-      // IE change "starshooters" to "starshooter"
+      // Change plural names to singular, IE "starshooters" to "starshooter"
       if (species.substring(species.length - 1) == "s"){
         species = species.substring(0, species.length-1);
       }
-      // Redirect home if not a real species name
+      // Get this species' traits if it exists
       if(this.available_species.includes(species)){
         this.species = species;
         this.getTraitsBySpecies(species)
       }
+      // Redirect home if not a real species name
       else{
         this.router.navigate(['/home']);
       }
@@ -70,6 +72,8 @@ export class TraitsComponent {
   getTraitsBySpecies(species){
     this.traitsService.getTraits(species).subscribe(
       data => {
+        console.error("STARFISHER DATA HERE", data);
+
         this.img_directory      = this.base_img_directory + data["img_directory"];
         this.header_img         = this.img_directory + data["header_img"];
         this.traits             = data["traits"];

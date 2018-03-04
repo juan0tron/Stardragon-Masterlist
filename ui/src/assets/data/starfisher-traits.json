@@ -1,0 +1,104 @@
+{
+  "img_directory":"starfisher_traits/",
+  "header_img":"starfishers_header_standard.png",
+  "traits": [
+    {
+      "name":   "Standard Ears",
+      "type":   "ear",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "Ears_Normal.png"
+    },
+    {
+      "name":   "Frayed Ears",
+      "type":   "ear",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "Ears_Frayed.png"
+    },
+    {
+      "name":   "Catfish",
+      "type":   "ear",
+      "subtype":"mudskipper",
+      "rarity": "common",
+      "image":  "Ears_Catfish.png"
+    },
+
+
+
+
+    {
+      "name":   "Feminine Barbels",
+      "type":   "whisker",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "Ears_FemBarbel.png"
+    },
+    {
+      "name":   "Masculine Whiskers",
+      "type":   "whisker",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "Ears_MaleWhiskers.png"
+    },
+    {
+      "name":   "Catfish (Lop)",
+      "type":   "whisker",
+      "subtype":"mudskipper",
+      "rarity": "common",
+      "image":  "Ears_WhiskerCatfish_Lop.png"
+    },
+    {
+      "name":   "Catfish (Stiff)",
+      "type":   "whisker",
+      "subtype":"mudskipper",
+      "rarity": "common",
+      "image":  "Ears_WhiskerCatfish_Stiff.png"
+    }
+
+
+
+  ],
+  "trait_descriptions": [
+    {
+      "title":"Face",
+      "type":"face",
+      "description":""
+    },
+    {
+      "title":"Ears",
+      "type":"ear",
+      "description":""
+    },
+    {
+      "title":"Whiskers",
+      "type":"whisker",
+      "description":"Goddamn whiskers what do you want m8"
+    },
+    {
+      "title":"Arms",
+      "type":"arm",
+      "description":""
+    },
+    {
+      "title":"Feet",
+      "type":"foot",
+      "description":""
+    },
+    {
+      "title":"Tails",
+      "type":"tail",
+      "description":""
+    },
+    {
+      "title":"Legendaries",
+      "type":"legendary",
+      "description":""
+    },
+    {
+      "title":"Accessories",
+      "type":"accessories",
+      "description":""
+    }
+  ]
+}
