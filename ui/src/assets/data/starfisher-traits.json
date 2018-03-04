@@ -650,7 +650,7 @@
     {
       "title":"Horns",
       "type":"horn",
-      "description":"r u horny"
+      "description":""
     },
     {
       "title":"Ears",
@@ -660,7 +660,7 @@
     {
       "title":"Whiskers",
       "type":"whisker",
-      "description":"Goddamn whiskers what do you want m8"
+      "description":""
     },
     {
       "title":"Face",
@@ -670,17 +670,17 @@
     {
       "title": "Gems",
       "type": "gem",
-      "description": "Fishers got fuckin' gems on their head"
+      "description": ""
     },
     {
       "title": "Fins",
       "type": "fin",
-      "description": "They're fish. They've got fins. What do you want?"
+      "description": ""
     },
     {
       "title": "Wings",
       "type": "wing",
-      "description": "WANGS"
+      "description": ""
     },
     {
       "title":"Arms",
@@ -690,7 +690,7 @@
     {
       "title":"Hip Skirts",
       "type":"hip_skirt",
-      "description":"Skirts but like, part of their body. Shruggo."
+      "description":""
     },
     {
       "title":"Feet",
