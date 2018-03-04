@@ -9,9 +9,12 @@
     padding: 5px;
   }
 </style>
-<div id="stardragon-list" *ngIf="stardragons.length > 0">
-  <h3>List of Stardragons ({{stardragons.length}})</h3>
-  <div class="row" *ngFor="let stardragon of stardragons">
-    <div class="col-md-2">{{stardragon.name}}</div>
+
+<div class="content">
+  <div id="stardragon-list" *ngIf="stardragons.length > 0">
+    <h3>List of Stardragons ({{stardragons.length}})</h3>
+    <div class="row" *ngFor="let stardragon of stardragons">
+      <div class="col-md-2">{{stardragon.name}}</div>
+    </div>
   </div>
 </div>

@@ -43,7 +43,7 @@ export class GemExchangeAPI {
    *  @param {String} request_type - PUT, DELETE, POST, GET, etc. Defaults to POST.
    *  @return {Object}
    */
-  api(params, body = {}, request_type = "POST") {
+  api(params, request_type = "POST", body = {}) {
     let headers = new HttpHeaders()
       .set('Content-Type', 'application/json');
 

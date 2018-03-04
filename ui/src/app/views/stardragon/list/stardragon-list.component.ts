@@ -22,9 +22,10 @@ export class StardragonListComponent {
   }
 
   list() {
-    this.gem.api("/stardragon/list", "get").subscribe(
+    this.gem.api("/stardragons", "GET").subscribe(
       data => {
         this.stardragons = data;
+        console.log(this.stardragons)
       },
       err  => {},
       ()   => {}

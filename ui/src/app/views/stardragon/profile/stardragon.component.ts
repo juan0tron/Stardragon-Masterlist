@@ -24,7 +24,7 @@ export class StardragonComponent {
 
   // Get a stardragon by ID
   details() {
-    this.gem.api("/stardragon/details", {id:this.id}, "POST").subscribe(
+    this.gem.api("/stardragon/details", "POST", {id:this.id}).subscribe(
       data => {
         this.stardragon = data;
       },
