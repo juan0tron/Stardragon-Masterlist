@@ -10,6 +10,8 @@
   src: url('./../fonts/FuturaLight.ttf');
 }
 
+@link-color:       #50298a;
+@link-hover-color: #985F99;
 
 body{
   background-image:  url('./../img/blue_space_background.png');
@@ -44,6 +46,13 @@ header{
 #body{
 }
 
+a{
+  color: @link-color;
+  &:hover{
+    color: @link-hover-color;
+  }
+}
+
 .horizontal-links{
   margin:  0 auto;
   padding: 0;
@@ -52,11 +61,15 @@ header{
     a{
       display: block;
       padding: 15px;
-      text-align: center;
+
+      text-align:      center;
       text-decoration: none;
-      &:hover{
-        color: red;
-      }
+    }
+  }
+  .dropdown-menu{
+    min-width: 11rem;
+    li a{
+      text-align: left;
     }
   }
 }

@@ -18,9 +18,9 @@ export class TraitsComponent {
   public stardragon:Stardragon;
   public species:string;
 
-  public base_img_directory = './assets/img/';
+  public base_img_directory   = './assets/img/';
   public img_directory:string = '';
-  public header_img:string = '';
+  public header_img:string    = '';
 
   public traits:Array<StardragonTrait> = [];
   public trait_descriptions = [];
@@ -31,10 +31,13 @@ export class TraitsComponent {
 
   public router_sub:any;
 
+  public display_index:boolean   = false;
+  public traits_index:Array<any> = [];
+
   public available_species = [
+    'starfisher',
     'starshooter',
     'starweaver',
-    'starfisher'
   ];
 
   constructor(
@@ -45,22 +48,47 @@ export class TraitsComponent {
   ){}
 
   ngOnInit(){
-    this.router_sub = this.route.params.subscribe(params => {
-      let species = params['species_name'];
-      // Change plural names to singular, IE "starshooters" to "starshooter"
-      if (species.substring(species.length - 1) == "s"){
-        species = species.substring(0, species.length-1);
+    this.router_sub = this.route.params.subscribe(
+      params => {
+        if(params['species_name']){
+          let species = params['species_name'];
+          // Change plural names to singular, IE "starshooters" to "starshooter"
+          if (species.substring(species.length - 1) == "s"){
+            species = species.substring(0, species.length-1);
+          }
+          // Get this species' traits if it exists
+          if(this.available_species.includes(species)){
+            this.species = species;
+            this.getTraitsBySpecies(species);
+          }
+          // Otherwise, route to traits index
+          else{
+            this.router.navigate(['/stardragons/traits']);
+          }
+        }
+        // Display a list of species with traits pages
+        else{
+          this.display_index = true;
+
+          for(let s of this.available_species){
+            this.traitsService.getTraits(s).subscribe(
+              data => {
+                let trait = {
+                  name:s+"s",
+                  link:"/stardragons/traits/"+s,
+                  img: "/assets/img/" + data['img_directory'] + data['header_img']
+                };
+                this.traits_index.push(trait);
+              }
+            );
+          }
+        }
       }
-      // Get this species' traits if it exists
-      if(this.available_species.includes(species)){
-        this.species = species;
-        this.getTraitsBySpecies(species)
-      }
-      // Redirect home if not a real species name
-      else{
-        this.router.navigate(['/home']);
-      }
-    });
+    );
+  }
+
+  ngOnDestroy(){
+    this.router_sub.unsubscribe();
   }
 
   /**
