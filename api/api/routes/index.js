@@ -19,17 +19,19 @@ router.use(function(req, res, next){
 
 // Test route
 router.get('/', function(req, res){
-  res.status(200).json({message:"API Works Bitch"})
+  res.status(200).json({message:"Gem Exchange API works!"})
 });
 
 // Include other routers
 const auth        = require('./auth');
 const stardragons = require('./stardragon');
 const users       = require('./user');
+const traits      = require('./trait');
 
 // Use routers
 router.use('/auth',        auth);
 router.use('/stardragons', stardragons);
 router.use('/users',       users);
+router.use('/traits',      traits);
 
 module.exports = router;

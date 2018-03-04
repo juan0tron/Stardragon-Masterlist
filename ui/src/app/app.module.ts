@@ -7,6 +7,7 @@ import { FormsModule }      from '@angular/forms';
 
 // Pages
 import { DashboardComponent }      from './views/dashboard/dashboard.component';
+import { MYOComponent }            from './views/myo/myo.component';
 import { DiscordComponent }        from './views/discord/discord.component';
 import { StardragonListComponent } from './views/stardragon/list/stardragon-list.component';
 import { StardragonComponent }     from './views/stardragon/profile/stardragon.component';
@@ -37,6 +38,7 @@ import { AppComponent } from './app.component';
   declarations: [
     // Pages
     DashboardComponent,
+    MYOComponent,
     DiscordComponent,
     StardragonListComponent,
     StardragonComponent,

@@ -18,6 +18,11 @@ const mongoose = require('mongoose');
       mongoose.Promise = global.Promise;
       mongoose.connect(mongo_url, {useMongoClient:true});
 
+// Require local mongoose models to avoid errors
+require('./api/models/stardragon');
+require('./api/models/trait');
+require('./api/models/user');
+
 // Use bodyparser to let us read POST data
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
