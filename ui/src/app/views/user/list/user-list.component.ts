@@ -29,7 +29,7 @@ export class UserListComponent {
    *  @description Retrieve a list of users
    */
   list(){
-    this.api.api("/users", {}, "GET").subscribe(
+    this.api.api("/users", "GET").subscribe(
       data => { this.user_list = data },
       err  => { console.error("Error getting user data.", err)},
       ()   => { console.log("Got list of users.", this.user_list)}

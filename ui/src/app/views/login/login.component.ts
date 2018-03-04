@@ -48,7 +48,7 @@ export class LoginComponent {
     console.log(this.api.hashPW(password));
 
     localStorage.clear();
-    this.api.api("/auth/login", post_data, "POST").subscribe(
+    this.api.api("/auth/login", "POST", post_data).subscribe(
       data => {
         this.loginMessage     = data.message;
         this.loginSuccess     = true;
