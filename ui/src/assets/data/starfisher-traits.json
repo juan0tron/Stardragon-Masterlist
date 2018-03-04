@@ -3,6 +3,14 @@
   "header_img":"starfishers_header_standard.png",
   "traits": [
     {
+      "name":   "Cheek Pouches",
+      "type":   "face",
+      "subtype":"mudskipper",
+      "rarity": "common",
+      "image":  "Gems_MudskipperCheeks.png"
+    },
+
+    {
       "name":   "Standard Ears",
       "type":   "ear",
       "subtype":"standard",
@@ -23,9 +31,20 @@
       "rarity": "common",
       "image":  "Ears_Catfish.png"
     },
-
-
-
+    {
+      "name":   "Finny",
+      "type":   "ear",
+      "subtype":"standard",
+      "rarity": "uncommon",
+      "image":  "Ears_Finny.png"
+    },
+    {
+      "name":   "Axolotl",
+      "type":   "ear",
+      "subtype":"standard",
+      "rarity": "uncommon",
+      "image":  "Ears_Axolotl.png"
+    },
 
     {
       "name":   "Feminine Barbels",
@@ -54,6 +73,574 @@
       "subtype":"mudskipper",
       "rarity": "common",
       "image":  "Ears_WhiskerCatfish_Stiff.png"
+    },
+    {
+      "name":   "Tentacles",
+      "type":   "whisker",
+      "subtype":"standard",
+      "rarity": "uncommon",
+      "image":  "Ears_Tentacles.png"
+    },
+
+    {
+      "name":   "Single Dorsal",
+      "type":   "fin",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "Fin_ArmDorsal.png"
+    },
+    {
+      "name":   "Full Frayed",
+      "type":   "fin",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "Fin_ArmFrill2.png"
+    },
+    {
+      "name":   "Full Smooth Fringe",
+      "type":   "fin",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "Fin_ArmFullfrill.png"
+    },
+    {
+      "name":   "Back Dorsal Fin",
+      "type":   "fin",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "Fin_BackDorsal.png"
+    },
+    {
+      "name":   "Smoothey Dorsal Fin",
+      "type":   "fin",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "Fin_BackFrills.png"
+    },
+    {
+      "name":   "High Dorsal Fin",
+      "type":   "fin",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "Fin_BackFrillsAlt.png"
+    },
+    {
+      "name":   "Leafy Dorsal Fin",
+      "type":   "fin",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "Fin_BackLeafFin.png"
+    },
+    {
+      "name":   "Finned Spines",
+      "type":   "fin",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "Fin_BackSpineFin.png"
+    },
+    {
+      "name":   "Spined",
+      "type":   "fin",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "Fin_BackSpines.png"
+    },
+    {
+      "name":   "Lure",
+      "type":   "fin",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "Fin_ElbowBarb.png"
+    },
+    {
+      "name":   "Multi Lure",
+      "type":   "fin",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "Fin_ElbowSpokes.png"
+    },
+    {
+      "name":   "Spokes",
+      "type":   "fin",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "Fin_ElbowBarb2.png"
+    },
+    {
+      "name":   "Half Frayed Fins",
+      "type":   "fin",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "Fin_ElbowHalfFin.png"
+    },
+    {
+      "name":   "Spines",
+      "type":   "fin",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "Fin_ElbowSpines.png"
+    },
+    {
+      "name":   "Finned Spines",
+      "type":   "fin",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "Fin_ElbowSpineFin.png"
+    },
+    {
+      "name":   "Swampy",
+      "type":   "fin",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "Fin_ElbowSwamp.png"
+    },
+
+    {
+      "name":   "Crocodile",
+      "type":   "gem",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "Gems_Crocodile.png"
+    },
+    {
+      "name":   "Cuttlefish",
+      "type":   "gem",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "Gems_Cuttlefish.png"
+    },
+    {
+      "name":   "Frog",
+      "type":   "gem",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "Gems_Frog.png"
+    },
+    {
+      "name":   "Clear",
+      "type":   "gem",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "Gems_Normal.png"
+    },
+    {
+      "name":   "Five Point Star",
+      "type":   "gem",
+      "subtype":"standard",
+      "rarity": "uncommon",
+      "image":  "Gems_5pointStar.png"
+    },
+    {
+      "name":   "Four Point Star",
+      "type":   "gem",
+      "subtype":"standard",
+      "rarity": "uncommon",
+      "image":  "Gems_4pointStar.png"
+    },
+    {
+      "name":   "Sakura Petal",
+      "type":   "gem",
+      "subtype":"standard",
+      "rarity": "rare",
+      "image":  "Gems_Sakura.png"
+    },
+    {
+      "name":   "Starburst",
+      "type":   "gem",
+      "subtype":"standard",
+      "rarity": "rare",
+      "image":  "Gems_Starburst.png"
+    },
+
+    {
+      "name":   "Smooth Horn",
+      "type":   "horn",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "Horns_Smooth.png"
+    },
+    {
+      "name":   "Spiraled",
+      "type":   "horn",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "Horns_Spiral.png"
+    },
+    {
+      "name":   "Short and Stout",
+      "type":   "horn",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "Horns_Tiny.png"
+    },
+    {
+      "name":   "Ridged",
+      "type":   "horn",
+      "subtype":"standard",
+      "rarity": "rare",
+      "image":  "Horns_Spiked.png"
+    },
+    {
+      "name":   "Trident",
+      "type":   "horn",
+      "subtype":"standard",
+      "rarity": "rare",
+      "image":  "Horns_Trident.png"
+    },
+    {
+      "name":   "Angler",
+      "type":   "horn",
+      "subtype":"standard",
+      "rarity": "legendary",
+      "image":  "Legendary_Angler.png"
+    },
+
+    {
+      "name":   "Flying Fish",
+      "type":   "wing",
+      "subtype":"standard",
+      "rarity": "legendary",
+      "image":  "Legendary_Wings.png"
+    },
+
+    {
+      "name":   "Leviathan",
+      "type":   "full_body",
+      "subtype":"standard",
+      "rarity": "legendary",
+      "image":  "Legendary_Leviathan.png"
+    },
+
+    {
+      "name":   "Splay Finned",
+      "type":   "hip_skirt",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "Skirt_Betta.png"
+    },
+    {
+      "name":   "Feminine Rounded",
+      "type":   "hip_skirt",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "Skirt_Fem.png"
+    },
+    {
+      "name":   "Feminine Finned",
+      "type":   "hip_skirt",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "Skirt_FemFinny.png"
+    },
+    {
+      "name":   "Thin Finned",
+      "type":   "hip_skirt",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "Skirt_FinnyM.png"
+    },
+    {
+      "name":   "Smooth Splay",
+      "type":   "hip_skirt",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "Skirt_Flay.png"
+    },
+    {
+      "name":   "Thin Lop Crustaceous (Masculine)",
+      "type":   "hip_skirt",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "Skirt_KrustyM.png"
+    },
+    {
+      "name":   "Thin Lop Smooth",
+      "type":   "hip_skirt",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "Skirt_Male.png"
+    },
+    {
+      "name":   "Scalloped",
+      "type":   "hip_skirt",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "Skirt_Scalloped.png"
+    },
+    {
+      "name":   "Catfish",
+      "type":   "hip_skirt",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "Skirt_Catfish.png"
+    },
+    {
+      "name":   "Bony Fish",
+      "type":   "hip_skirt",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "Skirt_BonyFish.png"
+    },
+    {
+      "name":   "Bony Fish with Frills",
+      "type":   "hip_skirt",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "Skirt_BonyFish_Frills.png"
+    },
+
+    {
+      "name":   "Short Seaweed",
+      "type":   "tail",
+      "subtype":"standard",
+      "rarity": "common",
+      "gender": "feminine",
+      "image":  "TAIL_FSeaweed.png"
+    },
+    {
+      "name":   "Elegant Seaweed",
+      "type":   "tail",
+      "subtype":"standard",
+      "rarity": "common",
+      "gender": "feminine",
+      "image":  "TAIL_FElegantSeaweed.png"
+    },
+    {
+      "name":   "Stinging Jelly",
+      "type":   "tail",
+      "subtype":"standard",
+      "rarity": "common",
+      "gender": "feminine",
+      "image":  "TAIL_FJellyfish.png"
+    },
+    {
+      "name":   "Squid Arms",
+      "type":   "tail",
+      "subtype":"standard",
+      "rarity": "common",
+      "gender": "feminine",
+      "image":  "TAIL_FSquid.png"
+    },
+    {
+      "name":   "Umbrella Squid Arms",
+      "type":   "tail",
+      "subtype":"standard",
+      "rarity": "common",
+      "gender": "feminine",
+      "image":  "TAIL_FUmbrellaOcto.png"
+    },
+    {
+      "name":   "Tentacles",
+      "type":   "tail",
+      "subtype":"standard",
+      "rarity": "common",
+      "gender": "feminine",
+      "image":  "TAIL_FLongTentacels.png"
+    },
+    {
+      "name":   "Mini Tentacles",
+      "type":   "tail",
+      "subtype":"standard",
+      "rarity": "common",
+      "gender": "feminine",
+      "image":  "TAIL_FTentacleMini.png"
+    },
+    {
+      "name":   "Four Tentacles",
+      "type":   "tail",
+      "subtype":"standard",
+      "rarity": "common",
+      "gender": "feminine",
+      "image":  "TAIL_FTentacles.png"
+    },
+    {
+      "name":   "Short Curled Tentacles",
+      "type":   "tail",
+      "subtype":"standard",
+      "rarity": "common",
+      "gender": "feminine",
+      "image":  "TAIL_FTentaclesCurly.png"
+    },
+    {
+      "name":   "Salamander",
+      "type":   "tail",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "TAIL_GNSalamander.png"
+    },
+    {
+      "name":   "Amphibian",
+      "type":   "tail",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "TAIL_GNTadpole.png"
+    },
+    {
+      "name":   "Shrimp",
+      "type":   "tail",
+      "subtype":"standard",
+      "rarity": "common",
+      "gender": "masculine",
+      "image":  "TAIL_MShromp.png"
+    },
+    {
+      "name":   "Crusty Crab",
+      "type":   "tail",
+      "subtype":"standard",
+      "rarity": "common",
+      "gender": "masculine",
+      "image":  "TAIL_MCrabbo.png"
+    },
+    {
+      "name":   "Leafy Seadragon",
+      "type":   "tail",
+      "subtype":"standard",
+      "rarity": "common",
+      "gender": "masculine",
+      "image":  "TAIL_MLeafySeadragon.png"
+    },
+    {
+      "name":   "Pencilfish",
+      "type":   "tail",
+      "subtype":"standard",
+      "rarity": "common",
+      "gender": "masculine",
+      "image":  "TAIL_MPipecleaner.png"
+    },
+    {
+      "name":   "Thin Triple Fin",
+      "type":   "tail",
+      "subtype":"standard",
+      "rarity": "common",
+      "gender": "masculine",
+      "image":  "TAIL_MSeaDragon.png"
+    },
+    {
+      "name":   "Sharp Triple Fin",
+      "type":   "tail",
+      "subtype":"standard",
+      "rarity": "common",
+      "gender": "masculine",
+      "image":  "TAIL_MSeaDragonDamaged.png"
+    },
+    {
+      "name":   "Fringed Triple Fin",
+      "type":   "tail",
+      "subtype":"standard",
+      "rarity": "common",
+      "gender": "masculine",
+      "image":  "TAIL_MSeaDragonFinny.png"
+    },
+    {
+      "name":   "Scalloped Triple Fin",
+      "type":   "tail",
+      "subtype":"standard",
+      "rarity": "common",
+      "gender": "masculine",
+      "image":  "TAIL_MSeaDragonScalloped.png"
+    },
+    {
+      "name":   "Seahorse",
+      "type":   "tail",
+      "subtype":"standard",
+      "rarity": "common",
+      "gender": "masculine",
+      "image":  "TAIL_MSeahorseTail.png"
+    },
+    {
+      "name":   "Skinny Seahorse",
+      "type":   "tail",
+      "subtype":"standard",
+      "rarity": "common",
+      "gender": "masculine",
+      "image":  "TAIL_MSeahorseSkinny.png"
+    },
+    {
+      "name":   "Fringed Seahorse",
+      "type":   "tail",
+      "subtype":"standard",
+      "rarity": "common",
+      "gender": "masculine",
+      "image":  "TAIL_MSeahorseTaiFinnedl.png"
+    },
+    {
+      "name":   "Spiked Seahorse",
+      "type":   "tail",
+      "subtype":"standard",
+      "rarity": "common",
+      "gender": "masculine",
+      "image":  "TAIL_MSeahorseTailSPiked.png"
+    },
+    {
+      "name":   "Copepod",
+      "type":   "tail",
+      "subtype":"standard",
+      "rarity": "common",
+      "gender": "masculine",
+      "image":  "TAILS_MCopepod.png"
+    },
+    {
+      "name":   "Ray",
+      "type":   "tail",
+      "subtype":"standard",
+      "rarity": "uncommon",
+      "image":  "TAIL_GNMantaRay.png"
+    },
+    {
+      "name":   "Bony Fish",
+      "type":   "tail",
+      "subtype":"mudskipper",
+      "rarity": "uncommon",
+      "image":  "TAIL_Bonefish.png"
+    },
+    {
+      "name":   "Betta",
+      "type":   "tail",
+      "subtype":"standard",
+      "rarity": "uncommon",
+      "image":  "TAIL_GNBetta.png"
+    },
+    {
+      "name":   "Short Punky Betta",
+      "type":   "tail",
+      "subtype":"standard",
+      "rarity": "uncommon",
+      "image":  "TAIL_GNShortBetta.png"
+    },
+    {
+      "name":   "Shark",
+      "type":   "tail",
+      "subtype":"standard",
+      "rarity": "uncommon",
+      "image":  "TAIL_GNShark.png"
+    },
+    {
+      "name":   "Whale Shark",
+      "type":   "tail",
+      "subtype":"standard",
+      "rarity": "uncommon",
+      "image":  "TAIL_GNWhaleShark.png"
+    },
+    {
+      "name":   "Dolphin",
+      "type":   "tail",
+      "subtype":"standard",
+      "rarity": "uncommon",
+      "image":  "TAIL_GNDolphin.png"
+    },
+    {
+      "name":   "Smooth Whale",
+      "type":   "tail",
+      "subtype":"standard",
+      "rarity": "uncommon",
+      "image":  "TAIL_GNWhale.png"
+    },
+    {
+      "name":   "Lightfish",
+      "type":   "tail",
+      "subtype":"standard",
+      "rarity": "uncommon",
+      "image":  "Tails_GNRibbontail.png"
     }
 
 
@@ -61,9 +648,9 @@
   ],
   "trait_descriptions": [
     {
-      "title":"Face",
-      "type":"face",
-      "description":""
+      "title":"Horns",
+      "type":"horn",
+      "description":"r u horny"
     },
     {
       "title":"Ears",
@@ -76,9 +663,34 @@
       "description":"Goddamn whiskers what do you want m8"
     },
     {
+      "title":"Face",
+      "type":"face",
+      "description":""
+    },
+    {
+      "title": "Gems",
+      "type": "gem",
+      "description": "Fishers got fuckin' gems on their head"
+    },
+    {
+      "title": "Fins",
+      "type": "fin",
+      "description": "They're fish. They've got fins. What do you want?"
+    },
+    {
+      "title": "Wings",
+      "type": "wing",
+      "description": "WANGS"
+    },
+    {
       "title":"Arms",
       "type":"arm",
       "description":""
+    },
+    {
+      "title":"Hip Skirts",
+      "type":"hip_skirt",
+      "description":"Skirts but like, part of their body. Shruggo."
     },
     {
       "title":"Feet",
@@ -91,8 +703,8 @@
       "description":""
     },
     {
-      "title":"Legendaries",
-      "type":"legendary",
+      "title":"Full Body Traits",
+      "type":"full_body",
       "description":""
     },
     {

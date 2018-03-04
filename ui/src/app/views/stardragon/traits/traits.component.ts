@@ -72,8 +72,6 @@ export class TraitsComponent {
   getTraitsBySpecies(species){
     this.traitsService.getTraits(species).subscribe(
       data => {
-        console.error("STARFISHER DATA HERE", data);
-
         this.img_directory      = this.base_img_directory + data["img_directory"];
         this.header_img         = this.img_directory + data["header_img"];
         this.traits             = data["traits"];
