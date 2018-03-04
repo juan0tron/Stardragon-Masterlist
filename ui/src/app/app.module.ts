@@ -18,11 +18,13 @@ import { TosComponent }            from "app/views/tos/tos.component";
 // Auth Pages
 import { LoginComponent }     from "./views/login/login.component";
 
+// Components
+import { NavigationComponent } from "./views/navigation/navigation.component";
+
 // 3rd Party Modules
 import { FacebookModule }    from 'ngx-facebook';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
-// Ngx bootstrap
-import { ButtonsModule } from 'ngx-bootstrap';
+import { ButtonsModule }     from 'ngx-bootstrap';
 
 // Routing Guards
 import { LoggedInGuard } from "./guards/logged-in.guard";
@@ -48,6 +50,9 @@ import { AppComponent } from './app.component';
 
     // Auth Pages
     LoginComponent,
+
+    // General Components
+    NavigationComponent,
 
     AppComponent
   ],
