@@ -21,7 +21,6 @@ import { Router } from '@angular/router';
 
 import { default as swal} from 'sweetalert2';
 
-
 import { environment } from './../environments/environment';
 
 @Injectable()
@@ -39,8 +38,8 @@ export class GemExchangeAPI {
    *  @function    api
    *  @description Calls the Wylei API.
    *  @param {String} params       - A valid API endpoint, starting with a /
-   *  @param {String} body         - Any additional data to be sent with the API call (optional)
    *  @param {String} request_type - PUT, DELETE, POST, GET, etc. Defaults to POST.
+   *  @param {String} body         - Any additional data to be sent with the API call (optional)
    *  @return {Object}
    */
   api(params, request_type = "POST", body = {}) {
@@ -87,6 +86,9 @@ export class GemExchangeAPI {
       // Error
       .catch((error:any) => {
         console.error("API ERROR:", params, error);
+
+        swal("API Error!",error.message,"error");
+
         // 401: Unauthorized
         if(error.status === 401){
           console.error("Session Expired","Your session has expired. Please log in again.","error");
