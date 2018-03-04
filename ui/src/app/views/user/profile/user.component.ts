@@ -35,7 +35,7 @@ export class UserComponent {
    *  @description Retrieve the user object from the API
    */
   details(){
-    this.api.api("/users/"+this.user.id, {}, "GET").subscribe(
+    this.api.api("/users/"+this.user.id, "GET", {}).subscribe(
       data => { this.user = data },
       err  => { console.error("Error getting user data.", err)},
       ()   => { console.log("Got user data.", this.user)}
@@ -47,7 +47,7 @@ export class UserComponent {
    *  @description Save the user object via an API request
    */
   save(){
-    this.api.api("/users/save", this.user, "PATCH").subscribe(
+    this.api.api("/users/save", "PATCH", this.user).subscribe(
       data => { },
       err  => { },
       ()   => { }
