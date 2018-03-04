@@ -13,6 +13,7 @@ import { LoginComponent } from "app/views/login/login.component";
 import { UserComponent } from "app/views/user/profile/user.component";
 
 // Stardragons
+import { StardragonComponent }     from "app/views/stardragon/profile/stardragon.component";
 import { StardragonListComponent } from "app/views/stardragon/list/stardragon-list.component";
 import { TraitsComponent }         from 'app/views/stardragon/traits/traits.component';
 
@@ -36,8 +37,13 @@ export const ROUTES: Routes = [
     { path: 'users/:user_id', component: UserComponent,  canActivate: [DevGuard]},
 
     // Stardragons
-    { path: 'stardragons',           component: StardragonListComponent,  canActivate: [DevGuard]},
-    { path: 'species/:species_name', component: TraitsComponent },
+    { path: 'stardragons',                      component: StardragonListComponent,  canActivate: [DevGuard]},
+    { path: 'stardragons/profile',              component: StardragonComponent,      canActivate: [DevGuard]},
+    { path: 'stardragons/traits',               component: TraitsComponent },
+    { path: 'stardragons/traits/:species_name', component: TraitsComponent },
+
+    // Redirect old routes
+    { path: 'species/:species_name', redirectTo: 'stardragons/traits/:species_name', pathMatch: 'full' },
 
     // Handle all other routes
     { path: '**', redirectTo: '' },
