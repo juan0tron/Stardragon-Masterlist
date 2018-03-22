@@ -1,0 +1,107 @@
+<style>
+  h1,h2,h3,h4{
+    font-family: "Futura", sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  p{
+    font-family: "Frenchpress";
+    font-size: 22px;
+    font-weight: bold;
+  }
+  a{
+    text-decoration: none;
+  }
+</style>
+
+<div class="row">
+  <div class="col-md-12">
+    <h1>
+      <a routerLink="/stardragons/traits">Traits Compendium: </a>
+      <span *ngIf="species"><a [routerLink]="['/stardragons/traits',species]">{{species}}s</a></span>
+      <span *ngIf="display_index">
+        <a *ngFor="let s of traits_index" [routerLink]="s.link">{{s.name}} </a>
+      </span>
+    </h1>
+    <h2 *ngIf="getSubspeciesTypes().length > 0">Current Subtypes <span *ngFor="let subtype of getSubspeciesTypes()"> | {{subtype}}</span></h2>
+  </div>
+</div>
+
+<ng-container *ngIf="!display_index && species">
+  <div class="row">
+    <div class="col-md-12">
+      <img src="{{header_img}}"/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <h3>Filter By Rarity:</h3>
+      <div class="row">
+        <select class="form-control" [(ngModel)]="rarity_filter">
+          <option value="all">All</option>
+          <option value="common">Common</option>
+          <option value="uncommon">Uncommon</option>
+          <option value="rare">Rare</option>
+          <option value="legendary">Legendary</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <h3>Filter By Trait Type:</h3>
+      <div class="row">
+        <select class="form-control" [(ngModel)]="type_filter" style="text-transform:capitalize">
+          <option value="all">All</option>
+          <option [value]="type" *ngFor="let type of getTraitTypes()">{{type.replace("_"," ")}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <h3>Filter By Species Subtype:</h3>
+      <div class="row">
+        <select class="form-control" [(ngModel)]="subtype_filter" style="text-transform:capitalize">
+          <option value="all">All</option>
+          <option [value]="subtype" *ngFor="let subtype of getSubspeciesTypes()">{{subtype}}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <ng-container *ngFor="let trait_type of getTraitTypes()">
+    <ng-container *ngIf="filterTraits(trait_type, rarity_filter, subtype_filter).length > 0 && (type_filter == trait_type || type_filter == 'all')">
+      <div class="row">
+        <div class="col-md-12">
+          <h3>{{getTraitDescription(trait_type,"title")}}</h3>
+          <p>{{getTraitDescription(trait_type, "description")}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <ng-container *ngFor="let trait of filterTraits(trait_type, rarity_filter, subtype_filter)">
+          <div class="col-6 col-md-3" style="text-align:center;">
+            <img src="{{img_directory}}{{trait.image}}"/>
+            <p>
+              <strong>{{trait.name}}</strong><br/>
+              <span *ngIf="trait.subtype != 'standard'" style="text-transform:capitalize">({{trait.subtype}} Subtype)</span>
+            </p>
+          </div>
+        </ng-container>
+      </div>
+    </ng-container>
+  </ng-container>
+
+  <div class="row" *ngIf="filterTraits(type_filter, rarity_filter, subtype_filter).length == 0">
+    <div class="col-md-12">
+      <div class="alert alert-danger" role="alert">No traits found!</div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="display_index">
+  <div *ngFor="let s of traits_index" class="row">
+    <div class="col">
+      <a [routerLink]="[s.link]" style="text-transform:capitalize;">
+        <img src="{{s.img}}" alt="{{s.name}} Traits" title="{{s.name}} Traits" />
+      </a>
+    </div>
+  </div>
+</ng-container>

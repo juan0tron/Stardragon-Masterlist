@@ -3,7 +3,7 @@
     <li><a routerLink="/home"><i class="fa fa-home"></i> Home</a></li>
     <li><a routerLink="/discord"><i class="fa fa-commenting"></i> Discord Server</a></li>
 
-    <li *ngIf="!api.isDev()"><i class="fa fa-user-circle-o"></i> <a routerLink="/stardragons/traits">Traits Compendium</a></li>
+    <li *ngIf="!api.isDev()"><a routerLink="/stardragons/traits"><i class="fa fa-user-circle-o"></i> Traits Compendium</a></li>
     <li class="dropdown" *ngIf="api.isDev()">
       <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)"><i class="fa fa-user-circle-o"></i> Stardragons</a>
       <ul class="dropdown-menu">
