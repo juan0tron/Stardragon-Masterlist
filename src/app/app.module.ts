@@ -14,9 +14,11 @@ import { StardragonComponent }     from './views/stardragon/profile/stardragon.c
 import { TraitsComponent }         from './views/stardragon/traits/traits.component';
 import { UserComponent }           from "./views/user/profile/user.component";
 import { TosComponent }            from "app/views/tos/tos.component";
+import { MYOThankYouComponent }    from "app/views/myo/thank-you/myo-thank-you.component";
 
 // Auth Pages
 import { LoginComponent }     from "./views/login/login.component";
+import { RegisterComponent }  from "./views/register/register.component";
 
 // Components
 import { NavigationComponent } from "./views/navigation/navigation.component";
@@ -47,9 +49,11 @@ import { AppComponent } from './app.component';
     TraitsComponent,
     UserComponent,
     TosComponent,
+    MYOThankYouComponent,
 
     // Auth Pages
     LoginComponent,
+    RegisterComponent,
 
     // General Components
     NavigationComponent,

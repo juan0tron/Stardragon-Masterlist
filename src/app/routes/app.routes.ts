@@ -2,13 +2,15 @@
 import { Routes, RouterModule } from "@angular/router";
 
 // Public Views
-import { DashboardComponent } from "app/views/dashboard/dashboard.component";
-import { DiscordComponent }   from "app/views/discord/discord.component";
-import { TosComponent }       from "app/views/tos/tos.component";
-import { MYOComponent }       from "app/views/myo/myo.component";
+import { DashboardComponent }   from "app/views/dashboard/dashboard.component";
+import { DiscordComponent }     from "app/views/discord/discord.component";
+import { TosComponent }         from "app/views/tos/tos.component";
+import { MYOComponent }         from "app/views/myo/myo.component";
+import { MYOThankYouComponent } from "app/views/myo/thank-you/myo-thank-you.component";
 
 // Auth views
-import { LoginComponent } from "app/views/login/login.component";
+import { LoginComponent }    from "app/views/login/login.component";
+import { RegisterComponent } from "app/views/register/register.component";
 
 import { UserComponent } from "app/views/user/profile/user.component";
 
@@ -29,9 +31,12 @@ export const ROUTES: Routes = [
     { path: 'home',           component: DashboardComponent },
     { path: 'discord',        component: DiscordComponent   },
     { path: 'termsofservice', component: TosComponent       },
-    { path: 'makeyourown',    component: MYOComponent, canActivate: [DevGuard]},
 
-    { path: 'login', component: LoginComponent, canActivate: [DevGuard]},
+    { path: 'myo',            component: MYOComponent, canActivate: [DevGuard]},
+    { path: 'myo/thank-you',  component: MYOThankYouComponent},
+
+    { path: 'login',    component: LoginComponent,    canActivate: [DevGuard]},
+    { path: 'register', component: RegisterComponent, canActivate: [DevGuard]},
 
     { path: 'users',          component: UserComponent,  canActivate: [DevGuard]},
     { path: 'users/:user_id', component: UserComponent,  canActivate: [DevGuard]},

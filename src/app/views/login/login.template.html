@@ -44,6 +44,7 @@
   <button class="btn btn-primary btn-block" (click)="loginWithFb()"><i class="fa fa-facebook"></i> Login With Facebook</button>
   <button class="btn btn-primary btn-block" style="background:#FFF; border-color:#AAA; color:#000"><i class="fa fa-google"></i> Login With Google</button>
   <button class="btn btn-primary btn-block" (click)="show_form = true;" *ngIf="!show_form" style="background:#790e8b; border-color:#790e8b"><i class="fa fa-envelope"></i> Login With Email</button>
+
   <ng-container *ngIf="show_form">
     <div class="hr-container">
       <span class="hr-segment left"></span>
@@ -57,9 +58,10 @@
       <div class="alert alert-danger"  [hidden]="!loginError">{{loginMessage}}</div>
       <div class="alert alert-success" [hidden]="!loginSuccess">{{loginMessage}}</div>
     </form>
-    <p class="text-muted text-center">
-      <small>Don't have an account?</small><br/>
-      <a href="/register">Create account</a>
-    </p>
   </ng-container>
+
+  <p class="text-muted text-center">
+    <small>Don't have an account?</small><br/>
+    <a routerLink="/register">Create account</a>
+  </p>
 </div>

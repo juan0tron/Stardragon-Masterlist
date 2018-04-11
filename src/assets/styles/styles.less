@@ -1,4 +1,5 @@
 @import "dashboard.less";
+@import "myo.less";
 
 // Fonts
 @font-face {
@@ -13,10 +14,19 @@
 @link-color:       #50298a;
 @link-hover-color: #985F99;
 
+html, body{
+  margin: 0;
+  height: 100%;
+}
+
 body{
   background-image:  url('./../img/blue_space_background.png');
   background-repeat: repeat-y;
   background-size:   100%;
+}
+
+main{
+  min-height: 100%;
 }
 
 .content{
@@ -35,21 +45,26 @@ img{
   max-width: 100%;
 }
 
+a{
+  color: @link-color;
+  &:hover{
+    color: @link-hover-color;
+  }
+}
+
 header{
   text-align: center;
   background: rgba(255,255,255,0.9);
   .navigation{
     a{color:#000}
+    box-shadow: 0px 0px 10px #000;
   }
 }
 
-#body{
-}
-
-a{
-  color: @link-color;
-  &:hover{
-    color: @link-hover-color;
+footer{
+  img{
+    margin: 0 auto;
+    display: block;
   }
 }
 
