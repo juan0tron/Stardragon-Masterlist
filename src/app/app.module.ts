@@ -13,6 +13,7 @@ import { StardragonListComponent } from './views/stardragon/list/stardragon-list
 import { StardragonComponent }     from './views/stardragon/profile/stardragon.component';
 import { TraitsComponent }         from './views/stardragon/traits/traits.component';
 import { UserComponent }           from "./views/user/profile/user.component";
+import { UserListComponent }       from "./views/user/list/user-list.component";
 import { TosComponent }            from "app/views/tos/tos.component";
 import { MYOThankYouComponent }    from "app/views/myo/thank-you/myo-thank-you.component";
 
@@ -48,6 +49,7 @@ import { AppComponent } from './app.component';
     StardragonComponent,
     TraitsComponent,
     UserComponent,
+    UserListComponent,
     TosComponent,
     MYOThankYouComponent,
 

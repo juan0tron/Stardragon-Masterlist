@@ -13,8 +13,8 @@ import { GemExchangeAPI } from './../../../services/api.service';
 
 export class LoginComponent {
 
-  private show_form:boolean    = false;
-  private requires_2fa:boolean = false;
+  public show_form:boolean    = false;
+  public requires_2fa:boolean = false;
   public loginError:boolean    = false;
   public loginSuccess:boolean  = false;
   public loginMessage:string   = '';
@@ -23,7 +23,7 @@ export class LoginComponent {
   public password_invalid:boolean = false;
 
   constructor(
-    private api:    GemExchangeAPI,
+    public api:    GemExchangeAPI,
     private fb:     FacebookService,
     private router: Router
   ) {

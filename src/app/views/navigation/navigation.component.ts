@@ -13,7 +13,7 @@ export class NavigationComponent {
   public router_sub:any;
 
   constructor(
-    private api:    GemExchangeAPI,
+    public  api:    GemExchangeAPI,
     private route:  ActivatedRoute,
     private router: Router
   ){}
