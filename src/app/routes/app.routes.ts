@@ -15,9 +15,10 @@ import { RegisterComponent } from "app/views/register/register.component";
 import { UserComponent } from "app/views/user/profile/user.component";
 
 // Stardragons
-import { StardragonComponent }     from "app/views/stardragon/profile/stardragon.component";
-import { StardragonListComponent } from "app/views/stardragon/list/stardragon-list.component";
-import { TraitsComponent }         from 'app/views/stardragon/traits/traits.component';
+import { StardragonComponent }       from "app/views/stardragon/profile/stardragon.component";
+import { StardragonListComponent }   from "app/views/stardragon/list/stardragon-list.component";
+import { CreateStardragonComponent } from 'app/views/stardragon/create/create-stardragon.component';
+import { TraitsComponent }           from 'app/views/stardragon/traits/traits.component';
 
 // Routing Guards
 import { LoggedInGuard } from "app/guards/logged-in.guard";
@@ -43,9 +44,10 @@ export const ROUTES: Routes = [
 
     // Stardragons
     { path: 'stardragons',                      component: StardragonListComponent,  canActivate: [DevGuard]},
-    { path: 'stardragons/profile',              component: StardragonComponent,      canActivate: [DevGuard]},
+    { path: 'stardragons/create',               component: CreateStardragonComponent, canActivate: [DevGuard]},
     { path: 'stardragons/traits',               component: TraitsComponent },
     { path: 'stardragons/traits/:species_name', component: TraitsComponent },
+    { path: 'stardragons/:stardragon_id',       component: StardragonComponent,      canActivate: [DevGuard]},
 
     // Redirect old routes
     { path: 'species/:species_name', redirectTo: 'stardragons/traits/:species_name', pathMatch: 'full' },

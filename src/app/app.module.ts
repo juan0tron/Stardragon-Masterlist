@@ -9,13 +9,16 @@ import { FormsModule }      from '@angular/forms';
 import { DashboardComponent }      from './views/dashboard/dashboard.component';
 import { MYOComponent }            from './views/myo/myo.component';
 import { DiscordComponent }        from './views/discord/discord.component';
-import { StardragonListComponent } from './views/stardragon/list/stardragon-list.component';
-import { StardragonComponent }     from './views/stardragon/profile/stardragon.component';
 import { TraitsComponent }         from './views/stardragon/traits/traits.component';
 import { UserComponent }           from "./views/user/profile/user.component";
 import { UserListComponent }       from "./views/user/list/user-list.component";
 import { TosComponent }            from "app/views/tos/tos.component";
 import { MYOThankYouComponent }    from "app/views/myo/thank-you/myo-thank-you.component";
+
+// Stardragon Pages
+import { StardragonListComponent }   from './views/stardragon/list/stardragon-list.component';
+import { StardragonComponent }       from './views/stardragon/profile/stardragon.component';
+import { CreateStardragonComponent } from './views/stardragon/create/create-stardragon.component';
 
 // Auth Pages
 import { LoginComponent }     from "./views/login/login.component";
@@ -45,13 +48,16 @@ import { AppComponent } from './app.component';
     DashboardComponent,
     MYOComponent,
     DiscordComponent,
-    StardragonListComponent,
-    StardragonComponent,
     TraitsComponent,
     UserComponent,
     UserListComponent,
     TosComponent,
     MYOThankYouComponent,
+
+    // Stardragon pages
+    StardragonListComponent,
+    StardragonComponent,
+    CreateStardragonComponent,
 
     // Auth Pages
     LoginComponent,

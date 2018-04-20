@@ -1,7 +1,11 @@
+// Angular
 import { Component, Input } from '@angular/core';
+import {Router, ActivatedRoute, Params} from '@angular/router';
 
+// Models
 import { Stardragon } from './../../../models/stardragon';
 
+// Services
 import { GemExchangeAPI } from './../../../../services/api.service';
 
 @Component({
@@ -15,19 +19,22 @@ export class StardragonComponent {
   @Input() id:string;
   public stardragon:Stardragon;
 
-  constructor(private gem: GemExchangeAPI){}
+  constructor(
+    private gem: GemExchangeAPI,
+    private activatedRoute: ActivatedRoute
+  ){}
 
   ngOnInit(){
-    this.details();
-    console.log("Stardragon id is "+this.id)
+    this.activatedRoute.params.subscribe((params: Params) => {
+      this.id = params['stardragon_id'];
+      this.details();
+    });
   }
 
   // Get a stardragon by ID
   details() {
-    this.gem.api("/stardragon/details", "POST", {id:this.id}).subscribe(
-      data => {
-        this.stardragon = data;
-      },
+    this.gem.api(`/stardragons/${this.id}`, "GET").subscribe(
+      data => { this.stardragon = data },
       err  => {},
       ()   => {}
     );
