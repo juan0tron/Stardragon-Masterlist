@@ -17,7 +17,7 @@ import { UserComponent } from "app/views/user/profile/user.component";
 // Stardragons
 import { StardragonComponent }       from "app/views/stardragon/profile/stardragon.component";
 import { StardragonListComponent }   from "app/views/stardragon/list/stardragon-list.component";
-import { CreateStardragonComponent } from 'app/views/stardragon/create/create-stardragon.component';
+import { EditStardragonComponent }   from 'app/views/stardragon/edit/edit-stardragon.component';
 import { TraitsComponent }           from 'app/views/stardragon/traits/traits.component';
 
 // Routing Guards
@@ -44,7 +44,7 @@ export const ROUTES: Routes = [
 
     // Stardragons
     { path: 'stardragons',                      component: StardragonListComponent,  canActivate: [DevGuard]},
-    { path: 'stardragons/create',               component: CreateStardragonComponent, canActivate: [DevGuard]},
+    { path: 'stardragons/create',               component: EditStardragonComponent,  canActivate: [DevGuard]},
     { path: 'stardragons/traits',               component: TraitsComponent },
     { path: 'stardragons/traits/:species_name', component: TraitsComponent },
     { path: 'stardragons/:stardragon_id',       component: StardragonComponent,      canActivate: [DevGuard]},

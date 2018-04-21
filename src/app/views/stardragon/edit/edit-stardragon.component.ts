@@ -5,13 +5,13 @@ import { Stardragon } from './../../../models/stardragon';
 import { GemExchangeAPI } from './../../../../services/api.service';
 
 @Component({
-  selector:    'create-stardragon',
-  templateUrl: './create-stardragon.template.html',
+  selector:    'edit-stardragon',
+  templateUrl: './edit-stardragon.template.html',
   providers: [GemExchangeAPI]
 })
-export class CreateStardragonComponent {
+export class EditStardragonComponent {
 
-  title = 'Create a Stardragon';
+  title = 'Edit Stardragon';
 
   constructor(private gem: GemExchangeAPI){}
 
