@@ -3,7 +3,7 @@ import { BrowserModule }    from '@angular/platform-browser';
 import { NgModule }         from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule }     from "@angular/router";
-import { FormsModule }      from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Pages
 import { DashboardComponent }      from './views/dashboard/dashboard.component';
@@ -73,7 +73,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(ROUTES),
-    FormsModule,
+    FormsModule, ReactiveFormsModule,
 
     // 3rd Party Modules
     FacebookModule.forRoot(),

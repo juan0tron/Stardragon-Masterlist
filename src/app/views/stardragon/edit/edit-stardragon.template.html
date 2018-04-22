@@ -12,55 +12,71 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-12">
-      <h3>Info</h3>
-      <small>Can only be set by an admin.</small>
+  <form [formGroup]="adminInfo" (submit)="save(adminInfo)">
+    <div class="row">
+      <div class="col-12">
+        <h3>Info</h3>
+        <small>Can only be set by an admin.</small>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <select placeholder="Species" class="form-control">
-        <option>Species</option>
-      </select>
+    <div class="row">
+      <div class="col">
+        <select placeholder="Species" class="form-control" formControlName="species">
+          <option value=null selected disabled>Species...</option>
+          <option *ngFor="let species of speciesTypes" [value]="species">{{species}}</option>
+        </select>
+      </div>
+      <div class="col">
+        <select placeholder="Type" class="form-control" formControlName="type">
+          <option selected disabled value=null>Type...</option>
+          <option *ngFor="let type of sdTypes" [value]="type">{{type}}</option>
+        </select>
+      </div>
+      <div class="col">
+        <select placeholder="Rarity" class="form-control" formControlName="rarity">
+          <option selected disabled value=null>Rarity...</option>
+          <option *ngFor="let rarity of rarityTypes" [value]="rarity">{{rarity}}</option>
+        </select>
+      </div>
+      <div class="col">
+        <select placeholder="Sex" class="form-control" formControlName="sex">
+          <option selected disabled value="n/a">Sex...</option>
+          <option *ngFor="let sex of sexTypes" [value]="sex">{{sex}}</option>
+        </select>
+      </div>
+      <div class="col">
+        <input formControlName="base" id="base" type="text" name="base" class="form-control" placeholder="Base" />
+      </div>
+      <div class="col">
+        <input formControlName="basePrice" type="number" name="base price" class="form-control" placeholder="$ Base Price" />
+      </div>
     </div>
-    <div class="col">
-      <select placeholder="Type" class="form-control">
-        <option>Type</option>
-      </select>
+    <div class="row">
+      <div class="col">
+        <label>Created</label>
+        <input type="date" class="form-control" placeholder="Created" formControlName="created" />
+      </div>
+      <div class="col">
+        <label>Approved</label>
+        <input type="date" class="form-control" placeholder="Approved" formControlName="approved" />
+      </div>
     </div>
-    <div class="col">
-      <select placeholder="Rarity" class="form-control">
-        <option>Rarity</option>
-      </select>
+    <div class="row">
+      <div class="col-12">
+        <textarea class="form-control" placeholder="Admin Notes" formControlName="adminNotes"></textarea>
+      </div>
     </div>
-    <div class="col">
-      <select placeholder="Sex" class="form-control">
-        <option>Sex</option>
-      </select>
+    <div class="row" id="debug" *ngIf="gem.isDev()">
+      <div class="col-12">
+        <pre>{{adminInfo.value | json}}</pre>
+      </div>
     </div>
-    <div class="col">
-      <input type="text" name="base" class="form-control" placeholder="Base" />
+    <div class="row">
+      <div class="col">
+        <button type="submit" name="button" class="btn btn-primary">Save</button>
+      </div>
     </div>
-    <div class="col">
-      <input type="number" name="base price" class="form-control" placeholder="$ Base Price" />
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <label>Created</label>
-      <input type="date" class="form-control" placeholder="Created" />
-    </div>
-    <div class="col">
-      <label>Approved</label>
-      <input type="date" class="form-control" placeholder="Approved" />
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12">
-      <textarea class="form-control" placeholder="Admin Notes"></textarea>
-    </div>
-  </div>
+  </form>
 
   <div class="row">
     <div class="col-12">
