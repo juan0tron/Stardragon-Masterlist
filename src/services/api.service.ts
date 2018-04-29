@@ -38,7 +38,7 @@ export class GemExchangeAPI {
    *  @function    api
    *  @description Calls the Wylei API.
    *  @param {String} params       - A valid API endpoint, starting with a /
-   *  @param {String} request_type - PUT, DELETE, POST, GET, etc. Defaults to POST.
+   *  @param {String} request_type - PUT, DELETE, POST, PATCH, GET, etc. Defaults to POST.
    *  @param {String} body         - Any additional data to be sent with the API call (optional)
    *  @return {Object}
    */
@@ -52,6 +52,7 @@ export class GemExchangeAPI {
         .set('Content-Type', 'application/json');
     }
 
+    // Log all calls to console for devs
     if(this.isDev()){
       console.log(request_type+":", environment.api_url + params, headers, body);
     }

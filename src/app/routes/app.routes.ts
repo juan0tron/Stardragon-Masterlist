@@ -48,6 +48,7 @@ export const ROUTES: Routes = [
     { path: 'stardragons/traits',               component: TraitsComponent },
     { path: 'stardragons/traits/:species_name', component: TraitsComponent },
     { path: 'stardragons/:stardragon_id',       component: StardragonComponent,      canActivate: [DevGuard]},
+    { path: 'stardragons/:stardragon_id/edit',  component: EditStardragonComponent,  canActivate: [DevGuard]},
 
     // Redirect old routes
     { path: 'species/:species_name', redirectTo: 'stardragons/traits/:species_name', pathMatch: 'full' },
