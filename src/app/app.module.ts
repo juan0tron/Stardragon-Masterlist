@@ -28,9 +28,10 @@ import { RegisterComponent }  from "./views/register/register.component";
 import { NavigationComponent } from "./views/navigation/navigation.component";
 
 // 3rd Party Modules
-import { FacebookModule }    from 'ngx-facebook';
-import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
-import { ButtonsModule }     from 'ngx-bootstrap';
+import { FacebookModule }     from 'ngx-facebook';
+import { SweetAlert2Module }  from '@toverux/ngx-sweetalert2';
+import { ButtonsModule }      from 'ngx-bootstrap';
+import { NgxTypeaheadModule } from 'ngx-typeahead';
 
 // Routing Guards
 import { LoggedInGuard } from "./guards/logged-in.guard";
@@ -85,6 +86,7 @@ import { AppComponent } from './app.component';
     }),
     // NGX Bootstrap
     ButtonsModule.forRoot(),
+    NgxTypeaheadModule
 
   ],
   providers: [
