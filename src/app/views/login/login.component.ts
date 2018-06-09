@@ -13,13 +13,13 @@ import { GemExchangeAPI } from './../../../services/api.service';
 
 export class LoginComponent {
 
-  public show_form:boolean    = false;
-  public requires_2fa:boolean = false;
+  public show_form:boolean     = false;
+  public requires_2fa:boolean  = false;
   public loginError:boolean    = false;
   public loginSuccess:boolean  = false;
   public loginMessage:string   = '';
 
-  public email_invalid:boolean = false;
+  public email_invalid:boolean    = false;
   public password_invalid:boolean = false;
 
   constructor(
