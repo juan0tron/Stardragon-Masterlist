@@ -21,8 +21,8 @@ import { EditStardragonComponent }   from 'app/views/stardragon/edit/edit-stardr
 import { TraitsComponent }           from 'app/views/stardragon/traits/traits.component';
 
 // Routing Guards
-import { LoggedInGuard } from "app/guards/logged-in.guard";
-import { DevGuard }      from "app/guards/dev.guard";
+import { LoggedInGuard } from "app/guards/logged-in.guard"; // Logged in only
+import { DevGuard }      from "app/guards/dev.guard";       // Dev environment only
 
 export const ROUTES: Routes = [
     // Main redirect
@@ -36,19 +36,22 @@ export const ROUTES: Routes = [
     { path: 'myo',            component: MYOComponent, canActivate: [DevGuard]},
     { path: 'myo/thank-you',  component: MYOThankYouComponent},
 
-    { path: 'login',    component: LoginComponent,    canActivate: [DevGuard]},
+    { path: 'login',    component: LoginComponent },
     { path: 'register', component: RegisterComponent, canActivate: [DevGuard]},
 
     { path: 'users',          component: UserComponent,  canActivate: [DevGuard]},
     { path: 'users/:user_id', component: UserComponent,  canActivate: [DevGuard]},
 
     // Stardragons
-    { path: 'stardragons',                      component: StardragonListComponent,  canActivate: [DevGuard]},
-    { path: 'stardragons/create',               component: EditStardragonComponent,  canActivate: [DevGuard]},
+    { path: 'stardragons/:stardragon_id',       component: StardragonComponent },
+
+    { path: 'stardragons',                      component: StardragonListComponent },
+
     { path: 'stardragons/traits',               component: TraitsComponent },
     { path: 'stardragons/traits/:species_name', component: TraitsComponent },
-    { path: 'stardragons/:stardragon_id',       component: StardragonComponent,      canActivate: [DevGuard]},
-    { path: 'stardragons/:stardragon_id/edit',  component: EditStardragonComponent,  canActivate: [DevGuard]},
+
+    { path: 'stardragons/create',               component: EditStardragonComponent,  canActivate: [LoggedInGuard]},
+    { path: 'stardragons/:stardragon_id/edit',  component: EditStardragonComponent,  canActivate: [LoggedInGuard]},
 
     // Redirect old routes
     { path: 'species/:species_name', redirectTo: 'stardragons/traits/:species_name', pathMatch: 'full' },
