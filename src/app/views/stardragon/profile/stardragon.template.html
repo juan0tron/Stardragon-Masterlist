@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" *ngIf="stardragon">
   <div class="col-4">
     <img src="./../../assets/img/default_avatar.png" />
   </div>
@@ -9,7 +9,7 @@
         <small>{{stardragon.species}} | {{stardragon.gender || stardragon.sex}} | {{stardragon.rarity}}</small>
       </div>
       <div class="col">
-        <a class="btn btn-primary pull-right" [routerLink]="['/stardragons',stardragon._id,'edit']">Edit</a>
+        <a *ngIf="gem.isLoggedIn()" class="btn btn-primary pull-right" [routerLink]="['/stardragons',stardragon._id,'edit']">Edit</a>
       </div>
       <div class="col-12">
         <hr/>

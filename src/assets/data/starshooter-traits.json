@@ -1,6 +1,9 @@
 {
   "img_directory":"starshooter_traits/",
-  "header_img":"starshooters_header.png",
+  "headers":{
+    "standard": "starshooters_header_standard.png",
+    "arctic":   "starshooters_header_arctic.png"
+  },
   "traits": [
     {
       "name":   "Multiple Eyes - Vertical",

@@ -1,4 +1,4 @@
-<div id="create-stardragon">
+<div id="create-stardragon" *ngIf="stardragon">
 
   <div class="row">
     <div class="col">
@@ -69,7 +69,7 @@
     </div>
     <div class="row" id="debug" *ngIf="gem.isDev()">
       <div class="col-12">
-        <pre>{{adminInfo.value | json}}</pre>
+        <!-- <pre>{{adminInfo.value | json}}</pre> -->
       </div>
     </div>
     <div class="row">

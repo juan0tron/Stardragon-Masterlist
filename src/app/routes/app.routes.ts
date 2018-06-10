@@ -28,13 +28,12 @@ export const ROUTES: Routes = [
     // Main redirect
     { path: '', redirectTo: 'home', pathMatch: 'full' },
 
-    // Public Pages
     { path: 'home',           component: DashboardComponent },
     { path: 'discord',        component: DiscordComponent   },
     { path: 'termsofservice', component: TosComponent       },
 
-    { path: 'myo',            component: MYOComponent, canActivate: [DevGuard]},
-    { path: 'myo/thank-you',  component: MYOThankYouComponent},
+    { path: 'myo',            component: MYOComponent, canActivate: [DevGuard]}, // MYO Form
+    { path: 'myo/thank-you',  component: MYOThankYouComponent}, // MYO Thanks landing page
 
     { path: 'login',    component: LoginComponent },
     { path: 'register', component: RegisterComponent, canActivate: [DevGuard]},
@@ -42,15 +41,12 @@ export const ROUTES: Routes = [
     { path: 'users',          component: UserComponent,  canActivate: [DevGuard]},
     { path: 'users/:user_id', component: UserComponent,  canActivate: [DevGuard]},
 
-    // Stardragons
-    { path: 'stardragons/:stardragon_id',       component: StardragonComponent },
-
-    { path: 'stardragons',                      component: StardragonListComponent },
-
+    // Stardragons (DO NOT REARRANGE - Route order matters!!)
+    { path: 'stardragons',                      component: StardragonListComponent, canActivate: [LoggedInGuard] },
+    { path: 'stardragons/create',               component: EditStardragonComponent,  canActivate: [LoggedInGuard]},
     { path: 'stardragons/traits',               component: TraitsComponent },
     { path: 'stardragons/traits/:species_name', component: TraitsComponent },
-
-    { path: 'stardragons/create',               component: EditStardragonComponent,  canActivate: [LoggedInGuard]},
+    { path: 'stardragons/:stardragon_id',       component: StardragonComponent },
     { path: 'stardragons/:stardragon_id/edit',  component: EditStardragonComponent,  canActivate: [LoggedInGuard]},
 
     // Redirect old routes

@@ -1,6 +1,9 @@
 {
   "img_directory":"starweaver_traits/",
-  "header_img":"starweaver_header.png",
+  "headers":{
+    "standard": "starweavers_header_standard.png",
+    "fuu":      "starweavers_header_fuu.png"
+  },
   "traits": [
     {
       "name":   "Female",

@@ -1,6 +1,9 @@
 {
   "img_directory":"starfisher_traits/",
-  "header_img":"starfishers_header_standard.png",
+  "headers":{
+    "standard":   "starfishers_header_standard.png",
+    "mudskipper": "starfishers_header_mudskipper.png"
+  },
   "traits": [
     {
       "name":   "Cheek Pouches",

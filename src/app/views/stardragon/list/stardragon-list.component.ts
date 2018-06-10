@@ -27,7 +27,6 @@ export class StardragonListComponent {
         this.stardragons = data;
         console.log(this.stardragons)
       },
-      err  => {},
       ()   => {}
     );
   }

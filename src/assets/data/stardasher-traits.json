@@ -1,0 +1,9 @@
+{
+  "img_directory":"stardasher_traits/",
+  "headers":{
+    "standard": "stardashers_header_standard.png",
+    "desert":   "stardashers_header_desert.png"
+  },
+  "traits": [],
+  "trait_descriptions":[]
+}

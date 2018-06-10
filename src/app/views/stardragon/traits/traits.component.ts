@@ -20,7 +20,7 @@ export class TraitsComponent {
 
   public base_img_directory   = './assets/img/';
   public img_directory:string = '';
-  public header_img:string    = '';
+  public headers:any = {};
 
   public traits:Array<StardragonTrait> = [];
   public trait_descriptions = [];
@@ -35,8 +35,13 @@ export class TraitsComponent {
   public traits_index:Array<any> = [];
 
   public available_species = [
+    'starcrafter',
+    'stardasher',
+    'stareater',
     'starfisher',
+    'starrobber',
     'starshooter',
+    'starsweeper',
     'starweaver',
   ];
 
@@ -50,6 +55,7 @@ export class TraitsComponent {
   ngOnInit(){
     this.router_sub = this.route.params.subscribe(
       params => {
+        /* Display traits for a specific species */
         if(params['species_name']){
           let species = params['species_name'];
           // Change plural names to singular, IE "starshooters" to "starshooter"
@@ -66,7 +72,7 @@ export class TraitsComponent {
             this.router.navigate(['/stardragons/traits']);
           }
         }
-        // Display a list of species with traits pages
+        /* Display a list of all species with traits pages */
         else{
           this.display_index = true;
 
@@ -76,7 +82,7 @@ export class TraitsComponent {
                 let trait = {
                   name:s+"s",
                   link:"/stardragons/traits/"+s,
-                  img: "/assets/img/" + data['img_directory'] + data['header_img']
+                  img: "/assets/img/" + data['img_directory'] + data['headers']['standard']
                 };
                 this.traits_index.push(trait);
               }
@@ -101,9 +107,9 @@ export class TraitsComponent {
     this.traitsService.getTraits(species).subscribe(
       data => {
         this.img_directory      = this.base_img_directory + data["img_directory"];
-        this.header_img         = this.img_directory + data["header_img"];
-        this.traits             = data["traits"];
-        this.trait_descriptions = data["trait_descriptions"];
+        this.headers            = data['headers'];
+        this.traits             = data['traits'];
+        this.trait_descriptions = data['trait_descriptions'];
       },
       err  => {console.error("error getting traits for "+species, err)},
     );

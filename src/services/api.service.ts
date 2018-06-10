@@ -95,7 +95,7 @@ export class GemExchangeAPI {
           console.error("Session Expired","Your session has expired. Please log in again.","error");
           this.logout();
         }
-        return Observable.throw(error.error);
+        return Observable.throw(error.message);
       });
   }
 
