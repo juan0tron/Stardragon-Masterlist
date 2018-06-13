@@ -297,13 +297,6 @@
       "image":  "tail-common-b.png"
     },
     {
-      "name":   "Common Tail B (Masculine)",
-      "type":   "tail",
-      "subtype":"standard",
-      "rarity": "common",
-      "image":  "tail-common-b.png"
-    },
-    {
       "name":   "Bear Nub",
       "type":   "tail",
       "subtype":"standard",
