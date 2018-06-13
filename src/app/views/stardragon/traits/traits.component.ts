@@ -1,11 +1,15 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router }    from '@angular/router';
 
+// 3rd Party
+import { TypeaheadMatch } from 'ngx-bootstrap/typeahead';
+
+// Models
 import { Stardragon }      from './../../../models/stardragon';
 import { StardragonTrait } from './../../../models/stardragon-trait';
 
+// Services
 import { TraitsService } from './traits-service';
-
 import { GemExchangeAPI } from './../../../../services/api.service';
 
 @Component({
@@ -23,11 +27,15 @@ export class TraitsComponent {
   public headers:any = {};
 
   public traits:Array<StardragonTrait> = [];
+  public visibleTraits:Array<StardragonTrait> = [];
   public trait_descriptions = [];
 
+  public search_filter:string  = '';
   public rarity_filter:string  = 'all';
   public type_filter:string    = 'all';
   public subtype_filter:string = 'all';
+
+  public typeahead = [];
 
   public router_sub:any;
 
@@ -109,29 +117,60 @@ export class TraitsComponent {
         this.img_directory      = this.base_img_directory + data["img_directory"];
         this.headers            = data['headers'];
         this.traits             = data['traits'];
+        this.visibleTraits      = this.traits;
         this.trait_descriptions = data['trait_descriptions'];
+        this.typeahead          = this.getTypeaheadList("name");
       },
       err  => {console.error("error getting traits for "+species, err)},
     );
   }
 
   /**
-   *  @function filterTraits
-   *  @description Filter the traits list by the following params:
+   *  @function filterTraitsByType
+   *  @description Filter the traits list by type
    *  @param {string} type
-   *  @param {string} rarity
-   *  @param {string} species
+   *  @return {object} traits - the filtered traits list
    */
-  filterTraits(type, rarity, subtype){
-    return this.traits.filter(function(trait, index, self){
+  filterTraitsByType(type){
+    return this.visibleTraits.filter(function(trait, index, self){
       if(
-        (type    == trait.type    || this.type_filter    ==  trait.type || type == "all") &&
-        (rarity  == trait.rarity  || this.rarity_filter  == "all") &&
-        (subtype == trait.subtype || this.subtype_filter == "all")
+        (this.search_filter == trait.name || this.search_filter  == "")    &&
+        (type == trait.type || this.type_filter == trait.type || type == "all") &&
+        (this.rarity_filter == trait.rarity  || this.rarity_filter  == "all") &&
+        (this.subtype_filter == trait.subtype || this.subtype_filter == "all")
       ){
         return true;
       }
     }.bind(this));
+  }
+
+  /**
+   *  @function filterVisibleTraits
+   *  @description Filter the visible traits list by checking the status of all filter vars
+   */
+  filterVisibleTraits(){
+    this.visibleTraits = this.traits.filter(function(trait, index, self){
+      if(
+        (this.search_filter  == trait.name    || this.search_filter  == "")    &&
+        (this.type_filter    == trait.type    || this.type_filter    == "all") &&
+        (this.rarity_filter  == trait.rarity  || this.rarity_filter  == "all") &&
+        (this.subtype_filter == trait.subtype || this.subtype_filter == "all")
+      ){
+        return true;
+      }
+    }.bind(this));
+    this.typeahead = this.getTypeaheadList("name");
+  }
+
+  /**
+   *  @function    getTypeaheadList
+   *  @description Gets a list of traits for typeahead search. Shows only a list of visible traits.
+   *  @param  {string} property - The property of the trait to filter
+   *  @return {array}           - A unique array of property strings
+   */
+  getTypeaheadList(property): Array<any> {
+    let list = this.visibleTraits.map(function (obj) { return obj[property] })
+    return list.filter(function (elem, index, self) { return index === self.indexOf(elem) })
   }
 
   /**

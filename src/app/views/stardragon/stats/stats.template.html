@@ -33,7 +33,7 @@
     <tr *ngFor="let key of objectKeys(categories)">
       <td class="stat-category">
         <h4>{{key | titlecase}}</h4>
-        <small *ngIf="key == 'population'">From biggest to smallest</small>
+        <small *ngIf="key == 'population'" style="font-style:italic">(largest to smallest)</small>
       </td>
       <td *ngFor="let s of species" style="text-align:center;">
         <img title="{{s | titlecase }}" alt="{{s | titlecase}}" [src]="'./../../assets/img/headshots/'+s+'.png'" class="headshot-icon"

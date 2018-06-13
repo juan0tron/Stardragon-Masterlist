@@ -18,10 +18,10 @@ export class StatsComponent {
   public objectKeys = Object.keys;
 
   public categories = {
-    'population':['eater','fisher','dasher', 'sweeper', 'shooter', 'crafter', 'weaver', 'robber'],
     'eyesight':['dasher','crafter','weaver','shooter'],
     'hearing':['dasher','crafter','fisher'],
-    'speed':['dasher','shooter','fisher']
+    'speed':['dasher','shooter','fisher'],
+    'population':['eater','fisher','dasher', 'sweeper', 'shooter', 'crafter', 'weaver', 'robber'],
   };
 
   // Ordered by population

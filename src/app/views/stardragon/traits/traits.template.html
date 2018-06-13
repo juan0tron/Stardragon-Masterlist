@@ -29,10 +29,16 @@
   </div>
 
   <div class="row">
-    <div class="col-md-4">
-      <h3>Filter By Rarity:</h3>
+    <div class="col-md-3">
+      <h3>Search</h3>
       <div class="row">
-        <select class="form-control" [(ngModel)]="rarity_filter">
+        <input type="text" [(ngModel)]="search_filter" value="search_filter" class="form-control" [typeahead]="typeahead" [typeaheadMinLength]="0" (change)="filterVisibleTraits()"/>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <h3>Rarity</h3>
+      <div class="row">
+        <select class="form-control" [(ngModel)]="rarity_filter" (change)="filterVisibleTraits()">
           <option value="all">All</option>
           <option value="common">Common</option>
           <option value="uncommon">Uncommon</option>
@@ -41,19 +47,19 @@
         </select>
       </div>
     </div>
-    <div class="col-md-4">
-      <h3>Filter By Trait Type:</h3>
+    <div class="col-md-3">
+      <h3>Trait Type</h3>
       <div class="row">
-        <select class="form-control" [(ngModel)]="type_filter" style="text-transform:capitalize">
+        <select class="form-control" [(ngModel)]="type_filter" (change)="filterVisibleTraits()" style="text-transform:capitalize">
           <option value="all">All</option>
           <option [value]="type" *ngFor="let type of getTraitTypes()">{{type.replace("_"," ")}}</option>
         </select>
       </div>
     </div>
-    <div class="col-md-4">
-      <h3>Filter By Species Subtype:</h3>
+    <div class="col-md-3">
+      <h3>Subtype</h3>
       <div class="row">
-        <select class="form-control" [(ngModel)]="subtype_filter" style="text-transform:capitalize">
+        <select class="form-control" [(ngModel)]="subtype_filter" (change)="filterVisibleTraits()" style="text-transform:capitalize">
           <option value="all">All</option>
           <option [value]="subtype" *ngFor="let subtype of getSubspeciesTypes()">{{subtype}}</option>
         </select>
@@ -62,7 +68,8 @@
   </div>
 
   <ng-container *ngFor="let trait_type of getTraitTypes()">
-    <ng-container *ngIf="filterTraits(trait_type, rarity_filter, subtype_filter).length > 0 && (type_filter == trait_type || type_filter == 'all')">
+    <!-- If there are are available traits for this type -->
+    <ng-container *ngIf="filterTraitsByType(trait_type).length > 0">
       <div class="row">
         <div class="col-md-12">
           <h3>{{getTraitDescription(trait_type,"title")}}</h3>
@@ -70,7 +77,7 @@
         </div>
       </div>
       <div class="row">
-        <ng-container *ngFor="let trait of filterTraits(trait_type, rarity_filter, subtype_filter)">
+        <ng-container *ngFor="let trait of filterTraitsByType(trait_type)">
           <div class="col-6 col-md-3" style="text-align:center;">
             <img src="{{img_directory}}{{trait.image}}"/>
             <p>
@@ -83,7 +90,7 @@
     </ng-container>
   </ng-container>
 
-  <div class="row" *ngIf="filterTraits(type_filter, rarity_filter, subtype_filter).length == 0">
+  <div class="row" *ngIf="visibleTraits.length == 0">
     <div class="col-md-12">
       <div class="alert alert-danger" role="alert">No traits found!</div>
     </div>
@@ -98,16 +105,16 @@
       </a>
     </div>
   </div>
-</ng-container>
 
-<div class="row">
-  <style media="screen">
-  ::-webkit-scrollbar {
-    width: 0px;  /* remove scrollbar space */
-    background: transparent;  /* optional: just make scrollbar invisible */
-  }
-  </style>
-  <div class="col" style="overflow-x:scroll;">
-    <stardragon-stats></stardragon-stats>
+  <div class="row">
+    <style media="screen">
+    ::-webkit-scrollbar {
+      width: 0px;  /* remove scrollbar space */
+      background: transparent;  /* optional: just make scrollbar invisible */
+    }
+    </style>
+    <div class="col" style="overflow-x:scroll;">
+      <stardragon-stats></stardragon-stats>
+    </div>
   </div>
-</div>
+</ng-container>
