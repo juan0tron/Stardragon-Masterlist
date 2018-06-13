@@ -3,6 +3,405 @@
   "headers":{
     "standard":    "stareaters_header_standard.png"
   },
-  "traits": [],
-  "trait_descriptions":[]
+  "traits": [
+    {
+      "name":   "Bull",
+      "type":   "horn",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "horns-bull.png"
+    },
+    {
+      "name":   "Spiral",
+      "type":   "horn",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "horns-spiral.png"
+    },
+    {
+      "name":   "Twisty",
+      "type":   "horn",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "horns-twisty.png"
+    },
+    {
+      "name":   "Double Spiral",
+      "type":   "horn",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "horns-double-spiral.png"
+    },
+    {
+      "name":   "Wiggly",
+      "type":   "horn",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "horns-wiggle.png"
+    },
+    {
+      "name":   "Spiky",
+      "type":   "horn",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "horns-spiky.png"
+    },
+    {
+      "name":   "Curly",
+      "type":   "horn",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "horns-curly.png"
+    },
+    {
+      "name":   "Curly Sheep",
+      "type":   "horn",
+      "subtype":"sheep",
+      "rarity": "common",
+      "image":  "horns-curly-sheep.png"
+    },
+    {
+      "name":   "Loki",
+      "type":   "horn",
+      "subtype":"standard",
+      "rarity": "uncommon",
+      "image":  "horns-loki.png"
+    },
+
+
+    {
+      "name":   "Short",
+      "type":   "ear",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "ear-short.png"
+    },
+    {
+      "name":   "Round",
+      "type":   "ear",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "ears-round.png"
+    },
+    {
+      "name":   "Small Fluffy Ears",
+      "type":   "ear",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "ears-small-fluffy.png"
+    },
+
+
+    {
+      "name":   "Wood Druid",
+      "type":   "body",
+      "subtype":"standard",
+      "rarity": "legendary",
+      "image":  "wood-druid.png"
+    },
+
+
+    {
+      "name":   "Wings",
+      "type":   "wing",
+      "subtype":"standard",
+      "rarity": "legendary",
+      "image":  "eater-wings.png"
+    },
+
+
+    {
+      "name":   "Short",
+      "type":   "fur",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "fur-short.png"
+    },
+    {
+      "name":   "Tuft",
+      "type":   "fur",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "fur-tuft.png"
+    },
+    {
+      "name":   "Full Mane",
+      "type":   "fur",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "fur-full.png"
+    },
+    {
+      "name":   "Curly Full Mane",
+      "type":   "fur",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "fur-full-afro.png"
+    },
+    {
+      "name":   "None",
+      "type":   "fur",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "fur-none.png"
+    },
+    {
+      "name":   "Single Fringe",
+      "type":   "fur",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "fur-single-fringe.png"
+    },
+    {
+      "name":   "Double Fringe",
+      "type":   "fur",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "fur-double-fringe.png"
+    },
+    {
+      "name":   "Big Fluff",
+      "type":   "fur",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "fur-big-fluff.png"
+    },
+    {
+      "name":   "Sheep Fur",
+      "type":   "fur",
+      "subtype":"sheep",
+      "rarity": "common",
+      "image":  "fur-sheep.png"
+    },
+    {
+      "name":   "Double Fringe",
+      "type":   "fur",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "fur-double-fringe.png"
+    },
+    {
+      "name":   "Super Fluff",
+      "type":   "fur",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "fur-super-fluff.png"
+    },
+    {
+      "name":   "Furcho (Short)",
+      "type":   "fur",
+      "subtype":"standard",
+      "rarity": "uncommon",
+      "image":  "fur-furchos.png"
+    },
+    {
+      "name":   "Furcho (Extra Long)",
+      "type":   "fur",
+      "subtype":"standard",
+      "rarity": "rare",
+      "image":  "fur-furcho-long.png"
+    },
+    {
+      "name":   "Furcho (Extra Long)",
+      "type":   "fur",
+      "subtype":"standard",
+      "rarity": "rare",
+      "image":  "fur-furcho-long.png"
+    },
+    {
+      "name":   "Uncommon Fur A (Feminine)",
+      "type":   "fur",
+      "subtype":"standard",
+      "rarity": "uncommon",
+      "image":  "fur-uncommon-a.png"
+    },
+    {
+      "name":   "Uncommon Fur B (Feminine)",
+      "type":   "fur",
+      "subtype":"standard",
+      "rarity": "uncommon",
+      "image":  "fur-uncommon-b.png"
+    },
+    {
+      "name":   "Rare Fur (Feminine)",
+      "type":   "fur",
+      "subtype":"standard",
+      "rarity": "rare",
+      "image":  "fur-rare-a.png"
+    },
+    {
+      "name":   "Scales",
+      "type":   "fur",
+      "subtype":"standard",
+      "rarity": "rare",
+      "image":  "scales-rare-a.png"
+    },
+
+
+    {
+      "name":   "Standard",
+      "type":   "arm",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "arms-common.png"
+    },
+    {
+      "name":   "Smooth (No Fur)",
+      "type":   "arm",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "arms-smooth.png"
+    },
+    {
+      "name":   "Sloth Fingers",
+      "type":   "arm",
+      "subtype":"sloth",
+      "rarity": "common",
+      "image":  "arms-sloth-fingers.png"
+    },
+    {
+      "name":   "Claw",
+      "type":   "arm",
+      "subtype":"standard",
+      "rarity": "uncommon",
+      "image":  "arms-claw.png"
+    },
+    {
+      "name":   "Paw",
+      "type":   "arm",
+      "subtype":"standard",
+      "rarity": "uncommon",
+      "image":  "arms-paw.png"
+    },
+    {
+      "name":   "Winged",
+      "type":   "arm",
+      "subtype":"standard",
+      "rarity": "rare",
+      "image":  "arms-winged.png"
+    },
+
+
+    {
+      "name":   "Common Tail A (Masculine)",
+      "type":   "tail",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "tail-common-a.png"
+    },
+    {
+      "name":   "Common Tail B (Masculine)",
+      "type":   "tail",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "tail-common-b.png"
+    },
+    {
+      "name":   "Common Tail B (Masculine)",
+      "type":   "tail",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "tail-common-b.png"
+    },
+    {
+      "name":   "Bear Nub",
+      "type":   "tail",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "tail-bear-nub.png"
+    },
+    {
+      "name":   "Fluffy Bun",
+      "type":   "tail",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "tail-fluffy-bun.png"
+    },
+    {
+      "name":   "Short Deer",
+      "type":   "tail",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "tail-short-deer.png"
+    },
+    {
+      "name":   "Raccoon (Masculine)",
+      "type":   "tail",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "tail-raccoon.png"
+    },
+    {
+      "name":   "Uncommon Tail A (Masculine)",
+      "type":   "tail",
+      "subtype":"standard",
+      "rarity": "uncommon",
+      "image":  "tail-uncommon-a.png"
+    },
+    {
+      "name":   "Uncommon Tail B (Masculine)",
+      "type":   "tail",
+      "subtype":"standard",
+      "rarity": "uncommon",
+      "image":  "tail-uncommon-b.png"
+    },
+    {
+      "name":   "Rare Tail (Masculine)",
+      "type":   "tail",
+      "subtype":"standard",
+      "rarity": "rare",
+      "image":  "tail-rare-a.png"
+    },
+
+    {
+      "name":   "Petal Back",
+      "type":   "other",
+      "subtype":"standard",
+      "rarity": "legendary",
+      "image":  "petal-back.png"
+    }
+
+  ],
+  "trait_descriptions":[
+    {
+      "title":"Horns",
+      "type":"horn",
+      "description":""
+    },
+    {
+      "title":"Ears",
+      "type":"ear",
+      "description":""
+    },
+    {
+      "title":"Wings",
+      "type":"wing",
+      "description":""
+    },
+    {
+      "title":"Fur",
+      "type":"fur",
+      "description":""
+    },
+    {
+      "title":"Bodies",
+      "type":"body",
+      "description":""
+    },
+    {
+      "title":"Arms",
+      "type":"arm",
+      "description":""
+    },
+    {
+      "title":"Tails",
+      "type":"tail",
+      "description":""
+    },
+    {
+      "title":"Other",
+      "type":"other",
+      "description":""
+    }
+  ]
 }
