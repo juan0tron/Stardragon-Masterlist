@@ -135,7 +135,7 @@ export class TraitsComponent {
     return this.visibleTraits.filter(function(trait, index, self){
       if(
         (this.search_filter == trait.name || this.search_filter  == "")    &&
-        (type == trait.type || this.type_filter == trait.type || type == "all") &&
+        (type == trait.type || type == "all") &&
         (this.rarity_filter == trait.rarity  || this.rarity_filter  == "all") &&
         (this.subtype_filter == trait.subtype || this.subtype_filter == "all")
       ){
