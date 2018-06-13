@@ -18,6 +18,7 @@ import { MYOThankYouComponent }    from "app/views/myo/thank-you/myo-thank-you.c
 // Stardragon Pages
 import { StardragonListComponent }   from './views/stardragon/list/stardragon-list.component';
 import { StardragonComponent }       from './views/stardragon/profile/stardragon.component';
+import { StatsComponent }            from './views/stardragon/stats/stats.component';
 import { EditStardragonComponent }   from './views/stardragon/edit/edit-stardragon.component';
 
 // Auth Pages
@@ -58,6 +59,7 @@ import { AppComponent } from './app.component';
     // Stardragon pages
     StardragonListComponent,
     StardragonComponent,
+    StatsComponent,
     EditStardragonComponent,
 
     // Auth Pages

@@ -1,0 +1,47 @@
+<style media="screen">
+  .stat-category{
+    border-right:  1px solid #aaa;
+    padding-right: 15px;
+    text-align:    right;
+  }
+
+  .headshot-icon{
+    max-width:  100px;
+    max-height: 100px;
+    height:     auto;
+    margin:     5px;
+    filter:     drop-shadow(2px 5px 0px rgba(0, 0, 0, 0.5));
+  }
+  .grayscale{
+    filter:     grayscale(100);
+    max-width:  25px;
+  }
+
+  tr:nth-child(1){
+    border-bottom: 1px solid #aaa;
+  }
+</style>
+
+<table  width="100%">
+  <tbody>
+
+    <tr>
+      <td class="stat-category"><h4>STATS</h4></td>
+      <td style="text-align:center;" *ngFor="let s of species"><h4>{{s | uppercase}}S</h4></td>
+    </tr>
+
+    <tr *ngFor="let key of objectKeys(categories)">
+      <td class="stat-category">
+        <h4>{{key | titlecase}}</h4>
+        <small *ngIf="key == 'population'">From biggest to smallest</small>
+      </td>
+      <td *ngFor="let s of species" style="text-align:center;">
+        <img title="{{s | titlecase }}" alt="{{s | titlecase}}" [src]="'./../../assets/img/headshots/'+s+'.png'" class="headshot-icon"
+          [ngClass]="{'grayscale': categories[key].indexOf(s) == -1}"
+        />
+      </td>
+    </tr>
+
+
+  </tbody>
+</table>

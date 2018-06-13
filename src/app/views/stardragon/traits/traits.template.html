@@ -1,17 +1,10 @@
 <style>
-  h1,h2,h3,h4{
-    font-family: "Futura", sans-serif;
-    text-transform: uppercase;
-    font-weight: bold;
-  }
   p{
     font-family: "Frenchpress";
     font-size: 22px;
     font-weight: bold;
   }
-  a{
-    text-decoration: none;
-  }
+  a{ text-decoration: none }
 </style>
 
 <div class="row">
@@ -106,3 +99,15 @@
     </div>
   </div>
 </ng-container>
+
+<div class="row">
+  <style media="screen">
+  ::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+  }
+  </style>
+  <div class="col" style="overflow-x:scroll;">
+    <stardragon-stats></stardragon-stats>
+  </div>
+</div>
