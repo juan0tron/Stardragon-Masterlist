@@ -19,6 +19,13 @@
       "image":  "horns-spiral.png"
     },
     {
+      "name":   "Heart",
+      "type":   "horn",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "horns-heart.png"
+    },
+    {
       "name":   "Twisty",
       "type":   "horn",
       "subtype":"standard",
@@ -193,13 +200,6 @@
       "subtype":"standard",
       "rarity": "uncommon",
       "image":  "fur-furchos.png"
-    },
-    {
-      "name":   "Furcho (Extra Long)",
-      "type":   "fur",
-      "subtype":"standard",
-      "rarity": "rare",
-      "image":  "fur-furcho-long.png"
     },
     {
       "name":   "Furcho (Extra Long)",
