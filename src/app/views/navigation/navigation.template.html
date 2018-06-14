@@ -7,7 +7,7 @@
     <li class="dropdown" *ngIf="api.isDev()">
       <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)"><i class="fa fa-user-circle-o"></i> Stardragons</a>
       <ul class="dropdown-menu">
-        <li><a routerLink="/stardragons" *ngIf="api.isDev()">Master List</a></li>
+        <li><a routerLink="/stardragons" *ngIf="api.isLoggedIn()">Master List</a></li>
         <li><a routerLink="/stardragons/traits">Traits Compendium</a></li>
       </ul>
     </li>

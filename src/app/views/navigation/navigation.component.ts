@@ -11,6 +11,7 @@ import { GemExchangeAPI } from './../../../services/api.service';
 export class NavigationComponent {
 
   public router_sub:any;
+  public user_id:string;
 
   constructor(
     public  api:    GemExchangeAPI,
@@ -18,6 +19,8 @@ export class NavigationComponent {
     private router: Router
   ){}
 
-  ngOnInit(){}
+  ngOnInit(){
+    this.user_id = localStorage.getItem("user_id");
+  }
 
 }
