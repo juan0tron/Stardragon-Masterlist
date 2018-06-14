@@ -13,6 +13,9 @@ import { User } from './../../../models/user'
 export class UserComponent {
 
   public user:User = new User;
+  public isOwnProfile:boolean = false;
+
+  public links = [ 'deviantart', 'twitter', 'tumblr', 'instagram' ];
 
   private router_sub: any;
 
@@ -36,7 +39,7 @@ export class UserComponent {
    */
   details(){
     this.api.api("/users/"+this.user.id, "GET", {}).subscribe(
-      data => { this.user = data },
+      data => { this.user = data; this.checkIfOwnProfile(); },
       err  => { console.error("Error getting user data.", err)},
       ()   => { console.log("Got user data.", this.user)}
     );
@@ -58,11 +61,11 @@ export class UserComponent {
    *  @function isOwnProfile
    *  @description Determine if this user page belongs to the currently logged in user
    */
-  isOwnProfile(){
-    if(localStorage.getItem("user_id") == this.user.id){
-      return true;
+  checkIfOwnProfile(){
+    if(localStorage.getItem("user_id") != this.user.id){
+      this.isOwnProfile = false;
     }
-    return false;
+    this.isOwnProfile = true;
   }
 
 
