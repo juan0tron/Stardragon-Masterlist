@@ -88,14 +88,14 @@ export class GemExchangeAPI {
       .catch((error:any) => {
         console.error("API ERROR:", params, error);
 
-        swal("API Error!",error.message,"error");
+        swal("API Error!",error.error.message || error.message,"error");
 
         // 401: Unauthorized
         if(error.status === 401){
           console.error("Session Expired","Your session has expired. Please log in again.","error");
           this.logout();
         }
-        return Observable.throw(error.message);
+        return Observable.throw(error.error.message || error.message);
       });
   }
 
