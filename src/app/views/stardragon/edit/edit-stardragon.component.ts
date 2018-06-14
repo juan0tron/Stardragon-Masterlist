@@ -5,6 +5,7 @@ import {Router, ActivatedRoute, Params} from '@angular/router';
 
 // 3rd Party
 import { default as swal} from 'sweetalert2';
+import * as moment from 'moment';
 
 import { Stardragon } from './../../../models/stardragon';
 
@@ -67,9 +68,9 @@ export class EditStardragonComponent {
         rarity:     [null, Validators.required],
         sex:        [null, Validators.required],
         base:       [''],
-        basePrice:  ['', Validators.required],
-        created:    [stardragon.created  || new Date()],
-        approved:   [stardragon.approved || new Date()],
+        basePrice:  [0, Validators.required],
+        created:    [stardragon.created],
+        approved:   [stardragon.approved],
         adminNotes: [''],
       });
       this.bio = this.fb.group({
@@ -105,7 +106,8 @@ export class EditStardragonComponent {
         this.stardragon = data
 
         // Update all forms
-        this.adminInfo.patchValue(data)
+        this.adminInfo.patchValue(data);
+        this.bio.patchValue(data);
       },
       err => swal("Error getting Stardragon info.", err, "error")
     );

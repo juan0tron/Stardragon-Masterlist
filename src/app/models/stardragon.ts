@@ -1,3 +1,4 @@
+import * as moment from 'moment';
 export class Stardragon{
   name:string;
 
@@ -11,8 +12,8 @@ export class Stardragon{
   sex:string;
   gender:string;
 
-  created:Date;
-  approved:Date;
+  created = moment();
+  approved = moment();
 
   designer: string;
 

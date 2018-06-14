@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import * as moment from 'moment';
+
 import { GemExchangeAPI } from './../services/api.service';
 
 @Component({
