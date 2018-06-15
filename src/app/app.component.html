@@ -2,8 +2,8 @@
   <navigation></navigation>
 </header>
 
-<main class="content container">
-  <router-outlet></router-outlet>
+<main [@fadeAnimation]="o.isActivated ? o.activatedRoute : ''" class="content container">
+  <router-outlet #o="outlet"></router-outlet>
 </main>
 
 <footer class="content container" style="text-align:center">

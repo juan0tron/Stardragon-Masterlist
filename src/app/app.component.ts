@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { fadeAnimation } from './animations/router.animations';
+
 import * as moment from 'moment';
 
 import { GemExchangeAPI } from './../services/api.service';
@@ -7,6 +9,7 @@ import { GemExchangeAPI } from './../services/api.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
+  animations:[fadeAnimation]
 })
 
 export class AppComponent {
