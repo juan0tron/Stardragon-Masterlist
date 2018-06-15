@@ -52,7 +52,7 @@ export class EditStardragonComponent {
   ]
 
   constructor(
-    private gem: GemExchangeAPI,
+    public  gem: GemExchangeAPI,
     private fb:  FormBuilder,
     private activatedRoute: ActivatedRoute,
     private router: Router
