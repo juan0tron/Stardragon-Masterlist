@@ -3,6 +3,437 @@
   "headers":{
     "standard":    "starsweepers_header_standard.png"
   },
-  "traits": [],
-  "trait_descriptions":[]
+  "traits": [
+    {
+      "name":   "Standard",
+      "type":   "horn",
+      "sex":    "masculine",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "horns-standard-m.png"
+    },
+    {
+      "name":   "Standard",
+      "type":   "horn",
+      "sex":    "feminine",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "horns-standard-f.png"
+    },
+    {
+      "name":   "Spine",
+      "type":   "horn",
+      "sex":    "masculine",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "horns-spine.png"
+    },
+    {
+      "name":   "Soft Curl",
+      "type":   "horn",
+      "sex":    "masculine",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "horns-soft-curl.png"
+    },
+    {
+      "name":   "Nub",
+      "type":   "horn",
+      "sex":    "unisex",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "horns-nub.png"
+    },
+
+
+
+
+    {
+      "name":   "Feathery",
+      "type":   "ear",
+      "sex":    "unisex",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "ears-feathery.png"
+    },
+
+
+
+    {
+      "name":   "Wings",
+      "type":   "wing",
+      "sex":    "unisex",
+      "subtype":"standard",
+      "rarity": "legendary",
+      "image":  "wings-legendary.png"
+    },
+
+
+
+    {
+      "name":   "Poofy",
+      "type":   "collar",
+      "sex":    "unisex",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "collar-poofy.png"
+    },
+    {
+      "name":   "Small",
+      "type":   "collar",
+      "sex":    "unisex",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "collar-small.png"
+    },
+    {
+      "name":   "Fancy",
+      "type":   "collar",
+      "sex":    "unisex",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "collar-fancy.png"
+    },
+
+
+
+    {
+      "name":   "Small",
+      "type":   "crest",
+      "sex":    "unisex",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "crest-small.png"
+    },
+    {
+      "name":   "Large",
+      "type":   "crest",
+      "sex":    "unisex",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "crest-large.png"
+    },
+    {
+      "name":   "Showbird",
+      "type":   "crest",
+      "sex":    "unisex",
+      "subtype":"standard",
+      "rarity": "uncommon",
+      "image":  "crest-showbird.png"
+    },
+
+
+
+    {
+      "name":   "Standard",
+      "type":   "hip",
+      "sex":    "unisex",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "hips-standard.png"
+    },
+    {
+      "name":   "Fanned",
+      "type":   "hip",
+      "sex":    "unisex",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "hips-fanned.png"
+    },
+    {
+      "name":   "Coat Tails",
+      "type":   "hip",
+      "sex":    "feminine",
+      "subtype":"standard",
+      "rarity": "uncommon",
+      "image":  "hips-coattails-f.png"
+    },
+    {
+      "name":   "Coat Tails",
+      "type":   "hip",
+      "sex":    "masculine",
+      "subtype":"standard",
+      "rarity": "uncommon",
+      "image":  "hips-coattails-m.png"
+    },
+    {
+      "name":   "Double Plume",
+      "type":   "hip",
+      "sex":    "unisex",
+      "subtype":"standard",
+      "rarity": "rare",
+      "image":  "hips-double-plume.png"
+    },
+    {
+      "name":   "Dragonfly",
+      "type":   "hip",
+      "sex":    "unisex",
+      "subtype":"standard",
+      "rarity": "rare",
+      "image":  "hips-dragonfly.png"
+    },
+
+
+    {
+      "name":   "Fancy",
+      "type":   "arm",
+      "sex":    "unisex",
+      "subtype":"standard",
+      "rarity": "none",
+      "image":  "arm-fancy.png"
+    },
+    {
+      "name":   "Glove",
+      "type":   "arm",
+      "sex":    "unisex",
+      "subtype":"standard",
+      "rarity": "none",
+      "image":  "arm-glove.png"
+    },
+    {
+      "name":   "Elbow Glove",
+      "type":   "arm",
+      "sex":    "unisex",
+      "subtype":"standard",
+      "rarity": "none",
+      "image":  "arm-elbow-glove.png"
+    },
+    {
+      "name":   "Shoulder Glove",
+      "type":   "arm",
+      "sex":    "unisex",
+      "subtype":"standard",
+      "rarity": "none",
+      "image":  "arm-shoulder-glove.png"
+    },
+    {
+      "name":   "Standard",
+      "type":   "arm",
+      "sex":    "unisex",
+      "subtype":"standard",
+      "rarity": "none",
+      "image":  "arm-standard.png"
+    },
+
+
+
+    {
+      "name":   "Standard",
+      "type":   "leg",
+      "sex":    "unisex",
+      "subtype":"standard",
+      "rarity": "none",
+      "image":  "leg-standard.png"
+    },
+    {
+      "name":   "Fluffy",
+      "type":   "leg",
+      "sex":    "unisex",
+      "subtype":"standard",
+      "rarity": "none",
+      "image":  "leg-fluffy.png"
+    },
+    {
+      "name":   "Bushy",
+      "type":   "leg",
+      "sex":    "unisex",
+      "subtype":"standard",
+      "rarity": "none",
+      "image":  "leg-bushy.png"
+    },
+
+
+
+    {
+      "name":   "Rounded",
+      "type":   "poncho",
+      "sex":    "unisex",
+      "subtype":"standard",
+      "rarity": "uncommon",
+      "image":  "poncho-rounded.png"
+    },
+    {
+      "name":   "Over Shoulder",
+      "type":   "poncho",
+      "sex":    "unisex",
+      "subtype":"standard",
+      "rarity": "uncommon",
+      "image":  "poncho-over-shoulder.png"
+    },
+    {
+      "name":   "Fancy",
+      "type":   "poncho",
+      "sex":    "unisex",
+      "subtype":"standard",
+      "rarity": "rare",
+      "image":  "poncho-fancy.png"
+    },
+    {
+      "name":   "Dragonfly",
+      "type":   "poncho",
+      "sex":    "unisex",
+      "subtype":"standard",
+      "rarity": "rare",
+      "image":  "poncho-dragonfly.png"
+    },
+
+
+
+    {
+      "name":   "Standard",
+      "type":   "tail",
+      "sex":    "feminine",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "tail-standard-f.png"
+    },
+    {
+      "name":   "Standard",
+      "type":   "tail",
+      "sex":    "masculine",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "tail-standard-m.png"
+    },
+    {
+      "name":   "Penguin",
+      "type":   "tail",
+      "sex":    "unisex",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "tail-penguin.png"
+    },
+    {
+      "name":   "Raptor",
+      "type":   "tail",
+      "sex":    "unisex",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "tail-raptor.png"
+    },
+    {
+      "name":   "Tip Frill",
+      "type":   "tail",
+      "sex":    "feminine",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "tail-tip-frill-f.png"
+    },
+    {
+      "name":   "Tip Frill",
+      "type":   "tail",
+      "sex":    "masculine",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "tail-tip-frill-m.png"
+    },
+    {
+      "name":   "End Poof",
+      "type":   "tail",
+      "sex":    "unisex",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "tail-end-poof.png"
+    },
+    {
+      "name":   "Plumed",
+      "type":   "tail",
+      "sex":    "feminine",
+      "subtype":"standard",
+      "rarity": "uncommon",
+      "image":  "tail-plumed-f.png"
+    },
+    {
+      "name":   "Plumed",
+      "type":   "tail",
+      "sex":    "masculine",
+      "subtype":"standard",
+      "rarity": "uncommon",
+      "image":  "tail-plumed-m.png"
+    },
+    {
+      "name":   "Fancy Plumed",
+      "type":   "tail",
+      "sex":    "masculine",
+      "subtype":"standard",
+      "rarity": "uncommon",
+      "image":  "tail-fancy-plumed.png"
+    },
+    {
+      "name":   "Feathered Plume",
+      "type":   "tail",
+      "sex":    "feminine",
+      "subtype":"standard",
+      "rarity": "uncommon",
+      "image":  "tail-feathered-plume.png"
+    },
+
+
+    {
+      "name":   "Phoenix",
+      "type":   "body",
+      "sex":    "masculine",
+      "subtype":"standard",
+      "rarity": "legendary",
+      "image":  "body-phoenix.png"
+    }
+
+  ],
+  "trait_descriptions":[
+    {
+      "title":"Horns",
+      "type":"horn",
+      "description":""
+    },
+    {
+      "title":"Ears",
+      "type":"ear",
+      "description":""
+    },
+    {
+      "title":"Wings",
+      "type":"wing",
+      "description":""
+    },
+    {
+      "title":"Collars",
+      "type":"collar",
+      "description":""
+    },
+    {
+      "title":"Crests",
+      "type":"crest",
+      "description":""
+    },
+    {
+      "title":"Hips",
+      "type":"hip",
+      "description":""
+    },
+    {
+      "title":"Arms",
+      "type":"arm",
+      "description":""
+    },
+    {
+      "title":"Legs",
+      "type":"leg",
+      "description":""
+    },
+    {
+      "title":"Ponchos",
+      "type":"poncho",
+      "description":""
+    },
+    {
+      "title":"Tails",
+      "type":"tail",
+      "description":""
+    },
+    {
+      "title":"Bodies",
+      "type":"body",
+      "description":""
+    }
+  ]
 }
