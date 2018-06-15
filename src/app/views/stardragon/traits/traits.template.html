@@ -5,6 +5,18 @@
     font-weight: bold;
   }
   a{ text-decoration: none }
+
+  .trait-img{
+    margin-bottom: 5px;
+  }
+  .trait-sex .fa-mars{
+    color: #307ECE;
+    text-shadow: 0 0 3px #307ECE;
+  }
+  .trait-sex .fa-venus{
+    color: #EE3851;
+    text-shadow: 0 0 3px #EE3851;
+  }
 </style>
 
 <div class="row">
@@ -79,9 +91,21 @@
       <div class="row">
         <ng-container *ngFor="let trait of filterTraitsByType(trait_type)">
           <div class="col-6 col-md-3" style="text-align:center;">
-            <img src="{{img_directory}}{{trait.image}}"/>
+            <img class="trait-img" src="{{img_directory}}{{trait.image}}"/>
             <p>
-              <strong>{{trait.name}}</strong><br/>
+              <strong>
+                <span class="trait-rarity">
+                  <i class="fa fa-circle {{trait.rarity}}"></i>
+                  &nbsp;
+                </span>
+                <span class="trait-name">{{trait.name}}</span>
+                <span class="trait-sex" *ngIf="trait.sex">
+                  &nbsp;
+                  <i class="fa fa-venus" *ngIf="trait.sex=='feminine'"></i>
+                  <i class="fa fa-mars" *ngIf="trait.sex=='masculine'"></i>
+                </span>
+              </strong>
+              <br/>
               <span *ngIf="trait.subtype != 'standard'" style="text-transform:capitalize">({{trait.subtype}} Subtype)</span>
             </p>
           </div>
