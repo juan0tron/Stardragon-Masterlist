@@ -45,7 +45,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-3">
       <h3>Search</h3>
       <div class="row">
         <input type="text" [(ngModel)]="search_filter" value="search_filter" class="form-control" [typeahead]="typeahead" [typeaheadMinLength]="0" (change)="filterVisibleTraits()"/>
@@ -87,6 +87,12 @@
         <select class="form-control" [(ngModel)]="sex_filter" (change)="filterVisibleTraits()">
           <option [value]="sex" *ngFor="let sex of sexes">{{sex | titlecase}}</option>
         </select>
+      </div>
+    </div>
+    <div class="col-md-1">
+      <h3>Clear</h3>
+      <div class="row">
+        <button (click)="clearAllFilters()" class="btn btn-primary">Clear</button>
       </div>
     </div>
   </div>

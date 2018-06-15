@@ -173,6 +173,19 @@ export class TraitsComponent {
   }
 
   /**
+   *  @function clearAllFilters
+   *  @description Reset all trait filters
+   */
+  clearAllFilters(){
+    this.search_filter  = '';
+    this.rarity_filter  = 'all';
+    this.type_filter    = 'all';
+    this.subtype_filter = 'all';
+    this.sex_filter     = 'all';
+    this.filterVisibleTraits();
+  }
+
+  /**
    *  @function    getTypeaheadList
    *  @description Gets a list of traits for typeahead search. Shows only a list of visible traits.
    *  @param  {string} property - The property of the trait to filter
