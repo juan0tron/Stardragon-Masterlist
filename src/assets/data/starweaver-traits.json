@@ -6,15 +6,17 @@
   },
   "traits": [
     {
-      "name":   "Female",
+      "name":   "Standard",
       "type":   "horn",
+      "sex":    "feminine",
       "subtype":"standard",
       "rarity": "common",
       "image":  "horns_female.png"
     },
     {
-      "name":   "Male",
+      "name":   "Standard",
       "type":   "horn",
+      "sex":    "masculine",
       "subtype":"standard",
       "rarity": "common",
       "image":  "horns_male.png"
@@ -36,15 +38,17 @@
 
 
     {
-      "name":   "Feminine",
+      "name":   "Fuu",
       "type":   "face",
+      "sex":    "feminine",
       "subtype":"fuu",
       "rarity": "common",
       "image":  "head_fuuteeffeminine.png"
     },
     {
-      "name":   "Masculine",
+      "name":   "Fuu",
       "type":   "face",
+      "sex":    "masculine",
       "subtype":"fuu",
       "rarity": "common",
       "image":  "head_fuuteefmasculine.png"

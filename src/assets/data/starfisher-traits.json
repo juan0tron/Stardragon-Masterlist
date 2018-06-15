@@ -50,15 +50,17 @@
     },
 
     {
-      "name":   "Feminine Barbels",
+      "name":   "Barbels",
       "type":   "whisker",
+      "sex":    "feminine",
       "subtype":"standard",
       "rarity": "common",
       "image":  "Ears_FemBarbel.png"
     },
     {
-      "name":   "Masculine Whiskers",
+      "name":   "Whiskers",
       "type":   "whisker",
+      "sex":    "masculine",
       "subtype":"standard",
       "rarity": "common",
       "image":  "Ears_MaleWhiskers.png"
@@ -322,15 +324,17 @@
       "image":  "Skirt_Betta.png"
     },
     {
-      "name":   "Feminine Rounded",
+      "name":   "Rounded",
       "type":   "hip_skirt",
+      "sex":    "feminine",
       "subtype":"standard",
       "rarity": "common",
       "image":  "Skirt_Fem.png"
     },
     {
-      "name":   "Feminine Finned",
+      "name":   "Finned",
       "type":   "hip_skirt",
+      "sex":    "feminine",
       "subtype":"standard",
       "rarity": "common",
       "image":  "Skirt_FemFinny.png"
@@ -350,8 +354,9 @@
       "image":  "Skirt_Flay.png"
     },
     {
-      "name":   "Thin Lop Crustaceous (Masculine)",
+      "name":   "Thin Lop Crustaceous",
       "type":   "hip_skirt",
+      "sex":    "masculine",
       "subtype":"standard",
       "rarity": "common",
       "image":  "Skirt_KrustyM.png"
