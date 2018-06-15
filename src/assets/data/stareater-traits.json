@@ -5,6 +5,22 @@
   },
   "traits": [
     {
+      "name":   "Standard",
+      "type":   "horn",
+      "sex":    "masculine",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "horns-standard-masc.png"
+    },
+    {
+      "name":   "Standard",
+      "type":   "horn",
+      "sex":    "feminine",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "horns-standard-fem.png"
+    },
+    {
       "name":   "Bull",
       "type":   "horn",
       "sex":    "feminine",
@@ -87,6 +103,14 @@
 
 
     {
+      "name":   "Standard",
+      "type":   "ear",
+      "sex":    "unisex",
+      "subtype":"standard",
+      "rarity": "common",
+      "image":  "ears-standard.png"
+    },
+    {
       "name":   "Short",
       "type":   "ear",
       "sex":    "unisex",
@@ -134,7 +158,7 @@
       "sex":    "unisex",
       "subtype":"standard",
       "rarity": "legendary",
-      "image":  "wood-druid.png"
+      "image":  "moss-druid.png"
     },
 
 

@@ -17,6 +17,10 @@
     color: #EE3851;
     text-shadow: 0 0 3px #EE3851;
   }
+  .trait-sex .fa-intersex{
+    color: #A020F0;
+    text-shadow: 0 0 3px #A020F0;
+  }
 </style>
 
 <div class="row">
@@ -99,10 +103,11 @@
                   &nbsp;
                 </span>
                 <span class="trait-name">{{trait.name}}</span>
-                <span class="trait-sex" *ngIf="trait.sex">
+                <span class="trait-sex">
                   &nbsp;
-                  <i class="fa fa-venus" *ngIf="trait.sex=='feminine'"></i>
-                  <i class="fa fa-mars" *ngIf="trait.sex=='masculine'"></i>
+                  <i class="fa fa-venus"    *ngIf="trait.sex=='feminine'"></i>
+                  <i class="fa fa-mars"     *ngIf="trait.sex=='masculine'"></i>
+                  <i class="fa fa-intersex" *ngIf="trait.sex=='unisex' || !trait.sex"></i>
                 </span>
               </strong>
               <br/>
