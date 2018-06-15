@@ -34,6 +34,7 @@ export class TraitsComponent {
   public rarity_filter:string  = 'all';
   public type_filter:string    = 'all';
   public subtype_filter:string = 'all';
+  public sex_filter:string     = 'all';
 
   public typeahead = [];
 
@@ -52,6 +53,13 @@ export class TraitsComponent {
     'starsweeper',
     'starweaver',
   ];
+
+  public sexes = [
+    'all',
+    'feminine',
+    'masculine',
+    'unisex',
+  ]
 
   constructor(
     private gem:           GemExchangeAPI,
@@ -137,7 +145,8 @@ export class TraitsComponent {
         (this.search_filter == trait.name || this.search_filter  == "")    &&
         (type == trait.type || type == "all") &&
         (this.rarity_filter == trait.rarity  || this.rarity_filter  == "all") &&
-        (this.subtype_filter == trait.subtype || this.subtype_filter == "all")
+        (this.subtype_filter == trait.subtype || this.subtype_filter == "all") &&
+        (this.sex_filter == trait.sex || (this.sex_filter == "unisex" && !trait.sex)||this.sex_filter == "all")
       ){
         return true;
       }
@@ -154,7 +163,8 @@ export class TraitsComponent {
         (this.search_filter  == trait.name    || this.search_filter  == "")    &&
         (this.type_filter    == trait.type    || this.type_filter    == "all") &&
         (this.rarity_filter  == trait.rarity  || this.rarity_filter  == "all") &&
-        (this.subtype_filter == trait.subtype || this.subtype_filter == "all")
+        (this.subtype_filter == trait.subtype || this.subtype_filter == "all") &&
+        (this.sex_filter     == trait.sex     || this.sex_filter     == "all" || (this.sex_filter == "unisex" && !trait.sex))
       ){
         return true;
       }

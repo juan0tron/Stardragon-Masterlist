@@ -45,13 +45,13 @@
   </div>
 
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-4">
       <h3>Search</h3>
       <div class="row">
         <input type="text" [(ngModel)]="search_filter" value="search_filter" class="form-control" [typeahead]="typeahead" [typeaheadMinLength]="0" (change)="filterVisibleTraits()"/>
       </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-2">
       <h3>Rarity</h3>
       <div class="row">
         <select class="form-control" [(ngModel)]="rarity_filter" (change)="filterVisibleTraits()">
@@ -63,7 +63,7 @@
         </select>
       </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-2">
       <h3>Trait Type</h3>
       <div class="row">
         <select class="form-control" [(ngModel)]="type_filter" (change)="filterVisibleTraits()" style="text-transform:capitalize">
@@ -72,12 +72,20 @@
         </select>
       </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-2">
       <h3>Subtype</h3>
       <div class="row">
         <select class="form-control" [(ngModel)]="subtype_filter" (change)="filterVisibleTraits()" style="text-transform:capitalize">
           <option value="all">All</option>
           <option [value]="subtype" *ngFor="let subtype of getSubspeciesTypes()">{{subtype}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <h3>Sex</h3>
+      <div class="row">
+        <select class="form-control" [(ngModel)]="sex_filter" (change)="filterVisibleTraits()">
+          <option [value]="sex" *ngFor="let sex of sexes">{{sex | titlecase}}</option>
         </select>
       </div>
     </div>
