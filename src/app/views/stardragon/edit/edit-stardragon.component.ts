@@ -1,7 +1,7 @@
 // Angular
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import {Router, ActivatedRoute, Params} from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 // 3rd Party
 import { default as swal} from 'sweetalert2';
@@ -21,6 +21,7 @@ export class EditStardragonComponent {
   public title = 'Edit Stardragon';
   public stardragon:Stardragon;
   public id;
+  public confirmDeletion:string;
 
   // Forms
   public adminInfo;
@@ -53,16 +54,20 @@ export class EditStardragonComponent {
   constructor(
     private gem: GemExchangeAPI,
     private fb:  FormBuilder,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ){
     this.activatedRoute.params.subscribe((params: Params) => {
       let stardragon;
+
       if(params['stardragon_id']){
         this.id = params['stardragon_id'];
         stardragon = this.getDetails(this.id);
       }
-      else stardragon = new Stardragon();
+      stardragon = new Stardragon();
+
       this.adminInfo = this.fb.group({
+        name:       [null, Validators.required],
         species:    [null, Validators.required],
         type:       [null, Validators.required],
         rarity:     [null, Validators.required],
@@ -75,7 +80,6 @@ export class EditStardragonComponent {
       });
       this.bio = this.fb.group({
         avatar: [],
-        name:   [],
         gender: [],
         bio:    []
       });
@@ -118,12 +122,49 @@ export class EditStardragonComponent {
    */
   save(formData){
     const stardragon = formData.value;
-    console.log("saving...")
-    this.gem.api(`/stardragons/${this.id}`, "PATCH", stardragon).subscribe(
-      data => {},
-      err  => {swal("Error Saving Changes.", err, "error")},
-      ()   => {}
-    );
+    if(!this.id){
+      this.gem.api(`/stardragons`, "POST", stardragon).subscribe(
+        data => {
+          this.router.navigate(['/stardragons',data.stardragon._id]);
+          swal("Stardragon Created Successfully",data.message,"success")
+        },
+        err  => {swal("Error Saving Changes.", err, "error")},
+        ()   => {}
+      );
+    }
+    else{
+      this.gem.api(`/stardragons/${this.id}`, "PATCH", stardragon).subscribe(
+        data => {
+          swal("Changes Saved Successfully",data.message,"success");
+          this.router.navigate(['/stardragons',data.stardragon._id,'/edit']);
+        },
+        err  => {swal("Error Saving Changes.", err, "error")},
+        ()   => {}
+      );
+    }
   }
 
+  /**
+   * @function delete
+   */
+  delete(){
+    swal({
+      title: `Are you sure you want to delete ${this.stardragon.name}?`,
+      text: "You won't be able to undo this!",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonText: `Yes! Delete them!`
+    }).then((result) => {
+      if (result.value) {
+        this.gem.api(`/stardragons/${this.id}`, "DELETE").subscribe(
+          data => {
+            swal("Success",data.message,"success")
+            this.router.navigate(['/stardragons']);
+          },
+          err  => { swal("Error deleting Stardragon.", err, "error") },
+          ()   => {}
+        );
+      }
+    })
+  }
 }

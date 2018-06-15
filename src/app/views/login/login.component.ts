@@ -59,6 +59,8 @@ export class LoginComponent {
         localStorage.setItem("auth_token", data.auth_token);
         localStorage.setItem("user_id",  data.user_id);
 
+        this.api.cacheUserData(data);
+
         this.router.navigate(['/users/' + data.user_id]);
       },
       err => {

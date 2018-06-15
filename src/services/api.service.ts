@@ -21,6 +21,8 @@ import { Router } from '@angular/router';
 
 import { default as swal} from 'sweetalert2';
 
+import { User } from './../app/models/user'
+
 import { environment } from './../environments/environment';
 
 @Injectable()
@@ -28,6 +30,8 @@ import { environment } from './../environments/environment';
 export class GemExchangeAPI {
 
   // public swal:any;
+
+  public user:User;
 
   constructor(
     private http:HttpClient,
@@ -86,20 +90,25 @@ export class GemExchangeAPI {
       })
       // Error
       .catch((error:any) => {
-        console.error("API ERROR:", params, error);
-
-        swal("API Error!",error.error.message || error.message,"error");
-
-        // 401: Unauthorized
-        if(error.status === 401){
-          console.error("Session Expired","Your session has expired. Please log in again.","error");
-          this.logout();
+        if (this.isDev()) console.error(`ERROR: ${request_type} ${params}`, error);
+        switch(error.status){
+          case 401: // Unauthorized
+            swal("Session Expired","Your session has expired. Please log in again.","error");
+            this.logout();
+            break;
+          default:
+            swal("API Error!",error.error.message || error.message,"error");
+            break;
         }
         return Observable.throw(error.error.message || error.message);
       });
   }
 
   register(form_data){}
+
+  cacheUserData(user){
+    this.user = user;
+  }
 
   logout(){
     localStorage.clear();

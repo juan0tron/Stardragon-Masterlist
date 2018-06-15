@@ -12,8 +12,8 @@ export class Stardragon{
   sex:string;
   gender:string;
 
-  created = moment();
-  approved = moment();
+  created = moment().format("yyyy-MM-dd");
+  approved = moment().format("yyyy-MM-dd");
 
   designer: string;
 

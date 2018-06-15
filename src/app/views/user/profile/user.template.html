@@ -14,9 +14,10 @@
     </div>
   </div>
   <div id="description" class="col-md-8">
-    <h2><span *ngIf="isOwnProfile">Welcome,</span> {{user.name || "Username"}}</h2>
+    <h2 class="pull-left"><span *ngIf="isOwnProfile">Welcome,</span> {{user.name || "Username"}}</h2>
+    <a [routerLink]="['/users/', user._id]" class="btn btn-secondary pull-right disabled">Edit Profile</a>
+    <hr style="clear:both; display:block;">
     <a [routerLink]="['/stardragons/create']" class="btn btn-primary">Create Stardragon</a>
     <a [routerLink]="['/stardragons']" class="btn btn-info">View Master List</a>
-    <a [routerLink]="['/users/', user._id]" class="btn btn-secondary">Edit Profile</a>
   </div>
 </div>
