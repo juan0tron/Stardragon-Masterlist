@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router }    from '@angular/router';
 
 // 3rd Party
+import { default as swal} from 'sweetalert2';
 import { TypeaheadMatch } from 'ngx-bootstrap/typeahead';
 
 // Models
@@ -82,6 +83,7 @@ export class TraitsComponent {
           if(this.available_species.includes(species)){
             this.species = species;
             this.getTraitsBySpecies(species);
+              if(params['subtype']){ this.subtype_filter = params['subtype'] }
           }
           // Otherwise, route to traits index
           else{
@@ -183,6 +185,10 @@ export class TraitsComponent {
     this.subtype_filter = 'all';
     this.sex_filter     = 'all';
     this.filterVisibleTraits();
+  }
+
+  changeSubtype(){
+    this.router.navigate(['stardragons/traits/', this.species, this.subtype_filter])
   }
 
   /**

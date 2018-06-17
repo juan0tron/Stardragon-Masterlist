@@ -6,6 +6,26 @@
   }
   a{ text-decoration: none }
 
+  .species-header-text{
+    position: absolute;
+    right: 5rem;
+    bottom: 8rem;
+    text-align: left;
+    z-index: 10;
+    color:#fff;
+    filter: drop-shadow(5px 3px 0px rgba(0, 0, 0, 0.5));
+  }
+  .species-header-name{
+    font-size: 4rem;
+    font-weight: bold;
+    margin: -0.4rem;
+  }
+  .species-header-subtype{
+    font-weight: bold;
+    font-size: 2rem;
+  }
+
+
   .trait-img{
     margin-bottom: 5px;
   }
@@ -40,6 +60,10 @@
 <ng-container *ngIf="!display_index && !!species">
   <div class="row">
     <div class="col-md-12">
+      <!-- <div class="species-header-text">
+        <h1 class="species-header-name">{{species | uppercase}}S</h1>
+        <h3 class="species-header-subtype" *ngIf="subtype_filter != 'all' && subtype_filter != 'standard'">{{subtype_filter | uppercase}} Subtype</h3>
+      </div> -->
       <img src="{{img_directory + (headers[subtype_filter] || headers['standard'])}}" class="species-header"/>
     </div>
   </div>
@@ -75,7 +99,7 @@
     <div class="col-md-2">
       <h3>Subtype</h3>
       <div class="row">
-        <select class="form-control" [(ngModel)]="subtype_filter" (change)="filterVisibleTraits()" style="text-transform:capitalize">
+        <select class="form-control" [(ngModel)]="subtype_filter" (change)="changeSubtype()" style="text-transform:capitalize">
           <option value="all">All</option>
           <option [value]="subtype" *ngFor="let subtype of getSubspeciesTypes()">{{subtype}}</option>
         </select>

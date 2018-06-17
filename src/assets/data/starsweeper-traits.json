@@ -1,7 +1,8 @@
 {
   "img_directory":"starsweeper_traits/",
   "headers":{
-    "standard":    "starsweepers_header_standard.png"
+    "standard": "starsweepers_header_standard.png",
+    "arctic":   "starsweepers_header_arctic.png"
   },
   "traits": [
     {
@@ -31,8 +32,8 @@
     {
       "name":   "Soft Curl",
       "type":   "horn",
-      "sex":    "masculine",
-      "subtype":"standard",
+      "sex":    "unisex",
+      "subtype":"arctic",
       "rarity": "common",
       "image":  "horns-soft-curl.png"
     },
@@ -237,7 +238,7 @@
       "name":   "Bushy",
       "type":   "leg",
       "sex":    "unisex",
-      "subtype":"standard",
+      "subtype":"arctic",
       "rarity": "none",
       "image":  "leg-bushy.png"
     },
@@ -299,7 +300,7 @@
       "name":   "Penguin",
       "type":   "tail",
       "sex":    "unisex",
-      "subtype":"standard",
+      "subtype":"arctic",
       "rarity": "common",
       "image":  "tail-penguin.png"
     },
@@ -334,6 +335,14 @@
       "subtype":"standard",
       "rarity": "common",
       "image":  "tail-end-poof.png"
+    },
+    {
+      "name":   "Tail Puff",
+      "type":   "tail",
+      "sex":    "unisex",
+      "subtype":"arctic",
+      "rarity": "common",
+      "image":  "tail-puff-arctic.png"
     },
     {
       "name":   "Plumed",
