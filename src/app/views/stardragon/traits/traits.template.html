@@ -1,46 +1,10 @@
-<style>
+<style media="screen">
   p{
     font-family: "Frenchpress";
     font-size: 22px;
     font-weight: bold;
   }
   a{ text-decoration: none }
-
-  .species-header-text{
-    position: absolute;
-    right: 5rem;
-    bottom: 8rem;
-    text-align: left;
-    z-index: 10;
-    color:#fff;
-    filter: drop-shadow(5px 3px 0px rgba(0, 0, 0, 0.5));
-  }
-  .species-header-name{
-    font-size: 4rem;
-    font-weight: bold;
-    margin: -0.4rem;
-  }
-  .species-header-subtype{
-    font-weight: bold;
-    font-size: 2rem;
-  }
-
-
-  .trait-img{
-    margin-bottom: 5px;
-  }
-  .trait-sex .fa-mars{
-    color: #307ECE;
-    text-shadow: 0 0 3px #307ECE;
-  }
-  .trait-sex .fa-venus{
-    color: #EE3851;
-    text-shadow: 0 0 3px #EE3851;
-  }
-  .trait-sex .fa-intersex{
-    color: #A020F0;
-    text-shadow: 0 0 3px #A020F0;
-  }
 </style>
 
 <div class="row">
@@ -51,20 +15,22 @@
     </h1>
     <h2 *ngIf="getSubspeciesTypes().length > 0">Current Subtypes
       <span *ngFor="let subtype of getSubspeciesTypes()">
-        | <a (click)="subtype_filter = subtype">{{subtype}}</a>
+        | <a (click)="changeSubtype(subtype)">{{subtype}}</a>
       </span>
     </h2>
   </div>
 </div>
 
 <ng-container *ngIf="!display_index && !!species">
+  <!-- <div class="row" style="margin:0 -15px;">
+    <div class="species-header-block fadeIn" [style.backgroundImage]="'url(' + header.background + ')'">
+      <h1 class="species-header-name fadeInLeft">{{header.text}}</h1>
+      <img class="species-header-characters fadeInLeft" [src]="header.characters"/>
+    </div>
+  </div> -->
   <div class="row">
     <div class="col-md-12">
-      <!-- <div class="species-header-text">
-        <h1 class="species-header-name">{{species | uppercase}}S</h1>
-        <h3 class="species-header-subtype" *ngIf="subtype_filter != 'all' && subtype_filter != 'standard'">{{subtype_filter | uppercase}} Subtype</h3>
-      </div> -->
-      <img src="{{img_directory + (headers[subtype_filter] || headers['standard'])}}" class="species-header"/>
+      <img [src]="header_img" class="species-header">
     </div>
   </div>
 
@@ -99,7 +65,7 @@
     <div class="col-md-2">
       <h3>Subtype</h3>
       <div class="row">
-        <select class="form-control" [(ngModel)]="subtype_filter" (change)="changeSubtype()" style="text-transform:capitalize">
+        <select class="form-control" [(ngModel)]="subtype_filter" (change)="changeSubtype(subtype_filter)" style="text-transform:capitalize">
           <option value="all">All</option>
           <option [value]="subtype" *ngFor="let subtype of getSubspeciesTypes()">{{subtype}}</option>
         </select>
@@ -121,39 +87,41 @@
     </div>
   </div>
 
-  <ng-container *ngFor="let trait_type of getTraitTypes()">
-    <!-- If there are are available traits for this type -->
-    <ng-container *ngIf="filterTraitsByType(trait_type).length > 0">
-      <div class="row">
-        <div class="col-md-12">
-          <h3>{{getTraitDescription(trait_type,"title")}}</h3>
-          <p>{{getTraitDescription(trait_type, "description")}}</p>
-        </div>
-      </div>
-      <div class="row">
-        <ng-container *ngFor="let trait of filterTraitsByType(trait_type)">
-          <div class="col-6 col-md-3" style="text-align:center;">
-            <img class="trait-img" src="{{img_directory}}{{trait.image}}"/>
-            <p>
-              <strong>
-                <span class="trait-rarity">
-                  <i class="fa fa-circle {{trait.rarity}}" title="{{trait.rarity | titlecase}}"></i>
-                  &nbsp;
-                </span>
-                <span class="trait-name">{{trait.name}}</span>
-                <span class="trait-sex">
-                  &nbsp;
-                  <i class="fa fa-venus"    *ngIf="trait.sex=='feminine'"></i>
-                  <i class="fa fa-mars"     *ngIf="trait.sex=='masculine'"></i>
-                  <i class="fa fa-intersex" *ngIf="trait.sex=='unisex' || !trait.sex"></i>
-                </span>
-              </strong>
-              <br/>
-              <span *ngIf="trait.subtype != 'standard'" style="text-transform:capitalize">({{trait.subtype}} Subtype)</span>
-            </p>
+  <ng-container [@listAnimation]="visibleTraits">
+    <ng-container *ngFor="let trait_type of getTraitTypes()">
+      <!-- If there are are available traits for this type -->
+      <ng-container *ngIf="filterTraitsByType(trait_type).length > 0">
+        <div class="row">
+          <div class="col-md-12">
+            <h3>{{getTraitDescription(trait_type,"title")}}</h3>
+            <p>{{getTraitDescription(trait_type, "description")}}</p>
           </div>
-        </ng-container>
-      </div>
+        </div>
+        <div class="row" [@listAnimation]="visibleTraits">
+          <ng-container *ngFor="let trait of filterTraitsByType(trait_type)">
+            <div class="col-6 col-md-3" style="text-align:center;">
+              <img class="trait-img" src="{{img_directory}}{{trait.image}}"/>
+              <p>
+                <strong>
+                  <span class="trait-rarity">
+                    <i class="fa fa-circle {{trait.rarity}}" title="{{trait.rarity | titlecase}}"></i>
+                    &nbsp;
+                  </span>
+                  <span class="trait-name">{{trait.name}}</span>
+                  <span class="trait-sex">
+                    &nbsp;
+                    <i class="fa fa-venus"    *ngIf="trait.sex=='feminine'"></i>
+                    <i class="fa fa-mars"     *ngIf="trait.sex=='masculine'"></i>
+                    <i class="fa fa-intersex" *ngIf="trait.sex=='unisex' || !trait.sex"></i>
+                  </span>
+                </strong>
+                <br/>
+                <span *ngIf="trait.subtype != 'standard'" style="text-transform:capitalize">({{trait.subtype}} Subtype)</span>
+              </p>
+            </div>
+          </ng-container>
+        </div>
+      </ng-container>
     </ng-container>
   </ng-container>
 
@@ -167,20 +135,14 @@
 <ng-container *ngIf="display_index">
   <div class="row">
     <div *ngFor="let s of traits_index" class="col-md-6 col-sm-12 col-xs-12">
-      <a [routerLink]="[s.link]" style="text-transform:capitalize;">
+      <a [routerLink]="[s.link]" style="text-transform:capitalize;" class="species-index-link">
         <img src="{{s.img}}" alt="{{s.name}}" title="{{s.name}}" class="species-header" />
       </a>
     </div>
   </div>
 
   <div class="row">
-    <style media="screen">
-      ::-webkit-scrollbar {
-        width: 0px;  /* remove scrollbar space */
-        background: transparent;  /* optional: just make scrollbar invisible */
-      }
-    </style>
-    <div class="col" style="overflow-x:scroll;">
+    <div class="col no-scrollbar" style="overflow-x:scroll;">
       <stardragon-stats></stardragon-stats>
     </div>
   </div>

@@ -5,6 +5,9 @@ import { ActivatedRoute, Router }    from '@angular/router';
 import { default as swal} from 'sweetalert2';
 import { TypeaheadMatch } from 'ngx-bootstrap/typeahead';
 
+// animations
+import { listAnimation, fadeAnimation }   from 'app/animations/traits.animations';
+
 // Models
 import { Stardragon }      from './../../../models/stardragon';
 import { StardragonTrait } from './../../../models/stardragon-trait';
@@ -16,6 +19,7 @@ import { GemExchangeAPI } from './../../../../services/api.service';
 @Component({
   selector:    'traits',
   templateUrl: './traits.template.html',
+  animations:  [listAnimation, fadeAnimation],
   providers:   [GemExchangeAPI, TraitsService]
 })
 export class TraitsComponent {
@@ -23,19 +27,30 @@ export class TraitsComponent {
   public stardragon:Stardragon;
   public species:string;
 
-  public base_img_directory   = './assets/img/';
-  public img_directory:string = '';
-  public headers:any = {};
-
-  public traits:Array<StardragonTrait> = [];
-  public visibleTraits:Array<StardragonTrait> = [];
-  public trait_descriptions = [];
-
   public search_filter:string  = '';
   public rarity_filter:string  = 'all';
   public type_filter:string    = 'all';
   public subtype_filter:string = 'all';
   public sex_filter:string     = 'all';
+
+  public base_img_directory   = './assets/img/';
+  public img_directory:string = '';
+  public headers:any = {};
+  public header_img:string = "";
+
+  public traits:Array<StardragonTrait> = [];
+  public visibleTraits:Array<StardragonTrait> = [];
+  public trait_descriptions = [];
+
+
+  public headerImgDir = './assets/img/' + "fancy_header/";
+  public header = {
+    background: this.headerImgDir + "background.jpg",
+    characters: this.headerImgDir + "characters.png",
+    text:"Stareaters",
+    subtext:"Mudskipper Subtype",
+  };
+
 
   public typeahead = [];
 
@@ -73,39 +88,15 @@ export class TraitsComponent {
     this.router_sub = this.route.params.subscribe(
       params => {
         /* Display traits for a specific species */
-        if(params['species_name']){
-          let species = params['species_name'];
-          // Change plural names to singular, IE "starshooters" to "starshooter"
-          if (species.substring(species.length - 1) == "s"){
-            species = species.substring(0, species.length-1);
-          }
-          // Get this species' traits if it exists
-          if(this.available_species.includes(species)){
-            this.species = species;
-            this.getTraitsBySpecies(species);
-              if(params['subtype']){ this.subtype_filter = params['subtype'] }
-          }
-          // Otherwise, route to traits index
-          else{
-            this.router.navigate(['/stardragons/traits']);
-          }
+        if(params['species_name'] && params['subtype']){
+          this.initTraitsPage(params['species_name'], params['subtype']);
+        }
+        else if(params['species_name']){
+          this.initTraitsPage(params['species_name'])
         }
         /* Display a list of all species with traits pages */
         else{
-          this.display_index = true;
-
-          for(let s of this.available_species){
-            this.traitsService.getTraits(s).subscribe(
-              data => {
-                let trait = {
-                  name:s+"s",
-                  link:"/stardragons/traits/"+s,
-                  img: "/assets/img/" + data['img_directory'] + data['headers']['standard']
-                };
-                this.traits_index.push(trait);
-              }
-            );
-          }
+          this.initTraitsIndex();
         }
       }
     );
@@ -113,6 +104,39 @@ export class TraitsComponent {
 
   ngOnDestroy(){
     this.router_sub.unsubscribe();
+  }
+
+  initTraitsIndex(){
+    this.display_index = true;
+    for(let s of this.available_species){
+      this.traitsService.getTraits(s).subscribe(
+        data => {
+          let trait = {
+            name:s+"s",
+            link:"/stardragons/traits/"+s,
+            img: "/assets/img/" + data['img_directory'] + data['headers']['standard']
+          };
+          this.traits_index.push(trait);
+        }
+      );
+    }
+  }
+
+  initTraitsPage(species, subtype = "all"){
+    this.subtype_filter = subtype;
+    // Change plural names to singular, IE "starshooters" to "starshooter"
+    if (species.substring(species.length - 1) == "s"){
+      species = species.substring(0, species.length-1);
+    }
+    // Get this species' traits if it exists
+    if(this.available_species.includes(species)){
+      this.species = species;
+      this.getTraitsBySpecies(species);
+    }
+    // Otherwise, route to traits index
+    else{
+      this.router.navigate(['/stardragons/traits']);
+    }
   }
 
   /**
@@ -130,6 +154,7 @@ export class TraitsComponent {
         this.visibleTraits      = this.traits;
         this.trait_descriptions = data['trait_descriptions'];
         this.typeahead          = this.getTypeaheadList("name");
+        this.changeSubtype(this.subtype_filter);
       },
       err  => {console.error("error getting traits for "+species, err)},
     );
@@ -187,8 +212,14 @@ export class TraitsComponent {
     this.filterVisibleTraits();
   }
 
-  changeSubtype(){
-    this.router.navigate(['stardragons/traits/', this.species, this.subtype_filter])
+  changeSubtype(subtype){
+    let imgSrc = this.headers[subtype] || this.headers['standard'];
+    this.header_img = this.img_directory + imgSrc;
+
+    this.subtype_filter = subtype;
+    this.filterVisibleTraits();
+
+    this.router.navigate(['stardragons/traits/', this.species, this.subtype_filter], {replaceUrl:true})
   }
 
   /**

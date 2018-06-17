@@ -3,6 +3,7 @@
 @import "myo.less";
 @import "ngx-bootstrap.less";
 @import "text.less";
+@import "traits.less";
 
 // Fonts
 @font-face {
@@ -35,14 +36,24 @@ body{
 
 main{
   min-height: 100%;
+  &::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  width: 0px;  /* remove scrollbar space */
+  background: transparent;  /* optional: just make scrollbar invisible */
 }
 
 .content{
   background: rgba(255,255,255,0.8);
-  overflow:   hidden;
+  overflow:   auto;
   margin:     0 auto;
-  padding:    15px;
-  transition: max-width .5s ease;
+  padding:    0;
+  position:   relative;
+  transition: max-width .5s ease, max-height .5s ease;
 }
 
 .row{
@@ -63,10 +74,15 @@ a{
 header{
   text-align: center;
   background: rgba(255,255,255,0.9);
+  font-family: "Futura";
+  font-size: 1.2rem;
+  text-transform: uppercase;
   .navigation{
+    .row{margin:0;}
     a{color:#000}
-    box-shadow: 0px 0px 10px #000;
+    display: block;
   }
+  box-shadow: 0px 0px 10px #000;
 }
 
 .species-header{
