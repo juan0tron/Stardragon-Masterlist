@@ -9,7 +9,8 @@ export const fadeAnimation = trigger('fadeAnimation', [
     ),
     query(
       ':leave',
-      [style({ opacity: 1 }), animate('0.25s', style({ opacity: 0 }))],
+      // [style({ opacity: 1 }), animate('0.25s', style({ opacity: 0 }))],
+      [style({ opacity: 0 })],
       { optional: true }
     ),
     query(
