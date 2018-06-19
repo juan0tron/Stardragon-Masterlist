@@ -11,17 +11,18 @@
   <div class="col-md-12">
     <h1>
       <a routerLink="/stardragons/traits">Traits Compendium</a>
-      <span *ngIf="species"><a [routerLink]="['/stardragons/traits',species]">: {{species}}s</a></span>
+      <span *ngIf="filters.species && filters.species != 'all'"><a [routerLink]="[ '/stardragons/traits', filters.species ]">: {{filters.species}}s</a></span>
     </h1>
-    <h2 *ngIf="getSubspeciesTypes().length > 0">Current Subtypes
-      <span *ngFor="let subtype of getSubspeciesTypes()">
+    <!-- <h2 *ngIf="getSubspeciesTypes().length > 0">Current Subtypes
+      <span *ngFor="let subtype of subtypes">
         | <a (click)="changeSubtype(subtype)">{{subtype}}</a>
       </span>
-    </h2>
+    </h2> -->
   </div>
 </div>
 
-<ng-container *ngIf="!display_index && !!species">
+<ng-container *ngIf="!display_index">
+  <!-- THIS IMG BLOCK IS FOR THE NEW HEADER STYLE ONCE I FINISH IT -->
   <!-- <div class="row" style="margin:0 -15px;">
     <div class="species-header-block fadeIn" [style.backgroundImage]="'url(' + header.background + ')'">
       <h1 class="species-header-name fadeInLeft">{{header.text}}</h1>
@@ -34,17 +35,26 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-md-3">
-      <h3>Search</h3>
+  <div id="trait-filters" class="row">
+    <div class="col-md-2">
+      <h3>Name</h3>
       <div class="row">
-        <input type="text" [(ngModel)]="search_filter" value="search_filter" class="form-control" [typeahead]="typeahead" [typeaheadMinLength]="0" (change)="filterVisibleTraits()"/>
+        <input type="text" [(ngModel)]="filters.name" value="filters.name" class="form-control" [typeahead]="typeahead" [typeaheadMinLength]="0" (change)="filterTraits()"/>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <h3>Species</h3>
+      <div class="row">
+        <select class="form-control" [(ngModel)]="filters.species" (change)="filterTraits()">
+          <option value="all">All</option>
+          <option [value]="s" *ngFor="let s of available_species">{{s | titlecase}}s</option>
+        </select>
       </div>
     </div>
     <div class="col-md-2">
       <h3>Rarity</h3>
       <div class="row">
-        <select class="form-control" [(ngModel)]="rarity_filter" (change)="filterVisibleTraits()">
+        <select class="form-control" [(ngModel)]="filters.rarity" (change)="filterTraits()">
           <option value="all">All</option>
           <option value="common">Common</option>
           <option value="uncommon">Uncommon</option>
@@ -56,7 +66,7 @@
     <div class="col-md-2">
       <h3>Type</h3>
       <div class="row">
-        <select class="form-control" [(ngModel)]="type_filter" (change)="filterVisibleTraits()" style="text-transform:capitalize">
+        <select class="form-control" [(ngModel)]="filters.type" (change)="filterTraits()" style="text-transform:capitalize">
           <option value="all">All</option>
           <option [value]="type" *ngFor="let type of getTraitTypes()">{{type.replace("_"," ")}}</option>
         </select>
@@ -65,16 +75,16 @@
     <div class="col-md-2">
       <h3>Subtype</h3>
       <div class="row">
-        <select class="form-control" [(ngModel)]="subtype_filter" (change)="changeSubtype(subtype_filter)" style="text-transform:capitalize">
+        <select class="form-control" [(ngModel)]="filters.subtype" (change)="filterTraits()" style="text-transform:capitalize">
           <option value="all">All</option>
           <option [value]="subtype" *ngFor="let subtype of getSubspeciesTypes()">{{subtype}}</option>
         </select>
       </div>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-1">
       <h3>Sex</h3>
       <div class="row">
-        <select class="form-control" [(ngModel)]="sex_filter" (change)="filterVisibleTraits()">
+        <select class="form-control" [(ngModel)]="filters.sex" (change)="filterTraits()">
           <option [value]="sex" *ngFor="let sex of sexes">{{sex | titlecase}}</option>
         </select>
       </div>
@@ -89,18 +99,18 @@
 
   <ng-container [@listAnimation]="visibleTraits">
     <ng-container *ngFor="let trait_type of getTraitTypes()">
-      <!-- If there are are available traits for this type -->
       <ng-container *ngIf="filterTraitsByType(trait_type).length > 0">
         <div class="row">
           <div class="col-md-12">
-            <h3>{{getTraitDescription(trait_type,"title")}}</h3>
-            <p>{{getTraitDescription(trait_type, "description")}}</p>
+            <h3>{{getTraitDescription(trait_type,"title")}} ({{filterTraitsByType(trait_type).length}})</h3>
+            <p>{{getTraitTypeDescription(trait_type, filters.species)}}</p>
           </div>
         </div>
         <div class="row" [@listAnimation]="visibleTraits">
           <ng-container *ngFor="let trait of filterTraitsByType(trait_type)">
             <div class="col-6 col-md-3" style="text-align:center;">
-              <img class="trait-img" src="{{img_directory}}{{trait.image}}"/>
+              <p> <strong></strong> </p>
+              <img class="trait-img" src="{{base_img_directory + '/'+trait.species+'_traits/' + trait.image}}"/>
               <p>
                 <strong>
                   <span class="trait-rarity">
@@ -116,6 +126,7 @@
                   </span>
                 </strong>
                 <br/>
+                <span *ngIf="filters.species == 'all'">{{trait.species | titlecase}} Trait </span>
                 <span *ngIf="trait.subtype != 'standard'" style="text-transform:capitalize">({{trait.subtype}} Subtype)</span>
               </p>
             </div>
@@ -133,6 +144,14 @@
 </ng-container>
 
 <ng-container *ngIf="display_index">
+  <div style="margin:25px 0;">
+    <div class="col-12">
+      <a [routerLink]="['/stardragons/traits/all']" class="species-index-link">
+        <img class="species-header" src="assets/img/stardragons_header_by_deletethestars.png"/>
+        <h1 class="species-header-title">All Traits</h1>
+      </a>
+    </div>
+  </div>
   <div class="row">
     <div *ngFor="let s of traits_index" class="col-md-6 col-sm-12 col-xs-12">
       <a [routerLink]="[s.link]" style="text-transform:capitalize;" class="species-index-link">

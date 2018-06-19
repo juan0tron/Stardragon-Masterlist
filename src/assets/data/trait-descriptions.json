@@ -1,0 +1,165 @@
+{
+  "trait_descriptions":[
+    {
+      "title":"Horns",
+      "type":"horn",
+      "description": {
+        "stareater":"StarEater horns may vary depending on environmental needs and genetics, but generally all follow a spiralling pattern.",
+        "starweaver":"Males and Females have larger and smaller horns respectively. Some have patterns that glow in dim light, these are considered uncommon."
+      }
+    },
+    {
+      "title":"Ears",
+      "type":"ear",
+      "description":{
+        "stareater":"Big enough to hear you with, my darling.",
+        "starshooter":"They use these to hear stuff. Starshooters have rounded gems located at the base of their ears. They don't disrupt or make hearing difficult. These gems can be cut, following the same universal gem cutting rarities (Common: simple shapes, smooth or faceted. Uncommon: encraved and multigem. Rare: Complex cuts, cuts that don't resemble one simple, unified shape.). Arctic Shooters tend to grow tufts on the very ends of their ears, some even folding naturally to protect their gems. Flared ears are uncommonly seen, as they are reminiscent of the Starshooters more 'primitive' Stardragon kin. The flares are divots in the skin itself, not to be confused with fluff or fur.",
+        "starweaver":"Weavers have large fluffy papillon-like ears that vary in size and fluffiness. For the most part they don't tend to perk or droop."
+      }
+    },
+    {
+      "title":"Crests",
+      "type":"crest"
+    },
+    {
+      "title":"Collars",
+      "type":"collar"
+    },
+    {
+      "title":"Whiskers",
+      "type":"whisker",
+      "description":{
+        "starweaver":"Male Weavers grow whiskers out of the side of their faces (around the jawbone under the ear, typically.) These whiskers can vary."
+      }
+    },
+    {
+      "title":"Face",
+      "type":"face",
+      "description":{
+        "starshooter":"Starshooters with multiple eyes typically lack any discernible iris or pupils, though they can see just fine. Arctic Shooters can grow fluff around their necks and jawlines."
+      }
+    },
+    {
+      "title":"Fluff",
+      "type":"fluff",
+      "description":{
+        "starweaver": "It's so fluffy I'm gonna die. Weavers are typically found in cold climates, arctic, or high altitude environments. As such, they grow more or less fur depending on their locations and family lineage. There's no rarity associated with fur length, because that'd just be silly. It takes about two seasons for a Weaver's fur to accommodate for their climate. Which means yes, they do shed."
+      }
+    },
+    {
+      "title": "Gems",
+      "type": "gem",
+      "description":{
+        "starweaver":"These gems can be cut, following the same universal gem cutting rarities (simple shapes: common, engraved and multigem: uncommon, complex cuts: rare)."
+      }
+    },
+    {
+      "title": "Fins",
+      "type": "fin"
+    },
+    {
+      "title":"Wings",
+      "type":"wing"
+    },
+    {
+      "title":"Capes",
+      "type":"cape"
+    },
+    {
+      "title":"Hip Skirts",
+      "type":"hip_skirt"
+    },
+    {
+      "title":"Ponchos",
+      "type":"poncho"
+    },
+    {
+      "title":"Fur",
+      "type":"fur",
+      "description":{
+        "stareater":"From the coldest regions, to the hottest, Eaters have adapted to any climate, and their fur variety shows it."
+      }
+    },
+    {
+      "title":"Bodies",
+      "type":"body"
+    },
+    {
+      "title":"Hands",
+      "type":"hand",
+      "description":{
+        "starweaver":"Weavers have humanoid hands with five fingers and a thumb."
+      }
+    },
+    {
+      "title":"Arms",
+      "type":"arm",
+      "description": {
+        "stareater": "StarEaters are a gentle race, however those packing claws know how to use it and aren’t to be taken lightly.",
+        "starshooter":"Females have fairly delicate and humanoid arms and hands with five slender fingers, while males have stockier arms with four large, claw-like fingers and an accompanying spike protruding from each elbow. It is very rare to find a Starshooter gifted with elemental magicks. These Shooters can control and manipulate their elements, and often weaponize them for personal gain. These Stardragons emanate great power visibly from their forearms.",
+        "starweaver":"Weavers are very fluffy, but the fur below their knees and elbows always grows short and compact. They have elongated paw feet with three or four toes depending on who's drawing them and how high I am. Some weavers grow small, smooth scales that typically show up along their arms and legs (though patches can grow elsewhere)."
+      }
+    },
+    {
+      "title":"Hips",
+      "type":"hip"
+    },
+    {
+      "title":"Tails",
+      "type":"tail",
+      "description":{
+        "stareater":"Like their Fisher counterparts, Eaters have a large variety of tail types. Males with longer tails, while females generally have none.",
+        "starshooter":"Tails usually do not vary too far outside of the types below, either in length or thickness. Arctic dwelling Shooters may grow extraordinarily fluffy furry tails. These Shooters will have wider rings of tail shards to accommodate for the thicker fur, and usually have shorter tail plates.",
+        "starweaver":"Cloudlike tails kept in tact with magic. If you ask me to explain I won't know what to tell you honestly."
+      }
+    },
+    {
+      "title":"Tail Plates",
+      "type":"tail_plate",
+      "description":{
+        "starshooter": "Starshooters have semi flexible 'plates' lining their tails. Acting similarly to a rubbery plastic, they are surprisingly soft and flexible, but will become fragile or brittle when engraved. Therefore engraved tailplates are an UNCOMMON trait. Joined plates are plates that grow as one solid connected plate rather than the common four plate arrangement. Uncommon secondary plates float close to the tailplates and generally compliment the shape. It is rare to find Shooters with a tertiary floating plate, or really any number over 2."
+      }
+    },
+    {
+      "title":"Tail Shards",
+      "type":"tail_shard",
+      "description":{
+        "starshooter": "Starshooters have a ring of floating gem shards around the tips of their tails. The most common arrangements are 5-6 large shards with an equal number of complimenting small shards. Most Shooter's shards grow in rough cut teardrop gem shapes, but variations and cosmetically shaped shards are not unheard of. Uncommon shards are made up of a continuous joined shape, usually in a thin pipe or ring with accompanying floating shards. Shooters with these rings are born with the shape, it cannot be fabricated cosmetically."
+      }
+    },
+    {
+      "title":"Legendaries",
+      "type":"legendary",
+      "description":{
+        "starshooter": "Some Shooters believe those who are born with these mutations are cursed to look like their more primitive selves. However, the younger generation may believe this to be a blessing given to them by Basut himself."
+      }
+    },
+    {
+      "title":"Legs",
+      "type":"leg"
+    },
+    {
+      "title":"Feet",
+      "type":"foot",
+      "description":{
+        "starshooter":"Both genders have long cat-like paws, complete with lil toebeans. Some shooters have a dew claw, others do not.",
+        "starweaver":"Weavers are very fluffy, but the fur below their knees and elbows always grows short and compact. They have  elongated paw feet with three or four toes depending on who's drawing them and how high I am. Some weavers grow small, smooth scales that typically show up along their arms and legs (though patches can grow elsewhere)."
+      }
+    },
+    {
+      "title":"Full Body Traits",
+      "type":"full_body"
+    },
+    {
+      "title":"Accessories",
+      "type":"accessories",
+      "description":{
+        "starshooter":"Enhancement rings are hand crafted to aid in strength and magic channeling. They are usually worn around the wrists, or around the tail to reduce drag from weight. Ankle spurs allow the user to hover or levitate, they are usually military issued."
+      }
+    },
+    {
+      "title":"Other",
+      "type":"other"
+    }
+  ]
+}

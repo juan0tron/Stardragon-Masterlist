@@ -4,14 +4,14 @@ export const listAnimation = trigger('listAnimation', [
   transition('* => *', [
     query(
       ':leave',
-      stagger(75, [ animate('0.25s', style({ opacity: 0, overflow: 'hidden', height: 0, width: 0 })) ] ),
+      stagger(10, [ animate('0.1s', style({ opacity: 0, overflow: 'hidden', height: 0, width: 0 })) ] ),
       { optional: true }
     ),
     query(
       ':enter',
       [
         style({ opacity: 0 }),
-        stagger(100, [ animate('0.5s', style({ opacity: 1 })) ] ),
+        stagger(10, [ animate('0.5s', style({ opacity: 1 })) ] ),
       ],
       { optional: true }
     ),

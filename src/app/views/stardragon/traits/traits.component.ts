@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ActivatedRoute, Router }    from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 // 3rd Party
 import { default as swal} from 'sweetalert2';
@@ -9,12 +9,12 @@ import { TypeaheadMatch } from 'ngx-bootstrap/typeahead';
 import { listAnimation, fadeAnimation }   from 'app/animations/traits.animations';
 
 // Models
-import { Stardragon }      from './../../../models/stardragon';
-import { StardragonTrait } from './../../../models/stardragon-trait';
+import { Stardragon }      from 'app/models/stardragon';
+import { StardragonTrait } from 'app/models/stardragon-trait';
 
 // Services
 import { TraitsService } from './traits-service';
-import { GemExchangeAPI } from './../../../../services/api.service';
+import { GemExchangeAPI } from 'services/api.service';
 
 @Component({
   selector:    'traits',
@@ -22,18 +22,19 @@ import { GemExchangeAPI } from './../../../../services/api.service';
   animations:  [listAnimation, fadeAnimation],
   providers:   [GemExchangeAPI, TraitsService]
 })
+
 export class TraitsComponent {
 
-  public stardragon:Stardragon;
-  public species:string;
+  public filters = {
+    species: 'all',
+    name:    '',
+    rarity:  'all',
+    type:    'all',
+    subtype: 'all',
+    sex:     'all'
+  };
 
-  public search_filter:string  = '';
-  public rarity_filter:string  = 'all';
-  public type_filter:string    = 'all';
-  public subtype_filter:string = 'all';
-  public sex_filter:string     = 'all';
-
-  public base_img_directory   = './assets/img/';
+  public base_img_directory   = 'assets/img/';
   public img_directory:string = '';
   public headers:any = {};
   public header_img:string = "";
@@ -41,7 +42,6 @@ export class TraitsComponent {
   public traits:Array<StardragonTrait> = [];
   public visibleTraits:Array<StardragonTrait> = [];
   public trait_descriptions = [];
-
 
   public headerImgDir = './assets/img/' + "fancy_header/";
   public header = {
@@ -61,13 +61,13 @@ export class TraitsComponent {
 
   public available_species = [
     'starcrafter',
-    'stardasher',
-    'stareater',
     'starfisher',
+    'stardasher',
     'starrobber',
-    'starshooter',
+    'stareater',
     'starsweeper',
     'starweaver',
+    'starshooter',
   ];
 
   public sexes = [
@@ -109,7 +109,7 @@ export class TraitsComponent {
   initTraitsIndex(){
     this.display_index = true;
     for(let s of this.available_species){
-      this.traitsService.getTraits(s).subscribe(
+      this.traitsService.getLocalTraits(s).subscribe(
         data => {
           let trait = {
             name:s+"s",
@@ -123,41 +123,73 @@ export class TraitsComponent {
   }
 
   initTraitsPage(species, subtype = "all"){
-    this.subtype_filter = subtype;
+    this.display_index = false;
+    this.filters.species = species;
+    this.filters.subtype = subtype;
+
+    // Make API calls & get local data
+    this.getTraitDescriptions();
+    this.getHeaderImages();
+    this.getAllTraits();
+
     // Change plural names to singular, IE "starshooters" to "starshooter"
     if (species.substring(species.length - 1) == "s"){
       species = species.substring(0, species.length-1);
     }
-    // Get this species' traits if it exists
-    if(this.available_species.includes(species)){
-      this.species = species;
-      this.getTraitsBySpecies(species);
-    }
-    // Otherwise, route to traits index
-    else{
+    // Route to index if species does not exist
+    if(!this.available_species.includes(species) && species != 'all'){
       this.router.navigate(['/stardragons/traits']);
     }
   }
 
-  /**
-   *  @function getTraitsBySpecies
-   *  @description Get a traits object for a specific species from the Traits service
-   *  @param {string} species
-   *  @TODO - Move this data to the API!
-   */
-  getTraitsBySpecies(species){
-    this.traitsService.getTraits(species).subscribe(
-      data => {
-        this.img_directory      = this.base_img_directory + data["img_directory"];
-        this.headers            = data['headers'];
-        this.traits             = data['traits'];
-        this.visibleTraits      = this.traits;
-        this.trait_descriptions = data['trait_descriptions'];
-        this.typeahead          = this.getTypeaheadList("name");
-        this.changeSubtype(this.subtype_filter);
-      },
-      err  => {console.error("error getting traits for "+species, err)},
+  getTraitDescriptions(){
+    this.traitsService.getTraitDescriptions().subscribe(
+      data => { this.trait_descriptions = data['trait_descriptions'] }
     );
+  }
+
+  getHeaderImages(){
+    this.traitsService.getSpeciesHeaders().subscribe(
+      data => { this.headers = data }
+    );
+  }
+
+  /**
+   *  @function getAllTraits
+   *  @description Get all traits from all stardragons
+   */
+  getAllTraits(){
+    this.traitsService.getAllTraits().subscribe(
+      data => { this.traits = data },
+      err  => { console.error("error getting traits", err) },
+      ()   => { this.filterTraits() }
+    );
+  }
+
+  /**
+   *  @function filterTraits
+   *  @description Filter the visible traits list by checking the status of all filter vars
+   *  @param {string} filter - type, sex, etc
+   *  @param {string} value - stardasher, "trait name", etc
+   */
+  filterTraits(){
+    let filterTypes = Object.keys(this.filters); // Get all filter types
+    let filteredTraits = this.traits.filter(trait => {
+      return filterTypes.every(filterType => {
+
+        let traitValue    = trait[filterType];
+        let filteredValue = this.filters[filterType];
+
+        let matchesExactly   = traitValue === filteredValue;
+        let matchesAll       = filteredValue == 'all' || filteredValue == ''
+
+        if(matchesExactly || matchesAll) return true;
+      });
+    });
+
+    this.visibleTraits = filteredTraits;
+    this.changeHeader();
+    this.typeahead = this.getTypeaheadList("name");
   }
 
   /**
@@ -169,34 +201,15 @@ export class TraitsComponent {
   filterTraitsByType(type){
     return this.visibleTraits.filter(function(trait, index, self){
       if(
-        (this.search_filter == trait.name || this.search_filter  == "")    &&
+        (this.filters.name == trait.name || this.filters.name  == "")    &&
         (type == trait.type || type == "all") &&
-        (this.rarity_filter == trait.rarity  || this.rarity_filter  == "all") &&
-        (this.subtype_filter == trait.subtype || this.subtype_filter == "all") &&
-        (this.sex_filter == trait.sex || (this.sex_filter == "unisex" && !trait.sex)||this.sex_filter == "all")
+        (this.filters.rarity == trait.rarity  || this.filters.rarity  == "all") &&
+        (this.filters.subtype == trait.subtype || this.filters.subtype == "all") &&
+        (this.filters.sex == trait.sex || (this.filters.sex == "unisex" && !trait.sex)||this.filters.sex == "all")
       ){
         return true;
       }
     }.bind(this));
-  }
-
-  /**
-   *  @function filterVisibleTraits
-   *  @description Filter the visible traits list by checking the status of all filter vars
-   */
-  filterVisibleTraits(){
-    this.visibleTraits = this.traits.filter(function(trait, index, self){
-      if(
-        (this.search_filter  == trait.name    || this.search_filter  == "")    &&
-        (this.type_filter    == trait.type    || this.type_filter    == "all") &&
-        (this.rarity_filter  == trait.rarity  || this.rarity_filter  == "all") &&
-        (this.subtype_filter == trait.subtype || this.subtype_filter == "all") &&
-        (this.sex_filter     == trait.sex     || this.sex_filter     == "all" || (this.sex_filter == "unisex" && !trait.sex))
-      ){
-        return true;
-      }
-    }.bind(this));
-    this.typeahead = this.getTypeaheadList("name");
   }
 
   /**
@@ -204,22 +217,28 @@ export class TraitsComponent {
    *  @description Reset all trait filters
    */
   clearAllFilters(){
-    this.search_filter  = '';
-    this.rarity_filter  = 'all';
-    this.type_filter    = 'all';
-    this.subtype_filter = 'all';
-    this.sex_filter     = 'all';
-    this.filterVisibleTraits();
+    this.filters = {
+      species: 'all',
+      name:    '',
+      rarity:  'all',
+      type:    'all',
+      subtype: 'all',
+      sex:     'all',
+    };
+    this.filterTraits();
   }
 
-  changeSubtype(subtype){
-    let imgSrc = this.headers[subtype] || this.headers['standard'];
-    this.header_img = this.img_directory + imgSrc;
-
-    this.subtype_filter = subtype;
-    this.filterVisibleTraits();
-
-    this.router.navigate(['stardragons/traits/', this.species, this.subtype_filter], {replaceUrl:true})
+  changeHeader(){
+    if(this.filters.species != 'all'){
+      let headerObj = this.headers[this.filters.species];
+      let imgSrc = headerObj[this.filters.subtype] || headerObj['standard'] || "";
+      if(imgSrc != ""){
+        this.header_img = this.base_img_directory + `${this.filters.species}_traits/` + imgSrc;
+      }
+    }
+    else{
+      this.header_img = this.base_img_directory + 'stardragons_header_by_deletethestars.png';
+    }
   }
 
   /**
@@ -241,6 +260,9 @@ export class TraitsComponent {
     let types = this.traits.map(a => a.subtype);
     let unique_types = types.filter(function(elem, index, self) {return index == self.indexOf(elem)});
     return unique_types;
+  }
+  getSubtypes(){
+    return this.getSubspeciesTypes();
   }
 
   /**
@@ -267,5 +289,15 @@ export class TraitsComponent {
     else{
       return "";
     }
+  }
+
+  getTraitTypeDescription(type, species){
+    let desc_obj = this.trait_descriptions.find(function(trait, index, self){
+      return trait.type == type;
+    });
+    if(desc_obj && desc_obj['description']){
+      return desc_obj['description'][species];
+    }
+    return "";
   }
 }

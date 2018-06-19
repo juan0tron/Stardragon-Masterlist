@@ -75,19 +75,24 @@ header{
   text-align: center;
   background: rgba(255,255,255,0.9);
   font-family: "Futura";
-  font-size: 1.2rem;
+  font-size: 1rem;
   text-transform: uppercase;
+  letter-spacing: 2px;
   .navigation{
     .row{margin:0;}
     a{color:#000}
     display: block;
   }
+  .navbar{
+    padding:0;
+  }
   box-shadow: 0px 0px 10px #000;
 }
 
 .species-header{
-  filter: drop-shadow(5px 5px 0px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(5px 5px 1px rgba(0, 0, 0, 0.4));
   width:100%;
+  transition: filter 0.3s ease;  
 }
 
 footer{
@@ -104,7 +109,7 @@ footer{
     display: inline-block;
     a{
       display: block;
-      padding: 15px;
+      padding: 10px;
 
       text-align:      center;
       text-decoration: none;
