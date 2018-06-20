@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
-import { Stardragon } from './../../../models/stardragon';
+import { Stardragon } from 'app/models/stardragon';
 
-import { GemExchangeAPI } from './../../../../services/api.service';
+import { GemExchangeAPI } from 'services/api.service';
 
 @Component({
   selector: 'stardragon-list',
@@ -10,6 +10,10 @@ import { GemExchangeAPI } from './../../../../services/api.service';
   providers: [GemExchangeAPI]
 })
 export class StardragonListComponent {
+
+  @Input() config:any = {
+    dashboard: false
+  };
 
   title = 'Stardragons';
 

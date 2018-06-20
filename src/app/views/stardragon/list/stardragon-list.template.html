@@ -63,38 +63,35 @@
   .stats{}
 </style>
 
-<div id="stardragon-list">
+<ng-container *ngIf="stardragons.length > 0">
 
-  <div *ngIf="stardragons.length > 0">
-
-    <div class="row">
-      <div class="col-12">
-        <h3 class="pull-left">StarDragon MasterList</h3>
-        <a [routerLink]="['/stardragons/create']" class="btn btn-primary pull-right">Create New</a>
-      </div>
+  <div class="row">
+    <div class="col-12">
+      <h3 class="pull-left" *ngIf="config.dashboard">Your StarDragons</h3>
+      <h3 class="pull-left" *ngIf="!config.dashboard">Stardragon Master List</h3>
+      <a [routerLink]="['/stardragons/create']" class="btn btn-primary pull-right">Create New</a>
     </div>
+  </div>
 
-    <div class="row">
-      <!-- dis the stardragon thumb -->
-      <div class="stardragon col-6 col-sm-3" *ngFor="let stardragon of stardragons">
-        <div class="thumbnail">
-          <a [routerLink]="['/stardragons/',stardragon._id]">
-            <img src="./../../assets/img/default_avatar.png" />
-          </a>
-        </div>
-        <div class="details">
-          <a class="name" [routerLink]="['/stardragons/',stardragon._id]">
-            {{stardragon.name}}
-          </a>
-          <a class="owner" routerLink="/users/fakeUser">
-            <i class="fa fa-user"></i>
-            {{stardragon.owner || "Owner"}}
-          </a>
-        </div>
+  <div class="row">
+    <!-- dis the stardragon thumb -->
+    <div class="stardragon col-6 col-sm-3" *ngFor="let stardragon of stardragons">
+      <div class="thumbnail">
+        <a [routerLink]="['/stardragons/',stardragon._id]">
+          <img src="./../../assets/img/default_avatar.png" />
+        </a>
       </div>
-
+      <div class="details">
+        <a class="name" [routerLink]="['/stardragons/',stardragon._id]">
+          {{stardragon.name}}
+        </a>
+        <a class="owner" routerLink="/users/fakeUser">
+          <i class="fa fa-user"></i>
+          {{stardragon.owner || "Owner"}}
+        </a>
+      </div>
     </div>
 
   </div>
 
-</div>
+</ng-container>

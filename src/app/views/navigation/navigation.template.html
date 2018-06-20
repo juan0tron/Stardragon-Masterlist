@@ -8,7 +8,7 @@
     </ul>
     <ul class="horizontal-links col-md-6 col-sm-12" style="text-align:right">
       <ng-container *ngIf="api.isDev() || api.isLoggedIn()">
-        <li *ngIf="api.isLoggedIn()"><a [routerLink]="'/users/' + user_id"><i class="fa fa-user-circle"></i> My Profile</a></li>
+        <li *ngIf="api.isLoggedIn()"><a routerLink="/dashboard"><i class="fa fa-user-circle"></i> Dashboard</a></li>
         <li *ngIf="api.isLoggedIn()"><a (click)="api.logout()" href="#"><i class="fa fa-sign-out"></i> Logout</a></li>
         <li *ngIf="!api.isLoggedIn()"><a routerLink="/login"><i class="fa fa-sign-in"></i> Login</a></li>
         <li *ngIf="!api.isLoggedIn()"><a routerLink="/register"><i class="fa fa-wpforms"></i> Register</a></li>

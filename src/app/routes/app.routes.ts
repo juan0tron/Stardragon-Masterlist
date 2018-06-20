@@ -4,6 +4,7 @@ import { Routes, RouterModule } from "@angular/router";
 // Public Views
 import { DashboardComponent }   from "app/views/dashboard/dashboard.component";
 import { DiscordComponent }     from "app/views/discord/discord.component";
+import { HomeComponent }        from "app/views/home/home.component";
 import { TosComponent }         from "app/views/tos/tos.component";
 import { MYOComponent }         from "app/views/myo/myo.component";
 import { MYOThankYouComponent } from "app/views/myo/thank-you/myo-thank-you.component";
@@ -26,9 +27,10 @@ import { DevGuard }      from "app/guards/dev.guard";       // Dev environment o
 
 export const ROUTES: Routes = [
     // Main redirect
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
+    { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
 
-    { path: 'home',           component: DashboardComponent },
+    { path: 'home',           component: HomeComponent },
+    { path: 'dashboard',      component: DashboardComponent, canActivate: [LoggedInGuard] },
     { path: 'discord',        component: DiscordComponent   },
     { path: 'termsofservice', component: TosComponent       },
 

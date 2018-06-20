@@ -1,16 +1,50 @@
+<style media="screen">
+  .btn{margin-right: 5px}
+</style>
+
 <div class="row">
-  <div class="col-md-12">
-    <h1 class="page-title">Welcome to the Gem Exchange!</h1>
-    <img src="./../assets/img/stardragons_header_by_deletethestars.png" id="header-img"/>
-    <p>This is a community group for the closed species Stardragons.</p>
-    <p>This website is a work in progress. Follow the links below to find us elsewhere on the web.</p>
-    <ul class="horizontal-links">
-      <li><a href="http://toyhou.se/~world/1420.gemexchange-jo-arca" target="_blank"><i class="fa fa-home"></i> Toyhouse</a></li>
-      <li><a href="https://docs.google.com/spreadsheets/d/1_EqVHX6UD0vAtiZnu3fjqwn1pIlKCjLMNsREkhejIDM/edit#gid=0" target="_blank"><i class="fa fa-list"></i> Master List</a></li>
-      <li><a href="https://www.furaffinity.net/user/gemexchange" target="_blank"><i class="fa fa-paw"></i> Fur Affinity</a></li>
-      <li><a href="https://github.com/juan0tron/the-gem-exchange" target="_blank"><i class="fa fa-github"></i> Github</a></li>
-      <!-- <li><a href="https://twitter.com/Gem_Exchange"><i class="fa fa-twitter"></i> Twitter</a></li> -->
-      <li><a href="https://gemexchange.deviantart.com/" target="_blank"><i class="fa fa-deviantart"></i> DeviantArt</a></li>
-    </ul>
+  <div id="avatar" class="col-md-4">
+    <img src="assets/img/default_avatar.png" width="100%" />
+    <div class="row">
+      <div class="col" *ngFor="let icon of links">
+        <a href="#">
+          <i class="fa fa-{{icon}}"></i>
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <h3>Inventory</h3>
+      <div id="inventory" class="dashboard-module col-12">
+        <div class="row">
+          <div class="col" *ngFor="let token of tokens" (click)="showTokenDetails(token)">
+            <img [src]="token.img" [title]="token.name"/>
+            <p>({{token.count}})</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="description" class="col-md-8">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="pull-left">Welcome back, {{user.name || "Username"}}</h2>
+        <a [routerLink]="['/users/', user._id]" class="btn btn-secondary pull-right disabled">Edit Profile</a>
+        <hr style="clear:both; display:block;">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <h2>Messages</h2>
+        <div id="messages" class="dashboard-module" style="width:100%">
+          <div style="width:100%; border-bottom:1px solid #fafafa; text-align:left; padding: 5px 15px;" *ngFor="let row of rows">
+            Message text <i class="fa fa-close pull-right" style="color:red"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <stardragon-list [config]="{dashboard:true}"></stardragon-list>
+    </div>
   </div>
 </div>

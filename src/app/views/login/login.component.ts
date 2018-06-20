@@ -45,8 +45,6 @@ export class LoginComponent {
       password: this.api.hashPW(password),
     }
 
-    console.log(this.api.hashPW(password));
-
     localStorage.clear();
     this.api.api("/auth/login", "POST", post_data).subscribe(
       data => {
@@ -61,7 +59,7 @@ export class LoginComponent {
 
         this.api.cacheUserData(data);
 
-        this.router.navigate(['/users/' + data.user_id]);
+        this.router.navigate(['/dashboard']);
       },
       err => {
         if(err.message == "Invalid email." || err.message == "Email is required."){

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router }    from '@angular/router';
 
-import { GemExchangeAPI } from './../../../../services/api.service';
-import { User } from './../../../models/user'
+import { GemExchangeAPI } from 'services/api.service';
+import { User } from 'app/models/user'
 
 @Component({
     selector:    'user',

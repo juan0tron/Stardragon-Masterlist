@@ -27,7 +27,7 @@ export class LoggedInGuard implements CanActivate {
     canActivate() {
       // Check login status - if user isn't logged in, redirect to login
       if (!this.api.isLoggedIn()) {
-        this.router.navigate(['/login']);
+        this.router.navigate(['/home']);
       } else {
         return this.api.isLoggedIn();
       }
