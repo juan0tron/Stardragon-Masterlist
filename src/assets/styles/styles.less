@@ -55,10 +55,24 @@ main{
   padding:    0;
   position:   relative;
   transition: max-width .5s ease, max-height .5s ease;
+  z-index:    1;
 }
 
 .row{
   margin: 15px auto;
+}
+
+.full-width{
+  width:100%;
+  box-shadow: inset 0px  10px 10px -10px #000,
+              inset 0px -10px 10px -10px #000;
+
+  z-index: 2;
+  img{
+    width:100%;
+    z-index: -1;
+    position: relative;
+  }
 }
 
 img{
