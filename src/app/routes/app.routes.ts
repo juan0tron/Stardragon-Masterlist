@@ -17,6 +17,7 @@ import { UserComponent } from "app/views/user/profile/user.component";
 
 // Stardragons
 import { StardragonComponent }       from "app/views/stardragon/profile/stardragon.component";
+import { StardragonIndex }           from "app/views/stardragon/index/stardragon-index.component";
 import { StardragonListComponent }   from "app/views/stardragon/list/stardragon-list.component";
 import { EditStardragonComponent }   from 'app/views/stardragon/edit/edit-stardragon.component';
 import { TraitsComponent }           from 'app/views/stardragon/traits/traits.component';
@@ -44,8 +45,9 @@ export const ROUTES: Routes = [
     { path: 'users/:user_id', component: UserComponent,  canActivate: [DevGuard]},
 
     // Stardragons (DO NOT REARRANGE - Route order matters!!)
-    { path: 'stardragons',                      component: StardragonListComponent, canActivate: [LoggedInGuard] },
-      { path: 'stardragons/create',               component: EditStardragonComponent,  canActivate: [LoggedInGuard]},
+    { path: 'stardragons', component: StardragonIndex },
+      { path: 'stardragons/list', component: StardragonListComponent, canActivate: [LoggedInGuard] },
+      { path: 'stardragons/create', component: EditStardragonComponent,  canActivate: [LoggedInGuard]},
 
       { path: 'stardragons/traits',                        component: TraitsComponent },
         { path: 'stardragons/traits/:species_name',          component: TraitsComponent },

@@ -1,0 +1,27 @@
+<div class="full-width">
+  <a [routerLink]="['/stardragons/traits/all']">
+    <h1 style="width:100%; text-align:center;">Species Encyclopedia</h1>
+    <img src="assets/img/stardragons_header_by_deletethestars.png" style="margin:-25px 0;">
+  </a>
+</div>
+<div class="row">
+  <div
+    *ngFor="let s of speciesHeaders; let i = index;"
+    class="col-md-6 col-sm-12 col-xs-12"
+  >
+    <a [routerLink]="['/stardragons/traits',s.species]" class="species-index-link">
+      <img
+        [src]="'assets/img/' + s.species + '_traits/' + s.img"
+        alt="{{s.species | titlecase}}"
+        title="{{s.species | titlecase}}"
+        class="species-header"
+      />
+    </a>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col no-scrollbar" style="overflow-x:scroll;">
+    <stardragon-stats></stardragon-stats>
+  </div>
+</div>

@@ -56,7 +56,6 @@ export class TraitsComponent {
 
   public router_sub:any;
 
-  public display_index:boolean   = false;
   public traits_index:Array<any> = [];
 
   public available_species = [
@@ -94,9 +93,8 @@ export class TraitsComponent {
         else if(params['species_name']){
           this.initTraitsPage(params['species_name'])
         }
-        /* Display a list of all species with traits pages */
         else{
-          this.initTraitsIndex();
+          this.initTraitsPage('all');
         }
       }
     );
@@ -107,7 +105,6 @@ export class TraitsComponent {
   }
 
   initTraitsIndex(){
-    this.display_index = true;
     for(let s of this.available_species){
       this.traitsService.getLocalTraits(s).subscribe(
         data => {
@@ -123,7 +120,6 @@ export class TraitsComponent {
   }
 
   initTraitsPage(species, subtype = "all"){
-    this.display_index = false;
     this.filters.species = species;
     this.filters.subtype = subtype;
 

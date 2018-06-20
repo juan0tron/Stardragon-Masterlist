@@ -18,6 +18,7 @@ import { TosComponent }            from "app/views/tos/tos.component";
 import { MYOThankYouComponent }    from "app/views/myo/thank-you/myo-thank-you.component";
 
 // Stardragon Pages
+import { StardragonIndex }           from './views/stardragon/index/stardragon-index.component';
 import { StardragonListComponent }   from './views/stardragon/list/stardragon-list.component';
 import { StardragonComponent }       from './views/stardragon/profile/stardragon.component';
 import { StatsComponent }            from './views/stardragon/stats/stats.component';
@@ -59,6 +60,7 @@ import { AppComponent } from './app.component';
     MYOThankYouComponent,
 
     // Stardragon pages
+    StardragonIndex,
     StardragonListComponent,
     StardragonComponent,
     StatsComponent,
