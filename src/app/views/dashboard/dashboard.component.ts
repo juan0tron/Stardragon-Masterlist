@@ -1,9 +1,14 @@
+// Angular
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router }    from '@angular/router';
 
+// 3rd Party
 import { default as swal} from 'sweetalert2';
 
-import { GemExchangeAPI } from 'services/api.service';
+// Services
+import { GemExchangeAPI } from 'app/services/api.service';
+
+// Models
 import { User } from 'app/models/user'
 
 @Component({

@@ -14,7 +14,7 @@ import { StardragonTrait } from 'app/models/stardragon-trait';
 
 // Services
 import { TraitsService } from './traits-service';
-import { GemExchangeAPI } from 'services/api.service';
+import { GemExchangeAPI } from 'app/services/api.service';
 
 @Component({
   selector:    'traits',

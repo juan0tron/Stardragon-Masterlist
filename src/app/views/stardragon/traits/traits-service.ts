@@ -12,7 +12,7 @@ import {
 } from '@angular/common/http';
 import 'rxjs/Rx';
 
-import { GemExchangeAPI } from 'services/api.service';
+import { GemExchangeAPI } from 'app/services/api.service';
 
 @Injectable()
 export class TraitsService {
@@ -38,7 +38,7 @@ export class TraitsService {
   }
 
   getSpeciesHeaders(){
-    return this.http.get(`assets/data/species-headers.json`)    
+    return this.http.get(`assets/data/species-headers.json`)
   }
 
   getLocalTraits(species){

@@ -1,7 +1,9 @@
+// Angular
 import { Component, Input }       from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { GemExchangeAPI } from './../../../services/api.service';
+// Services
+import { GemExchangeAPI } from 'app/services/api.service';
 
 @Component({
   selector:    'navigation',

@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 
 import { Stardragon } from 'app/models/stardragon';
 
-import { GemExchangeAPI } from 'services/api.service';
+import { GemExchangeAPI } from 'app/services/api.service';
 
 @Component({
   selector: 'stardragon-list',

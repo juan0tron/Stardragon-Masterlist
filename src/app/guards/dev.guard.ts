@@ -5,7 +5,7 @@ import { Location } from '@angular/common';
 
 import { Http, RequestOptions, URLSearchParams } from '@angular/http';
 
-import { GemExchangeAPI } from './../../services/api.service';
+import { GemExchangeAPI } from 'app/services/api.service';
 
 @Injectable()
 

@@ -40,7 +40,7 @@ import { LoggedInGuard } from "./guards/logged-in.guard";
 import { DevGuard }      from "./guards/dev.guard";
 
 // Services
-import { GemExchangeAPI } from './../services/api.service';
+import { GemExchangeAPI } from 'app/services/api.service';
 
 import { ROUTES }       from "./routes/app.routes";
 import { AppComponent } from './app.component';

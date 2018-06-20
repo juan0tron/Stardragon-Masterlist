@@ -3,10 +3,10 @@ import { Component, Input } from '@angular/core';
 import {Router, ActivatedRoute, Params} from '@angular/router';
 
 // Models
-import { Stardragon } from './../../../models/stardragon';
+import { Stardragon } from 'app/models/stardragon';
 
 // Services
-import { GemExchangeAPI } from './../../../../services/api.service';
+import { GemExchangeAPI } from 'app/services/api.service';
 
 @Component({
   selector:    'stardragon',

@@ -21,9 +21,9 @@ import { Router } from '@angular/router';
 
 import { default as swal} from 'sweetalert2';
 
-import { User } from './../app/models/user'
+import { User } from 'app/models/user'
 
-import { environment } from './../environments/environment';
+import { environment } from 'environments/environment';
 
 @Injectable()
 

@@ -1,9 +1,12 @@
+// Angular
 import { Component } from '@angular/core';
 import { Router }    from '@angular/router';
 
+// 3rd party
 import { LoginResponse, LoginOptions, FacebookService, InitParams } from 'ngx-facebook';
 
-import { GemExchangeAPI } from './../../../services/api.service';
+// Services
+import { GemExchangeAPI } from 'app/services/api.service';
 
 @Component({
     selector:    'login',

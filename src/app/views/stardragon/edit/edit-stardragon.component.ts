@@ -7,9 +7,11 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { default as swal} from 'sweetalert2';
 import * as moment from 'moment';
 
-import { Stardragon } from './../../../models/stardragon';
+// Services
+import { GemExchangeAPI } from 'app/services/api.service';
 
-import { GemExchangeAPI } from './../../../../services/api.service';
+// Models
+import { Stardragon } from 'app/models/stardragon';
 
 @Component({
   selector:    'edit-stardragon',
