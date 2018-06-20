@@ -1,4 +1,6 @@
 // Customizations and fixes for Sweetalert 2 modals.
-body.swal2-height-auto{
-  height: 100%;
+
+// Prevent body from shrinking below 100% screen height when modal appears
+body.swal2-shown.swal2-height-auto{
+  height: 100%!important;
 }
