@@ -62,6 +62,10 @@
       "type":"wing"
     },
     {
+      "title":"Shales",
+      "type":"shale"
+    },
+    {
       "title":"Capes",
       "type":"cape"
     },
