@@ -45,13 +45,13 @@
 </div>
 
 <div id="trait-filters" class="row" *ngIf="showFilters" [@shrinkExpand]="showFilters">
-  <div class="col-md-2 col-sm-6">
+  <div class="col-md-3 col-sm-6">
     <h3>Name</h3>
     <div class="row">
       <input type="text" [(ngModel)]="filters.name" value="filters.name" class="form-control" [typeahead]="typeahead" [typeaheadMinLength]="0" (change)="filterTraits()"/>
     </div>
   </div>
-  <div class="col-md-2 col-sm-6">
+  <div class="col-md-3 col-sm-6">
     <h3>Species</h3>
     <div class="row">
       <select class="form-control" [(ngModel)]="filters.species" (change)="filterTraits()">
@@ -60,29 +60,8 @@
       </select>
     </div>
   </div>
-  <div class="col-md-2 col-sm-6">
-    <h3>Rarity</h3>
-    <div class="row">
-      <select class="form-control" [(ngModel)]="filters.rarity" (change)="filterTraits()">
-        <option value="all">All</option>
-        <option value="common">Common</option>
-        <option value="uncommon">Uncommon</option>
-        <option value="rare">Rare</option>
-        <option value="legendary">Legendary</option>
-      </select>
-    </div>
-  </div>
-  <div class="col-md-2 col-sm-6">
-    <h3>Type</h3>
-    <div class="row">
-      <select class="form-control" [(ngModel)]="filters.type" (change)="filterTraits()" style="text-transform:capitalize">
-        <option value="all">All</option>
-        <option [value]="type" *ngFor="let type of getTraitTypes()">{{type.replace("_"," ")}}</option>
-      </select>
-    </div>
-  </div>
-  <div class="col-md-2 col-sm-6">
-    <h3>Subtype</h3>
+  <div class="col-md-3 col-sm-6">
+    <h3>Subspecies</h3>
     <div class="row">
       <select class="form-control" [(ngModel)]="filters.subtype" (change)="filterTraits()" style="text-transform:capitalize">
         <option value="all">All</option>
@@ -90,21 +69,46 @@
       </select>
     </div>
   </div>
-  <div class="col-md-1 col-sm-6">
-    <h3>Sex</h3>
+  <div class="col-md-3 col-sm-6">
+    <h3>Trait Type</h3>
     <div class="row">
-      <select class="form-control" [(ngModel)]="filters.sex" (change)="filterTraits()">
-        <option [value]="sex" *ngFor="let sex of sexes">{{sex | titlecase}}</option>
+      <select class="form-control" [(ngModel)]="filters.type" (change)="filterTraits()" style="text-transform:capitalize">
+        <option value="all">All</option>
+        <option [value]="type" *ngFor="let type of getTraitTypes()">{{type.replace("_"," ")}}</option>
       </select>
     </div>
   </div>
-  <div class="col-md-1 col-sm-6">
-    <h3>Clear</h3>
+  <div class="col-md-5 col-sm-6">
+    <h3>Rarity</h3>
+    <div class="row icon-selector">
+      <div *ngFor="let rarity of rarities">
+        <a title="{{rarity | titlecase}}" (click)="filters.rarity = rarity; filterTraits();" [ngClass]="{'highlighted' : rarity === filters.rarity }">
+          <i class="fa fa-circle {{rarity}}"></i><br>
+          <small style="font-size:1rem">{{rarity | titlecase}}</small>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-6">
+    <h3>Sex</h3>
+    <div class="row icon-selector">
+      <a *ngFor="let sex of sexes" title="{{sex | titlecase}}" class="trait-sex" [ngClass]="{'highlighted' : sex === filters.sex }" (click)="filters.sex = sex; filterTraits()">
+        <i class="fa fa-intersex" *ngIf="sex=='unisex'"></i>
+        <i class="fa fa-venus" *ngIf="sex=='feminine'"></i>
+        <i class="fa fa-mars" *ngIf="sex=='masculine'"></i>
+        <i class="fa fa-times-circle" *ngIf="sex=='all'"></i>
+        <br>
+        <small style="font-size:1rem">{{sex | titlecase}}</small>
+      </a>
+    </div>
+  </div>
+  <div class="col-md-3 col-sm-6">
+    <h3>Clear Filters</h3>
     <div class="row">
       <button (click)="clearAllFilters()" class="btn btn-secondary"><i class="fa fa-times-circle"></i></button>
     </div>
   </div>
-  <div class="col-sm-6 d-none d-sm-block d-md-none">
+  <div class="col-xs-6 col-sm-6 d-sm-block d-xs-block d-md-none">
     <h3>Hide</h3>
     <button type="button" class="btn btn-secondary" (click)="showFilters = !showFilters" *ngIf="showFilters">Hide Filters <i class="fa fa-arrow-up"></i> </button>
   </div>
@@ -136,9 +140,9 @@
                 <span class="trait-name">{{trait.name}}</span>
                 <span class="trait-sex">
                   &nbsp;
-                  <i class="fa fa-venus"    *ngIf="trait.sex=='feminine'"></i>
-                  <i class="fa fa-mars"     *ngIf="trait.sex=='masculine'"></i>
-                  <i class="fa fa-intersex" *ngIf="trait.sex=='unisex' || !trait.sex"></i>
+                  <i class="fa fa-venus highlighted"    *ngIf="trait.sex=='feminine'"></i>
+                  <i class="fa fa-mars highlighted"     *ngIf="trait.sex=='masculine'"></i>
+                  <i class="fa fa-intersex highlighted" *ngIf="trait.sex=='unisex' || !trait.sex"></i>
                 </span>
               </strong>
               <br/>

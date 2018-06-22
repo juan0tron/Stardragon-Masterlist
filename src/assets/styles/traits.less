@@ -54,21 +54,47 @@
   font-size: 2rem;
 }
 
+.icon-selector{
+  width: 100%;
+  text-align: center;
+  a{
+    padding-right: 1rem;
+    padding-bottom: 15px;
+    display: inline-block;
+    &:hover, &.highlighted{
+      text-shadow: 0 0 1px #000;
+    }
+  }
+  i{
+    font-size: 2rem;
+  }
+}
 
 .trait-img{
   margin-bottom: 5px;
 }
 .trait-sex{
+  .fa{
+    &:hover, &.highlighted{
+      text-shadow: 0 0 3px #000;
+    }
+  }
   .fa-mars{
     color: #307ECE;
-    text-shadow: 0 0 3px #307ECE;
+    &:hover,&.highlighted{
+      text-shadow: 0 0 3px #307ECE;
+    }
   }
   .fa-venus{
     color: #EE3851;
-    text-shadow: 0 0 3px #EE3851;
+    &:hover,&.highlighted{
+      text-shadow: 0 0 3px #EE3851;
+    }
   }
   .fa-intersex{
     color: #A020F0;
-    text-shadow: 0 0 3px #A020F0;
+    &:hover, &.highlighted{
+      text-shadow: 0 0 3px #A020F0;
+    }
   }
 }

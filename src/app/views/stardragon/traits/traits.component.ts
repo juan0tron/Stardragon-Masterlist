@@ -77,6 +77,15 @@ export class TraitsComponent {
     'unisex',
   ]
 
+  public rarities = [
+    'all',
+    'none',
+    'common',
+    'uncommon',
+    'rare',
+    'legendary'
+  ]
+
   constructor(
     private gem:           GemExchangeAPI,
     private traitsService: TraitsService,

@@ -20,11 +20,11 @@
 @link-hover-color: #985F99;
 
 // Rarity Colors
-@none:      #CCCCCC; .none{color:@none}
-@common:    #B0F171; .common{color:@common}
-@uncommon:  #FFE476; .uncommon{color:@uncommon}
-@rare:      #FF855B; .rare{color:@rare}
-@legendary: #FF6FA2; .legendary{color:@legendary}
+@none:      #CCCCCC; .none{color:@none; &.highlighted, &:hover{text-shadow: 0 0 5px fade(@none, 50%)}}
+@common:    #B0F171; .common{color:@common; &.highlighted, &:hover{text-shadow: 0 0 5px fade(@common, 50%)}}
+@uncommon:  #FFE476; .uncommon{color:@uncommon; &.highlighted, &:hover{text-shadow: 0 0 5px fade(@uncommon, 50%)}}
+@rare:      #FF855B; .rare{color:@rare; &.highlighted, &:hover{text-shadow: 0 0 5px fade(@rare, 50%)}}
+@legendary: #FF6FA2; .legendary{color:@legendary; &.highlighted, &:hover{text-shadow: 0 0 5px fade(@legendary, 50%)}}
 
 html, body{
   margin: 0;
