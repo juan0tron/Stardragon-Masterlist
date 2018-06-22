@@ -7,20 +7,6 @@
   a{ text-decoration: none }
 </style>
 
-<div class="row">
-  <div class="col-md-12">
-    <h1>
-      <a routerLink="/stardragons/traits">Traits Compendium</a>
-      <span *ngIf="filters.species && filters.species != 'all'"><a [routerLink]="[ '/stardragons/traits', filters.species ]">: {{filters.species}}s</a></span>
-    </h1>
-    <!-- <h2 *ngIf="getSubspeciesTypes().length > 0">Current Subtypes
-      <span *ngFor="let subtype of subtypes">
-        | <a (click)="changeSubtype(subtype)">{{subtype}}</a>
-      </span>
-    </h2> -->
-  </div>
-</div>
-
 <!-- THIS IMG BLOCK IS FOR THE NEW HEADER STYLE ONCE I FINISH IT -->
 <!-- <div class="row" style="margin:0 -15px;">
   <div class="species-header-block fadeIn" [style.backgroundImage]="'url(' + header.background + ')'">
@@ -32,16 +18,40 @@
   <div class="col-md-12">
     <img [src]="header_img" class="species-header">
   </div>
+  <div class="col-12">
+    <hr>
+  </div>
 </div>
 
-<div id="trait-filters" class="row">
-  <div class="col-md-2">
+<div class="row">
+  <div class="col-12">
+    <h1 class="pull-left">
+      Traits Compendium
+      <span *ngIf="filters.species && filters.species != 'all'">: {{filters.species}}s</span>
+    </h1>
+    <button type="button" class="pull-right btn btn-secondary" (click)="showFilters = !showFilters" *ngIf="!showFilters">Show Filters <i class="fa fa-arrow-down"></i> </button>
+    <button type="button" class="pull-right btn btn-secondary" (click)="showFilters = !showFilters" *ngIf="showFilters">Hide Filters <i class="fa fa-arrow-up"></i> </button>
+  </div>
+  <!-- <div class="col-12">
+    <h2 *ngIf="getSubspeciesTypes().length > 0">Current Subtypes
+      <span *ngFor="let subtype of subtypes">
+      | <a (click)="changeSubtype(subtype)">{{subtype}}</a>
+      </span>
+    </h2>
+  </div> -->
+  <div class="col-12">
+    <hr>
+  </div>
+</div>
+
+<div id="trait-filters" class="row" *ngIf="showFilters" [@shrinkExpand]="showFilters">
+  <div class="col-md-2 col-sm-6">
     <h3>Name</h3>
     <div class="row">
       <input type="text" [(ngModel)]="filters.name" value="filters.name" class="form-control" [typeahead]="typeahead" [typeaheadMinLength]="0" (change)="filterTraits()"/>
     </div>
   </div>
-  <div class="col-md-2">
+  <div class="col-md-2 col-sm-6">
     <h3>Species</h3>
     <div class="row">
       <select class="form-control" [(ngModel)]="filters.species" (change)="filterTraits()">
@@ -50,7 +60,7 @@
       </select>
     </div>
   </div>
-  <div class="col-md-2">
+  <div class="col-md-2 col-sm-6">
     <h3>Rarity</h3>
     <div class="row">
       <select class="form-control" [(ngModel)]="filters.rarity" (change)="filterTraits()">
@@ -62,7 +72,7 @@
       </select>
     </div>
   </div>
-  <div class="col-md-2">
+  <div class="col-md-2 col-sm-6">
     <h3>Type</h3>
     <div class="row">
       <select class="form-control" [(ngModel)]="filters.type" (change)="filterTraits()" style="text-transform:capitalize">
@@ -71,7 +81,7 @@
       </select>
     </div>
   </div>
-  <div class="col-md-2">
+  <div class="col-md-2 col-sm-6">
     <h3>Subtype</h3>
     <div class="row">
       <select class="form-control" [(ngModel)]="filters.subtype" (change)="filterTraits()" style="text-transform:capitalize">
@@ -80,7 +90,7 @@
       </select>
     </div>
   </div>
-  <div class="col-md-1">
+  <div class="col-md-1 col-sm-6">
     <h3>Sex</h3>
     <div class="row">
       <select class="form-control" [(ngModel)]="filters.sex" (change)="filterTraits()">
@@ -88,11 +98,18 @@
       </select>
     </div>
   </div>
-  <div class="col-md-1">
+  <div class="col-md-1 col-sm-6">
     <h3>Clear</h3>
     <div class="row">
       <button (click)="clearAllFilters()" class="btn btn-secondary"><i class="fa fa-times-circle"></i></button>
     </div>
+  </div>
+  <div class="col-sm-6 d-none d-sm-block d-md-none">
+    <h3>Hide</h3>
+    <button type="button" class="btn btn-secondary" (click)="showFilters = !showFilters" *ngIf="showFilters">Hide Filters <i class="fa fa-arrow-up"></i> </button>
+  </div>
+  <div class="col-12">
+    <hr>
   </div>
 </div>
 

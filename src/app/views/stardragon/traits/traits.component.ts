@@ -6,7 +6,7 @@ import { default as swal} from 'sweetalert2';
 import { TypeaheadMatch } from 'ngx-bootstrap/typeahead';
 
 // animations
-import { listAnimation, fadeAnimation }   from 'app/animations/traits.animations';
+import { listAnimation, fadeAnimation, shrinkExpand }   from 'app/animations/traits.animations';
 
 // Models
 import { Stardragon }      from 'app/models/stardragon';
@@ -19,12 +19,13 @@ import { GemExchangeAPI } from 'app/services/api.service';
 @Component({
   selector:    'traits',
   templateUrl: './traits.template.html',
-  animations:  [listAnimation, fadeAnimation],
+  animations:  [listAnimation, fadeAnimation, shrinkExpand],
   providers:   [GemExchangeAPI, TraitsService]
 })
 
 export class TraitsComponent {
 
+  public showFilters:boolean = false;
   public filters = {
     species: 'all',
     name:    '',
