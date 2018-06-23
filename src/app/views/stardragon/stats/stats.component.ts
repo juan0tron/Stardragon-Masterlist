@@ -19,8 +19,9 @@ export class StatsComponent {
 
   public categories = {
     'eyesight':['dasher','crafter','weaver','shooter'],
-    'hearing':['dasher','crafter','fisher'],
-    'speed':['dasher','shooter','fisher'],
+    'hearing':['crafter','fisher'],
+    'speed':['sweeper','dasher','shooter','fisher'],
+    'strength':['robber', 'crafter', 'sweeper', 'eater'],
     'population':['eater','fisher','dasher', 'sweeper', 'shooter', 'crafter', 'weaver', 'robber'],
   };
 

@@ -12,27 +12,26 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
 </head>
 <body>
-  <app-root>
-    <!-- Everything within app-root is markup for the loading screen -->
+  <!-- <app-root> -->
     <!-- Keep these styles here so that the loading screen is always styled -->
     <style type="text/css">
-      body{ background: #fafafa; }
-      .spinner {
-        margin: 0 auto;
-        width: 70px;
-        text-align: center;
-      }
+      body{ background: #fff }
       .centered {
         position: fixed;
         top: 50%;
         left: 50%;
-        /* bring your own prefixes */
         transform: translate(-50%, -50%);
+      }
+
+      .spinner {
+        margin: 15px auto;
+        width: 70px;
+        text-align: center;
       }
       .spinner > div {
         width: 18px;
         height: 18px;
-        background-color: #333;
+        background-color: rgba(116, 66, 244, .5);
 
         border-radius: 100%;
         display: inline-block;
@@ -60,13 +59,48 @@
           transform: scale(1.0);
         }
       }
+
+      .rainbowBackground{
+        position:relative;
+        border:5px solid #fff; /* Fix for colors bleeding around edges */
+        margin-bottom: 5px;
+      }
+      .rainbowBackground:after, .rainbowBackground:before{
+        position:absolute;
+        top:0;
+        bottom:0;
+        left:0;
+        right:0;
+        content:"";
+        z-index:-1;
+      }
+      .rainbowBackground:after{
+        background:radial-gradient(circle,#7442f4,transparent);
+        background-size:400%;
+        animation: colorSpin 10s linear infinite;
+      }
+      .rainbowBackground:before{
+        background-color:#5acefc;
+      }
+      @keyframes colorSpin{
+        25%{background-position:0 100%}
+        50%{background-position:100% 100%}
+        75%{background-position:100% 0}
+        100%{filter:hue-rotate(360deg)}
+      }
+
     </style>
-    <div class="spinner centered">
-      <div class="bounce1"></div>
-      <div class="bounce2"></div>
-      <div class="bounce3"></div>
+    <div class="centered">
+      <div class="gem-icon rainbowBackground">
+        <img src="assets/img/gem_icon.png" style="width:300px;">
+      </div>
+      <div class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+      </div>
     </div>
-  </app-root>
+  <!-- </app-root> -->
   <script type="text/javascript" src="https://connect.facebook.net/en_US/sdk.js"></script>
 </body>
 </html>
