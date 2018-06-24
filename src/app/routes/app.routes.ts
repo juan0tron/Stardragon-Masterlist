@@ -38,7 +38,6 @@ export const ROUTES: Routes = [
     { path: 'myo',            component: MYOComponent, canActivate: [DevGuard]}, // MYO Form
     { path: 'myo/thank-you',  component: MYOThankYouComponent}, // MYO Thanks landing page
 
-    { path: 'login',    component: LoginComponent },
     { path: 'register', component: RegisterComponent, canActivate: [DevGuard]},
 
     { path: 'users',          component: UserComponent,  canActivate: [DevGuard]},

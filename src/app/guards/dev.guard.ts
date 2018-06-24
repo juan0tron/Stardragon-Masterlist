@@ -24,7 +24,7 @@ export class DevGuard implements CanActivate {
      */
     canActivate() {
       if(!this.api.isDev()){
-        this.router.navigate(['/login']);
+        this.router.navigate(['/']);
       }
       return this.api.isDev();
     }

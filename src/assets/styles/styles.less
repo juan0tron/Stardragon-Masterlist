@@ -72,6 +72,13 @@ router-outlet ~ * {
   flex-grow: 1;
   min-height: 100%;
   flex-direction: column;
+  margin-top: 44px; // size of header
+}
+
+.container{
+  padding-left: 0;
+  padding-right: 0;
+  transition: max-width .5s ease, max-height .5s ease;
 }
 
 .content{
@@ -81,10 +88,10 @@ router-outlet ~ * {
   padding-top:15px;
   padding-bottom:15px;
   position:   relative;
-  transition: max-width .5s ease, max-height .5s ease;
   z-index:    1;
   flex-grow:  1;
-  width:100%;
+  width:  100%;
+  height: 100%;
 }
 
 .row{
@@ -162,7 +169,6 @@ header{
 footer{
   flex-direction: row;
   text-align: center;
-  background: #fff;
   z-index: 1;
 
   img{
