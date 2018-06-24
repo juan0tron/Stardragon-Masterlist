@@ -25,4 +25,8 @@ export class NavigationComponent {
     this.user_id = localStorage.getItem("user_id");
   }
 
+  showLogin(){
+    
+  }
+
 }

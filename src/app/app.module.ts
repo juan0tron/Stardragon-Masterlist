@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Pages
 import { HomeComponent }           from './views/home/home.component';
+import { FooterComponent }         from './views/footer/footer.component';
 import { LoadingComponent }        from './views/loading/loading.component';
 import { DashboardComponent }      from './views/dashboard/dashboard.component';
 import { MYOComponent }            from './views/myo/myo.component';
@@ -74,6 +75,7 @@ import { AppComponent } from './app.component';
     // General Components
     NavigationComponent,
     LoadingComponent,
+    FooterComponent,
 
     AppComponent
   ],

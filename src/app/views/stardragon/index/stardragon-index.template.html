@@ -4,33 +4,40 @@
     <img src="assets/img/stardragons_header_by_deletethestars.png" style="margin:-25px 0;">
   </a>
 </div>
-<div class="row">
-  <div
-    *ngFor="let s of speciesHeaders; let i = index;"
-    class="col-md-6 col-sm-12 col-xs-12"
-  >
-    <a [routerLink]="['/stardragons/traits',s.species]" class="species-index-link">
-      <img
+<div class="content">
+  <div class="container">
+
+    <div class="row">
+      <div
+      *ngFor="let s of speciesHeaders; let i = index;"
+      class="col-md-6 col-sm-12 col-xs-12"
+      >
+      <a [routerLink]="['/stardragons/traits',s.species]" class="species-index-link">
+        <img
         [src]="'assets/img/' + s.species + '_traits/' + s.img"
         alt="{{s.species | titlecase}}"
         title="{{s.species | titlecase}}"
         class="species-header"
-      />
-    </a>
+        />
+      </a>
+    </div>
   </div>
+
+  <div class="row">
+    <div class="col" style="overflow-x:auto;">
+      <stardragon-stats></stardragon-stats>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <h2>Heights</h2>
+    </div>
+    <div class="col-12" style="overflow-x:auto;">
+      <img src="assets/img/StarDragon_Heights.png" style="min-width:500px; max-width:none;margin:0 5px;">
+    </div>
+  </div>
+</div>
 </div>
 
-<div class="row">
-  <div class="col" style="overflow-x:auto;">
-    <stardragon-stats></stardragon-stats>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-12">
-    <h2>Heights</h2>
-  </div>
-  <div class="col-12" style="overflow-x:auto;">
-    <img src="assets/img/StarDragon_Heights.png" style="min-width:500px; max-width:none;margin:0 5px;">
-  </div>
-</div>
+<footer></footer>

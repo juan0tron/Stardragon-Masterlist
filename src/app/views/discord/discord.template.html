@@ -1,45 +1,51 @@
 <div class="full-width">
   <img src="./../assets/img/join_stardragons_discord.png" title="Join the Gem Exchange Discord Server!" alt="A banner advertising the Gem Exchange Discord server, featuring its mascot, Discord-Chan."/>
 </div>
-<div id="description" class="row">
-  <div class="col-md-6">
-    <h2>What is Discord?</h2>
-    <p>Discord is a free voice and text chat app, similar to Skype. It is designed specifically for gaming, but it's features like multiple servers make it very handy for large communities. Please read all of the rules before joining!</p>
-  </div>
-  <div class="col-md-6">
-    <a href="https://discord.gg/T9Xrjs5" target="blank" style="width:100%;">
-      <img src="http://orig05.deviantart.net/6989/f/2017/145/8/c/_layout_discord_logo_s4_by_milay-dbafeoc.png" style="width:100%"/>
-    </a>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-6">
-    <h2>Role Index</h2>
-    <table>
-      <tr *ngFor="let role of roles">
-        <td style="color:#7289da; font-weight:bold;">{{role.name}}:</td>
-        <td>{{role.description}}</td>
-      </tr>
-    </table>
-  </div>
-  <div class="col-md-6">
-    <iframe src="https://discordapp.com/widget?id=254287673131270146&theme=dark" height="300" allowtransparency="true" frameborder="0" style="width:100%;"></iframe>
-  </div>
-</div>
-<hr>
-<div id="rules" class="row">
-  <div class="col-md-12">
-    <h2>Discord Server Rules</h2>
-    <p>New rules are added when we feel that they need to be, or a certain instance requires them to be put in place. If you receive a warning, it is not a personal attack, simply correct it and move on. However if you feel you are being warned unfairly, or that the rules were not clear enough, we're open to listen to debates. Feel free to message an admin privately.</p>
-    <p>We’ll give warnings for rules broken, but <b>repeated offenders will be removed from the group.</b></p>
-    <ng-container *ngFor="let rule of rules; let i=index;">
-      <h5>#{{i+1}}: {{rule.rule}}</h5>
-      <p [innerHTML]="rule.description" style="margin-left:1rem; margin-bottom:2rem"></p>
-    </ng-container>
-  </div>
-</div>
-<div id="roles" class="row">
-  <div class="col-md-6">
+<div class="content">
+  <div class="container">
+    <div id="description" class="row">
+      <div class="col-md-6">
+        <h2>What is Discord?</h2>
+        <p>Discord is a free voice and text chat app, similar to Skype. It is designed specifically for gaming, but it's features like multiple servers make it very handy for large communities. Please read all of the rules before joining!</p>
+      </div>
+      <div class="col-md-6">
+        <a href="https://discord.gg/T9Xrjs5" target="blank" style="width:100%;">
+          <img src="http://orig05.deviantart.net/6989/f/2017/145/8/c/_layout_discord_logo_s4_by_milay-dbafeoc.png" style="width:100%"/>
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Role Index</h2>
+        <table>
+          <tr *ngFor="let role of roles">
+            <td style="color:#7289da; font-weight:bold;">{{role.name}}:</td>
+            <td>{{role.description}}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-md-6">
+        <iframe src="https://discordapp.com/widget?id=254287673131270146&theme=dark" height="300" allowtransparency="true" frameborder="0" style="width:100%;"></iframe>
+      </div>
+    </div>
+    <hr>
+    <div id="rules" class="row">
+      <div class="col-md-12">
+        <h2>Discord Server Rules</h2>
+        <p>New rules are added when we feel that they need to be, or a certain instance requires them to be put in place. If you receive a warning, it is not a personal attack, simply correct it and move on. However if you feel you are being warned unfairly, or that the rules were not clear enough, we're open to listen to debates. Feel free to message an admin privately.</p>
+        <p>We’ll give warnings for rules broken, but <b>repeated offenders will be removed from the group.</b></p>
+        <ng-container *ngFor="let rule of rules; let i=index;">
+          <h5>#{{i+1}}: {{rule.rule}}</h5>
+          <p [innerHTML]="rule.description" style="margin-left:1rem; margin-bottom:2rem"></p>
+        </ng-container>
+      </div>
+    </div>
+    <div id="roles" class="row">
+      <div class="col-md-6">
 
+      </div>
+    </div>
   </div>
 </div>
+
+<footer></footer>
