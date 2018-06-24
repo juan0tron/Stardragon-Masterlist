@@ -306,4 +306,18 @@ export class TraitsComponent {
     }
     return "";
   }
+
+  showTraitDetails(trait){
+    let src = this.base_img_directory + trait.species+'_traits/' + trait.image;
+    swal({
+      title: `<i class="fa fa-circle rarity ${trait.rarity}" title="${trait.rarity}"></i> ` + trait.name,
+      html:`
+        <img  class="trait-img" src="${src}" >
+        <p class="trait-meta">${trait.sex || 'Unisex'} ${trait.species} ${trait.type} (${trait.subtype} Subtype)</p>
+      `,
+      // showCancelButton: true,
+      focusConfirm: false,
+      // confirmButtonText: 'Add to wishlist...',
+    })
+  }
 }

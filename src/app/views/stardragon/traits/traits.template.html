@@ -83,7 +83,7 @@
     <div class="row icon-selector">
       <div *ngFor="let rarity of rarities">
         <a title="{{rarity | titlecase}}" (click)="filters.rarity = rarity; filterTraits();" [ngClass]="{'highlighted' : rarity === filters.rarity }">
-          <i class="fa fa-circle {{rarity}}"></i><br>
+          <i class="fa fa-circle rarity {{rarity}}"></i><br>
           <small style="font-size:1rem">{{rarity | titlecase}}</small>
         </a>
       </div>
@@ -128,13 +128,12 @@
       </div>
       <div class="row" [@listAnimation]="visibleTraits">
         <ng-container *ngFor="let trait of filterTraitsByType(trait_type)">
-          <div class="col-6 col-md-3" style="text-align:center;">
-            <p> <strong></strong> </p>
-            <img class="trait-img" src="{{base_img_directory + trait.species+'_traits/' + trait.image}}"/>
-            <p>
+          <div class="trait col-6 col-md-3" style="text-align:center;" (click)="showTraitDetails(trait)">
+            <img class="trait-img rarity {{trait.rarity}}" src="{{base_img_directory + trait.species+'_traits/' + trait.image}}"/>
+            <p class="trait-meta">
               <strong>
                 <span class="trait-rarity">
-                  <i class="fa fa-circle {{trait.rarity}}" title="{{trait.rarity | titlecase}}"></i>
+                  <i class="fa fa-circle rarity {{trait.rarity}}" title="{{trait.rarity | titlecase}}"></i>
                   &nbsp;
                 </span>
                 <span class="trait-name">{{trait.name}}</span>

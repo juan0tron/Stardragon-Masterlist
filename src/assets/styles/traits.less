@@ -1,4 +1,13 @@
 // Traits Compendium Styles
+
+// Colors - RARITIES
+@none:      #CCCCCC;
+@common:    #B0F171;
+@uncommon:  #FFE476;
+@rare:      #FF855B;
+@legendary: #FF6FA2;
+
+
 .species-index-link{
   display: block;
   position: relative;
@@ -41,6 +50,7 @@
     filter: drop-shadow(4px 5px 1px rgba(0, 0, 0, 0.4));
   }
 }
+
 .species-header-name{
   color:#fff;
   position: absolute;
@@ -49,6 +59,7 @@
   bottom:250px;
   left: 100px;
 }
+
 .species-header-subtype{
   font-weight: bold;
   font-size: 2rem;
@@ -71,8 +82,78 @@
 }
 
 .trait-img{
-  margin-bottom: 5px;
+  margin-bottom: 15px;
 }
+.trait-img.rarity{
+  // border-radius: 50%;
+}
+.trait-img, .trait-meta{
+  transition: all .5s ease;
+}
+
+.trait{
+  &:hover{
+    .trait-img{
+      border-radius: 0;
+      background:transparent!important;
+    }
+    .trait-meta{
+      text-shadow: 1px 1px #aaa;
+    }
+  }
+}
+
+.trait-meta{
+  text-transform: capitalize;
+}
+
+// Rarity Colors
+.none{
+  color:@none;
+  &.highlighted, &:hover{
+    text-shadow: 0 0 5px fade(@none, 50%);
+  }
+  &.trait-img{
+    background: @none;
+  }
+}
+
+.common{
+  color:@common;
+  &.highlighted, &:hover{
+    text-shadow: 0 0 5px fade(@common, 50%);
+  }
+  &.trait-img{
+    background: @common;
+  }
+}
+
+.uncommon{
+  color:@uncommon;
+  &.highlighted, &:hover{
+    text-shadow: 0 0 5px fade(@uncommon, 50%);
+  }
+  &.trait-img{
+    background: @uncommon;
+  }
+}
+
+.rare{
+  color:@rare;
+  &.highlighted, &:hover{text-shadow: 0 0 5px fade(@rare, 50%)}
+  &.trait-img{
+    background: @rare;
+  }
+}
+
+.legendary{
+  color:@legendary;
+  &.highlighted, &:hover{text-shadow: 0 0 5px fade(@legendary, 50%)}
+  &.trait-img{
+    background: @legendary;
+  }
+}
+
 .trait-sex{
   .fa{
     &:hover, &.highlighted{
