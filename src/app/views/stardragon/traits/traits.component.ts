@@ -25,6 +25,8 @@ import { GemExchangeAPI } from 'app/services/api.service';
 
 export class TraitsComponent {
 
+  public loading = true;
+
   public showFilters:boolean = false;
   public filters = {
     species: 'all',
@@ -38,7 +40,7 @@ export class TraitsComponent {
   public base_img_directory   = 'assets/img/';
   public img_directory:string = '';
   public headers:any = {};
-  public header_img:string = "";
+  public header_img:string = this.base_img_directory + 'stardragons_header_by_deletethestars.png';
 
   public traits:Array<StardragonTrait> = [];
   public visibleTraits:Array<StardragonTrait> = [];
@@ -114,21 +116,6 @@ export class TraitsComponent {
     this.router_sub.unsubscribe();
   }
 
-  initTraitsIndex(){
-    for(let s of this.available_species){
-      this.traitsService.getLocalTraits(s).subscribe(
-        data => {
-          let trait = {
-            name:s+"s",
-            link:"/stardragons/traits/"+s,
-            img: "/assets/img/" + data['img_directory'] + data['headers']['standard']
-          };
-          this.traits_index.push(trait);
-        }
-      );
-    }
-  }
-
   initTraitsPage(species, subtype = "all"){
     this.filters.species = species;
     this.filters.subtype = subtype;
@@ -167,8 +154,14 @@ export class TraitsComponent {
   getAllTraits(){
     this.traitsService.getAllTraits().subscribe(
       data => { this.traits = data },
-      err  => { console.error("error getting traits", err) },
-      ()   => { this.filterTraits() }
+      err  => {
+        this.loading = false;
+        console.error("error getting traits", err)
+      },
+      ()   => {
+        this.loading = false;
+        this.filterTraits()
+      }
     );
   }
 
