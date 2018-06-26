@@ -98,7 +98,7 @@
         <h3>Sex</h3>
         <div class="row icon-selector">
           <a *ngFor="let sex of sexes" title="{{sex | titlecase}}" class="trait-sex" [ngClass]="{'highlighted' : sex === filters.sex }" (click)="filters.sex = sex; filterTraits()">
-            <i class="fa fa-intersex" *ngIf="sex=='unisex'"></i>
+            <i class="fa fa-transgender" *ngIf="sex=='unisex'"></i>
             <i class="fa fa-venus" *ngIf="sex=='feminine'"></i>
             <i class="fa fa-mars" *ngIf="sex=='masculine'"></i>
             <i class="fa fa-times-circle" *ngIf="sex=='all'"></i>
@@ -150,7 +150,7 @@
                       &nbsp;
                       <i class="fa fa-venus highlighted"    *ngIf="trait.sex=='feminine'"></i>
                       <i class="fa fa-mars highlighted"     *ngIf="trait.sex=='masculine'"></i>
-                      <i class="fa fa-intersex highlighted" *ngIf="trait.sex=='unisex' || !trait.sex"></i>
+                      <i class="fa fa-transgender highlighted" *ngIf="trait.sex=='unisex' || !trait.sex"></i>
                     </span>
                   </strong>
                   <br/>
