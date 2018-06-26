@@ -2,15 +2,15 @@
   <login *swalPartial></login>
 </swal>
 
-<nav class="navbar navigation container">
-  <div class="row hidden-md-up">
-    <ul class="horizontal-links col-xs-12 col-sm-12 ">
+<nav class="navbar navigation" [ngClass]="{'transparent':isScrolledToTop}">
+  <div class="container hidden-md-up">
+    <ul #="mobile-navigation" class="horizontal-links col-xs-12 col-sm-12 ">
       <li><a href="#"><i class="fa fa-bars"></i></a></li>
       <li><a href="#">The Gem Exchange</a></li>
     </ul>
   </div>
   <div class="row hidden-sm-down">
-    <ul class="horizontal-links col-md-9" style="text-align:left">
+    <ul #="desktop-navigation" class="horizontal-links col-md-9" style="text-align:left">
       <li><a routerLink="/home"><i class="fa fa-home"></i> Home</a></li>
       <li><a routerLink="/stardragons"><i class="fa fa-user-circle-o"></i> Lore</a></li>
       <li><a routerLink="/stardragons/list" *ngIf="api.isLoggedIn()"><i class="fa fa-star"></i> Master List</a></li>
