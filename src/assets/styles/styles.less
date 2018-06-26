@@ -72,7 +72,6 @@ router-outlet ~ * {
   flex-grow: 1;
   min-height: 100%;
   flex-direction: column;
-  margin-top: 44px; // size of header
 }
 
 .container{
@@ -141,7 +140,6 @@ home{
 
 header{
   text-align: center;
-  background: rgba(255,255,255,0.9);
   font-family: "Futura";
   font-size: 1rem;
   text-transform: uppercase;
@@ -149,15 +147,25 @@ header{
   position: fixed;
   z-index: 999999;
   width: 100%;
-  .navigation{
-    .row{margin:0;}
+  
+  
+  nav{
+    width:100%;
+    background: rgba(255,255,255,0.9);
+    transition: all 0.5s ease;
+    box-shadow: 0px 0px 10px #000;
+    &.transparent{
+      a, a:not([href]){
+        color:#FFF
+      }
+      background:transparent!important;
+      text-shadow: 1px 1px 5px #666;
+      box-shadow: none;
+    }
+    padding:0;
     a{color:#000}
     display: block;
   }
-  .navbar{
-    padding:0;
-  }
-  box-shadow: 0px 0px 10px #000;
 }
 
 .species-header{

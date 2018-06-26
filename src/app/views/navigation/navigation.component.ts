@@ -1,5 +1,5 @@
 // Angular
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, Input, HostListener, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 // 3rd Party
@@ -14,18 +14,21 @@ import { GemExchangeAPI } from 'app/services/api.service';
   providers:   []
 })
 export class NavigationComponent {
-
+  
   @ViewChild('loginComponent') private loginComponent: SwalComponent;
-
+  
   public router_sub:any;
   public user_id:string;
 
+  public isScrolledToTop:boolean = true;
+  
   constructor(
     public  api:    GemExchangeAPI,
     private route:  ActivatedRoute,
     private router: Router,
+    public  el:     ElementRef
   ){}
-
+  
   ngOnInit(){
     this.user_id = localStorage.getItem("user_id");
     this.router.events.subscribe(
@@ -35,5 +38,19 @@ export class NavigationComponent {
         }
       }
     );
+  }
+
+  @HostListener('window:scroll', ['$event'])
+  checkScroll() {
+    const componentPosition = this.el.nativeElement.offsetTop
+    const scrollPosition = window.pageYOffset
+
+    if (scrollPosition == 0) {
+      this.isScrolledToTop = true;
+    }
+    else{
+      this.isScrolledToTop = false;
+    }
+
   }
 }

@@ -2,8 +2,8 @@
   <login *swalPartial></login>
 </swal>
 
-<nav class="navbar navigation container">
-  <div class="row">
+<nav class="navbar navigation" [ngClass]="{'transparent':isScrolledToTop}">
+  <div class="container">
     <ul class="horizontal-links col-md-9 col-sm-12" style="text-align:left">
       <li><a routerLink="/home"><i class="fa fa-home"></i> Home</a></li>
       <li><a routerLink="/stardragons"><i class="fa fa-user-circle-o"></i> Lore</a></li>
