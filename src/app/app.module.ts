@@ -37,6 +37,7 @@ import { NavigationComponent } from "./views/navigation/navigation.component";
 import { FacebookModule }     from 'ngx-facebook';
 import { SweetAlert2Module }  from '@toverux/ngx-sweetalert2';
 import { TypeaheadModule, ButtonsModule } from 'ngx-bootstrap';
+import { ClickOutsideModule } from 'ng-click-outside';
 
 // Routing Guards
 import { LoggedInGuard } from "./guards/logged-in.guard";
@@ -95,6 +96,7 @@ import { AppComponent } from './app.component';
         confirmButtonClass: 'btn btn-primary',
         cancelButtonClass:  'btn'
     }),
+    ClickOutsideModule,
     // NGX Bootstrap
     ButtonsModule.forRoot(),
     TypeaheadModule.forRoot()

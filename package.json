@@ -38,6 +38,7 @@
     "less-loader": "^4.1.0",
     "mini-css-extract-plugin": "^0.4.0",
     "moment": "^2.22.2",
+    "ng-click-outside": "^4.0.0",
     "ngx-bootstrap": "^3.0.0",
     "ngx-facebook": "^2.4.0",
     "ngx-typeahead": "^6.0.1",
