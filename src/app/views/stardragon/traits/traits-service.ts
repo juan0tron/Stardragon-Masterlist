@@ -45,11 +45,13 @@ export class TraitsService {
     return this.http.get(`assets/data/${species}-traits.json`)
   }
 
-  getTraits(species){
-    return this.api.api(`/traits/${species}`, 'GET')
-  }
-
   getAllTraits(){
     return this.api.api("/traits", 'GET');
   }
+
+  getTraits(species){
+    if(species === "all"){ return this.getAllTraits() }
+    else return this.api.api(`/traits/${species}`, 'GET')
+  }
+
 }
