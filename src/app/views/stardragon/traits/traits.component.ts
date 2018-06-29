@@ -331,16 +331,36 @@ export class TraitsComponent {
   }
 
   showTraitDetails(trait){
+    let faGender = "fa-transgender";
+    switch(trait.sex){
+      case "feminine":
+        faGender = "fa-venus";
+      case "masculine":
+        faGender = "fa-mars";
+      case "unisex":
+      default:
+        faGender = "fa-transgender";
+    }
+
     let src = this.base_img_directory + trait.species+'_traits/' + trait.image;
     swal({
-      title: `<i class="fa fa-circle rarity ${trait.rarity}" title="${trait.rarity}"></i> ` + trait.name,
       html:`
         <img  class="trait-img" src="${src}" >
+        <h2 class="swal2-title" id="swal2-title">
+          <span class="trait-rarity"><i class="fa fa-circle rarity ${trait.rarity}" title="${trait.rarity}"></i></span>
+           ${trait.name}
+          <span class="trait-sex"><i class="fa ${faGender}"></i></span>
+        </h2>
         <p class="trait-meta">${trait.sex || 'Unisex'} ${trait.species} ${trait.type} (${trait.subtype} Subtype)</p>
       `,
+      customClass:"swal2-trait "+trait.rarity+" animated fadeInDown",
+      animation: false,
       // showCancelButton: true,
       focusConfirm: false,
       // confirmButtonText: 'Add to wishlist...',
-    })
+      onClose: function(modal){
+        modal.classList.add("fadeOutUp");
+      }
+    });
   }
 }
