@@ -13,6 +13,7 @@ import { LoadingComponent }        from './views/loading/loading.component';
 import { DashboardComponent }      from './views/dashboard/dashboard.component';
 import { MYOComponent }            from './views/myo/myo.component';
 import { DiscordComponent }        from './views/discord/discord.component';
+import { CharacterComponent }      from './views/character/character.component';
 import { TraitsComponent }         from './views/stardragon/traits/traits.component';
 import { UserComponent }           from "./views/user/profile/user.component";
 import { UserListComponent }       from "./views/user/list/user-list.component";
@@ -56,6 +57,7 @@ import { AppComponent } from './app.component';
     DashboardComponent,
     MYOComponent,
     DiscordComponent,
+    CharacterComponent,
     TraitsComponent,
     UserComponent,
     UserListComponent,
