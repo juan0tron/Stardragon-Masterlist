@@ -1,11 +1,11 @@
-<swal #loginComponent>
+<swal #loginComponent [showConfirmButton]="false">
   <login *swalPartial></login>
 </swal>
 
 <nav class="navbar navigation" [ngClass]="{'transparent':isScrolledToTop}">
   <div class="container d-md-none">
     <ul id="mobile-navigation" class="horizontal-links float-left col-xs-12 col-sm-12" style="text-align:left;">
-      <li><a href="#"><i class="fa fa-bars"></i></a></li>
+      <li><a (click)="toggleSideNav()"><i class="fa fa-bars"></i></a></li>
       <li><a href="#">The Gem Exchange</a></li>
     </ul>
   </div>
@@ -24,10 +24,47 @@
           <li><a (click)="api.logout()" href="#"><i class="fa fa-sign-out"></i> Logout</a></li>
         </ng-container>
         <ng-container *ngIf="!api.isLoggedIn()">
-          <li><a [swal]="loginComponent"><i class="fa fa-sign-in"></i> Login</a></li>
-          <li><a routerLink="/register"><i class="fa fa-wpforms"></i> Register</a></li>
+          <li><a (click)="showLoginForm()"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+          <li><a routerLink="/register"><i class="fab fa-wpforms"></i> Register</a></li>
         </ng-container>
       </ng-container>
     </ul>
   </div>
 </nav>
+
+<div
+  id="side-nav"
+  [@slideInOut]="sideNavState"
+  (clickOutside)="closeSideNav()"
+  [exclude]="'button,.btn-primary,a'"
+  [clickOutsideEvents]="'click,touchstart'"
+  clickOutsideEnabled="this.sideNavState === 'show'"
+  >
+  <div id="nav-profile" *ngIf="api.isLoggedIn() && user">
+    <a routerLink="/dashboard">
+      <img src="assets/img/default_avatar.png" alt="">
+      <h3>{{user.name}}</h3>
+    </a>
+  </div>
+  <div id="sidebar-links">
+    <ul>
+      <li><a (click)="changeRoute('/home')"><i class="fa fa-home"></i> Home</a></li>
+      <li><a (click)="changeRoute('/stardragons')"><i class="fas fa-book"></i> Lore</a></li>
+      <li *ngIf="api.isLoggedIn()"><a (click)="changeRoute('/stardragons/list')"><i class="fa fa-star"></i> Master List</a></li>
+      <li><a (click)="changeRoute('/stardragons/traits')"><i class="fa fa-paw"></i> Traits Compendium</a></li>
+      <li><a (click)="changeRoute('/discord')"><i class="fab fa-discord"></i> Discord</a></li>
+    </ul>
+    <div id="sidebar-login" class="row">
+      <ul *ngIf="api.isLoggedIn()">
+        <li><a (click)="changeRoute('/dashboard')"><i class="fa fa-user-circle"></i> Dashboard</a></li>
+        <li><a (click)="api.logout()" href="#"><i class="fa fa-sign-out"></i> Logout</a></li>
+      </ul>
+      <ul *ngIf="!api.isLoggedIn()">
+        <li><a (click)="showLoginForm()"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+        <li><a (click)="changeRoute('/register')"><i class="fab fa-wpforms"></i> Register</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div id="side-nav-background" *ngIf="sideNavState == 'show'" [@fadeBackground]="sideNavState"></div>

@@ -6,6 +6,7 @@
 @import "ngx-bootstrap.less";
 @import "text.less";
 @import "traits.less";
+@import "home.less";
 
 // Fonts
 @font-face {
@@ -98,19 +99,29 @@ router-outlet ~ * {
 }
 
 .full-width{
-  width:100%;
+  min-width:  100%;
+  min-height: 300px;
   box-shadow: inset 0px  10px 10px -10px #000,
               inset 0px -10px 10px -10px #000;
 
-  background: transparent;
+  background: transparent; // for when an image is provided
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 
   position: relative;
   overflow: hidden;
 
+  text-align: center;
+  overflow:   hidden;
+
   img{
-    width:100%;
     z-index: -1;
     position: relative;
+    left: 100%;
+    margin-left: -200%;
+    max-width: none;
+    min-width: 100%;
   }
   h1{
     color:    #FFF;
@@ -125,17 +136,15 @@ router-outlet ~ * {
 
 img{
   max-width: 100%;
+  width: auto;
 }
 
 a{
   color: @link-color;
   &:hover{
     color: @link-hover-color;
+    text-decoration: none;
   }
-}
-
-home{
-  text-align: center;
 }
 
 header{
@@ -145,27 +154,89 @@ header{
   text-transform: uppercase;
   letter-spacing: 2px;
   position: fixed;
-  z-index: 999999;
+  z-index: 9;
   width: 100%;
-  
-  
+
+  a, a:not([href]){
+    color:#000;
+    transition: all 0.3s ease;
+    text-decoration: none!important;
+  }
   nav{
     width:100%;
     background: rgba(255,255,255,0.9);
     transition: all 0.5s ease;
     box-shadow: 0px 0px 10px #000;
     &.transparent{
-      a, a:not([href]){
+      text-shadow: 1px 1px 5px #666;
+      background:linear-gradient(rgba(0,0,0,0.5), transparent);
+      box-shadow: none;
+      a, a:not([href]), a:not([href]):hover{
         color:#FFF
       }
-      background:transparent!important;
-      text-shadow: 1px 1px 5px #666;
-      box-shadow: none;
+      a:hover, a:not([href]):hover{
+        text-shadow: 1px 1px 5px #fafafa;
+      }
     }
-    padding:0;
-    a{color:#000}
-    display: block;
   }
+}
+
+#side-nav{
+  position: fixed;
+  left:   0;
+  top:    0;
+  bottom: 0;
+  min-width: 300px;
+  height: 100%;
+  background: #fff;
+  transform:  translateX(-100%);
+  z-index: 99;
+
+  #nav-profile{
+    border-bottom: 1px solid #666;
+    transition: all 0.4s ease;
+    &:hover img{
+      box-shadow: 0 0 5px #000;
+    }
+    &:hover h3{
+      text-shadow: 0 0 #666;
+    }
+    img{
+      margin:        15px;
+      border-radius: 50%;
+      border: 1px solid #666;
+      box-sizing: 0 0 5px #666;
+    }
+  }
+  #sidebar-links{
+    ul{
+      text-align: left;
+      list-style: none;
+      padding: 0;
+      li{
+        padding: 15px;
+      }
+    }
+  }
+  #sidebar-login{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid #ddd;
+    padding-top: 9px;
+  }
+}
+
+#side-nav-background{
+  background: #000;
+  position: fixed;
+  top: 0;
+  right:0;
+  bottom:0;
+  left: 0;
+  z-index: 5;
+
+  opacity: 0;
 }
 
 .species-header{

@@ -117,21 +117,22 @@ export class TraitsComponent {
   }
 
   initTraitsPage(species, subtype = "all"){
-    this.filters.species = species;
-    this.filters.subtype = subtype;
-
-    // Make API calls & get local data
-    this.getTraitDescriptions();
-    this.getHeaderImages();
-    this.getAllTraits();
-
     // Change plural names to singular, IE "starshooters" to "starshooter"
     if (species.substring(species.length - 1) == "s"){
       species = species.substring(0, species.length-1);
     }
     // Route to index if species does not exist
     if(!this.available_species.includes(species) && species != 'all'){
-      this.router.navigate(['/stardragons/traits']);
+      this.router.navigate(['/stardragons']);
+    }
+    else{
+      this.filters.species = species;
+      this.filters.subtype = subtype;
+
+      // Make API calls & get local data
+      this.getTraitDescriptions();
+      this.getHeaderImages();
+      this.getTraits();
     }
   }
 
@@ -151,6 +152,20 @@ export class TraitsComponent {
    *  @function getAllTraits
    *  @description Get all traits from all stardragons
    */
+  getTraits(){
+    this.traitsService.getTraits(this.filters.species).subscribe(
+      data => { this.traits = data },
+      err  => {
+        this.loading = false;
+        console.error("error getting traits", err)
+      },
+      ()   => {
+        this.loading = false;
+        this.filterTraits()
+      }
+    );
+  }
+
   getAllTraits(){
     this.traitsService.getAllTraits().subscribe(
       data => { this.traits = data },
@@ -216,6 +231,11 @@ export class TraitsComponent {
    *  @description Reset all trait filters
    */
   clearAllFilters(){
+    // If we're currently only displaying traits for one species,
+    // fetch the list of all traits before filtering to "all"
+    if(this.getSpeciesTypes().length <= 1){
+      this.getAllTraits();
+    }
     this.filters = {
       species: 'all',
       name:    '',
@@ -252,6 +272,16 @@ export class TraitsComponent {
   }
 
   /**
+   *  @function getSpeciesTypes
+   *  @description Get a list of available Species types from the traits object
+   */
+  getSpeciesTypes(){
+    let types = this.traits.map(a => a.species);
+    let unique_types = types.filter(function(elem, index, self) {return index == self.indexOf(elem)});
+    return unique_types;
+  }
+
+  /**
    *  @function getSubspeciesTypes
    *  @description Get a list of available Subspecies Types from the traits object
    */
@@ -265,7 +295,7 @@ export class TraitsComponent {
   }
 
   /**
-   *  @function getSubspeciesTypes
+   *  @function getTraitTypes
    *  @description Get a list of available Trait Types from the traits object
    */
   getTraitTypes(){

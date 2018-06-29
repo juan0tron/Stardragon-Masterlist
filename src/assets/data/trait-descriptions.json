@@ -18,6 +18,10 @@
       }
     },
     {
+      "title":"Barbels",
+      "type":"barbel"
+    },
+    {
       "title":"Crests",
       "type":"crest"
     },

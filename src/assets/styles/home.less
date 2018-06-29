@@ -1,0 +1,50 @@
+home{
+  text-align: center;
+}
+
+
+// Link Brand Colors
+@toyhouse: rgba(0,140,186,1);
+@deviantart: #4e6252;
+@github: #333;
+@furaffinity: #2e3b41;
+@patreon: #f96854;
+@twitter: #1DA1F2;
+
+.homepage-link{
+  font-size: 1.5rem;
+  display: flex;
+  background: #eee;
+  box-shadow: 3px 3px 0px #CCC;
+  margin: 10px;
+  font-family: "Futura";
+  text-transform: uppercase;
+  color: #333;
+  transition: all 0.2s ease;
+  overflow: hidden;
+  &:hover{
+    color:#555;
+    box-shadow: 3px 3px 1px #AAA;
+  }
+  i, span{
+    flex-direction: column;
+    padding: 10px;
+    line-height: 1.5rem;
+  }
+  i{
+    width: 4rem;
+    background: #999;
+    box-shadow: 1px 0px 0 #555;
+    color: #fff;
+    clip-path: polygon(0 0, 100% 0%, 85% 100%, 0% 100%);
+  }
+  span{
+    flex-grow: 3;
+  }
+  .fa-home{ background-color: @toyhouse }
+  .fa-deviantart{ background-color: @deviantart }
+  .fa-github{ background-color: @github }
+  .fa-patreon{ background-color: @patreon }
+  .fa-paw{ background-color: @furaffinity }
+  .fa-twitter{ background-color: @twitter }
+}

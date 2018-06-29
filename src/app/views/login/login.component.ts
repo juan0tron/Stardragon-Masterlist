@@ -2,9 +2,6 @@
 import { Component } from '@angular/core';
 import { Router }    from '@angular/router';
 
-// 3rd party
-import { LoginResponse, LoginOptions, FacebookService, InitParams } from 'ngx-facebook';
-
 // Services
 import { GemExchangeAPI } from 'app/services/api.service';
 
@@ -27,17 +24,8 @@ export class LoginComponent {
 
   constructor(
     public api:    GemExchangeAPI,
-    private fb:     FacebookService,
     private router: Router
-  ) {
-    // Init Facebook
-    let initParams: InitParams = {
-      appId: "204041366826357",
-      xfbml: true,
-      version: 'v2.10'
-    };
-    fb.init(initParams);
-  }
+  ) {}
 
   login(event, email, password){
     event.preventDefault();
@@ -58,7 +46,7 @@ export class LoginComponent {
         this.password_invalid = false;
 
         localStorage.setItem("auth_token", data.auth_token);
-        localStorage.setItem("user_id",  data.user_id);
+        localStorage.setItem("user_id",    data.user_id);
 
         this.api.cacheUserData(data);
 
@@ -84,20 +72,6 @@ export class LoginComponent {
       },
 
     );
-  }
-
-  loginWithFb(){
-    const options: LoginOptions = {
-      scope: 'email,public_profile',
-      return_scopes: true,
-      enable_profile_selector: true,
-    };
-    this.fb.login(options).then((response: LoginResponse) => {
-      console.log('Connected to FB successfully.', response)
-      localStorage.setItem("facebook_access_token", response.authResponse.accessToken);
-      localStorage.setItem("facebook_uid", response.authResponse.userID);
-    })
-    .catch((error: any) => console.error('Failed to connect to FB.', error));
   }
 
 }

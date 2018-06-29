@@ -1,22 +1,22 @@
 <div class="container">
   <div class="full-width">
     <h1 class="page-title">Welcome to the Gem Exchange!</h1>
-    <img src="./../assets/img/stardragons_header_by_deletethestars.png" id="header-img" style="margin:-26px 0;"/>
+    <img src="assets/img/stardragons_header_by_deletethestars.png" style="margin-top:-25px; margin-bottom:-25px;">
   </div>
 </div>
 <div class="container content" style="flex-grow:1">
-  <div class="">
-    <p>This is a community group for the closed species Stardragons.</p>
-    <p>This website is a work in progress. Follow the links below to find us elsewhere on the web.</p>
-    <ul class="horizontal-links">
-      <li><a href="http://toyhou.se/~world/1420.gemexchange-jo-arca" target="_blank"><i class="fa fa-home"></i> Toyhouse</a></li>
-      <li><a href="https://docs.google.com/spreadsheets/d/1_EqVHX6UD0vAtiZnu3fjqwn1pIlKCjLMNsREkhejIDM/edit#gid=0" target="_blank"><i class="fa fa-list"></i> Master List</a></li>
-      <li><a href="https://www.furaffinity.net/user/gemexchange" target="_blank"><i class="fa fa-paw"></i> Fur Affinity</a></li>
-      <li><a href="https://github.com/juan0tron/the-gem-exchange" target="_blank"><i class="fab fa-github"></i> Github</a></li>
-      <!-- <li><a href="https://twitter.com/Gem_Exchange"><i class="fa fa-twitter"></i> Twitter</a></li> -->
-      <li><a href="https://gemexchange.deviantart.com/" target="_blank"><i class="fab fa-deviantart"></i> DeviantArt</a></li>
-      <li><a href="https://www.patreon.com/GemExchange/memberships" target="_blank"><i class="fab fa-patreon"></i> Patreon</a></li>
-    </ul>
+  <div class="row">
+    <div class="col-12">
+      <p style="max-width:800px; line-height: 1.5; margin:auto;">Welcome to the official site for the closed species Stardragons. This site is currently a work in progress! To keep up to date with the latest news, check out the links below to follow us elsewhere on the web.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-4" *ngFor="let link of links">
+      <a [href]="link.link" target="_blank" class="homepage-link">
+        <i [class]="link.class"></i>
+        <span>&nbsp;{{link.name}}</span>
+      </a>
+    </div>
   </div>
 </div>
 
