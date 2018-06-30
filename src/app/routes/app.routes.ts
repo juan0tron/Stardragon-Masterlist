@@ -14,6 +14,7 @@ import { LoginComponent }    from "app/views/login/login.component";
 import { RegisterComponent } from "app/views/register/register.component";
 
 import { UserComponent } from "app/views/user/profile/user.component";
+import { CharacterComponent } from "app/views/character/character.component";
 
 // Stardragons
 import { StardragonComponent }       from "app/views/stardragon/profile/stardragon.component";
@@ -42,6 +43,8 @@ export const ROUTES: Routes = [
 
     { path: 'users',          component: UserComponent,  canActivate: [DevGuard]},
     { path: 'users/:user_id', component: UserComponent,  canActivate: [DevGuard]},
+    
+    { path: 'character', component: CharacterComponent, canActivate: [DevGuard]},    
 
     // Stardragons (DO NOT REARRANGE - Route order matters!!)
     { path: 'stardragons', component: StardragonIndex },
