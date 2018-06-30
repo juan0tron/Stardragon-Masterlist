@@ -358,8 +358,13 @@ export class TraitsComponent {
       // showCancelButton: true,
       focusConfirm: false,
       // confirmButtonText: 'Add to wishlist...',
+      // cancelButtonText: 'Close',
       onClose: function(modal){
         modal.classList.add("fadeOutUp");
+      }
+    }).then((result) => {
+      if(result.value){
+        // swal("Added to wishlist!");
       }
     });
   }
