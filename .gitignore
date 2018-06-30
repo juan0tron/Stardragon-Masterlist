@@ -5,6 +5,7 @@ deploy-config.json
 api/api/config/discord_credentials.json
 api/api/config/encryption.key
 api/api/config/secret.key
+.conf
 
 # Compiled Output
 dist
