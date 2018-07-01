@@ -1,7 +1,0 @@
-{
-  "accessKeyId":     "AWS ID",
-  "secretAccessKey": "AWS Secret",
-  "region":          "us-east-1",
-  "distID":          "A CloudFront distribution ID",
-  "bucket":          "mys3bucket.com"
-}
