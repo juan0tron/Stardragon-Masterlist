@@ -8,3 +8,56 @@ body.swal2-shown.swal2-height-auto{
 body .swal2-container{
 
 }
+
+body .swal2-popup {
+
+  padding-bottom: 35px;
+
+  &.swal2-trait{
+    max-width: 400px;
+    &.none{
+      background: linear-gradient(transparent, @none 40%, #FFF 60%);
+      button{ background-color: @none; }
+    }
+    &.common{
+      background: linear-gradient(transparent, @common 40%, #FFF 60%);
+      button{ background-color: @common; }
+    }
+    &.uncommon{
+      background: linear-gradient(transparent, @uncommon 40%, #FFF 60%);
+      button{ background-color: @uncommon; }
+    }
+    &.rare{
+      background: linear-gradient(transparent, @rare 40%, #FFF 60%);
+      button{ background-color: @rare; }
+    }
+    &.legendary{
+      background: linear-gradient(transparent, @legendary 40%, #FFF 60%);
+      button{ background-color: @legendary; }
+    }
+    .trait-img{
+      background: linear-gradient(#FFF 50%, transparent);
+      border-radius: 50%;
+      margin-bottom: -1.5rem;
+    }
+    .swal2-title{
+      background: linear-gradient(transparent, #FFF 45%);
+      i{ margin: 0 5px;}
+    }
+    button.swal2-cancel{
+      background-color: @none;
+    }
+  }
+  .swal2-actions{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    transform: translateY(50%);
+
+    button, button.swal2-styled:focus{
+      box-shadow:3px 3px #666;
+    }
+  }
+
+}
