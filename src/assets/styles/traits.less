@@ -1,7 +1,7 @@
 // Traits Compendium Styles
 
 // Colors - RARITIES
-@none:      #CCCCCC;
+@none:      #D2E5D6;
 @common:    #B0F171;
 @uncommon:  #FFE476;
 @rare:      #FF855B;
@@ -80,14 +80,15 @@
       text-shadow: 0 0 1px #000;
     }
   }
-  i{
-    font-size: 2rem;
-  }
+  i{ font-size: 2rem; }
 }
 
 .trait-img{
   margin-bottom: 15px;
-  max-height: 255px; 
+  overflow: hidden;
+  img{
+    max-height: 255px; 
+  }
 }
 .trait-img.rarity{
   // border-radius: 50%;
