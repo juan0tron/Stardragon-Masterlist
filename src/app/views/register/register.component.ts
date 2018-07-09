@@ -14,4 +14,21 @@ import { GemExchangeAPI } from 'app/services/api.service';
     providers:   [GemExchangeAPI]
 })
 
-export class RegisterComponent {}
+export class RegisterComponent {
+
+  constructor(public api:GemExchangeAPI){}
+
+  register(name, email, password){
+    let newUser = {
+      name,
+      email,
+      password: this.api.hashPW(password)
+    };
+    this.api.api("/users", "POST", newUser).subscribe(
+      data => {},
+      err  => {},
+      ()   => {}
+    );
+  }
+
+}
