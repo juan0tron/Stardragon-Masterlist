@@ -97,7 +97,7 @@ export class GemExchangeAPI {
             this.logout();
             break;
           default:
-            swal("API Error!",error.error.message || error.message,"error");
+            swal("Error",error.error.message || error.message,"error");
             break;
         }
         return Observable.throw(error.error.message || error.message);
