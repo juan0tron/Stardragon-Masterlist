@@ -23,6 +23,9 @@ import { StardragonListComponent }   from "app/views/stardragon/list/stardragon-
 import { EditStardragonComponent }   from 'app/views/stardragon/edit/edit-stardragon.component';
 import { TraitsComponent }           from 'app/views/stardragon/traits/traits.component';
 
+// Comic
+import { ComicComponent } from 'app/views/comic/comic.component';
+
 // Routing Guards
 import { LoggedInGuard } from "app/guards/logged-in.guard"; // Logged in only
 import { DevGuard }      from "app/guards/dev.guard";       // Dev environment only
@@ -43,8 +46,8 @@ export const ROUTES: Routes = [
 
     { path: 'users',          component: UserComponent,  canActivate: [DevGuard]},
     { path: 'users/:user_id', component: UserComponent,  canActivate: [DevGuard]},
-    
-    { path: 'character', component: CharacterComponent, canActivate: [DevGuard]},    
+
+    { path: 'character', component: CharacterComponent, canActivate: [DevGuard]},
 
     // Stardragons (DO NOT REARRANGE - Route order matters!!)
     { path: 'stardragons', component: StardragonIndex },
@@ -57,6 +60,11 @@ export const ROUTES: Routes = [
 
       { path: 'stardragons/:stardragon_id',       component: StardragonComponent },
       { path: 'stardragons/:stardragon_id/edit',  component: EditStardragonComponent,  canActivate: [LoggedInGuard]},
+
+    // Comic
+    { path: 'comic', component: ComicComponent },
+      { path: 'comic/archive', component: ComicComponent },
+      { path: 'comic/:page', component: ComicComponent },
 
     // Redirect old routes
     { path: 'species/:species_name', redirectTo: 'stardragons/traits/:species_name', pathMatch: 'full' },

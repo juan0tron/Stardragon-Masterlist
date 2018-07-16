@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="content">
+
+    <div class="row" style="width:100%; height:50px;"></div>
+
+    <comic-nav class="row" [page]="page"></comic-nav>
+
+    <div id="comic-container" class="row">
+      <div class="col">
+        <img [src]="comicUrl" alt="Gem Exchange Comic Page {{page}}">
+      </div>
+    </div>
+
+    <comic-nav class="row" [page]="page"></comic-nav>
+
+  </div>
+</div>
+
+<footer></footer>

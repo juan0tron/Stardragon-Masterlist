@@ -15,6 +15,7 @@
       <li><a routerLink="/stardragons"><i class="fas fa-book"></i> Lore</a></li>
       <li><a routerLink="/stardragons/list" *ngIf="api.isLoggedIn()"><i class="fa fa-star"></i> Master List</a></li>
       <li><a routerLink="/stardragons/traits"><i class="fa fa-paw"></i> Traits Compendium</a></li>
+      <li><a routerLink="/comic"><i class="fas fa-book-open"></i> Comic</a></li>
       <li><a routerLink="/discord"><i class="fab fa-discord"></i> Discord</a></li>
     </ul>
     <ul class="horizontal-links col-md-3 float-right" style="text-align:right">
@@ -50,6 +51,7 @@
       <li><a (click)="changeRoute('/stardragons')"><i class="fas fa-book"></i> Lore</a></li>
       <li *ngIf="api.isLoggedIn()"><a (click)="changeRoute('/stardragons/list')"><i class="fa fa-star"></i> Master List</a></li>
       <li><a (click)="changeRoute('/stardragons/traits')"><i class="fa fa-paw"></i> Traits Compendium</a></li>
+      <li><a (click)="changeRoute('/comic')"><i class="fas fa-book-open"></i> Comic</a></li>
       <li><a (click)="changeRoute('/discord')"><i class="fab fa-discord"></i> Discord</a></li>
     </ul>
     <div id="sidebar-login" class="row">

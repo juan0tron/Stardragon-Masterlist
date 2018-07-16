@@ -27,6 +27,10 @@ import { StardragonComponent }       from './views/stardragon/profile/stardragon
 import { StatsComponent }            from './views/stardragon/stats/stats.component';
 import { EditStardragonComponent }   from './views/stardragon/edit/edit-stardragon.component';
 
+// Comic
+import { ComicComponent }    from 'app/views/comic/comic.component';
+import { ComicNavComponent } from 'app/views/comic/comic-nav.component';
+
 // Auth Pages
 import { LoginComponent }     from "./views/login/login.component";
 import { RegisterComponent }  from "./views/register/register.component";
@@ -70,6 +74,9 @@ import { AppComponent } from './app.component';
     StardragonComponent,
     StatsComponent,
     EditStardragonComponent,
+
+    ComicComponent,
+    ComicNavComponent,
 
     // Auth Pages
     LoginComponent,
