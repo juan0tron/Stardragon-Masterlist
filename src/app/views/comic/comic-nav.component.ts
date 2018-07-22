@@ -40,10 +40,13 @@ export class ComicNavComponent {
   }
 
   goToPage(page){
-    this.page = page;
-    this.pageSelector = this.page;
-    this.nextPage = +(this.page) + 1;
-    this.prevPage = +(this.page) - 1;
-    this.router.navigate([`/comic/page-${page}`]);
+    if(this.page != 0 && this.page <= this.pageCount){
+      this.page = page;
+      this.pageSelector = this.page;
+      this.nextPage = +(this.page) + 1;
+      this.prevPage = +(this.page) - 1;
+
+      this.router.navigate([`/comic/page-${page}`]);
+    }
   }
 }

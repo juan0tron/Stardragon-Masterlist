@@ -39,10 +39,21 @@ export class ComicComponent {
         }
         // Default to the first page if no page is specified
         else{
-          this.comicUrl = this.baseComicUrl + `1.png`;
+          this.comicUrl = this.baseComicUrl + this.pageCount + `.png`;
         }
       }
     );
+
+    document.onkeydown = function(event) {
+      switch (event.key) {
+        case "ArrowLeft":
+          this.previousPage();
+          break;
+        case "ArrowRight":
+          this.nextPage();
+          break;
+      }
+    }.bind(this);
   }
 
   ngOnDestroy(){
@@ -50,10 +61,16 @@ export class ComicComponent {
   }
 
   previousPage(){
-    this.router.navigate([`/comic/page-${+(this.page) - 1}`]);
+    let previousPage = +(this.page) - 1;
+    if(previousPage != 0){
+      this.router.navigate([`/comic/page-${previousPage}`]);
+    }
   }
 
   nextPage(){
-    this.router.navigate([`/comic/page-${+(this.page) + 1}`]);
+    let nextPage = +(this.page) + 1;
+    if(nextPage <= this.pageCount){
+      this.router.navigate([`/comic/page-${nextPage}`]);
+    }
   }
 }
