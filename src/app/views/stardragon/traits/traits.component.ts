@@ -342,7 +342,7 @@ export class TraitsComponent {
         faGender = "fa-transgender";
     }
 
-    let src = this.base_img_directory + trait.species+'_traits/' + trait.image;
+    let src = this.base_img_directory + trait.species+'/' + trait.image;
     swal({
       html:`
         <img  class="trait-img" src="${src}" >
