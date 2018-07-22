@@ -37,10 +37,10 @@ export class TraitsComponent {
     sex:     'all'
   };
 
-  public base_img_directory   = 'assets/img/';
+  public base_img_directory   = 'http://static.thegemexchange.net/traits/';
   public img_directory:string = '';
   public headers:any = {};
-  public header_img:string = this.base_img_directory + 'stardragons_header_by_deletethestars.png';
+  public header_img:string = 'assets/img/stardragons_header_by_deletethestars.png';
 
   public traits:Array<StardragonTrait> = [];
   public visibleTraits:Array<StardragonTrait> = [];
@@ -252,7 +252,7 @@ export class TraitsComponent {
       let headerObj = this.headers[this.filters.species];
       let imgSrc = headerObj[this.filters.subtype] || headerObj['standard'] || "";
       if(imgSrc != ""){
-        this.header_img = this.base_img_directory + `${this.filters.species}_traits/` + imgSrc;
+        this.header_img = this.base_img_directory + `${this.filters.species}/` + imgSrc;
       }
     }
     else{

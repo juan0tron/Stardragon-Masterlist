@@ -1,9 +1,0 @@
-{
-  "img_directory":"starcrafter_traits/",
-  "headers":{
-    "standard": "starcrafters_header_standard.png",
-    "desert":   "starcrafters_header_desert.png"
-  },
-  "traits": [],
-  "trait_descriptions":[]
-}

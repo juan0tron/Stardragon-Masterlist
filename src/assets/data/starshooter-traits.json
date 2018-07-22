@@ -1,9 +1,0 @@
-{
-  "img_directory":"starshooter_traits/",
-  "headers":{
-    "standard": "starshooters_header_standard.png",
-    "arctic":   "starshooters_header_arctic.png"
-  },
-  "traits": [],
-  "trait_descriptions": []
-}

@@ -139,7 +139,7 @@
             <ng-container *ngFor="let trait of filterTraitsByType(trait_type)">
               <div class="trait col-6 col-md-3" style="text-align:center;" (click)="showTraitDetails(trait)">
                 <div class="trait-img rarity {{trait.rarity}}">
-                  <img src="{{base_img_directory + trait.species+'_traits/' + trait.image}}"/>
+                  <img src="{{base_img_directory + trait.species+'/' + trait.image}}"/>
                 </div>
                 <p class="trait-meta">
                   <strong>

@@ -1,9 +1,0 @@
-{
-  "img_directory":"starsweeper_traits/",
-  "headers":{
-    "standard": "starsweepers_header_standard.png",
-    "arctic":   "starsweepers_header_arctic.png"
-  },
-  "traits": [],
-  "trait_descriptions":[]
-}

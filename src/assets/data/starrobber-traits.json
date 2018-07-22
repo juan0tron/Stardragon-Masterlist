@@ -1,9 +1,0 @@
-{
-  "img_directory":"starrobber_traits/",
-  "headers":{
-    "standard":    "starrobbers_header_standard.png",
-    "severblight": "starrobbers_header_severblight.png"
-  },
-  "traits": [],
-  "trait_descriptions":[]
-}

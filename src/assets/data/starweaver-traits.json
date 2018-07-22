@@ -1,9 +1,0 @@
-{
-  "img_directory":"starweaver_traits/",
-  "headers":{
-    "standard": "starweavers_header_standard.png",
-    "fuu":      "starweavers_header_fuu.png"
-  },
-  "traits": [],
-  "trait_descriptions":[]
-}
