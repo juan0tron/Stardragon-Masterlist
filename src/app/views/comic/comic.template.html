@@ -7,7 +7,9 @@
 
     <div id="comic-container" class="row">
       <div class="col">
-        <img [src]="comicUrl" alt="Gem Exchange Comic Page {{page}}">
+        <a routerLink="/comic/page-{{+(page) + 1}}" (keydown.arrowleft)="previousPage()" (keydown.arrowright)="nextPage()">
+          <img [src]="comicUrl" alt="Gem Exchange Comic Page {{page}}">
+        </a>
       </div>
     </div>
 

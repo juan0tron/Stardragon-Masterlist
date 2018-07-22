@@ -13,7 +13,7 @@ export class ComicNavComponent {
   @Input() page:number;
 
   public baseUrl = "/comic";
-  public pageCount = 2;
+  public pageCount = 3;
   public pageSelector = 1;
   public nextPage = 0;
   public prevPage = 0;

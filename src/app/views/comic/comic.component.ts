@@ -11,7 +11,7 @@ import { ComicService } from './comic.service';
 export class ComicComponent {
 
   public page:number = 1;
-  public pageCount = 2;
+  public pageCount = 3;
 
   public baseComicUrl = "http://static.thegemexchange.net/comic/";
   public comicUrl:string;
@@ -30,13 +30,14 @@ export class ComicComponent {
         if(params['page']){
           this.page = params['page'].replace('page-','');
 
-          // Page doesn't exist, go to most recent page
+          // Given page number doesn't exist, go to most recent page instead
           if(this.page > this.pageCount || this.page <= 0){
             this.page = this.pageCount;
             this.router.navigate([`/comic/page-${this.pageCount}`]);
           }
           this.comicUrl = this.baseComicUrl + `${this.page}.png`;
         }
+        // Default to the first page if no page is specified
         else{
           this.comicUrl = this.baseComicUrl + `1.png`;
         }
@@ -48,7 +49,11 @@ export class ComicComponent {
     this.router_sub.unsubscribe();
   }
 
-  getPage(){
-    // this.http.get(this.baseComicUrl + `${this.page}.png`, {headers:headers});
+  previousPage(){
+    this.router.navigate([`/comic/page-${+(this.page) - 1}`]);
+  }
+
+  nextPage(){
+    this.router.navigate([`/comic/page-${+(this.page) + 1}`]);
   }
 }
