@@ -154,21 +154,31 @@ export class TraitsComponent {
    */
   getTraits(){
     this.traitsService.getTraits(this.filters.species).subscribe(
-      data => { this.traits = data },
+      data => {
+        for(let trait of data){
+          trait.loading = true;
+        }
+        this.traits = data
+      },
       err  => {
         this.loading = false;
         console.error("error getting traits", err)
       },
       ()   => {
         this.loading = false;
-        this.filterTraits()
+        this.filterTraits();
       }
     );
   }
 
   getAllTraits(){
     this.traitsService.getAllTraits().subscribe(
-      data => { this.traits = data },
+      data => {
+        for(let trait of data){
+          trait.loading = true;
+        }
+        this.traits = data;
+      },
       err  => {
         this.loading = false;
         console.error("error getting traits", err)

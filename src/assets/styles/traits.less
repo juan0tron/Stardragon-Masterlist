@@ -7,8 +7,42 @@
 @rare:      #FF855B;
 @legendary: #FF6FA2;
 
+traits{
+  p{
+    font-family: "Frenchpress";
+    font-size: 22px;
+    font-weight: bold;
+  }
+  a{ text-decoration: none }
+}
+
 #trait-filters{
   overflow: hidden;
+}
+
+.trait-placeholder{
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  &:before{
+    content: "";
+    display: block;
+    padding-top: 100%;
+  }
+
+  .placeholder-content{
+    font-family: "Frenchpress";
+    color: #000;
+    font-size: 2rem;
+
+    position:  absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
 }
 
 .species-index-link{
@@ -87,7 +121,8 @@
   margin-bottom: 15px;
   overflow: hidden;
   img{
-    max-height: 255px; 
+    max-height: 255px;
+    animation: fadeIn 2s;
   }
 }
 .trait-img.rarity{

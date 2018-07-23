@@ -1,12 +1,3 @@
-<style media="screen">
-  p{
-    font-family: "Frenchpress";
-    font-size: 22px;
-    font-weight: bold;
-  }
-  a{ text-decoration: none }
-</style>
-
 <!-- THIS IMG BLOCK IS FOR THE NEW HEADER STYLE ONCE I FINISH IT -->
 <!-- <div class="row" style="margin:0 -15px;">
   <div class="species-header-block fadeIn" [style.backgroundImage]="'url(' + header.background + ')'">
@@ -139,7 +130,16 @@
             <ng-container *ngFor="let trait of filterTraitsByType(trait_type)">
               <div class="trait col-6 col-md-3" style="text-align:center;" (click)="showTraitDetails(trait)">
                 <div class="trait-img rarity {{trait.rarity}}">
-                  <img src="{{base_img_directory + trait.species+'/' + trait.image}}"/>
+                  <div [hidden]="!trait.loading" class="trait-placeholder">
+                    <div class="placeholder-content">
+                      Loading...
+                    </div>
+                  </div>
+                  <img
+                    [hidden]="trait.loading"
+                    src="{{base_img_directory + trait.species+'/' + trait.image}}"
+                    (load)="trait.loading = false;"
+                  />
                 </div>
                 <p class="trait-meta">
                   <strong>
