@@ -20,6 +20,7 @@ import { CharacterComponent } from "app/views/character/character.component";
 import { StardragonComponent }       from "app/views/stardragon/profile/stardragon.component";
 import { StardragonIndex }           from "app/views/stardragon/index/stardragon-index.component";
 import { StardragonListComponent }   from "app/views/stardragon/list/stardragon-list.component";
+import { MasterList }                from "app/views/stardragon/master-list/master-list.component";
 import { EditStardragonComponent }   from 'app/views/stardragon/edit/edit-stardragon.component';
 import { TraitsComponent }           from 'app/views/stardragon/traits/traits.component';
 
@@ -51,7 +52,7 @@ export const ROUTES: Routes = [
 
     // Stardragons (DO NOT REARRANGE - Route order matters!!)
     { path: 'stardragons', component: StardragonIndex },
-      { path: 'stardragons/list', component: StardragonListComponent, canActivate: [LoggedInGuard] },
+      { path: 'stardragons/list', component: MasterList, canActivate: [LoggedInGuard] },
       { path: 'stardragons/create', component: EditStardragonComponent,  canActivate: [LoggedInGuard]},
 
       { path: 'stardragons/traits',                        component: TraitsComponent },

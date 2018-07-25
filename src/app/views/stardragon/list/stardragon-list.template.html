@@ -1,68 +1,3 @@
-<style media="screen">
-
-  #stardragon-list{}
-
-  #stardragon-list .stardragon{
-  }
-
-  .thumbnail{
-    text-align: center;
-
-    margin-bottom: 5px;
-
-    transition: ease all .2s;
-
-    background: #ccc;
-    box-shadow: 0 0 0 1px rgba(0,0,0,.1),
-                0 1px 1px rgba(0,0,0,.2),
-                0 2px 2px rgba(0,0,0,.2);
-
-    width:100%;
-    padding-bottom:100%;
-
-    margin:   1em auto 0;
-    overflow: hidden;
-    position: relative;
-  }
-
-  .thumbnail:hover{
-    box-shadow: 0 0 0 1px rgba(0,0,0,.2),
-                0 1px 1px rgba(0,0,0,.3),
-                0 2px 2px rgba(0,0,0,.3);
-  }
-
-  .thumbnail img{
-    position:   absolute;
-    width:      auto;
-    left:       0;
-    min-width:  100%;
-    min-height: 100%;
-  }
-
-  .details{
-    font-size:     .875rem;
-    margin-bottom: 15px;
-    display:       block;
-    overflow:      hidden;
-    width:         100%;
-    background:    #222;
-    padding:       .875rem;
-
-    box-shadow: 0 0 0 1px rgba(0,0,0,.1),
-                0 1px 1px rgba(0,0,0,.2),
-                0 2px 2px rgba(0,0,0,.2);
-  }
-  .details .name{
-    font-weight: bold;
-    float:left;
-  }
-  .details .owner{
-    float:right;
-  }
-
-  .stats{}
-</style>
-
 <ng-container *ngIf="stardragons.length > 0">
 
   <div class="row">
@@ -75,19 +10,21 @@
 
   <div class="row">
     <!-- dis the stardragon thumb -->
-    <div class="stardragon col-6 col-sm-3" *ngFor="let stardragon of stardragons">
-      <div class="thumbnail">
+    <div class="col-6 col-sm-3" *ngFor="let stardragon of stardragons">
+      <div class="stardragon">
         <a [routerLink]="['/stardragons/',stardragon._id]">
-          <img src="./../../assets/img/default_avatar.png" />
-        </a>
-      </div>
-      <div class="details">
-        <a class="name" [routerLink]="['/stardragons/',stardragon._id]">
-          {{stardragon.name}}
-        </a>
-        <a class="owner" routerLink="/users/fakeUser">
-          <i class="fa fa-user"></i>
-          {{stardragon.owner || "Owner"}}
+          <div class="thumbnail">
+              <img src="./../../assets/img/default_avatar.png" />
+          </div>
+          <div class="details">
+            <a class="name" [routerLink]="['/stardragons/',stardragon._id]">
+              {{stardragon.name}}
+            </a>
+            <a class="owner" routerLink="/users/fakeUser">
+              <i class="fa fa-user"></i>
+              {{stardragon.owner || "Owner"}}
+            </a>
+          </div>
         </a>
       </div>
     </div>

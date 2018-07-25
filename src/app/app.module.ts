@@ -23,6 +23,7 @@ import { MYOThankYouComponent }    from "app/views/myo/thank-you/myo-thank-you.c
 // Stardragon Pages
 import { StardragonIndex }           from './views/stardragon/index/stardragon-index.component';
 import { StardragonListComponent }   from './views/stardragon/list/stardragon-list.component';
+import { MasterList }                from './views/stardragon/master-list/master-list.component';
 import { StardragonComponent }       from './views/stardragon/profile/stardragon.component';
 import { StatsComponent }            from './views/stardragon/stats/stats.component';
 import { EditStardragonComponent }   from './views/stardragon/edit/edit-stardragon.component';
@@ -71,6 +72,7 @@ import { AppComponent } from './app.component';
     // Stardragon pages
     StardragonIndex,
     StardragonListComponent,
+    MasterList,
     StardragonComponent,
     StatsComponent,
     EditStardragonComponent,
