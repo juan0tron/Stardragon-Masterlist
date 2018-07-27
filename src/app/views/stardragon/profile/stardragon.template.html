@@ -1,19 +1,23 @@
-<div class="row" *ngIf="stardragon">
-  <div class="col-4">
-    <img src="./../../assets/img/default_avatar.png" />
-  </div>
-  <div class="col-8">
-    <div class="row">
-      <div class="col">
-        <h2>{{stardragon.name}}</h2>
-        <small>{{stardragon.rarity | titlecase}} {{stardragon.gender || stardragon.sex | titlecase}} {{stardragon.species | titlecase}}</small>
+<div class="container">
+  <div class="content">
+    <div class="row" *ngIf="stardragon">
+      <div class="col-4">
+        <img src="./../../assets/img/default_avatar.png" />
       </div>
-      <div class="col">
-        <a *ngIf="gem.isLoggedIn()" class="btn btn-primary pull-right" [routerLink]="['/stardragons',stardragon._id,'edit']">Edit</a>
-      </div>
-      <div class="col-12">
-        <hr/>
-        <p>{{stardragon.bio || 'No bio.'}}</p>
+      <div class="col-8">
+        <div class="row">
+          <div class="col">
+            <h2>{{stardragon.name}}</h2>
+            <small>{{stardragon.rarity | titlecase}} {{stardragon.gender || stardragon.sex | titlecase}} {{stardragon.species | titlecase}}</small>
+          </div>
+          <div class="col">
+            <a *ngIf="gem.isLoggedIn()" class="btn btn-primary pull-right" [routerLink]="['/stardragons',stardragon._id,'edit']">Edit</a>
+          </div>
+          <div class="col-12">
+            <hr/>
+            <p>{{stardragon.bio || 'No bio.'}}</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
