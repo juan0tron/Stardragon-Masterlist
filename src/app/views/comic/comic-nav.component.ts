@@ -11,9 +11,9 @@ import { ComicService } from './comic.service';
 export class ComicNavComponent {
 
   @Input() page:number;
+  @Input() pageCount:number;
 
   public baseUrl = "/comic";
-  public pageCount = 3;
   public pageSelector = 1;
   public nextPage = 0;
   public prevPage = 0;

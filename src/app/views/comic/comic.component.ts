@@ -11,7 +11,7 @@ import { ComicService } from './comic.service';
 export class ComicComponent {
 
   public page:number = 1;
-  public pageCount = 3;
+  public pageCount:number = 4;
 
   public baseComicUrl = "http://static.thegemexchange.net/comic/";
   public comicUrl:string;
@@ -37,9 +37,9 @@ export class ComicComponent {
           }
           this.comicUrl = this.baseComicUrl + `${this.page}.png`;
         }
-        // Default to the first page if no page is specified
+        // Default to the latest page if no page is specified
         else{
-          this.comicUrl = this.baseComicUrl + this.pageCount + `.png`;
+          this.router.navigate([`/comic/page-${this.pageCount}`]);
         }
       }
     );
