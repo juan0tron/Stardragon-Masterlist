@@ -48,7 +48,59 @@ traits{
 .species-index-link{
   display: block;
   position: relative;
+  margin-bottom: 30px;
 
+  .placeholder{
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: #fafafa;
+    border-radius: 15px;
+    &:before{
+      content: "";
+      display: block;
+      padding-top: 40%;
+    }
+    .placeholder-content{
+      font-family: "Futura", sans-serif;
+      text-transform: uppercase;
+      color: #000;
+      font-size: 2rem;
+
+      position: absolute;
+      top: 0;
+      right:0;
+      bottom:0;
+      left:0;
+
+      p{
+        position:  absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+        right: 0;
+        text-align: center;
+      }
+
+      &:before{
+        content:"";
+
+        animation: content-placeholder-animation 1s linear infinite;
+        background: linear-gradient(to right, rgba(15,15,15,0) 0%,rgba(219,219,219,0.4) 50%,rgba(255,255,255,0) 100%);
+        will-change: transform;
+        display: block;
+        height: inherit;
+
+        position: absolute;
+        left: 0;
+        top:  0;
+        bottom: 0;
+        right: 0;
+        width:  70%;
+        height: 100%;
+      }
+    }
+  }
 
   img{
     width:100%;

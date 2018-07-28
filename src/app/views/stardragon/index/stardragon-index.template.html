@@ -15,11 +15,18 @@
       class="col-md-6 col-sm-12 col-xs-12"
       >
       <a [routerLink]="['/stardragons/traits',s.species]" class="species-index-link">
+        <div class="placeholder" [hidden]="!s.loading">
+          <div class="placeholder-content">
+            <p>{{s.species | titlecase}}s</p>
+          </div>
+        </div>
         <img
         [src]="'http://static.thegemexchange.net/traits/' + s.species + '/' + s.img"
         alt="{{s.species | titlecase}}"
         title="{{s.species | titlecase}}"
         class="species-header"
+        [hidden]="s.loading"
+        (load)="s.loading = false;"
         />
       </a>
     </div>
