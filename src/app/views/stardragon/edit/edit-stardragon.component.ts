@@ -169,4 +169,30 @@ export class EditStardragonComponent {
       }
     })
   }
+
+  /**
+   * @function uploadImage
+   */
+  uploadImage(event){
+    let reader = new FileReader();
+    if(event.target.files && event.target.files.length > 0) {
+      let file = event.target.files[0];
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.bio.get('avatar').setValue({
+          filename: file.name,
+          filetype: file.type,
+          value: reader.result.split(',')[1]
+        });
+        this.gem.api('/file', "POST", {file}).subscribe(
+          data => {},
+          err  => {},
+          ()   => {}
+        );
+      };
+    }
+
+
+
+  }
 }

@@ -1,141 +1,139 @@
-<div id="create-stardragon">
+<div id="create-stardragon"class="container">
 
-  <div class="row">
-    <div class="col">
-      <h1 *ngIf="!id">Create Stardragon</h1>
-      <h1 *ngIf="stardragon && id">Edit Stardragon: <a [routerLink]="['/stardragons',stardragon._id]">{{stardragon.name}}</a></h1>
-    </div>
-  </div>
+  <div class="content">
 
-  <div class="row"><div class="col-12"><hr/></div></div>
+    <div class="row">
+      <div class="col">
+        <h1 *ngIf="!id">Create Stardragon</h1>
+        <h1 *ngIf="stardragon && id">Edit Stardragon: <a [routerLink]="['/stardragons',stardragon._id]">{{stardragon.name}}</a></h1>
+      </div>
+    </div>
 
-  <form [formGroup]="adminInfo" (submit)="save(adminInfo)">
-    <div class="row">
-      <div class="col-12">
-        <h3>Info</h3>
-        <small>Can only be set by an admin.</small>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <input type="text" placeholder="Name" class="form-control" formControlName="name" />
-      </div>
-      <div class="col">
-        <select placeholder="Species" class="form-control" formControlName="species">
-          <option value=null selected disabled>Species...</option>
-          <option *ngFor="let species of speciesTypes" [value]="species">{{species | titlecase}}</option>
-        </select>
-      </div>
-      <div class="col">
-        <select placeholder="Type" class="form-control" formControlName="type">
-          <option selected disabled value=null>Type...</option>
-          <option *ngFor="let type of sdTypes" [value]="type">{{type | titlecase}}</option>
-        </select>
-      </div>
-      <div class="col">
-        <select placeholder="Rarity" class="form-control" formControlName="rarity">
-          <option selected disabled value=null>Rarity...</option>
-          <option *ngFor="let rarity of rarityTypes" [value]="rarity">{{rarity | titlecase}}</option>
-        </select>
-      </div>
-      <div class="col">
-        <select placeholder="Sex" class="form-control" formControlName="sex">
-          <option selected disabled value="n/a">Sex...</option>
-          <option *ngFor="let sex of sexTypes" [value]="sex">{{sex | titlecase}}</option>
-        </select>
-      </div>
-      <div class="col">
-        <input formControlName="base" id="base" type="text" name="base" class="form-control" placeholder="Base" />
-      </div>
-      <div class="col">
-        <input formControlName="basePrice" type="number" name="base price" class="form-control" placeholder="$ Base Price" />
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label>Created</label>
-        <input type="date" class="form-control" placeholder="Created" formControlName="created" />
-      </div>
-      <div class="col">
-        <label>Approved</label>
-        <input type="date" class="form-control" placeholder="Approved" formControlName="approved" />
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <textarea class="form-control" placeholder="Admin Notes" formControlName="adminNotes"></textarea>
-      </div>
-    </div>
-    <div class="row" id="debug" *ngIf="gem.isDev()">
-      <div class="col-12">
-        <!-- <pre>{{adminInfo.value | json}}</pre> -->
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <button type="submit" name="button" class="btn btn-primary">Save</button>
-      </div>
-    </div>
-  </form>
+    <div class="row"><div class="col-12"><hr/></div></div>
 
-  <div class="row"><div class="col-12"><hr/></div></div>
+    <form [formGroup]="adminInfo" (submit)="save(adminInfo)">
+      <div class="row">
+        <div class="col-12">
+          <h3>Info</h3>
+          <small>Can only be set by an admin.</small>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <input type="text" placeholder="Name" class="form-control" formControlName="name" />
+        </div>
+        <div class="col">
+          <select placeholder="Species" class="form-control" formControlName="species">
+            <option value=null selected disabled>Species...</option>
+            <option *ngFor="let species of speciesTypes" [value]="species">{{species | titlecase}}</option>
+          </select>
+        </div>
+        <div class="col">
+          <select placeholder="Type" class="form-control" formControlName="type">
+            <option selected disabled value=null>Type...</option>
+            <option *ngFor="let type of sdTypes" [value]="type">{{type | titlecase}}</option>
+          </select>
+        </div>
+        <div class="col">
+          <select placeholder="Rarity" class="form-control" formControlName="rarity">
+            <option selected disabled value=null>Rarity...</option>
+            <option *ngFor="let rarity of rarityTypes" [value]="rarity">{{rarity | titlecase}}</option>
+          </select>
+        </div>
+        <div class="col">
+          <select placeholder="Sex" class="form-control" formControlName="sex">
+            <option selected disabled value="n/a">Sex...</option>
+            <option *ngFor="let sex of sexTypes" [value]="sex">{{sex | titlecase}}</option>
+          </select>
+        </div>
+        <div class="col">
+          <input formControlName="base" id="base" type="text" name="base" class="form-control" placeholder="Base" />
+        </div>
+        <div class="col">
+          <input formControlName="basePrice" type="number" name="base price" class="form-control" placeholder="$ Base Price" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label>Created</label>
+          <input type="date" class="form-control" placeholder="Created" formControlName="created" />
+        </div>
+        <div class="col">
+          <label>Approved</label>
+          <input type="date" class="form-control" placeholder="Approved" formControlName="approved" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <textarea class="form-control" placeholder="Admin Notes" formControlName="adminNotes"></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <button type="submit" name="button" class="btn btn-primary">Save</button>
+        </div>
+      </div>
+    </form>
 
-  <form [formGroup]="bio" (submit)="save(bio)">
-    <div class="row">
-      <div class="col-12">
-        <h3>Bio</h3>
-        <small>Set as you'd like!</small>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <input type="file" placeholder="Image" class="form-control" />
-      </div>
-      <div class="col">
-        <input type="text" placeholder="Gender" class="form-control" formControlName="gender" />
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <textarea placeholder="Bio" class="form-control" formControlName="bio"></textarea>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <button type="submit" name="button" class="btn btn-primary">Save</button>
-      </div>
-    </div>
-  </form>
+    <div class="row"><div class="col-12"><hr/></div></div>
 
-  <div class="row"><div class="col-12"><hr/></div></div>
-
-  <ng-container *ngIf="stardragon && id">
-    <div class="row">
-      <div class="col">
-        <h2>Danger Zone</h2>
+    <form [formGroup]="bio" (submit)="save(bio)">
+      <div class="row">
+        <div class="col-12">
+          <h3>Bio</h3>
+          <small>Set as you'd like!</small>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Type Stardragon Name here..." [(ngModel)]="confirmDeletion">
-          <div class="input-group-append">
-            <button class="btn btn-danger" type="button" (click)="delete()" [disabled]="confirmDeletion != stardragon.name">Delete {{stardragon.name}}</button>
+      <div class="row">
+        <div class="col">
+          <input type="file" (change)="uploadImage($event)" id="avatar" class="form-control" />
+        </div>
+        <div class="col">
+          <input type="text" placeholder="Gender" class="form-control" formControlName="gender" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <textarea placeholder="Bio" class="form-control" formControlName="bio"></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <button type="submit" name="button" class="btn btn-primary">Save</button>
+        </div>
+      </div>
+    </form>
+
+    <div class="row"><div class="col-12"><hr/></div></div>
+
+    <ng-container *ngIf="stardragon && id">
+      <div class="row">
+        <div class="col">
+          <h2>Danger Zone</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Type Stardragon Name here..." [(ngModel)]="confirmDeletion">
+            <div class="input-group-append">
+              <button class="btn btn-danger" type="button" (click)="delete()" [disabled]="confirmDeletion != stardragon.name">Delete {{stardragon.name}}</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </ng-container>
+    </ng-container>
 
-  <!--
-    @TODO:
-    Gallery  - upload multiple images
-    Traits   - create once /traits endpoints exist in the api.
-    Template - "Use Default Template || Use Custom HTML"
-    Designer - Username, link to website
-    Trade info - base sale price, sale/trade status (Not available/Available for sale/available for trade)
-  -->
+    <!--
+      @TODO:
+      Gallery  - upload multiple images
+      Traits   - create once /traits endpoints exist in the api.
+      Template - "Use Default Template || Use Custom HTML"
+      Designer - Username, link to website
+      Trade info - base sale price, sale/trade status (Not available/Available for sale/available for trade)
+    -->
 
+  </div>
 </div>
 
 <footer></footer>

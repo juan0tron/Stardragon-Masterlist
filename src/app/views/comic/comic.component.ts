@@ -16,6 +16,8 @@ export class ComicComponent {
   public baseComicUrl = "http://static.thegemexchange.net/comic/";
   public comicUrl:string;
 
+  public loadingPage:boolean = true;
+
   public router_sub:any;
 
   constructor(
@@ -27,6 +29,7 @@ export class ComicComponent {
   ngOnInit(){
     this.router_sub = this.route.params.subscribe(
       params => {
+        this.loadingPage = true;
         if(params['page']){
           this.page = params['page'].replace('page-','');
 
