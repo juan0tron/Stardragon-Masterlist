@@ -8,14 +8,15 @@
     <div id="comic-container" class="row">
       <div class="col">
         <a routerLink="/comic/page-{{+(page) + 1}}" [class.disabled]="page == pageCount">
-          <div class="comic-placeholder" [hidden]="!loadingPage">
-            <div class="comic-panel"></div>
-            <div class="comic-panel"></div>
-            <div class="comic-panel"></div>
-            <div class="comic-panel"></div>
-            <div class="comic-panel"></div>
-            <div class="comic-panel"></div>
-            <div class="comic-panel"></div>
+          <div class="comic-placeholder-wrapper" [hidden]="!loadingPage">
+            <div class="comic-placeholder">
+              <div class="comic-panel"></div>
+              <div class="comic-panel"></div>
+              <div class="comic-panel"></div>
+              <div class="comic-panel"></div>
+              <div class="comic-panel"></div>
+              <div class="comic-panel"></div>
+            </div>
           </div>
           <img [src]="comicUrl" (load)="loadingPage = false" alt="Gem Exchange Comic Page {{page}}"  [hidden]="loadingPage">
         </a>
