@@ -1,5 +1,32 @@
 home{
   text-align: center;
+  .full-width{
+    min-height: 100vh;
+
+    h1{
+      position: absolute;
+      top: 60%;
+      left: 0;
+      right: 0;
+      transform: translateY(-50%);
+    }
+    img{
+      position: fixed;
+      bottom:0;
+      left:0;
+      right:0;
+      margin: 0;
+      transition: 0.3s ease all;
+    }
+    i{
+      position: absolute;
+      left: 0;
+      right:0;
+      bottom:1rem;
+      color: #fff;
+      font-size: 3rem;
+    }
+  }
 }
 
 
@@ -47,4 +74,80 @@ home{
   .fa-patreon{ background-color: @patreon }
   .fa-paw{ background-color: @furaffinity }
   .fa-twitter{ background-color: @twitter }
+}
+
+#flex-links{
+  display: flex;
+  flex-wrap: wrap;
+  .flex-link{
+    display: inline-block;
+    flex: 50%;
+
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+
+    i{padding-left: 15px; }
+
+    .flex-link-title{
+      position: absolute;
+      right:.5rem;
+      bottom:.5rem;
+      color: #000;
+      font-family: "Futura";
+      text-transform: uppercase;
+      color:#fff;
+      font-size: 2rem;
+      z-index: 1;
+      filter: drop-shadow(1px 1px #000);
+    }
+
+    &:before{
+      content:     "";
+      display:     block;
+      padding-top: 50%;
+    }
+    &:after{
+      content: "";
+      position: absolute;
+      top:    0;
+      left:   0;
+      right:  0;
+      bottom: 0;
+      opacity: .75;
+    }
+    &.fa-home{
+      &:after{ background: linear-gradient(transparent, @toyhouse 40%); }
+      background-image: url('./../img/link_banners/toyhouse.png');
+      background-color: @toyhouse;
+    }
+    &.fa-deviantart{
+      &:before{padding-top: 25%;}
+      &:after{ background: linear-gradient(transparent, @deviantart 40%); }
+      background-image: url('./../img/link_banners/deviantart.png');
+      background-color: @deviantart;
+    }
+    &.fa-github{
+      &:after{ background: linear-gradient(transparent, @github 40%); }
+      background-image: url('./../img/link_banners/github.png');
+      background-color: @github;
+    }
+    &.fa-patreon{
+      &:before{padding-top: 25%;}
+      &:after{ background: linear-gradient(transparent, @patreon 40%); }
+      background-image: url('./../img/link_banners/patreon.png');
+      background-color: @patreon;
+      flex:100%;
+    }
+    &.fa-paw{
+      &:after{ background: linear-gradient(transparent, @furaffinity 40%); }
+      background-image: url('./../img/link_banners/furaffinity.png');
+      background-color: @furaffinity;
+    }
+    &.fa-twitter{
+      &:after{ background: linear-gradient(transparent, @twitter 40%); }
+      background-image: url('./../img/link_banners/twitter.png');
+      background-color: @twitter;
+    }
+  }
 }
