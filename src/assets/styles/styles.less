@@ -33,12 +33,9 @@ html, body, app-root, main{
 }
 
 body{
-  background-image:  url('./../img/blue_space_background.png');
-  background-repeat: repeat-y;
-  background-size: 102%;
-  background-position: -10px 0; // Crops white space on the right of the current image we're using
-  background-attachment: fixed;
-
+  background:linear-gradient(#0B3134, #0c0c0c 20%) fixed;
+  background:radial-gradient(top, #0B3134, #0c0c0c 80%) fixed;
+  background:-webkit-radial-gradient(top, #0B3134, #0c0c0c 80%) fixed;
   body > * {
     flex-shrink: 0;
   }
@@ -204,10 +201,10 @@ footer{
   font-family: "Futura";
   font-size: 1rem;
   text-transform: uppercase;
-  background: #fff;
+  background: #333;
   box-shadow: 0px 0px 10px #000;
   a{
-    color:#000;
+    color:#FFF;
   }
   img{
     margin: 0 auto;
