@@ -160,6 +160,14 @@ a{
   }
 }
 
+header, footer{
+  a, a:not([href]){
+    color:#000;
+    transition: all 0.3s ease;
+    text-decoration: none!important;
+  }
+}
+
 header{
   text-align: center;
   font-family: "Futura";
@@ -170,11 +178,6 @@ header{
   z-index: 9;
   width: 100%;
 
-  a, a:not([href]){
-    color:#000;
-    transition: all 0.3s ease;
-    text-decoration: none!important;
-  }
   nav{
     width:100%;
     background: rgba(255,255,255,0.9);
@@ -191,6 +194,24 @@ header{
         text-shadow: 1px 1px 5px #fafafa;
       }
     }
+  }
+}
+
+footer{
+  flex-direction: row;
+  text-align: center;
+  z-index: 1;
+  font-family: "Futura";
+  font-size: 1rem;
+  text-transform: uppercase;
+  background: #fff;
+  box-shadow: 0px 0px 10px #000;
+  a{
+    color:#000;
+  }
+  img{
+    margin: 0 auto;
+    display: block;
   }
 }
 
@@ -256,17 +277,6 @@ header{
   filter: drop-shadow(5px 5px 1px rgba(0, 0, 0, 0.4));
   width:100%;
   transition: filter 0.3s ease;
-}
-
-footer{
-  flex-direction: row;
-  text-align: center;
-  z-index: 1;
-
-  img{
-    margin: 0 auto;
-    display: block;
-  }
 }
 
 .horizontal-links{

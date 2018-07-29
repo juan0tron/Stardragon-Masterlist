@@ -1,9 +1,9 @@
 <div class="container">
-  <div class="content">
-    <img src="http://www.labellezzawithin.co.uk/images/horizontaldivider.png" width="600px">
-    <ul class="horizontal-links">
-      <li><a routerLink="/termsofservice">Terms of Service</a></li>
-      <li><a href="http://toyhou.se/~world/1420.gemexchange-jo-arca" target="_blank">Toyhou.se Community</a></li>
-    </ul>
-  </div>
+  <ul class="horizontal-links float-right">
+    <li><a routerLink="/">Home</a></li>
+    <li><a routerLink="/termsofservice">Terms of Service</a></li>
+  </ul>
+  <ul class="horizontal-links float-left">
+    <li *ngFor="let link of links"><a [href]="link.link" [title]="link.name" target="_blank"><i [class]="link.class"></i></a></li>
+  </ul>
 </div>
