@@ -1,7 +1,7 @@
 <div class="container">
   <div class="full-width">
     <a [routerLink]="['/stardragons/traits/all']">
-      <h1 style="width:100%; text-align:center;">Species Encyclopedia</h1>
+      <h1 style="width:100%; text-align:center;">Traits Compendium</h1>
       <img src="assets/img/stardragons_header_by_deletethestars.png" style="margin-top:-25px; margin-bottom:-25px;">
     </a>
   </div>
@@ -22,11 +22,12 @@
         </div>
         <img
         [src]="'http://static.thegemexchange.net/traits/' + s.species + '/' + s.img"
-        alt="{{s.species | titlecase}}"
-        title="{{s.species | titlecase}}"
+        alt="{{s.species | titlecase}}s"
+        title="{{s.species | titlecase}}s"
         class="species-header"
         [hidden]="s.loading"
         (load)="s.loading = false;"
+        onError="s.loading = true;"
         />
       </a>
     </div>

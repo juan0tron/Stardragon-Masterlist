@@ -24,6 +24,7 @@ traits{
   position: relative;
   width: 100%;
   overflow: hidden;
+  border-radius: 50%;
 
   &:before{
     content: "";
@@ -172,13 +173,11 @@ traits{
 .trait-img{
   margin-bottom: 15px;
   overflow: hidden;
+  border-radius: 50%;
   img{
     max-height: 255px;
     animation: fadeIn 2s;
   }
-}
-.trait-img.rarity{
-  // border-radius: 50%;
 }
 .trait-img, .trait-meta{
   transition: all .5s ease;
@@ -187,8 +186,11 @@ traits{
 .trait{
   &:hover{
     .trait-img{
-      border-radius: 0;
-      background:transparent!important;
+      &.none{background:@none;}
+      &.common{background:@common;}
+      &.uncommon{background:@uncommon;}
+      &.rare{background:@rare;}
+      &.legendary{background:@legendary;}
     }
     .trait-meta{
       text-shadow: 1px 1px #aaa;
@@ -203,37 +205,27 @@ traits{
 // Rarity Colors
 .none{
   color:@none;
-  &.trait-img{
-    background: @none;
-  }
+  &.trait-img{ border: 5px solid @none; }
 }
 
 .common{
   color:@common;
-  &.trait-img{
-    background: @common;
-  }
+  &.trait-img{ border: 5px solid @common; }
 }
 
 .uncommon{
   color:@uncommon;
-  &.trait-img{
-    background: @uncommon;
-  }
+  &.trait-img{ border: 5px solid @uncommon; }
 }
 
 .rare{
   color:@rare;
-  &.trait-img{
-    background: @rare;
-  }
+  &.trait-img{ border: 5px solid @rare; }
 }
 
 .legendary{
   color:@legendary;
-  &.trait-img{
-    background: @legendary;
-  }
+  &.trait-img{ border: 5px solid @legendary; }
 }
 
 .trait-sex{
