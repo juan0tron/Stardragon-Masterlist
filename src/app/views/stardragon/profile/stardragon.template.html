@@ -1,13 +1,14 @@
-<div class="container">
+<div class="container" style="background:#fff">
   <div class="content">
     <div class="row" *ngIf="stardragon">
       <div class="col-4">
-        <img src="./../../assets/img/default_avatar.png" />
+        <!-- <img src="./../../assets/img/default_avatar.png" /> -->
+        <img [src]="stardragon.image_url" />
       </div>
       <div class="col-8">
         <div class="row">
           <div class="col">
-            <h2>{{stardragon.name}}</h2>
+            <h2>{{stardragon.adminId}}: {{stardragon.name}}</h2>
             <small>{{stardragon.rarity | titlecase}} {{stardragon.gender || stardragon.sex | titlecase}} {{stardragon.species | titlecase}}</small>
           </div>
           <div class="col">
@@ -16,6 +17,11 @@
           <div class="col-12">
             <hr/>
             <p>{{stardragon.bio || 'No bio.'}}</p>
+            <p>{{stardragon.adminNotes || 'No admin notes.'}}</p>
+            <p>Base: {{stardragon.base}}</p>
+            <p>Designer: {{stardragon.designer}}</p>
+            <p>Created: {{stardragon.created}}</p>
+            <p><a [href]="stardragon.url" target="_blank" class="btn btn-primary">Link</a></p>
           </div>
         </div>
       </div>

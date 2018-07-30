@@ -2,6 +2,9 @@
 import { Component, Input } from '@angular/core';
 import {Router, ActivatedRoute, Params} from '@angular/router';
 
+// 3rd Party
+import * as moment from 'moment';
+
 // Models
 import { Stardragon } from 'app/models/stardragon';
 

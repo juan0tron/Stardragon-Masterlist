@@ -14,7 +14,8 @@
       <div class="stardragon">
         <a [routerLink]="['/stardragons/',stardragon._id]">
           <div class="thumbnail">
-              <img src="./../../assets/img/default_avatar.png" />
+            <!-- <img src="./../../assets/img/default_avatar.png" /> -->
+              <img [src]="stardragon.image_url" />
           </div>
           <div class="details">
             <a class="name" [routerLink]="['/stardragons/',stardragon._id]">
@@ -22,7 +23,7 @@
             </a>
             <a class="owner" routerLink="/users/fakeUser">
               <i class="fa fa-user"></i>
-              {{stardragon.owner || "Owner"}}
+              {{stardragon.designer || "Designer"}}
             </a>
           </div>
         </a>

@@ -12,7 +12,8 @@ import { GemExchangeAPI } from 'app/services/api.service';
 export class StardragonListComponent {
 
   @Input() config:any = {
-    dashboard: false
+    dashboard: false,
+    designer: "all",
   };
 
   title = 'Stardragons';
