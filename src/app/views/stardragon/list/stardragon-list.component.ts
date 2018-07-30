@@ -11,10 +11,8 @@ import { GemExchangeAPI } from 'app/services/api.service';
 })
 export class StardragonListComponent {
 
-  @Input() config:any = {
-    dashboard: false,
-    designer: "all",
-  };
+  @Input() config:any = { dashboard: false };
+  @Input() limit:number = 0;
 
   title = 'Stardragons';
 
@@ -27,7 +25,7 @@ export class StardragonListComponent {
   }
 
   list() {
-    this.gem.api("/stardragons", "GET").subscribe(
+    this.gem.api(`/stardragons?limit=${this.limit}`, "GET").subscribe(
       data => {
         this.stardragons = data;
         console.log(this.stardragons)
