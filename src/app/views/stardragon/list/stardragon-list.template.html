@@ -1,18 +1,14 @@
-<ng-container *ngIf="stardragons.length > 0">
+<ng-container *ngIf="loading || stardragons.length <= 0">
+  <loading></loading>
+</ng-container>
 
-  <div class="row">
-    <div class="col-12">
-      <h3 class="pull-left" *ngIf="config.dashboard">Your StarDragons</h3>
-      <h3 class="pull-left" *ngIf="!config.dashboard">Stardragon Master List</h3>
-      <a [routerLink]="['/stardragons/create']" class="btn btn-primary pull-right">Create New</a>
-    </div>
-  </div>
+<ng-container *ngIf="stardragons.length > 0">
 
   <div class="row">
     <!-- dis the stardragon thumb -->
     <div class="col-6 col-sm-3" *ngFor="let stardragon of stardragons">
       <div class="stardragon">
-        <a [routerLink]="['/stardragons/',stardragon._id]">
+        <a [routerLink]="['/stardragons/',stardragon._id]" target="_blank">
           <div class="thumbnail">
             <!-- <img src="./../../assets/img/default_avatar.png" /> -->
               <img [src]="stardragon.image_url" />
@@ -21,7 +17,7 @@
             <a class="name" [routerLink]="['/stardragons/',stardragon._id]">
               {{stardragon.name}}
             </a>
-            <a class="owner" routerLink="/users/fakeUser">
+            <a class="owner" routerLink="/users/fakeUser" target="_blank">
               <i class="fa fa-user"></i>
               {{stardragon.designer || "Designer"}}
             </a>
