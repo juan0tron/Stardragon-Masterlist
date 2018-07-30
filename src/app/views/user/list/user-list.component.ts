@@ -16,7 +16,7 @@ import { User } from 'app/models/user'
 
 export class UserListComponent {
 
-  public user_list:Array<User>;
+  public users:Array<User>;
 
   private router_sub: any;
 
@@ -26,7 +26,9 @@ export class UserListComponent {
     private router: Router
   ) {}
 
-  ngOnInit(){}
+  ngOnInit(){
+    this.list();
+  }
 
   /**
    *  @function list
@@ -34,9 +36,9 @@ export class UserListComponent {
    */
   list(){
     this.api.api("/users", "GET").subscribe(
-      data => { this.user_list = data },
+      data => { this.users = data },
       err  => { console.error("Error getting user data.", err)},
-      ()   => { console.log("Got list of users.", this.user_list)}
+      ()   => { console.log("Got list of users.", this.users)}
     );
   }
 

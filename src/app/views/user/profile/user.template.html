@@ -2,22 +2,26 @@
   .btn{margin-right: 5px}
 </style>
 
-<div class="row">
-  <div id="avatar" class="col-md-4">
-    <img src="./../../assets/img/default_avatar.png" />
+<div class="container" style="background:#fff">
+  <div class="content">
+    <div style="height:60px; width:100%;"></div>
     <div class="row">
-      <div class="col" *ngFor="let icon of links">
-        <a href="#">
-          <i class="fa fa-{{icon}}"></i>
-        </a>
+      <div id="avatar" class="col-md-4">
+        <img src="./../../assets/img/default_avatar.png" />
+        <div id="social-icons" class="row">
+          <div class="col" *ngFor="let icon of links">
+            <a href="#">
+              <i class="fab fa-{{icon}}"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div id="description" class="col-md-8">
+        <h2 class="float-left" style="display:flex; flex:50%;">{{user.name || "Username"}}</h2>
+        <a [routerLink]="['/users/', user._id]" class="btn btn-secondary float-right disabled">Edit Profile</a>
+        <hr style="clear:both; display:block;">
       </div>
     </div>
-  </div>
-  <div id="description" class="col-md-8">
-    <h2 class="pull-left"><span *ngIf="isOwnProfile">Welcome,</span> {{user.name || "Username"}}</h2>
-    <a [routerLink]="['/users/', user._id]" class="btn btn-secondary pull-right disabled">Edit Profile</a>
-    <hr style="clear:both; display:block;">
-    <a [routerLink]="['/stardragons/create']" class="btn btn-primary">Create Stardragon</a>
-    <a [routerLink]="['/stardragons']" class="btn btn-info">View Master List</a>
+
   </div>
 </div>

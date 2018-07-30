@@ -24,21 +24,10 @@
   width: 100%;
 }
 
-#social-icons{
-  text-align: center;
-}
-
-.social-icon{
-  text-align: center;
-  padding: 5px;
-  background: #aaa;
-  border: 1px solid #000;
-}
-
 .dashboard-module{
   border-radius: 3px;
   border: 1px solid #aaa;
-
+  width: 100%;
 }
 
 #inventory{
@@ -46,13 +35,23 @@
 
   img{
     width: 100%;
+    max-width: 100px;
     height: auto;
-    max-height: 70px;
   }
 }
 
 #messages{
-  height: 215px;
-  max-height: 215px;
+  height: 225px;
+  max-height: 225px;
   overflow-y: scroll;
+  div{
+    transition: 0.3s ease all;
+  }
+  div:nth-child(odd){
+    background: #eee;
+  }
+  div:hover{
+    color: #FFF;
+    background: #555;
+  }
 }

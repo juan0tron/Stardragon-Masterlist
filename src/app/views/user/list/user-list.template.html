@@ -1,0 +1,20 @@
+<div class="container" style="background:#fff">
+  <div style="height:60px; width:100%;"></div>
+  <div class="content">
+    <a class="row user" *ngFor="let user of users" routerLink="/users/{{user._id}}">
+      <div class="col-2 user-avatar">
+        <img src="./../../assets/img/default_avatar.png" style="width:100%" />
+      </div>
+      <div class="col user-info">
+        <div class="row">
+          <span>{{user.name}}</span>
+        </div>
+        <div class="row">
+          <small>0 Stardragons | 0 Tokens</small>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<footer></footer>

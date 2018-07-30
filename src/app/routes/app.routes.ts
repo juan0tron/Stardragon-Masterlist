@@ -14,6 +14,7 @@ import { LoginComponent }    from "app/views/login/login.component";
 import { RegisterComponent } from "app/views/register/register.component";
 
 import { UserComponent } from "app/views/user/profile/user.component";
+import { UserListComponent } from "app/views/user/list/user-list.component";
 import { CharacterComponent } from "app/views/character/character.component";
 
 // Stardragons
@@ -45,8 +46,8 @@ export const ROUTES: Routes = [
 
     { path: 'register', component: RegisterComponent, canActivate: [DevGuard]},
 
-    { path: 'users',          component: UserComponent,  canActivate: [DevGuard]},
-    { path: 'users/:user_id', component: UserComponent,  canActivate: [DevGuard]},
+    { path: 'users',          component: UserListComponent },
+    { path: 'users/:user_id', component: UserComponent },
 
     { path: 'character', component: CharacterComponent, canActivate: [DevGuard]},
 
