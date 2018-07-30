@@ -14,6 +14,7 @@ import { User } from 'app/models/user'
 @Component({
   selector:    'dashboard',
   templateUrl: './dashboard.template.html',
+  providers: [GemExchangeAPI]
 })
 export class DashboardComponent {
   title = 'Dashboard';
@@ -21,6 +22,8 @@ export class DashboardComponent {
   public user:User = new User;
 
   public rows = [1,2,4,5,6,7,8,9,10]
+
+  public events = [];
 
   public tokens = [
     {
@@ -43,6 +46,14 @@ export class DashboardComponent {
     }
   ];
 
+  constructor(
+    public  gem: GemExchangeAPI
+  ){}
+
+  ngOnInit(){
+    this.getEvents();
+  }
+
   showTokenDetails(token){
     swal({
       // title: token.name,
@@ -57,6 +68,18 @@ export class DashboardComponent {
       // swal("ok!");
     })
 
+  }
+
+  /**
+   *  @function getEvents
+   *  @description Get this user's event history
+   */
+  getEvents(){
+    this.gem.api('/auth/events', "GET").subscribe(
+      data => {this.events = data.data},
+      err  => {},
+      ()   => {},
+    );
   }
 
 }

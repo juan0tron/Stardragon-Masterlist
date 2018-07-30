@@ -26,9 +26,9 @@
         <div class="row">
           <h2>Activity Log</h2>
           <div id="messages" class="dashboard-module">
-            <div style="width:100%; display:flex; padding: 15px;" *ngFor="let row of rows">
-              <span style="flex:50%">Message text goes here.</span>
-              <span style="flex:50%; text-align:right">one hour ago</span>
+            <div style="width:100%; display:flex; padding: 15px;" *ngFor="let event of events">
+              <span style="flex:50%">{{event.description}}</span>
+              <span style="flex:50%; text-align:right">{{event.date}}</span>
             </div>
           </div>
         </div>
