@@ -93,8 +93,8 @@ export class GemExchangeAPI {
         if (this.isDev()) console.error(`ERROR: ${request_type} ${params}`, error);
         switch(error.status){
           case 401: // Unauthorized
-            swal("Session Expired","Your session has expired. Please log in again.","error");
             this.logout();
+            swal("Session Expired","Your session has expired. Please log in again.","error");
             break;
           default:
             swal("Error",error.error.message || error.message,"error");
