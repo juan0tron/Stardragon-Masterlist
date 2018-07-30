@@ -16,33 +16,31 @@ body .swal2-popup {
   &.swal2-trait{
     max-width: 400px;
     &.none{
-      background: linear-gradient(transparent, @none 40%, #FFF 60%);
+      background: linear-gradient(@none, #FFF 10%);
       button{ background-color: @none; }
     }
     &.common{
-      background: linear-gradient(transparent, @common 40%, #FFF 60%);
+      background: linear-gradient(@common, #FFF 10%);
       button{ background-color: @common; }
     }
     &.uncommon{
-      background: linear-gradient(transparent, @uncommon 40%, #FFF 60%);
+      background: linear-gradient(@uncommon, #FFF 10%);
       button{ background-color: @uncommon; }
     }
     &.rare{
-      background: linear-gradient(transparent, @rare 40%, #FFF 60%);
+      background: linear-gradient(@rare, #FFF 10%);
       button{ background-color: @rare; }
     }
     &.legendary{
-      background: linear-gradient(transparent, @legendary 40%, #FFF 60%);
+      background: linear-gradient(@legendary, #FFF 10%);
       button{ background-color: @legendary; }
     }
     .trait-img{
-      background: #FFF;
-      border-radius: 50%;
+      border-radius: 0;
       box-shadow: none;
-      margin-bottom: -1.5rem;
+      margin: 1rem auto;
     }
     .swal2-title{
-      background: linear-gradient(transparent, #FFF 45%);
       i{ margin: 0 5px;}
     }
     button.swal2-cancel{

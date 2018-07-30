@@ -42,7 +42,7 @@ import { NavigationComponent } from "./views/navigation/navigation.component";
 // 3rd Party Modules
 import { FacebookModule }     from 'ngx-facebook';
 import { SweetAlert2Module }  from '@toverux/ngx-sweetalert2';
-import { TypeaheadModule, ButtonsModule } from 'ngx-bootstrap';
+import { TypeaheadModule, ButtonsModule, PopoverModule } from 'ngx-bootstrap';
 import { ClickOutsideModule } from 'ng-click-outside';
 
 // Routing Guards
@@ -110,8 +110,8 @@ import { AppComponent } from './app.component';
     ClickOutsideModule,
     // NGX Bootstrap
     ButtonsModule.forRoot(),
-    TypeaheadModule.forRoot()
-
+    TypeaheadModule.forRoot(),
+    PopoverModule.forRoot()
   ],
   providers: [
     // Guards

@@ -1,5 +1,6 @@
 <div class="container" style="background:#fff">
   <div class="content">
+    <div style="width:100%; height:60px;"></div>
     <div class="row" *ngIf="stardragon">
       <div class="col-4">
         <!-- <img src="./../../assets/img/default_avatar.png" /> -->
@@ -22,6 +23,21 @@
             <p>Designer: {{stardragon.designer}}</p>
             <p>Created: {{stardragon.created}}</p>
             <p><a [href]="stardragon.url" target="_blank" class="btn btn-primary">Link</a></p>
+          </div>
+        </div>
+        <div class="row" *ngIf="stardragon.palette" style="display:flex">
+          <div
+            class="palette-color"
+            *ngFor="let color of stardragon.palette"
+            [ngStyle]="{'background':color}"
+            (click)="copyToClipboard(color);"
+            [popover]="colorPicker"
+            [outsideClick]="true"
+          >
+            <span class="palette-text">{{color}}</span>
+            <ng-template #colorPicker>
+              <i class="fa fa-clipboard"></i> Copied! <br/>
+            </ng-template>
           </div>
         </div>
       </div>
