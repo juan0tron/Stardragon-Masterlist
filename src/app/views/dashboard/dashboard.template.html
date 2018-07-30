@@ -4,20 +4,37 @@
 
 <div class="container" style="background:#fff">
   <div class="content">
-    <div style="width:100%; height:60px;"></div>    
+    <div style="width:100%; height:60px;"></div>
     <div class="row">
       <div id="avatar" class="col-md-4">
         <img src="assets/img/default_avatar.png" width="100%" />
-        <div id="social-icons" class="row">
-          <div class="col" *ngFor="let icon of links">
-            <a href="#">
-              <i class="fab fa-{{icon}}"></i>
-            </a>
+        <div class="row">
+          <h3>Cool Stats & Quick Links Go Here</h3>
+          <div class="dashboard-module col-12" style="height:100px;">
+          </div>
+        </div>
+      </div>
+
+      <div id="description" class="col-md-8">
+        <div class="row" style="border-bottom:1px solid #aaa;">
+          <h2 class="float-left" style="flex:50%;">Welcome back, {{user.name || "Username"}}</h2>
+          <div class="profile-links float-right">
+            <a [routerLink]="['/users/', user._id]" class="btn btn-secondary pull-right disabled">Edit Profile</a>
+            <a [routerLink]="['/users/', user._id]" class="btn btn-secondary pull-right">View Profile</a>
           </div>
         </div>
         <div class="row">
-          <h3>Inventory</h3>
-          <div id="inventory" class="dashboard-module col-12">
+          <h2>Activity Log</h2>
+          <div id="messages" class="dashboard-module">
+            <div style="width:100%; display:flex; padding: 15px;" *ngFor="let row of rows">
+              <span style="flex:50%">Message text goes here.</span>
+              <span style="flex:50%; text-align:right">one hour ago</span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <h3>Your Inventory (9)</h3>
+          <div id="inventory" class="dashboard-module">
             <div class="row">
               <div class="col" *ngFor="let token of tokens" (click)="showTokenDetails(token)">
                 <img [src]="token.img" [title]="token.name"/>
@@ -26,29 +43,9 @@
             </div>
           </div>
         </div>
-      </div>
-
-      <div id="description" class="col-md-8">
         <div class="row">
-          <div class="col-12">
-            <h2 class="pull-left">Welcome back, {{user.name || "Username"}}</h2>
-            <a [routerLink]="['/users/', user._id]" class="btn btn-secondary pull-right disabled">Edit Profile</a>
-            <a [routerLink]="['/users/', user._id]" class="btn btn-secondary pull-right">View Profile</a>
-            <hr style="clear:both; display:block;">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12">
-            <h2>Messages</h2>
-            <div id="messages" class="dashboard-module" style="width:100%">
-              <div style="width:100%; border-bottom:1px solid #fafafa; text-align:left; padding: 5px 15px;" *ngFor="let row of rows">
-                Message text <i class="fa fa-close pull-right" style="color:red"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <stardragon-list [config]="{dashboard:true}" [limit]="8"></stardragon-list>
+          <h3>Your Designs (8)</h3>
+          <stardragon-list [config]="{dashboard:true}" [limit]="8" class="col-12 dashboard-module"></stardragon-list>
         </div>
       </div>
     </div>
