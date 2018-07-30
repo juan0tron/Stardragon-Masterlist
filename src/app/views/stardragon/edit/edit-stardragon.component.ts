@@ -34,23 +34,21 @@ export class EditStardragonComponent {
 
   // Dropdowns
   public speciesTypes = [
-    'StarEater',
-    'StarSweeper',
-    'StarDasher',
-    'StarFisher',
-    'StarWeaver',
-    'StarRobber',
-    'StarCrafter',
-    'StarShooter'
+    'stareater',
+    'starsweeper',
+    'stardasher',
+    'starfisher',
+    'starweaver',
+    'starrobber',
+    'starcrafter',
+    'starshooter',
+    'chimera'
   ];
   public rarityTypes = [
-    'common', 'uncommon', 'rare', 'legendary'
+    'common', 'uncommon', 'rare', 'legendary', 'chimera'
   ];
-  public sdTypes = [
-    'myo', 'batch', 'auction'
-  ]
   public sexTypes = [
-    'male', 'female', 'n/a'
+    'male', 'female', ''
   ]
 
   constructor(
@@ -76,8 +74,6 @@ export class EditStardragonComponent {
         sex:        [null, Validators.required],
         base:       [''],
         basePrice:  [0, Validators.required],
-        created:    [stardragon.created],
-        approved:   [stardragon.approved],
         adminNotes: [''],
       });
       this.bio = this.fb.group({
@@ -108,6 +104,10 @@ export class EditStardragonComponent {
   getDetails(id){
     return this.gem.api(`/stardragons/${id}`, "GET").subscribe(
       data => {
+        // Fix fields if the data is weird
+        if(data.basePrice == null || !data.basePrice){
+          data.basePrice = 0;
+        }
         // Update local Stardragon
         this.stardragon = data
 

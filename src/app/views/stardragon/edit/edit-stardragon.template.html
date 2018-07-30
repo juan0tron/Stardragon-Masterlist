@@ -1,7 +1,7 @@
 <div id="create-stardragon"class="container">
 
   <div class="content">
-
+    <div style="width:100%; height:60px;"></div>
     <div class="row">
       <div class="col">
         <h1 *ngIf="!id">Create Stardragon</h1>
@@ -29,10 +29,7 @@
           </select>
         </div>
         <div class="col">
-          <select placeholder="Type" class="form-control" formControlName="type">
-            <option selected disabled value=null>Type...</option>
-            <option *ngFor="let type of sdTypes" [value]="type">{{type | titlecase}}</option>
-          </select>
+          <input type="text" placeholder="Type" class="form-control" formControlName="type" />
         </div>
         <div class="col">
           <select placeholder="Rarity" class="form-control" formControlName="rarity">
@@ -42,8 +39,8 @@
         </div>
         <div class="col">
           <select placeholder="Sex" class="form-control" formControlName="sex">
-            <option selected disabled value="n/a">Sex...</option>
-            <option *ngFor="let sex of sexTypes" [value]="sex">{{sex | titlecase}}</option>
+            <option selected disabled value="">Sex...</option>
+            <option *ngFor="let sex of sexTypes" [value]="sex">{{sex | titlecase}}<span *ngIf="sex == ''">N/A</span></option>
           </select>
         </div>
         <div class="col">
@@ -51,16 +48,6 @@
         </div>
         <div class="col">
           <input formControlName="basePrice" type="number" name="base price" class="form-control" placeholder="$ Base Price" />
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <label>Created</label>
-          <input type="date" class="form-control" placeholder="Created" formControlName="created" />
-        </div>
-        <div class="col">
-          <label>Approved</label>
-          <input type="date" class="form-control" placeholder="Approved" formControlName="approved" />
         </div>
       </div>
       <div class="row">
