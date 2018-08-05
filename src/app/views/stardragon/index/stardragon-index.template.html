@@ -9,7 +9,7 @@
 <div class="container">
   <div class="content">
 
-    <div class="row">
+    <div id="species-header-list" class="row">
       <div
       *ngFor="let s of speciesHeaders; let i = index;"
       class="col-md-6 col-sm-12 col-xs-12"
@@ -21,13 +21,14 @@
           </div>
         </div>
         <img
-        [src]="'http://static.thegemexchange.net/traits/' + s.species + '/' + s.img"
+        [src]="'http://static.thegemexchange.net/headers/' + s.species + '/header-standard.png'"
         alt="{{s.species | titlecase}}s"
         title="{{s.species | titlecase}}s"
         class="species-header"
         [hidden]="s.loading"
         (load)="s.loading = false;"
         onError="s.loading = true;"
+        style="animation:fadeIn 1s"
         />
       </a>
     </div>

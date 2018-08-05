@@ -177,15 +177,17 @@ export class EditStardragonComponent {
     let reader = new FileReader();
     if(event.target.files && event.target.files.length > 0) {
       let file = event.target.files[0];
+      let extension = file.name.substr(file.name.lastIndexOf('.') + 1);
       reader.readAsDataURL(file);
       reader.onload = () => {
-        this.bio.get('avatar').setValue({
-          filename: file.name,
-          filetype: file.type,
-          value: reader.result.split(',')[1]
-        });
-        this.gem.api('/file', "POST", {file}).subscribe(
-          data => {},
+        file = {
+          name: `avatar.${extension}`,
+          type: file.type,
+          value: reader.result.split(',')[1] // remove base64 header
+        };
+        this.bio.get('avatar').setValue(file);
+        this.gem.api('/file', "POST", { file, location:"/test"}).subscribe(
+          data => {console.log(data, this.bio)},
           err  => {},
           ()   => {}
         );

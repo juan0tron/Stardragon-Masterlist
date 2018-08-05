@@ -1,33 +1,34 @@
 {
   "starcrafter":{
-    "standard": "starcrafters_header_standard.png",
-    "desert":   "starcrafters_header_desert.png"
+    "standard": "old",
+    "desert":   "new"
   },
   "stardasher":{
-    "standard": "stardashers_header_standard.png",
-    "desert":   "stardashers_header_desert.png"
+    "standard": "old",
+    "desert":   "new"
   },
   "stareater":{
-    "standard":    "stareaters_header_standard.png"
+    "standard":"old",
+    "sloth":"new"
   },
   "starfisher":{
-    "standard":   "starfishers_header_standard.png",
-    "mudskipper": "starfishers_header_mudskipper.png"
+    "standard":   "old",
+    "mudskipper": "old"
   },
   "starrobber":{
-    "standard":    "starrobbers_header_standard.png",
-    "severblight": "starrobbers_header_severblight.png"
+    "standard":    "old",
+    "severblight": "old"
   },
   "starshooter":{
-    "standard": "starshooters_header_standard.png",
-    "arctic":   "starshooters_header_arctic.png"
+    "standard": "old",
+    "arctic":   "old"
   },
   "starsweeper":{
-    "standard": "starsweepers_header_standard.png",
-    "arctic":   "starsweepers_header_arctic.png"
+    "standard": "old",
+    "arctic":   "old"
   },
   "starweaver":{
-    "standard": "starweavers_header_standard.png",
-    "fuu":      "starweavers_header_fuu.png"
+    "standard": "old",
+    "fuu":      "new"
   }
 }

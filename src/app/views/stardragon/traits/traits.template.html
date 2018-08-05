@@ -1,15 +1,20 @@
 <!-- THIS IMG BLOCK IS FOR THE NEW HEADER STYLE ONCE I FINISH IT -->
-<!-- <div class="row" style="margin:0 -15px;">
-  <div class="species-header-block fadeIn" [style.backgroundImage]="'url(' + header.background + ')'">
-    <h1 class="species-header-name fadeInLeft">{{header.text}}</h1>
-    <img class="species-header-characters fadeInLeft" [src]="header.characters"/>
+<div class="species-header-full-width" *ngIf="showFancyHeader">
+  <div id="species-header-background">
+    <!-- Load the background and hide it so the header is the height of the background image -->
+    <img [src]="header.background" (load)="showHeaderBackground()" style="visibility: hidden;"/>
   </div>
-</div> -->
-<div class="container">
-  <div class="full-width">
-    <div style="padding:60px 15px 30px;">
-      <img [src]="header_img" class="species-header">
-    </div>
+  <div class="species-header-content fadeIn container">
+    <h1 class="species-header-name fadeInLeft">
+      <span *ngIf="filters.subtype && filters.subtype != 'all' && filters.subtype != 'standard'">{{filters.subtype}} </span>
+      <span *ngIf="filters.species && filters.species != 'all'">{{filters.species}}s</span>
+    </h1>
+    <img id="header-characters" class="species-header-characters fadeInLeft {{filters.subtype}}-{{filters.species}}-characters" [src]="header.characters" (load)="showHeaderCharacters()" style="visibility: hidden;" />
+  </div>
+</div>
+<div class="species-header-full-width" *ngIf="!showFancyHeader">
+  <div class="fadeIn container">
+    <img [src]="header_img" class="species-header" style="padding:60px 15px 30px;">
   </div>
 </div>
 
@@ -19,10 +24,7 @@
 
     <div class="row">
       <div class="col-12" style="display:flex;">
-        <h1 class="pull-left" style="flex:50%;">
-          Traits Compendium
-          <span *ngIf="filters.species && filters.species != 'all'">: {{filters.species}}s</span>
-        </h1>
+        <h1 class="pull-left" style="flex:50%;">Traits Compendium</h1>
         <button type="button" class="pull-right btn btn-secondary" (click)="showFilters = !showFilters" *ngIf="!showFilters">Show Filters <i class="fa fa-arrow-down"></i> </button>
         <button type="button" class="pull-right btn btn-secondary" (click)="showFilters = !showFilters" *ngIf="showFilters">Hide Filters <i class="fa fa-arrow-up"></i> </button>
       </div>
@@ -50,7 +52,7 @@
       <div class="col-md-3 col-sm-6">
         <h3>Species</h3>
         <div class="row">
-          <select class="form-control" [(ngModel)]="filters.species" (change)="filterTraits()">
+          <select class="form-control" [(ngModel)]="filters.species" (change)="getTraits()">
             <option value="all">All</option>
             <option [value]="s" *ngFor="let s of available_species">{{s | titlecase}}s</option>
           </select>

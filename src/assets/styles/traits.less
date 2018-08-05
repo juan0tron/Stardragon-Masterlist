@@ -16,6 +16,27 @@ traits{
   a{ text-decoration: none }
 }
 
+#species-header-list{
+  .col-md-6:nth-child(9){
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    .species-index-link:after{
+      content: "All";
+      position: absolute;
+      left: 15px;
+      bottom: 15px;
+      font-size: 2.5rem;
+      font-family: "Futura";
+      text-transform: uppercase;
+      color: #FFF;
+      width: 100%;
+      text-align: center;
+      text-shadow: 2px 2px 0 #000;
+    }
+  }
+}
+
 #trait-filters{
   overflow: hidden;
 }
@@ -127,29 +148,58 @@ traits{
   }
 }
 
-.species-header-block{
-  background-size: cover;
-  min-height: 550px;
-  padding: 0;
-  width: 100%;
 
-  img{
+.species-header-full-width{
+  position: relative;
+  box-shadow: inset 0px 10px 10px -10px #000, inset 0px -10px 10px -10px #000;
+  #species-header-background{
+    padding: 0;
+    width: 100%;
+    z-index: -1;
+    position: relative;
+    background-size: contain;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+  }
+  .species-header-content{
     position: absolute;
-    right: 0px;
-    bottom: 146px;
-    z-index: 100;
-    filter: drop-shadow(4px 5px 1px rgba(0, 0, 0, 0.4));
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 8; // This is right below the header
+    h1{
+      color: #fff;
+      text-shadow: 2px 2px 0px #666;
+      z-index: 1; // Make sure this shows over character art
+    }
+    h1.species-header-name{
+      position: absolute;
+      bottom: 15px;
+      left: 15px;
+    }
+    img.species-header-characters{
+      pointer-events: none; // Click through
+      position: absolute;
+      bottom: 0;
+      right:15px;
+      padding-top: 15px;
+      max-width: 500px;
+      max-height: 100%;
+      animation: fadeIn 1s;
+      filter: drop-shadow(5px 5px 0 #666);
+      // Since all character images are different sizes
+      // just put the overlap margin for each one here
+      &.fuu-starweaver-characters{ margin-bottom: -6%; }
+      &.desert-starcrafter-characters{ margin-bottom: -9%; }
+      &.desert-stardasher-characters{ margin-bottom: -1%; }
+      &.sloth-stareater-characters{ margin-bottom: -8%; }
+    }
   }
 }
 
-.species-header-name{
-  color:#fff;
-  position: absolute;
-  font-size: 6rem;
-  font-weight: bold;
-  bottom:250px;
-  left: 100px;
-}
+
+
 
 .species-header-subtype{
   font-weight: bold;
@@ -176,7 +226,7 @@ traits{
   border-radius: 50%;
   img{
     max-height: 255px;
-    animation: fadeIn 2s;
+    animation: fadeIn 1s;
   }
 }
 .trait-img, .trait-meta{

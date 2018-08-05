@@ -22,44 +22,40 @@ export class StardragonIndex {
   public speciesHeaders = [
     {
       "species": "starcrafter",
-      "img":     "starcrafters_header_standard.png",
       "loading": true
     },
     {
       "species": "starfisher",
-      "img":     "starfishers_header_standard.png",
       "loading": true
     },
     {
       "species": "stareater",
-      "img":     "stareaters_header_standard.png",
       "loading": true
     },
     {
       "species": "starrobber",
-      "img":     "starrobbers_header_standard.png",
       "loading": true
     },
     {
       "species": "stardasher",
-      "img":     "stardashers_header_standard.png",
       "loading": true
     },
     {
       "species": "starshooter",
-      "img":     "starshooters_header_standard.png",
       "loading": true
     },
     {
       "species": "starweaver",
-      "img":     "starweavers_header_standard.png",
       "loading": true
     },
     {
       "species": "starsweeper",
-      "img":     "starsweepers_header_standard.png",
       "loading": true
-    }
+    },
+    {
+      "species": "all",
+      "loading": true
+    },
   ];
 
   constructor(){}

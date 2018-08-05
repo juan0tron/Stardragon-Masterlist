@@ -40,18 +40,17 @@ export class TraitsComponent {
   public base_img_directory   = 'http://static.thegemexchange.net/traits/';
   public img_directory:string = '';
   public headers:any = {};
-  public header_img:string = 'assets/img/stardragons_header_by_deletethestars.png';
+  public header_img:string = 'http://static.thegemexchange.net/headers/all/header-standard.png';
 
   public traits:Array<StardragonTrait> = [];
   public visibleTraits:Array<StardragonTrait> = [];
   public trait_descriptions = [];
 
-  public headerImgDir = './assets/img/' + "fancy_header/";
+  public showFancyHeader:boolean = true;
+  public headerImgDir = 'http://static.thegemexchange.net/headers/';
   public header = {
-    background: this.headerImgDir + "background.jpg",
+    background: this.headerImgDir + "background.png",
     characters: this.headerImgDir + "characters.png",
-    text:"Stareaters",
-    subtext:"Mudskipper Subtype",
   };
 
 
@@ -185,7 +184,9 @@ export class TraitsComponent {
       },
       ()   => {
         this.loading = false;
-        this.filterTraits()
+        if(this.traits.length > 0){
+          this.filterTraits();
+        }
       }
     );
   }
@@ -260,14 +261,35 @@ export class TraitsComponent {
   changeHeader(){
     if(this.filters.species != 'all'){
       let headerObj = this.headers[this.filters.species];
-      let imgSrc = headerObj[this.filters.subtype] || headerObj['standard'] || "";
-      if(imgSrc != ""){
-        this.header_img = this.base_img_directory + `${this.filters.species}/` + imgSrc;
+      let headerType = headerObj[this.filters.subtype] || headerObj['standard'] || "";
+      if(headerType === "old"){
+        this.showFancyHeader = false;
+        let fileName = `header-${this.filters.subtype == 'all' ? "standard" : this.filters.subtype}.png`
+        this.header_img = this.headerImgDir + `${this.filters.species}/${fileName}`;
+      }
+      else if(headerType === "new"){
+        let basePath = this.headerImgDir + this.filters.species + '/' + this.filters.subtype;
+        this.showFancyHeader = true;
+        this.header = {
+          background: `${basePath}/background.png`,
+          characters: `${basePath}/characters.png`,
+        };
       }
     }
     else{
-      this.header_img = this.base_img_directory + 'stardragons_header_by_deletethestars.png';
+      this.showFancyHeader = false;
+      this.header_img = this.headerImgDir + `${this.filters.species}/header-standard.png`;
     }
+  }
+
+  // Lazy load animation helpers
+  showHeaderBackground(){
+    document.getElementById('species-header-background').style.backgroundImage = 'url(' + this.header.background + ')';
+    document.getElementById('species-header-background').style.animation = 'fadeIn 1s';
+  }
+  showHeaderCharacters(){
+    document.getElementById('header-characters').style.visibility = 'visible';
+    document.getElementById('header-characters').style.animation = 'fadeIn 1s';
   }
 
   /**
