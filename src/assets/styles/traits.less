@@ -7,6 +7,19 @@
 @rare:      #FF855B;
 @legendary: #FF6FA2;
 
+stardragon-index{
+  .full-width{
+    img{
+      left:0;
+      margin: 0;
+    }
+    h1{
+      bottom: 1rem;
+      position: absolute;
+    }
+  }
+}
+
 traits{
   p{
     font-family: "Frenchpress";
@@ -152,14 +165,23 @@ traits{
 .species-header-full-width{
   position: relative;
   box-shadow: inset 0px 10px 10px -10px #000, inset 0px -10px 10px -10px #000;
+  transition: 0.3s ease height;
   #species-header-background{
     padding: 0;
     width: 100%;
-    z-index: -1;
-    position: relative;
-    background-size: contain;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
+    @media(max-width: 1100px){
+      background-attachment: inherit;
+    }
+    @media(min-width: 1101px){
+      background-attachment: fixed;
+      background-position: top;
+      background-size: 100% auto;
+    }
+    img{
+      min-width: 100%;
+      max-height: 100%;
+      min-height: 30vh;
+    }
   }
   .species-header-content{
     position: absolute;
@@ -167,33 +189,45 @@ traits{
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 8; // This is right below the header
-    h1{
-      color: #fff;
-      text-shadow: 2px 2px 0px #666;
-      z-index: 1; // Make sure this shows over character art
-    }
-    h1.species-header-name{
+    z-index: 8; // This is right below the header but above the content
+    .species-header-name{
       position: absolute;
-      bottom: 15px;
       left: 15px;
+      color: #fff;
+      text-shadow: 2px 2px 3px #000;
+      z-index: 1; // Make sure this shows over any other content
+      @media(max-width: 1100px){
+        top: 75px;
+      }
+      @media(min-width: 1101px){
+        bottom: 15px;
+      }
     }
     img.species-header-characters{
       pointer-events: none; // Click through
       position: absolute;
       bottom: 0;
-      right:15px;
-      padding-top: 15px;
-      max-width: 500px;
-      max-height: 100%;
+      right: 0;
+      padding: 15px 15px 0;
+
+      height: auto;
+      width: auto;
+      max-height: 80%;
+      max-width: 90%;
+
       animation: fadeIn 1s;
-      filter: drop-shadow(5px 5px 0 #666);
       // Since all character images are different sizes
       // just put the overlap margin for each one here
-      &.fuu-starweaver-characters{ margin-bottom: -6%; }
+      &.fuu-starweaver-characters{ margin-bottom: -9%; }
       &.desert-starcrafter-characters{ margin-bottom: -9%; }
-      &.desert-stardasher-characters{ margin-bottom: -1%; }
-      &.sloth-stareater-characters{ margin-bottom: -8%; }
+      &.desert-stardasher-characters{ margin-bottom: -2.5%; }
+      &.sloth-stareater-characters{
+        @media(max-width:768px){ margin-bottom: -12%; }
+        @media(max-width:500px){ margin-bottom: -16%; }
+        @media(min-width:501px){ margin-bottom: -10%; }
+        @media(min-width:1000px){ margin-bottom: -9.1%;}
+        @media(min-width:2000px){ margin-bottom: -11%;}
+      }
     }
   }
 }

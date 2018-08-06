@@ -1,17 +1,21 @@
-<!-- THIS IMG BLOCK IS FOR THE NEW HEADER STYLE ONCE I FINISH IT -->
+<!-- FANCY HEADER -->
 <div class="species-header-full-width" *ngIf="showFancyHeader">
-  <div id="species-header-background">
+  <div id="species-header-background" class="full-width">
     <!-- Load the background and hide it so the header is the height of the background image -->
     <img [src]="header.background" (load)="showHeaderBackground()" style="visibility: hidden;"/>
   </div>
   <div class="species-header-content fadeIn container">
-    <h1 class="species-header-name fadeInLeft">
-      <span *ngIf="filters.subtype && filters.subtype != 'all' && filters.subtype != 'standard'">{{filters.subtype}} </span>
-      <span *ngIf="filters.species && filters.species != 'all'">{{filters.species}}s</span>
-    </h1>
+    <div class="species-header-name fadeInLeft">
+      <h1>
+        <span *ngIf="filters.subtype && filters.subtype != 'all' && filters.subtype != 'standard'">{{filters.subtype}} </span>
+        <span *ngIf="filters.species && filters.species != 'all'">{{filters.species}}s</span>
+      </h1>
+    </div>
     <img id="header-characters" class="species-header-characters fadeInLeft {{filters.subtype}}-{{filters.species}}-characters" [src]="header.characters" (load)="showHeaderCharacters()" style="visibility: hidden;" />
   </div>
 </div>
+
+<!-- OLD HEADER -->
 <div class="species-header-full-width" *ngIf="!showFancyHeader">
   <div class="fadeIn container">
     <img [src]="header_img" class="species-header" style="padding:60px 15px 30px;">
@@ -52,7 +56,7 @@
       <div class="col-md-3 col-sm-6">
         <h3>Species</h3>
         <div class="row">
-          <select class="form-control" [(ngModel)]="filters.species" (change)="getTraits()">
+          <select class="form-control" [(ngModel)]="filters.species" (change)="getTraits(['subtype'])">
             <option value="all">All</option>
             <option [value]="s" *ngFor="let s of available_species">{{s | titlecase}}s</option>
           </select>

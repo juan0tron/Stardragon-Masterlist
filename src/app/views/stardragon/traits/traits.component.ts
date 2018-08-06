@@ -151,7 +151,16 @@ export class TraitsComponent {
    *  @function getAllTraits
    *  @description Get all traits from all stardragons
    */
-  getTraits(){
+  getTraits(filtersToClear = []){
+    let filterTypes = Object.keys(this.filters); // Get all filter types
+    for(let filterToClear of filtersToClear){
+      if(filterTypes.indexOf(filterToClear)){
+        this.filters[filterToClear] = 'all';
+      }
+    }
+    let filters = {
+
+    }
     this.traitsService.getTraits(this.filters.species).subscribe(
       data => {
         for(let trait of data){
@@ -215,6 +224,7 @@ export class TraitsComponent {
     this.visibleTraits = filteredTraits;
     this.changeHeader();
     this.typeahead = this.getTypeaheadList("name");
+    window.history.replaceState({}, '',`/stardragons/traits/${this.filters.species}/${this.filters.subtype}`);
   }
 
   /**

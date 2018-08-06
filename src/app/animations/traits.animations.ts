@@ -21,10 +21,10 @@ export const listAnimation = trigger('listAnimation', [
 export const shrinkExpand = trigger('shrinkExpand', [
   transition(':enter', [   // :enter is alias to 'void => *'
     style({opacity:0}),
-    animate(500, style({opacity:1, height:'auto'}))
+    animate(300, style({opacity:1, height:'auto'}))
   ]),
   transition(':leave', [   // :leave is alias to '* => void'
-    animate(500, style({ opacity: 0, overflow: 'hidden', height: 0}))
+    animate(300, style({ opacity: 0, overflow: 'hidden', height: 0}))
   ])
 ]);
 
@@ -39,7 +39,7 @@ export const fadeAnimation = trigger('fadeAnimation', [
       ':enter',
       [
         style({ opacity: 0 }),
-        stagger(150, [ animate('0.5s', style({ opacity: 1 })) ] ),
+        stagger(150, [ animate('0.25s', style({ opacity: 1 })) ] ),
       ],
       { optional: true }
     ),
