@@ -21,13 +21,17 @@ import { Stardragon } from 'app/models/stardragon';
 export class EditStardragonComponent {
 
   public title = 'Edit Stardragon';
-  public stardragon:Stardragon;
+  public stardragon:Stardragon = new Stardragon();
   public id;
   public confirmDeletion:string;
 
   // Forms
   public adminInfo;
-  public bio;
+  public bio = this.fb.group({
+    image_url:[],
+    gender:   [],
+    bio:      []
+  });
   public templateSettings;
   public designerInfo;
   public tradeSettings;
@@ -58,14 +62,10 @@ export class EditStardragonComponent {
     private router: Router
   ){
     this.activatedRoute.params.subscribe((params: Params) => {
-      let stardragon;
-
       if(params['stardragon_id']){
         this.id = params['stardragon_id'];
-        stardragon = this.getDetails(this.id);
+        this.getDetails(this.id);
       }
-      stardragon = new Stardragon();
-
       this.adminInfo = this.fb.group({
         name:       [null, Validators.required],
         species:    [null, Validators.required],
@@ -77,9 +77,9 @@ export class EditStardragonComponent {
         adminNotes: [''],
       });
       this.bio = this.fb.group({
-        avatar: [],
-        gender: [],
-        bio:    []
+        image_url:[],
+        gender:   [],
+        bio:      []
       });
       this.templateSettings = this.fb.group({
         templateType:[],
@@ -102,7 +102,7 @@ export class EditStardragonComponent {
   * @description Update stardragon with info from the server
   */
   getDetails(id){
-    return this.gem.api(`/stardragons/${id}`, "GET").subscribe(
+    this.gem.api(`/stardragons/${id}`, "GET").subscribe(
       data => {
         // Fix fields if the data is weird
         if(data.basePrice == null || !data.basePrice){
@@ -124,6 +124,7 @@ export class EditStardragonComponent {
    */
   save(formData){
     const stardragon = formData.value;
+    // Create a new SD
     if(!this.id){
       this.gem.api(`/stardragons`, "POST", stardragon).subscribe(
         data => {
@@ -134,11 +135,13 @@ export class EditStardragonComponent {
         ()   => {}
       );
     }
+    // Update an existing SD
     else{
       this.gem.api(`/stardragons/${this.id}`, "PATCH", stardragon).subscribe(
         data => {
           swal("Changes Saved Successfully",data.message,"success");
-          this.router.navigate(['/stardragons',data.stardragon._id,'/edit']);
+          this.stardragon = data.data;
+          this.router.navigate([`stardragons/${this.id}/edit`]);
         },
         err  => {swal("Error Saving Changes.", err, "error")},
         ()   => {}
@@ -185,11 +188,15 @@ export class EditStardragonComponent {
           type: file.type,
           value: reader.result.split(',')[1] // remove base64 header
         };
-        this.bio.get('avatar').setValue(file);
-        this.gem.api('/file', "POST", { file, location:"/test"}).subscribe(
-          data => {console.log(data, this.bio)},
+        this.gem.api('/file', "POST", { file, stardragonId:this.id }).subscribe(
+          data => {
+            this.bio.get('image_url').setValue(data.data);
+            console.log(data, this.bio)
+          },
           err  => {},
-          ()   => {}
+          ()   => {
+            this.save(this.bio);
+          }
         );
       };
     }

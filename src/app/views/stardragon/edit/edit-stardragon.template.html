@@ -1,4 +1,4 @@
-<div id="create-stardragon"class="container">
+<div id="create-stardragon" class="container" *ngIf="stardragon">
 
   <div class="content">
     <div style="width:100%; height:60px;"></div>
@@ -73,9 +73,14 @@
       </div>
       <div class="row">
         <div class="col">
+          <img [src]="stardragon.image_url" onError="this.src='assets/img/default_avatar.png';"/>
+        </div>
+        <div class="col">
+          <label>Avatar</label>
           <input type="file" (change)="uploadImage($event)" id="avatar" class="form-control" />
         </div>
         <div class="col">
+          <label>Gender</label>
           <input type="text" placeholder="Gender" class="form-control" formControlName="gender" />
         </div>
       </div>
@@ -120,6 +125,12 @@
       Trade info - base sale price, sale/trade status (Not available/Available for sale/available for trade)
     -->
 
+  </div>
+</div>
+
+<div class="container" *ngIf="!stardragon" style="background:#FFF">
+  <div class="content">
+    <loading></loading>
   </div>
 </div>
 
