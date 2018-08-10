@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 
 // 3rd Party
@@ -91,7 +92,8 @@ export class TraitsComponent {
     private gem:           GemExchangeAPI,
     private traitsService: TraitsService,
     private route:         ActivatedRoute,
-    private router:        Router
+    private router:        Router,
+    private titleService:  Title
   ){}
 
   ngOnInit(){
@@ -220,6 +222,13 @@ export class TraitsComponent {
         if(matchesExactly || matchesAll) return true;
       });
     });
+
+    let subTypeTitle = this.filters.subtype.replace(/^\w/, c => c.toUpperCase());
+    let speciesTitle = this.filters.species.replace(/^\w/, c => c.toUpperCase());
+    let pageTitle = (this.filters.subtype == 'all' || this.filters.subtype == 'standard' ? '' : subTypeTitle) + ' ' +
+                    (this.filters.species == 'all' ? '' : speciesTitle +'s: ')  +
+                    "Stardragon Traits Compendium";
+    this.titleService.setTitle(pageTitle);
 
     this.visibleTraits = filteredTraits;
     this.changeHeader();

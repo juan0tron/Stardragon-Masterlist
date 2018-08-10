@@ -56,9 +56,15 @@ export const ROUTES: Routes = [
       { path: 'stardragons/list', component: MasterList, canActivate: [LoggedInGuard] },
       { path: 'stardragons/create', component: EditStardragonComponent,  canActivate: [LoggedInGuard]},
 
-      { path: 'stardragons/traits',                        component: TraitsComponent },
-        { path: 'stardragons/traits/:species_name',          component: TraitsComponent },
-          { path: 'stardragons/traits/:species_name/:subtype', component: TraitsComponent },
+      {
+        path: 'stardragons/traits',
+        component: TraitsComponent,
+        children:  [
+          { path: '', redirectTo: 'all', pathMatch: 'full' },
+          { path: ':species_name',          component: TraitsComponent },
+          { path: ':species_name/:subtype', component: TraitsComponent },
+        ]
+      },
 
       { path: 'stardragons/:stardragon_id',       component: StardragonComponent },
       { path: 'stardragons/:stardragon_id/edit',  component: EditStardragonComponent,  canActivate: [LoggedInGuard]},

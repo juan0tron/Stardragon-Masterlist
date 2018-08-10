@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Router, NavigationEnd }     from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 import { fadeAnimation } from './animations/router.animations';
 
@@ -20,15 +21,21 @@ export class AppComponent {
 
   constructor(
     public api:GemExchangeAPI,
-    private router:Router
+    private router:Router,
+    private activatedRoute: ActivatedRoute,
+    private titleService: Title
   ){}
 
   ngOnInit(){
-    // Scroll to the top of the page on every page change
-    this.router.events.subscribe((evt) => {
-      if (!(evt instanceof NavigationEnd)) { return; }
-      window.scrollTo(0, 0);
-    });
+    // Subscribe to all router events here
+    this.router.events
+      .filter((event) => event instanceof NavigationEnd)
+      .subscribe((event) => {
+        // Always scroll to top when page is changed
+        window.scrollTo(0, 0);
+        // Reset page title
+        this.titleService.setTitle('The Gem Exchange');
+      });
   }
 
 }
