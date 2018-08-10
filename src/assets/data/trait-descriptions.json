@@ -4,7 +4,8 @@
       "title":"Horns",
       "type":"horn",
       "description": {
-        "stareater":"StarEater horns may vary depending on environmental needs and genetics, but generally all follow a spiralling pattern.",
+        "starcrafter":"Generally male Crafters have more horns than female Crafters, with male Crafters having 3 on both sides of their head, and females 2. Desert Crafter females have an additional horn protruding just above their forehead. Males can have less and females can have more, however it’s more common for male Crafters to have more than the female Crafters.",
+        "stareater":"Male Eater horns are characterized by two spiraling, upwards horns, while female Eaters have four horns. Two smaller sets beneath two larger horns. They do not spiral, instead usually curling back. Eaters have one of the most diverse horn options however, with many horn types that seem to bridge both the male’s spiral and females multiple horns.",
         "starweaver":"Males and Females have larger and smaller horns respectively. Some have patterns that glow in dim light, these are considered uncommon."
       }
     },
@@ -12,6 +13,7 @@
       "title":"Ears",
       "type":"ear",
       "description":{
+        "starcrafter":"On average, male Crafters have longer ears, while female Crafters have shorter ears. This isn’t to say females cannot have long ears and male ones short, this is simply one of the few differentiating features between the sexes.",
         "stareater":"Big enough to hear you with, my darling.",
         "starshooter":"They use these to hear stuff. Starshooters have rounded gems located at the base of their ears. They don't disrupt or make hearing difficult. These gems can be cut, following the same universal gem cutting rarities (Common: simple shapes, smooth or faceted. Uncommon: encraved and multigem. Rare: Complex cuts, cuts that don't resemble one simple, unified shape.). Arctic Shooters tend to grow tufts on the very ends of their ears, some even folding naturally to protect their gems. Flared ears are uncommonly seen, as they are reminiscent of the Starshooters more 'primitive' Stardragon kin. The flares are divots in the skin itself, not to be confused with fluff or fur.",
         "starweaver":"Weavers have large fluffy papillon-like ears that vary in size and fluffiness. For the most part they don't tend to perk or droop."
@@ -19,7 +21,10 @@
     },
     {
       "title":"Barbels",
-      "type":"barbel"
+      "type":"barbel",
+      "description":{
+        "starrobber":"Robber female and males do not have many sexual dimorphisms, the only one being barbels falling from near the jaw being considered masculine, while the more antenna like protrusions are feminine."
+      }
     },
     {
       "title":"Crests",
@@ -33,7 +38,7 @@
       "title":"Whiskers",
       "type":"whisker",
       "description":{
-        "starweaver":"Male Weavers grow whiskers out of the side of their faces (around the jawbone under the ear, typically.) These whiskers can vary."
+        "starweaver":"The length varies between female and male whiskers, with females having shorter whiskers and males having long."
       }
     },
     {
@@ -116,6 +121,7 @@
       "title":"Tails",
       "type":"tail",
       "description":{
+        "starfisher":"While male Fishers usually have Seahorse and Crustacean tails and female Fishers have Jellyfish and Cephalopod tails, the two have occasionally been seen in reverse.",
         "stareater":"Like their Fisher counterparts, Eaters have a large variety of tail types. Males with longer tails, while females generally have none.",
         "starshooter":"Tails usually do not vary too far outside of the types below, either in length or thickness. Arctic dwelling Shooters may grow extraordinarily fluffy furry tails. These Shooters will have wider rings of tail shards to accommodate for the thicker fur, and usually have shorter tail plates.",
         "starweaver":"Cloudlike tails kept in tact with magic. If you ask me to explain I won't know what to tell you honestly."
