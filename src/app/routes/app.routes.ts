@@ -13,8 +13,8 @@ import { MYOThankYouComponent } from "app/views/myo/thank-you/myo-thank-you.comp
 import { LoginComponent }    from "app/views/login/login.component";
 import { RegisterComponent } from "app/views/register/register.component";
 
-import { UserComponent } from "app/views/user/profile/user.component";
-import { UserListComponent } from "app/views/user/list/user-list.component";
+import { UserComponent }      from "app/views/user/profile/user.component";
+import { UserListComponent }  from "app/views/user/list/user-list.component";
 import { CharacterComponent } from "app/views/character/character.component";
 
 // Stardragons
@@ -56,15 +56,9 @@ export const ROUTES: Routes = [
       { path: 'stardragons/list', component: MasterList, canActivate: [LoggedInGuard] },
       { path: 'stardragons/create', component: EditStardragonComponent,  canActivate: [LoggedInGuard]},
 
-      {
-        path: 'stardragons/traits',
-        component: TraitsComponent,
-        children:  [
-          { path: '', redirectTo: 'all', pathMatch: 'full' },
-          { path: ':species_name',          component: TraitsComponent },
-          { path: ':species_name/:subtype', component: TraitsComponent },
-        ]
-      },
+      { path: 'stardragons/traits', component: TraitsComponent },
+        { path: 'stardragons/traits/:species_name',          component: TraitsComponent },
+          { path: 'stardragons/traits/:species_name/:subtype', component: TraitsComponent },
 
       { path: 'stardragons/:stardragon_id',       component: StardragonComponent },
       { path: 'stardragons/:stardragon_id/edit',  component: EditStardragonComponent,  canActivate: [LoggedInGuard]},
