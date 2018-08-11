@@ -7,6 +7,7 @@ import { DiscordComponent }     from "app/views/discord/discord.component";
 import { HomeComponent }        from "app/views/home/home.component";
 import { TosComponent }         from "app/views/tos/tos.component";
 import { MYOComponent }         from "app/views/myo/myo.component";
+import { MapComponent }         from "app/views/map/map.component";
 import { MYOThankYouComponent } from "app/views/myo/thank-you/myo-thank-you.component";
 
 // Auth views
@@ -40,6 +41,7 @@ export const ROUTES: Routes = [
     { path: 'dashboard',      component: DashboardComponent, canActivate: [LoggedInGuard] },
     { path: 'discord',        component: DiscordComponent   },
     { path: 'termsofservice', component: TosComponent       },
+    { path: 'map',            component: MapComponent       },
 
     { path: 'myo',            component: MYOComponent, canActivate: [DevGuard]}, // MYO Form
     { path: 'myo/thank-you',  component: MYOThankYouComponent}, // MYO Thanks landing page

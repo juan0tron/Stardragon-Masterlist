@@ -19,6 +19,7 @@ import { UserComponent }           from "./views/user/profile/user.component";
 import { UserListComponent }       from "./views/user/list/user-list.component";
 import { TosComponent }            from "app/views/tos/tos.component";
 import { MYOThankYouComponent }    from "app/views/myo/thank-you/myo-thank-you.component";
+import { MapComponent }            from "app/views/map/map.component";
 
 // Stardragon Pages
 import { StardragonIndex }           from './views/stardragon/index/stardragon-index.component';
@@ -68,6 +69,7 @@ import { AppComponent } from './app.component';
     UserListComponent,
     TosComponent,
     MYOThankYouComponent,
+    MapComponent,
 
     // Stardragon pages
     StardragonIndex,
