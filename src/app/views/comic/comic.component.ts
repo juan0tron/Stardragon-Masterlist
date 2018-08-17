@@ -11,7 +11,7 @@ import { ComicService } from './comic.service';
 export class ComicComponent {
 
   public page:number = 1;
-  public pageCount:number = 6;
+  public pageCount:number = 7;
 
   public baseComicUrl = "http://static.thegemexchange.net/comic/";
   public comicUrl:string;
