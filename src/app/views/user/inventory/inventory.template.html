@@ -1,0 +1,11 @@
+<div class="row" *ngIf="inventory">
+  <h3>Your Inventory ({{inventoryCount || 0}})</h3>
+  <div id="inventory" class="dashboard-module">
+    <div class="row">
+      <div class="col" *ngFor="let token of objectKeys(inventory.tokens)" (click)="showTokenDetails(token)">
+        <img src="assets/img/tokens/{{token}}.png" [title]="token | titlecase"/>
+        <p>({{inventory.tokens[token]}})</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -51,7 +51,12 @@ export class DashboardComponent {
   ){}
 
   ngOnInit(){
+    this.getUser();
     this.getEvents();
+  }
+
+  objectKeys(object){
+    return Object.keys(object);
   }
 
   showTokenDetails(token){
@@ -68,6 +73,27 @@ export class DashboardComponent {
       // swal("ok!");
     })
 
+  }
+
+  getUser(){
+    this.gem.api("/users/"+localStorage.getItem('user_id'), "GET", {}).subscribe(
+      data => {
+        this.user = data;
+        // Get total count of items in inventory
+        if(data.inventory){
+          let inventoryCount = 0;
+          let tokens = data.inventory.tokens;
+          for (var token in tokens) {
+          	if (tokens.hasOwnProperty(token)) {
+          		inventoryCount += tokens[token];
+          	}
+          }
+          this.user['inventoryCount'] = inventoryCount;
+        }
+      },
+      err  => { },
+      ()   => { return this.user }
+    );
   }
 
   /**

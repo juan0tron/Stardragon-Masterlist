@@ -32,13 +32,13 @@
             </div>
           </div>
         </div>
-        <div class="row">
-          <h3>Your Inventory (9)</h3>
+        <div class="row" *ngIf="user.inventory">
+          <h3>Your Inventory ({{user.inventoryCount || 0}})</h3>
           <div id="inventory" class="dashboard-module">
             <div class="row">
-              <div class="col" *ngFor="let token of tokens" (click)="showTokenDetails(token)">
-                <img [src]="token.img" [title]="token.name"/>
-                <p>({{token.count}})</p>
+              <div class="col" *ngFor="let token of objectKeys(user.inventory.tokens)" (click)="showTokenDetails(token)">
+                <img src="assets/img/tokens/{{token}}.png" [title]="token | titlecase"/>
+                <p>({{user.inventory.tokens[token]}})</p>
               </div>
             </div>
           </div>

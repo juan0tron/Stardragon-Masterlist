@@ -17,6 +17,7 @@ import { CharacterComponent }      from './views/character/character.component';
 import { TraitsComponent }         from './views/stardragon/traits/traits.component';
 import { UserComponent }           from "./views/user/profile/user.component";
 import { UserListComponent }       from "./views/user/list/user-list.component";
+import { InventoryComponent }      from "./views/user/inventory/inventory.component";
 import { TosComponent }            from "app/views/tos/tos.component";
 import { MYOThankYouComponent }    from "app/views/myo/thank-you/myo-thank-you.component";
 import { MapComponent }            from "app/views/map/map.component";
@@ -54,6 +55,7 @@ import { DevGuard }      from "./guards/dev.guard";
 import { GemExchangeAPI } from 'app/services/api.service';
 
 import { ROUTES }       from "./routes/app.routes";
+import { CoreModule }   from './core.module';
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -67,6 +69,7 @@ import { AppComponent } from './app.component';
     TraitsComponent,
     UserComponent,
     UserListComponent,
+    InventoryComponent,
     TosComponent,
     MYOThankYouComponent,
     MapComponent,
@@ -100,6 +103,8 @@ import { AppComponent } from './app.component';
     HttpClientModule,
     RouterModule.forRoot(ROUTES),
     FormsModule, ReactiveFormsModule,
+
+    CoreModule.forRoot(),
 
     // 3rd Party Modules
     FacebookModule.forRoot(),

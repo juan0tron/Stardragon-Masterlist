@@ -2,12 +2,16 @@
   .btn{margin-right: 5px}
 </style>
 
-<div class="container" style="background:#fff">
+<div class="container" style="display:flex;">
+  <div class="full-width" style="display:flex; flex-grow:1; background:#ccc;">
+  </div>
+</div>
+
+<div class="container" style="background:#fff;">
   <div class="content">
-    <div style="height:60px; width:100%;"></div>
     <div class="row">
       <div id="avatar" class="col-md-4">
-        <img src="./../../assets/img/default_avatar.png" />
+        <img src="./../../assets/img/default_avatar.png" style="margin-top:-25%" />
         <div id="social-icons" class="row">
           <div class="col" *ngFor="let icon of links">
             <a href="#">
@@ -17,11 +21,27 @@
         </div>
       </div>
       <div id="description" class="col-md-8">
-        <h2 class="float-left" style="display:flex; flex:50%;">{{user.name || "Username"}}</h2>
-        <a [routerLink]="['/users/', user._id]" class="btn btn-secondary float-right disabled">Edit Profile</a>
-        <hr style="clear:both; display:block;">
+        <div class="row">
+          <h2 class="float-left" style="display:flex; flex:50%;">{{user.name || "Username"}}</h2>
+          <button type="button" name="button" class="btn btn-primary float-right" (click)="modifyToken(1)">Give Token</button>
+          <button type="button" name="button" class="btn btn-danger float-right" (click)="modifyToken(-1)">Delete Token</button>
+          <a [routerLink]="['/users/', user._id]" class="btn btn-secondary float-right" *ngIf="this.isOwnProfile">Edit Profile</a>
+        </div>
+        <div class="row" *ngIf="user.inventory">
+          <h3>Inventory ({{user.inventoryCount || 0}})</h3>
+          <div id="inventory" class="dashboard-module">
+            <div class="row">
+              <div class="col" *ngFor="let token of objectKeys(user.inventory.tokens)">
+                <img src="assets/img/tokens/{{token}}.png" [title]="token | titlecase"/>
+                <p>({{user.inventory.tokens[token]}})</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
   </div>
 </div>
+
+<footer></footer>

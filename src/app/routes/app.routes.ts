@@ -48,8 +48,8 @@ export const ROUTES: Routes = [
 
     { path: 'register', component: RegisterComponent, canActivate: [DevGuard]},
 
-    { path: 'users',          component: UserListComponent },
-    { path: 'users/:user_id', component: UserComponent },
+    { path: 'users',          component: UserListComponent, canActivate: [LoggedInGuard] },
+    { path: 'users/:user_id', component: UserComponent, canActivate: [LoggedInGuard] },
 
     { path: 'character', component: CharacterComponent, canActivate: [DevGuard]},
 
