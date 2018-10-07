@@ -34,7 +34,8 @@ export class TraitsService {
   ) {}
 
   getTraitDescriptions(){
-    return this.http.get(`assets/data/trait-descriptions.json`)
+    // return this.http.get(`assets/data/trait-descriptions.json`)
+    return this.api.api("/traits/descriptions", 'GET');
   }
 
   getSpeciesHeaders(){

@@ -139,7 +139,7 @@ export class TraitsComponent {
 
   getTraitDescriptions(){
     this.traitsService.getTraitDescriptions().subscribe(
-      data => { this.trait_descriptions = data['trait_descriptions'] }
+      data => { this.trait_descriptions = data }
     );
   }
 
