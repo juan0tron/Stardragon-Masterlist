@@ -40,6 +40,7 @@ export class HomeComponent {
     },
   ];
 
+  // parallax scroll effect
   @HostListener('window:scroll', [])
   onWindowScroll(ev:KeyboardEvent) {
     let topDistance = window.pageYOffset;
@@ -54,5 +55,11 @@ export class HomeComponent {
       (layer as HTMLElement).style['-o-transform']      = translate3d;
       (layer as HTMLElement).style.transform            = translate3d;
     }
+  }
+
+  // Lazy load animation helpers
+  showLayer(index){
+    document.getElementById('layer-'+index).style.animation = 'fadeIn 2s';
+    document.getElementById('layer-'+index).style.visibility = 'visible';
   }
 }
