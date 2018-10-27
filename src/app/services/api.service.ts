@@ -5,7 +5,7 @@ import sha256, { Hash, HMAC } from "fast-sha256";
 
 import { Observable } from 'rxjs/Rx';
 
-import { Injectable } from '@angular/core';
+import { Injectable, Optional } from '@angular/core';
 import {
   Headers,
   Response,
@@ -25,7 +25,9 @@ import { User } from 'app/models/user'
 
 import { environment } from 'environments/environment';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 
 export class GemExchangeAPI {
 
@@ -36,7 +38,9 @@ export class GemExchangeAPI {
   constructor(
     private http:HttpClient,
     public  router:Router
-  ) { }
+  ) {
+    this.getUserData();
+  }
 
   /**
    *  @function    api
@@ -106,6 +110,20 @@ export class GemExchangeAPI {
 
   register(form_data){}
 
+  getUserData(){
+    if(this.user){
+      return this.user;
+    } else if(localStorage.getItem('user_id')){
+      // Cache user data
+      return this.api("/users/"+localStorage.getItem('user_id'), "GET", {}).subscribe(
+        data => { this.user = data },
+        err  => { },
+        ()   => { return this.user }
+      );
+    }
+  }
+
+  // save the user after login
   cacheUserData(user){
     this.user = user;
   }
@@ -127,6 +145,14 @@ export class GemExchangeAPI {
     else{
       return false;
     }
+  }
+
+  /**
+   *  @function isAdmin
+   *  @description Check if the current user is an admin
+   */
+  isAdmin(){
+    console.log(this.user)
   }
 
   /**
