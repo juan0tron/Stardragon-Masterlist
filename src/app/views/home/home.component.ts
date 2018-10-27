@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'home',
@@ -39,4 +39,20 @@ export class HomeComponent {
       "link":"https://gemexchange.deviantart.com/"
     },
   ];
+
+  @HostListener('window:scroll', [])
+  onWindowScroll(ev:KeyboardEvent) {
+    let topDistance = window.pageYOffset;
+    let layers      = document.querySelectorAll("[data-type='parallax']");
+    for (let layer of Array.from(layers)) {
+      const depth:any   = layer.getAttribute('data-depth');
+      const movement    = -(topDistance * depth);
+      const translate3d = `translate3d(0, ${movement}px, 0)`;
+      (layer as HTMLElement).style['-webkit-transform'] = translate3d;
+      (layer as HTMLElement).style['-moz-transform']    = translate3d;
+      (layer as HTMLElement).style['-ms-transform']     = translate3d;
+      (layer as HTMLElement).style['-o-transform']      = translate3d;
+      (layer as HTMLElement).style.transform            = translate3d;
+    }
+  }
 }

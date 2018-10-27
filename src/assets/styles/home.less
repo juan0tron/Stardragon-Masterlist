@@ -1,36 +1,63 @@
-home{
-  text-align: center;
-  .full-width{
-    min-height: 100vh;
+home{}
 
-    h1{
-      position: absolute;
-      top: 50%;
-      left: 0;
-      right: 0;
-      transform: translateY(-50%);
-    }
-    > img{
-      position: fixed;
-      bottom:0;
-      left:0;
-      right:0;
-      margin: 0;
-      max-width: none;
-      min-height: 100%;
-      transition: 0.3s ease all;
-    }
-    i{
-      position: absolute;
-      left: 0;
-      right:0;
-      bottom:1rem;
-      color: #fff;
-      font-size: 3rem;
-    }
+#multilayer-background,
+#multilayer-background-mobile{
+  text-align: center;
+  h1{
+    position: absolute;
+    top: 40%;
+    left: 0;
+    right: 0;
+    transform: translateY(-60%);
+    color: #FFF;
+    text-shadow: 2px 2px 0 #000;
+    z-index: 1;
   }
 }
 
+#multilayer-background{
+  height: 130vh;
+  overflow: hidden;
+  position: relative;
+  img{
+    background-position: bottom center;
+    background-size:     cover;
+    background-repeat:   no-repeat;
+    width:  100%;
+    height: 130vh;
+    left: 0;
+    position: fixed;
+    z-index: -1;
+
+    &:nth-child(1){ background-image: url('/assets/img/home/00-background.png'); }
+    &:nth-child(2){ background-image: url('/assets/img/home/01-base-stars.png'); }
+    &:nth-child(3){ background-image: url('/assets/img/home/02-constellation-stars.png');    }
+    &:nth-child(4){ background-image: url('/assets/img/home/03-planets.png');    }
+    // H1 is 5th layer
+    &:nth-child(6){  background-image: url('/assets/img/home/04-mountains.png');  }
+    &:nth-child(7){  background-image: url('/assets/img/home/05-trees.png');      }
+    &:nth-child(8){ background-image: url('/assets/img/home/06-characters.png'); }
+  }
+}
+#multilayer-background-mobile{
+  min-height: 130vh;
+  img{
+    position: fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    margin:0;
+    min-height: 100%;
+  }
+}
+@media screen and (min-width:1001px){
+  #multilayer-background{ display: block; }
+  #multilayer-background-mobile{ display: none; }
+}
+@media screen and (max-width:1000px){
+  #multilayer-background{ display: none; }
+  #multilayer-background-mobile{ display: block; }
+}
 
 // Link Brand Colors
 @toyhouse: rgba(0,140,186,1);
