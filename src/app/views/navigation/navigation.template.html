@@ -16,7 +16,6 @@
       <li><a routerLink="/stardragons"><i class="fa fa-paw"></i> Traits</a></li>
       <li><a routerLink="/stardragons/list" *ngIf="api.isLoggedIn()"><i class="fa fa-star"></i> Master List</a></li>
       <li><a routerLink="/comic"><i class="fas fa-book-open"></i> Comic</a></li>
-      <li><a routerLink="/discord"><i class="fab fa-discord"></i> Discord</a></li>
     </ul>
     <ul class="horizontal-links col-md-3 float-right" style="text-align:right">
       <ng-container *ngIf="api.isLoggedIn()">
@@ -25,7 +24,6 @@
       </ng-container>
       <ng-container *ngIf="!api.isLoggedIn()">
         <li><a (click)="showLoginForm()"><i class="fas fa-sign-in-alt"></i> Login</a></li>
-        <li *ngIf="api.isDev()"><a routerLink="/register"><i class="fab fa-wpforms"></i> Register</a></li>
       </ng-container>
     </ul>
   </div>
@@ -52,7 +50,6 @@
       <li><a (click)="changeRoute('/stardragons')"><i class="fa fa-paw"></i> Traits Compendium</a></li>
       <li *ngIf="api.isLoggedIn()"><a (click)="changeRoute('/stardragons/list')"><i class="fa fa-star"></i> Master List</a></li>
       <li><a (click)="changeRoute('/comic')"><i class="fas fa-book-open"></i> Comic</a></li>
-      <li><a (click)="changeRoute('/discord')"><i class="fab fa-discord"></i> Discord</a></li>
     </ul>
     <hr>
     <ul id="sidebar-socials">
@@ -70,7 +67,6 @@
       </ul>
       <ul *ngIf="!api.isLoggedIn()">
         <li><a (click)="showLoginForm()"><i class="fas fa-sign-in-alt"></i> Login</a></li>
-        <li><a (click)="changeRoute('/register')"><i class="fab fa-wpforms"></i> Register</a></li>
       </ul>
     </div>
   </div>

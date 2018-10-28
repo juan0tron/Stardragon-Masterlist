@@ -38,6 +38,11 @@ export class HomeComponent {
       "class":"fab fa-deviantart",
       "link":"https://gemexchange.deviantart.com/"
     },
+    {
+      "name":"Discord",
+      "class":"fab fa-discord",
+      "link":"/discord"
+    }
   ];
 
   // parallax scroll effect
