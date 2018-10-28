@@ -1,53 +1,93 @@
 <div id="multilayer-background">
   <img
     id="layer-1" data-type="parallax" data-depth=0.050
-    src="/assets/img/home/00-background.png" (load)="showLayer('1')">
+    src="/assets/img/home/1-background.png" (load)="showLayer('1')">
   <img
     id="layer-2" data-type="parallax" data-depth=0.100
-    src="/assets/img/home/01-base-stars.png" (load)="showLayer('2')">
+    src="/assets/img/home/2-base-stars.png" (load)="showLayer('2')">
   <img
     id="layer-3" data-type="parallax" data-depth=0.150
-    src="/assets/img/home/02-constellation-stars" (load)="showLayer('3')">
+    src="/assets/img/home/3-extra-stars.png" (load)="showLayer('3')">
   <img
     id="layer-4" data-type="parallax" data-depth=0.200
-    src="/assets/img/home/03-planets.png" (load)="showLayer('4')">
+    src="/assets/img/home/4-planets.png" (load)="showLayer('4')">
 
-  <h1  class="page-title">Welcome to the Gem Exchange!</h1>
+  <div id="homepage-title">
+    <div class="container">
+      <div id="social-links">
+        <a *ngFor="let link of links" [href]="link.link" target="_blank" class="{{link.class.replace('fa-','')}}">
+          <div><i [class]="link.class"></i><span>&nbsp;{{link.name}}</span></div>
+        </a>
+      </div>
+      <div id="title-text">
+        <h1>The Gem Exchange</h1>
+      </div>
+    </div>
+  </div>
 
   <img
-    id="layer-5" data-type="parallax" data-depth=0.700
-    src="/assets/img/home/04-mountains.png" (load)="showLayer('5')">
+    id="layer-5" data-type="parallax" data-depth=0.800
+    src="/assets/img/home/5-mountains.png" (load)="showLayer('5')">
   <img
     id="layer-6" data-type="parallax" data-depth=0.900
-    src="/assets/img/home/05-trees.png" (load)="showLayer('6')">
+    src="/assets/img/home/6-trees.png" (load)="showLayer('6')">
   <img
     id="layer-7" data-type="parallax" data-depth=1.000
-    src="/assets/img/home/06-characters.png" (load)="showLayer('7')">
+    src="/assets/img/home/7-characters.png" (load)="showLayer('7')">
+
 </div>
-<div id="multilayer-background-mobile" class="full-width">
-  <h1 class="page-title">Welcome to the Gem Exchange!</h1>
-  <img src="assets/img/home.png">
+
+<div id="multilayer-background-mobile">
+  <div id="homepage-title">
+    <div class="container">
+      <div id="title-text">
+        <h1>The Gem Exchange</h1>
+      </div>
+    </div>
+  </div>
+  <img src="assets/img/home/mobile-header.png">
 </div>
 
 
-<div style="flex-grow:1">
-  <div class="row" [hidden]="true">
-    <div class="col-12">
-      <p style="max-width:800px; line-height: 1.5; margin:auto;">Welcome to the official site for the closed species Stardragons. This site is currently a work in progress! To keep up to date with the latest news, check out the links below to follow us elsewhere on the web.</p>
+<div id="home-content" style="flex-grow:1">
+  <div class="container">
+
+    <div class="row">
+      <div class="col">
+        <h1>Welcome to The Gem Exchange!</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non libero justo. Maecenas sed dapibus tortor. Nam eget suscipit felis. Nullam bibendum sed magna in facilisis. Sed bibendum cursus libero, id lobortis est porta eget. Pellentesque nec ultrices leo, quis commodo lectus. Integer euismod congue cursus. Aliquam ut tortor euismod, egestas lorem eu, mollis lacus. Suspendisse lacinia orci quis magna ullamcorper lobortis. Mauris suscipit, orci tempor volutpat pretium, lectus turpis dictum ante, id dictum massa ligula eu ante.</p>
+      </div>
     </div>
-  </div>
-  <div class="row" [hidden]="true">
-    <div class="col-xs-6 col-sm-6 col-md-4" *ngFor="let link of links">
-      <a [href]="link.link" target="_blank" class="homepage-link">
-        <i [class]="link.class"></i>
-        <span>&nbsp;{{link.name}}</span>
-      </a>
+    <div class="row">
+      <div class="col-md-8">
+        <h2>Tales of Jo'Arca</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non libero justo. Maecenas sed dapibus tortor. Nam eget suscipit felis. Nullam bibendum sed magna in facilisis. Sed bibendum cursus libero, id lobortis est porta eget. Pellentesque nec ultrices leo, quis commodo lectus. Integer euismod congue cursus. Aliquam ut tortor euismod, egestas lorem eu, mollis lacus. Suspendisse lacinia orci quis magna ullamcorper lobortis. Mauris suscipit, orci tempor volutpat pretium, lectus turpis dictum ante, id dictum massa ligula eu ante.</p>
+      </div>
+      <div class="col-md-4">
+        <img src="assets/img/home/comic.png" alt="">
+      </div>
     </div>
-  </div>
-  <div id="flex-links">
-    <a *ngFor="let link of links" [href]="link.link" target="_blank" class="flex-link {{link.class}}">
-      <div class="flex-link-title">{{link.name}} <i [class]="link.class"></i></div>
-    </a>
+
+    <div class="row">
+      <div class="col-md-3">
+        <img src="assets/img/home/traits.png" alt="">
+      </div>
+      <div class="col-md-9">
+        <h2>Traits Compendium</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non libero justo. Maecenas sed dapibus tortor. Nam eget suscipit felis. Nullam bibendum sed magna in facilisis. Sed bibendum cursus libero, id lobortis est porta eget. Pellentesque nec ultrices leo, quis commodo lectus. Integer euismod congue cursus. Aliquam ut tortor euismod, egestas lorem eu, mollis lacus. Suspendisse lacinia orci quis magna ullamcorper lobortis. Mauris suscipit, orci tempor volutpat pretium, lectus turpis dictum ante, id dictum massa ligula eu ante.</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-8">
+        <h2>Discord Community</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non libero justo. Maecenas sed dapibus tortor. Nam eget suscipit felis. Nullam bibendum sed magna in facilisis. Sed bibendum cursus libero, id lobortis est porta eget. Pellentesque nec ultrices leo, quis commodo lectus. Integer euismod congue cursus. Aliquam ut tortor euismod, egestas lorem eu, mollis lacus. Suspendisse lacinia orci quis magna ullamcorper lobortis. Mauris suscipit, orci tempor volutpat pretium, lectus turpis dictum ante, id dictum massa ligula eu ante.</p>
+      </div>
+      <div class="col-md-4">
+        <img src="assets/img/home/discord.png">
+      </div>
+    </div>
+
   </div>
 </div>
 

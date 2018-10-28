@@ -59,7 +59,7 @@ export class HomeComponent {
 
   // Lazy load animation helpers
   showLayer(index){
-    document.getElementById('layer-'+index).style.animation = 'fadeIn 2s';
+    document.getElementById('layer-'+index).style.animation  = 'fadeIn 2s';
     document.getElementById('layer-'+index).style.visibility = 'visible';
   }
 }

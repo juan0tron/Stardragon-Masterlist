@@ -54,6 +54,14 @@
       <li><a (click)="changeRoute('/comic')"><i class="fas fa-book-open"></i> Comic</a></li>
       <li><a (click)="changeRoute('/discord')"><i class="fab fa-discord"></i> Discord</a></li>
     </ul>
+    <hr>
+    <ul id="sidebar-socials">
+      <li *ngFor="let link of socialLinks">
+        <a [href]="link.link" target="_blank">
+          <i [class]="link.class"></i> {{link.name}}
+        </a>
+      </li>
+    </ul>
     <div id="sidebar-login" class="row">
       <ul *ngIf="api.isLoggedIn()">
         <li><a (click)="changeRoute('/dashboard')"><i class="fa fa-user-circle"></i> Dashboard</a></li>
