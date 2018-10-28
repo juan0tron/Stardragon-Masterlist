@@ -87,8 +87,7 @@ export class NavigationComponent {
   checkScroll() {
     const componentPosition = this.el.nativeElement.offsetTop
     const scrollPosition = window.pageYOffset
-
-    if (scrollPosition == 0) {
+    if (scrollPosition <= 100) {
       this.isScrolledToTop = true;
     }
     else{
