@@ -1,5 +1,6 @@
 import { Component }  from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { ComicService } from './comic.service';
 
@@ -36,13 +37,13 @@ export class ComicComponent {
           // Given page number doesn't exist, go to most recent page instead
           if(this.page > this.pageCount || this.page <= 0){
             this.page = this.pageCount;
-            this.router.navigate([`/comic/page-${this.pageCount}`]);
+            this.router.navigate([`/comic/page-${this.pageCount}`],  { replaceUrl: true });
           }
           this.comicUrl = this.baseComicUrl + `${this.page}.png`;
         }
         // Default to the latest page if no page is specified
         else{
-          this.router.navigate([`/comic/page-${this.pageCount}`]);
+          this.router.navigate([`/comic/page-${this.pageCount}`], { replaceUrl: true });
         }
       }
     );
