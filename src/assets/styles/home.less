@@ -12,118 +12,108 @@ home{}
 // Color of the header's forground
 @top-layer-color: #010103;
 
-#multilayer-background,
-#multilayer-background-mobile{
-  position: relative;
-  img{ text-align: center; }
-  #homepage-title{
-    background: @top-layer-color;
-    position: absolute;
-    left:  0;
-    right: 0;
+#homepage-parallax{
+  height:             100vh;
+  overflow-x:         hidden;
+  overflow-y:         auto;
+  position:           relative;
+  perspective:        1px;
+  perspective-origin: 0 100%;
+}
 
-    top: 20%;
+#homepage-title{
+  background: @top-layer-color;
+  position: absolute;
+  left:  0;
+  right: 0;
 
-    z-index: 1;
-    #social-links{
-      float: left;
+  top: 20vh;
 
-      a{
-        font-size: 1.5rem;
-        margin: 0px;
-        font-family: "Futura";
-        font-weight: normal;
-        text-transform: uppercase;
-        color: #FFF;
+  z-index: 1;
+
+  height: 4rem; // 1rem less than the text so it overflows
+
+  #social-links{
+    float: left;
+
+    a{
+      font-size: 1.5rem;
+      margin: 0px;
+      font-family: "Futura";
+      font-weight: normal;
+      text-transform: uppercase;
+      color: #FFF;
 
 
-        overflow: hidden;
+      overflow: hidden;
 
-        padding: 0px 25px;
-        height: 4rem;
+      padding: 0px 25px;
+      height: 4rem;
 
-        // Transition width to show link text on hover only
-        transition: width .2s ease;
-        width: 4rem;
-        &:hover{ width:12rem; }
+      // Transition width to show link text on hover only
+      transition: width .2s ease;
+      width: 4rem;
+      &:hover{ width:12rem; }
 
-        // Angle the background, but not the text
-        transform: skewX(-25deg);
-        div{ transform: skewX(25deg)}
+      // Angle the background, but not the text
+      transform: skewX(-25deg);
+      div{ transform: skewX(25deg)}
 
-        span{ margin-left: 5px; }
-        i{
-          line-height: 4rem;
-          color: #fff;
-        }
-        &.home{       background-color: @toyhouse }
-        &.deviantart{ background-color: @deviantart }
-        &.github{     background-color: @github }
-        &.patreon{    background-color: @patreon }
-        &.paw{        background-color: @furaffinity }
-        &.twitter{    background-color: @twitter }
-        &.discord{    background-color: @discord }
+      span{ margin-left: 5px; }
+      i{
+        line-height: 4rem;
+        color: #fff;
       }
+      &.home{       background-color: @toyhouse }
+      &.deviantart{ background-color: @deviantart }
+      &.github{     background-color: @github }
+      &.patreon{    background-color: @patreon }
+      &.paw{        background-color: @furaffinity }
+      &.twitter{    background-color: @twitter }
+      &.discord{    background-color: @discord }
     }
-    #title-text h1{
-      font-family:    "Verbena";
-      text-align:     right;
-      text-transform: capitalize;
-      text-shadow:    2px 2px 0 #000;
-      color:          #FFF;
-    }
+  }
+  #title-text h1{
+    font-size: 5rem;
+    font-family:    "Verbena";
+    text-align:     right;
+    text-transform: capitalize;
+    text-shadow:    2px 2px 0 #000;
+    color:          #FFF;
   }
 }
 
 #multilayer-background{
-  height: 130vh;
-  overflow: hidden;
   position: relative;
-  #homepage-title{
-    height: 4rem; // 1rem less than the text so it overflows
-    #title-text h1{
-      font-size: 5rem;
-    }
-  }
+  height: 130vh;
+  transform-style: preserve-3d;
   img{
     object-fit: cover;
     width:  100%;
     height: 130vh;
-    left: 0;
+
     position: fixed;
-    z-index: -1;
+    left:   0;
+    right:  0;
+    top:    0;
+
     visibility: hidden;
+    transform-origin: 0 100%;
+    &#layer-1{transform: translateZ(-6px) scale(7)}
+    &#layer-2{transform: translateZ(-5px) scale(6)}
+    &#layer-3{transform: translateZ(-4px) scale(5)}
+    &#layer-4{transform: translateZ(-3px) scale(4)}
+    &#layer-5{transform: translateZ(-2px) scale(3)}
+    &#layer-6{transform: translateZ(-1px) scale(2)}
+    &#layer-7{transform: translateZ(0)}
   }
-}
-#multilayer-background-mobile{
-  min-height: 130vh;
-  width: 100%;
-  display: block;
-  #homepage-title{
-    height: 2.5rem; // 1rem less than the text so it overflows
-    #title-text h1{
-      font-size: 3rem;
-    }
-  }
-  img{
-    min-width: 100%;
-    height: 130vh;
-    object-fit: cover;
-    text-align: center;
-  }
-}
-@media screen and (min-width:1001px){
-  #multilayer-background{ display: block; }
-  #multilayer-background-mobile{ display: none; }
-}
-@media screen and (max-width:1000px){
-  #multilayer-background{ display: none; }
-  #multilayer-background-mobile{ display: block; }
 }
 
-#home-content{
+#homepage-content{
   background: @top-layer-color;
   color: #fff;
+  position: relative;
   a{ transition: all .2s ease; }
   a:not(:hover){ color: #fff; }
+  .container{overflow: hidden;}
 }

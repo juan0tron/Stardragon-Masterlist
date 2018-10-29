@@ -1,20 +1,8 @@
-<div id="multilayer-background">
-  <img class="parallax-layer" 
-    id="layer-1" data-type="parallax" data-depth=0.050
-    src="/assets/img/home/1-background.png" (load)="showLayer('1')">
-  <img class="parallax-layer"
-    id="layer-2" data-type="parallax" data-depth=0.100
-    src="/assets/img/home/2-base-stars.png" (load)="showLayer('2')">
-  <img class="parallax-layer"
-    id="layer-3" data-type="parallax" data-depth=0.150
-    src="/assets/img/home/3-extra-stars.png" (load)="showLayer('3')">
-  <img class="parallax-layer"
-    id="layer-4" data-type="parallax" data-depth=0.200
-    src="/assets/img/home/4-planets.png" (load)="showLayer('4')">
+<div id="homepage-parallax">
 
   <div id="homepage-title">
     <div class="container">
-      <div id="social-links">
+      <div id="social-links" class="d-none d-md-block">
         <a *ngFor="let link of links" [href]="link.link" target="_blank" class="{{link.class.replace('fa-','')}}">
           <div><i [class]="link.class"></i><span>&nbsp;{{link.name}}</span></div>
         </a>
@@ -25,70 +13,61 @@
     </div>
   </div>
 
-  <img class="parallax-layer"
-    id="layer-5" data-type="parallax" data-depth=0.800
-    src="/assets/img/home/5-mountains.png" (load)="showLayer('5')">
-  <img class="parallax-layer"
-    id="layer-6" data-type="parallax" data-depth=0.900
-    src="/assets/img/home/6-trees.png" (load)="showLayer('6')">
-  <img class="parallax-layer"
-    id="layer-7" data-type="parallax" data-depth=1.000
-    src="/assets/img/home/7-characters.png" (load)="showLayer('7')">
+  <div id="multilayer-background">
+    <img id="layer-1" src="/assets/img/home/1-background.png"  (load)="showLayer('1')">
+    <img id="layer-2" src="/assets/img/home/2-base-stars.png"  (load)="showLayer('2')">
+    <img id="layer-3" src="/assets/img/home/3-extra-stars.png" (load)="showLayer('3')">
+    <img id="layer-4" src="/assets/img/home/4-planets.png"     (load)="showLayer('4')">
+    <img id="layer-5" src="/assets/img/home/5-mountains.png"   (load)="showLayer('5')">
+    <img id="layer-6" src="/assets/img/home/6-trees.png"       (load)="showLayer('6')">
+    <img id="layer-7" src="/assets/img/home/7-characters.png"  (load)="showLayer('7')">
+  </div>
 
-</div>
-
-<div id="multilayer-background-mobile">
-  <div id="homepage-title">
+  <div id="homepage-content">
     <div class="container">
-      <div id="title-text">
-        <h1>The Gem Exchange</h1>
+
+      <div class="row">
+        <div class="col">
+          <h1>Welcome to The Gem Exchange!</h1>
+          <p>Long ago, there were two great dragons: Hylcinth, the white dragon of light, ruler of the day and goddess of honor, giver of magic and mother of the terrestrial planets; and Helgrinle’das, the black dragon of the night, god of justice and the hunt, watchman and protector of the universe. Though nature ruled that they should live in opposition, their harmonious balance led the two to eventually fall in love.</p>
+          <p>Together they built Jo'Arca, and Hylcinth wept joyously, filling its expanses with magic and life, creatures and spirits, plants and minerals. Finally, she called down some of the stars themselves to live as mortals, giving birth to the StarDragons.</p>
+          <p>The StarDragons are an original species created and designed by Cuttleskulls, Cloneclone, and Deletethestars, with a wide array of defining traits and continuous lore. With the everloving support and care of our community, we seek to give a creative space for those who love these dragons just as much as we do.</p>
+        </div>
       </div>
+
+      <div class="row">
+        <div class="col-md-8">
+          <h2><a routerLink="/comic/page-1">Tales of Jo'Arca Webcomic</a></h2>
+          <p>Follow Amir, Elliott and many others as the StarDragons of Jo'Arca share the history of the world they live in. The first 9 pages are available <a routerLink="/comic/page-1">here</a>. The comic is currently on hiatus until January. Until then, backers can catch previews of new pages as they are created on our <a href="https://www.patreon.com/GemExchange" target="_blank">Patreon</a>.</p>
+        </div>
+        <div class="col-md-4">
+          <img src="assets/img/home/comic.png" alt="">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-9 order-md-2">
+          <h2><a routerLink="/stardragons/traits">Stardragon Traits Compendium</a></h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non libero justo. Maecenas sed dapibus tortor. Nam eget suscipit felis. Nullam bibendum sed magna in facilisis. Sed bibendum cursus libero, id lobortis est porta eget. Pellentesque nec ultrices leo, quis commodo lectus. Integer euismod congue cursus. Aliquam ut tortor euismod, egestas lorem eu, mollis lacus. Suspendisse lacinia orci quis magna ullamcorper lobortis. Mauris suscipit, orci tempor volutpat pretium, lectus turpis dictum ante, id dictum massa ligula eu ante.</p>
+        </div>
+        <div class="col-md-3 order-md-1">
+          <img src="assets/img/home/traits.png" alt="">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-8">
+          <h2><a routerLink="/discord">Discord Community</a></h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non libero justo. Maecenas sed dapibus tortor. Nam eget suscipit felis. Nullam bibendum sed magna in facilisis. Sed bibendum cursus libero, id lobortis est porta eget. Pellentesque nec ultrices leo, quis commodo lectus. Integer euismod congue cursus. Aliquam ut tortor euismod, egestas lorem eu, mollis lacus. Suspendisse lacinia orci quis magna ullamcorper lobortis. Mauris suscipit, orci tempor volutpat pretium, lectus turpis dictum ante, id dictum massa ligula eu ante.</p>
+        </div>
+        <div class="col-md-4">
+          <img src="assets/img/home/discord.png">
+        </div>
+      </div>
+
     </div>
   </div>
-  <img src="assets/img/home/mobile-header.png">
+
+  <footer></footer>
+
 </div>
-
-
-<div id="home-content" style="flex-grow:1">
-  <div class="container">
-
-    <div class="row">
-      <div class="col">
-        <h1>Welcome to The Gem Exchange!</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non libero justo. Maecenas sed dapibus tortor. Nam eget suscipit felis. Nullam bibendum sed magna in facilisis. Sed bibendum cursus libero, id lobortis est porta eget. Pellentesque nec ultrices leo, quis commodo lectus. Integer euismod congue cursus. Aliquam ut tortor euismod, egestas lorem eu, mollis lacus. Suspendisse lacinia orci quis magna ullamcorper lobortis. Mauris suscipit, orci tempor volutpat pretium, lectus turpis dictum ante, id dictum massa ligula eu ante.</p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-8">
-        <h2><a routerLink="/comic">Tales of Jo'Arca Webcomic</a></h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non libero justo. Maecenas sed dapibus tortor. Nam eget suscipit felis. Nullam bibendum sed magna in facilisis. Sed bibendum cursus libero, id lobortis est porta eget. Pellentesque nec ultrices leo, quis commodo lectus. Integer euismod congue cursus. Aliquam ut tortor euismod, egestas lorem eu, mollis lacus. Suspendisse lacinia orci quis magna ullamcorper lobortis. Mauris suscipit, orci tempor volutpat pretium, lectus turpis dictum ante, id dictum massa ligula eu ante.</p>
-      </div>
-      <div class="col-md-4">
-        <img src="assets/img/home/comic.png" alt="">
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-9 order-md-2">
-        <h2><a routerLink="/stardragons/traits">Stardragon Traits Compendium</a></h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non libero justo. Maecenas sed dapibus tortor. Nam eget suscipit felis. Nullam bibendum sed magna in facilisis. Sed bibendum cursus libero, id lobortis est porta eget. Pellentesque nec ultrices leo, quis commodo lectus. Integer euismod congue cursus. Aliquam ut tortor euismod, egestas lorem eu, mollis lacus. Suspendisse lacinia orci quis magna ullamcorper lobortis. Mauris suscipit, orci tempor volutpat pretium, lectus turpis dictum ante, id dictum massa ligula eu ante.</p>
-      </div>
-      <div class="col-md-3 order-md-1">
-        <img src="assets/img/home/traits.png" alt="">
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-8">
-        <h2><a routerLink="/discord">Discord Community</a></h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non libero justo. Maecenas sed dapibus tortor. Nam eget suscipit felis. Nullam bibendum sed magna in facilisis. Sed bibendum cursus libero, id lobortis est porta eget. Pellentesque nec ultrices leo, quis commodo lectus. Integer euismod congue cursus. Aliquam ut tortor euismod, egestas lorem eu, mollis lacus. Suspendisse lacinia orci quis magna ullamcorper lobortis. Mauris suscipit, orci tempor volutpat pretium, lectus turpis dictum ante, id dictum massa ligula eu ante.</p>
-      </div>
-      <div class="col-md-4">
-        <img src="assets/img/home/discord.png">
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<footer></footer>
