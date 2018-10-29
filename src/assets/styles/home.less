@@ -124,6 +124,7 @@ home{
   position: relative;
   height: 130vh;
   transform-style: preserve-3d;
+  z-index: 0;
   img{
     object-fit: cover;
     @media screen and (max-width: 766px){
@@ -151,6 +152,8 @@ home{
 }
 
 #homepage-content{
+  z-index: 1;
+  transform: translateZ(0);
   background: @top-layer-color;
   color: #fff;
   position: relative;
