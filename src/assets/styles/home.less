@@ -1,13 +1,16 @@
-home{}
+@home-content-width: 750px;
+home{
+  footer .container{ max-width: @home-content-width; }
+}
 
 // Link Brand Colors
-@toyhouse: rgba(0,140,186,1);
-@deviantart: #4e6252;
-@github: #333;
+@toyhouse:    rgba(0,140,186,1);
+@deviantart:  #4e6252;
+@github:      #333;
 @furaffinity: #2e3b41;
-@patreon: #f96854;
-@twitter: #1DA1F2;
-@discord: #7289DA;
+@patreon:     #f96854;
+@twitter:     #1DA1F2;
+@discord:     #7289DA;
 
 // Color of the header's forground
 @top-layer-color: #010103;
@@ -22,20 +25,53 @@ home{}
 }
 
 #homepage-title{
-  background: @top-layer-color;
+  // Background on both title and social links, display side by side
+  @media screen and (min-width: 1201px){
+    background: @top-layer-color;
+    height: 4rem; // 1rem less than the text so the text overflows
+    #title-text h1{
+      float:      right;
+      font-size:  5rem;
+      text-align: right;
+    }
+  }
+  // Background on social links only, display stacked
+  @media screen and (max-width: 1200px){
+    height: auto;
+    overflow:hidden;
+    #social-links, #title-text{
+      float:right;
+      width:100%;
+      text-align: center;
+      display: block;
+    }
+    #social-links{
+      background: @top-layer-color;
+    }
+    #title-text h1{
+      text-align: center;
+      font-size: 3rem;
+    }
+  }
+  // Hide social links (since they're in side nav) and remove all backgrounds
+  @media screen and (max-width: 766px){
+    background-color: transparent;
+    #social-links{ display: none; }
+  }
+
   position: absolute;
+  top:   20vh;
   left:  0;
   right: 0;
 
-  top: 20vh;
-
   z-index: 1;
-
-  height: 4rem; // 1rem less than the text so it overflows
 
   #social-links{
     float: left;
-
+    height: 4rem;
+    // Angle the background, but not the text
+    transform: skewX(-20deg);
+    a div{ transform: skewX(20deg)}
     a{
       font-size: 1.5rem;
       margin: 0px;
@@ -44,39 +80,40 @@ home{}
       text-transform: uppercase;
       color: #FFF;
 
-
       overflow: hidden;
 
       padding: 0px 25px;
       height: 4rem;
 
-      // Transition width to show link text on hover only
-      transition: width .2s ease;
-      width: 4rem;
-      &:hover{ width:12rem; }
+      transition: all .2s ease;
 
-      // Angle the background, but not the text
-      transform: skewX(-25deg);
-      div{ transform: skewX(25deg)}
+      // Transition width to show link text on hover only
+      width: 4rem;
+      &:hover{
+        width:12rem;
+        box-shadow: inset  7px 0 5px -5px rgba(0,0,0,0.5),
+                    inset -7px 0 5px -5px rgba(0,0,0,0.5)
+      }
 
       span{ margin-left: 5px; }
       i{
         line-height: 4rem;
         color: #fff;
       }
-      &.home{       background-color: @toyhouse }
-      &.deviantart{ background-color: @deviantart }
-      &.github{     background-color: @github }
-      &.patreon{    background-color: @patreon }
-      &.paw{        background-color: @furaffinity }
-      &.twitter{    background-color: @twitter }
-      &.discord{    background-color: @discord }
+
+      &:hover{
+        &.home{       background-color: @toyhouse }
+        &.deviantart{ background-color: @deviantart }
+        &.github{     background-color: @github }
+        &.patreon{    background-color: @patreon }
+        &.paw{        background-color: @furaffinity }
+        &.twitter{    background-color: @twitter }
+        &.discord{    background-color: @discord }
+      }
     }
   }
   #title-text h1{
-    font-size: 5rem;
     font-family:    "Verbena";
-    text-align:     right;
     text-transform: capitalize;
     text-shadow:    2px 2px 0 #000;
     color:          #FFF;
@@ -89,6 +126,10 @@ home{}
   transform-style: preserve-3d;
   img{
     object-fit: cover;
+    @media screen and (max-width: 766px){
+      object-position: 25%; // Show the interesting part of the image on mobile!
+    }
+
     width:  100%;
     height: 130vh;
 
@@ -113,7 +154,13 @@ home{}
   background: @top-layer-color;
   color: #fff;
   position: relative;
-  a{ transition: all .2s ease; }
-  a:not(:hover){ color: #fff; }
-  .container{overflow: hidden;}
+
+  a{ transition: all .2s ease; font-weight: bold; }
+
+  .comic-panel{ background-color: rgba(126,102,147,0.5); }
+
+  .container{
+    overflow: hidden;
+    max-width: @home-content-width;
+  }
 }

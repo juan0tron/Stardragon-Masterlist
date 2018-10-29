@@ -41,7 +41,7 @@ export class HomeComponent {
     {
       "name":"Discord",
       "class":"fab fa-discord",
-      "link":"/discord"
+      "link":"https://discord.gg/T9Xrjs5"
     }
   ];
 
