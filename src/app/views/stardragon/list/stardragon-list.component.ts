@@ -26,10 +26,7 @@ export class StardragonListComponent {
 
   list() {
     this.gem.api(`/stardragons?limit=${this.limit}`, "GET").subscribe(
-      data => {
-        this.stardragons = data;
-        console.log(this.stardragons)
-      },
+      data => { this.stardragons = data },
       ()   => {}
     );
   }

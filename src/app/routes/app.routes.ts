@@ -30,15 +30,15 @@ import { TraitsComponent }           from 'app/views/stardragon/traits/traits.co
 import { ComicComponent } from 'app/views/comic/comic.component';
 
 // Routing Guards
-import { LoggedInGuard } from "app/guards/logged-in.guard"; // Logged in only
-import { DevGuard }      from "app/guards/dev.guard";       // Dev environment only
+import { AuthGuard } from "app/guards/auth.guard"; // Authenticated users only
+import { DevGuard }  from "app/guards/dev.guard";  // Dev environment only
 
 export const ROUTES: Routes = [
     // Main redirect
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
 
     { path: 'home',           component: HomeComponent },
-    { path: 'dashboard',      component: DashboardComponent, canActivate: [LoggedInGuard] },
+    { path: 'dashboard',      component: DashboardComponent, canActivate: [AuthGuard] },
     { path: 'discord',        component: DiscordComponent   },
     { path: 'termsofservice', component: TosComponent       },
     { path: 'map',            component: MapComponent       },
@@ -48,27 +48,27 @@ export const ROUTES: Routes = [
 
     { path: 'register', component: RegisterComponent, canActivate: [DevGuard]},
 
-    { path: 'users',          component: UserListComponent, canActivate: [LoggedInGuard] },
-    { path: 'users/:user_id', component: UserComponent, canActivate: [LoggedInGuard] },
+    { path: 'users',          component: UserListComponent, canActivate: [AuthGuard] },
+    { path: 'users/:user_id', component: UserComponent,     canActivate: [AuthGuard] },
 
     { path: 'character', component: CharacterComponent, canActivate: [DevGuard]},
 
     // Stardragons (DO NOT REARRANGE - Route order matters!!)
     { path: 'stardragons', component: StardragonIndex },
-      { path: 'stardragons/list', component: MasterList, canActivate: [LoggedInGuard] },
-      { path: 'stardragons/create', component: EditStardragonComponent,  canActivate: [LoggedInGuard]},
+      { path: 'stardragons/list', component: MasterList, canActivate: [AuthGuard] },
+      { path: 'stardragons/create', component: EditStardragonComponent,  canActivate: [AuthGuard]},
 
       { path: 'stardragons/traits', component: TraitsComponent },
         { path: 'stardragons/traits/:species_name',          component: TraitsComponent },
           { path: 'stardragons/traits/:species_name/:subtype', component: TraitsComponent },
 
       { path: 'stardragons/:stardragon_id',       component: StardragonComponent },
-      { path: 'stardragons/:stardragon_id/edit',  component: EditStardragonComponent,  canActivate: [LoggedInGuard]},
+      { path: 'stardragons/:stardragon_id/edit',  component: EditStardragonComponent,  canActivate: [AuthGuard]},
 
     // Comic
     { path: 'comic', component: ComicComponent },
       { path: 'comic/archive', component: ComicComponent },
-      { path: 'comic/:page', component: ComicComponent },
+      { path: 'comic/:page',   component: ComicComponent },
 
     // Redirect old routes
     { path: 'species/:species_name', redirectTo: 'stardragons/traits/:species_name', pathMatch: 'full' },

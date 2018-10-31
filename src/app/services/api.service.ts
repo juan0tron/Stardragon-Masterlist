@@ -31,16 +31,10 @@ import { environment } from 'environments/environment';
 
 export class GemExchangeAPI {
 
-  // public swal:any;
-
-  public user:User;
-
   constructor(
     private http:HttpClient,
     public  router:Router
-  ) {
-    this.getUserData();
-  }
+  ) { }
 
   /**
    *  @function    api
@@ -51,37 +45,29 @@ export class GemExchangeAPI {
    *  @return {Object}
    */
   api(params, request_type = "POST", body = {}) {
-    let headers = new HttpHeaders()
-      .set('Content-Type', 'application/json');
-
-    if(localStorage.getItem("auth_token")){
-      headers = new HttpHeaders()
-        .set('auth-token', localStorage.getItem("auth_token"))
-        .set('Content-Type', 'application/json');
-    }
 
     // Log all calls to console for devs
     if(this.isDev()){
-      console.log(request_type+":", environment.api_url + params, headers, body);
+      console.log(request_type+":", environment.api_url + params, body);
     }
 
     // Determine Request type and make the appropriate call
     var api_request;
     switch(request_type){
       case "GET":
-        api_request = this.http.get(environment.api_url + params, {headers:headers});
+        api_request = this.http.get(environment.api_url + params);
         break;
       case "POST":
-        api_request = this.http.post(environment.api_url + params, body, {headers:headers});
+        api_request = this.http.post(environment.api_url + params, body);
         break;
       case "PUT":
-        api_request = this.http.put(environment.api_url + params, body, {headers:headers});
+        api_request = this.http.put(environment.api_url + params, body);
         break;
       case "PATCH":
-        api_request = this.http.patch(environment.api_url + params, body, {headers:headers});
+        api_request = this.http.patch(environment.api_url + params, body);
         break;
       case "DELETE":
-        api_request = this.http.delete(environment.api_url + params, {headers:headers});
+        api_request = this.http.delete(environment.api_url + params);
         break;
     }
 
@@ -108,26 +94,6 @@ export class GemExchangeAPI {
       });
   }
 
-  register(form_data){}
-
-  getUserData(){
-    if(this.user){
-      return this.user;
-    } else if(localStorage.getItem('user_id')){
-      // Cache user data
-      return this.api("/users/"+localStorage.getItem('user_id'), "GET", {}).subscribe(
-        data => { this.user = data },
-        err  => { },
-        ()   => { return this.user }
-      );
-    }
-  }
-
-  // save the user after login
-  cacheUserData(user){
-    this.user = user;
-  }
-
   logout(){
     localStorage.clear();
     this.router.navigate(['/home']);
@@ -148,14 +114,6 @@ export class GemExchangeAPI {
   }
 
   /**
-   *  @function isAdmin
-   *  @description Check if the current user is an admin
-   */
-  isAdmin(){
-    console.log(this.user)
-  }
-
-  /**
    *  @function isDev
    *  @description Checks if the current environment or user is dev
    *  @return {boolean}
@@ -165,18 +123,5 @@ export class GemExchangeAPI {
       return true;
     }
     return false;
-  }
-
-  /**
-    *  @function    hashPW
-    *  @description Hashes a password in SHA256
-    *  @param  {String} password
-    *  @return {String}
-    */
-  hashPW(password){
-    var pw_hash:any = sha256(password);
-        pw_hash     = btoa(String.fromCharCode.apply(null, pw_hash));
-
-    return pw_hash;
   }
 }

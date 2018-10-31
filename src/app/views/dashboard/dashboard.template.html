@@ -36,7 +36,7 @@
           <h3>Your Inventory ({{user.inventoryCount || 0}})</h3>
           <div id="inventory" class="dashboard-module">
             <div class="row">
-              <div class="col" *ngFor="let token of objectKeys(user.inventory.tokens)" (click)="showTokenDetails(token)">
+              <div class="col" *ngFor="let token of objectKeys(user.inventory.tokens)">
                 <img src="assets/img/tokens/{{token}}.png" [title]="token | titlecase"/>
                 <p>({{user.inventory.tokens[token]}})</p>
               </div>

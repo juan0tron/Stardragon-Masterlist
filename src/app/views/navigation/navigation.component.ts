@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 // 3rd Party
 import { SwalComponent } from '@toverux/ngx-sweetalert2';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 // Animations
 import { slideInOut, fadeBackground } from 'app/animations/nav.animations';
@@ -70,7 +71,8 @@ export class NavigationComponent {
     public  api:    GemExchangeAPI,
     private route:  ActivatedRoute,
     private router: Router,
-    public  el:     ElementRef
+    public  el:     ElementRef,
+    public jwtHelper: JwtHelperService
   ){}
 
   ngOnInit(){
@@ -108,11 +110,8 @@ export class NavigationComponent {
   }
 
   getUserData(){
-    if(this.user_id){
-      this.api.api(`/users/${this.user_id}`, "GET").subscribe(
-        data => { this.user = data }
-      );
-    }
+    let jwt = this.jwtHelper.decodeToken(localStorage.getItem("auth_token"));
+    this.user = jwt.user;
   }
 
   showLoginForm(){

@@ -6,6 +6,7 @@ import { ActivatedRoute, Router }    from '@angular/router';
 import { default as swal} from 'sweetalert2';
 
 // Services
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { GemExchangeAPI } from 'app/services/api.service';
 
 // Models
@@ -47,7 +48,8 @@ export class DashboardComponent {
   ];
 
   constructor(
-    public  gem: GemExchangeAPI
+    public api:       GemExchangeAPI,
+    public jwtHelper: JwtHelperService
   ){}
 
   ngOnInit(){
@@ -76,7 +78,8 @@ export class DashboardComponent {
   }
 
   getUser(){
-    this.gem.api("/users/"+localStorage.getItem('user_id'), "GET", {}).subscribe(
+    let userId = this.jwtHelper.decodeToken(localStorage.getItem("auth_token")).id;
+    this.api.api(`/users/${userId}`, "GET", {}).subscribe(
       data => {
         this.user = data;
         // Get total count of items in inventory
@@ -101,7 +104,7 @@ export class DashboardComponent {
    *  @description Get this user's event history
    */
   getEvents(){
-    this.gem.api('/auth/events', "GET").subscribe(
+    this.api.api('/auth/events', "GET").subscribe(
       data => {this.events = data.data},
       err  => {},
       ()   => {},

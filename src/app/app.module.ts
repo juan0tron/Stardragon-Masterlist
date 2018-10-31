@@ -46,10 +46,11 @@ import { FacebookModule }     from 'ngx-facebook';
 import { SweetAlert2Module }  from '@toverux/ngx-sweetalert2';
 import { TypeaheadModule, ButtonsModule, PopoverModule } from 'ngx-bootstrap';
 import { ClickOutsideModule } from 'ng-click-outside';
+import { JwtModule }          from '@auth0/angular-jwt';
 
 // Routing Guards
-import { LoggedInGuard } from "./guards/logged-in.guard";
-import { DevGuard }      from "./guards/dev.guard";
+import { AuthGuard } from "./guards/auth.guard";
+import { DevGuard }  from "./guards/dev.guard";
 
 // Services
 import { GemExchangeAPI } from 'app/services/api.service';
@@ -57,6 +58,11 @@ import { GemExchangeAPI } from 'app/services/api.service';
 import { ROUTES }       from "./routes/app.routes";
 import { CoreModule }   from './core.module';
 import { AppComponent } from './app.component';
+
+// Allows JwtModule to obtain auth tokens from localStorage
+export function tokenGetter() {
+  return localStorage.getItem('auth_token');
+}
 
 @NgModule({
   declarations: [
@@ -118,12 +124,18 @@ import { AppComponent } from './app.component';
     // NGX Bootstrap
     ButtonsModule.forRoot(),
     TypeaheadModule.forRoot(),
-    PopoverModule.forRoot()
+    PopoverModule.forRoot(),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter:        tokenGetter,
+        whitelistedDomains: ['localhost:3000', 'api.thegemexchange.net'],
+      }
+    })
   ],
   providers: [
     // Guards
     DevGuard,
-    LoggedInGuard,
+    AuthGuard,
 
     // Services
     GemExchangeAPI
