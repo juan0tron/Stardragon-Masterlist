@@ -27,8 +27,7 @@ export class AuthGuard implements CanActivate {
     // Check login status - if user isn't logged in, redirect to login
     if (!this.api.isLoggedIn()) {
       this.router.navigate(['/home']);
-    } else {
-      return this.api.isLoggedIn();
-    }
+    } 
+    return this.api.isLoggedIn();
   }
 }

@@ -5,6 +5,7 @@ import { Component, HostListener } from '@angular/core';
   templateUrl: './home.template.html',
 })
 export class HomeComponent {
+
   title = 'Welcome to The Gem Exchange!';
 
   links = [
@@ -50,4 +51,5 @@ export class HomeComponent {
     document.getElementById('layer-'+index).style.animation  = 'fadeIn 2s';
     document.getElementById('layer-'+index).style.visibility = 'visible';
   }
+
 }

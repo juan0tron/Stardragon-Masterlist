@@ -35,11 +35,10 @@
 
 <div id="login-form">
   <h2>Log In</h2>
-  <hr/>
-    <form role="form" (ngSubmit)="login()">
-      <input [(ngModel)]="email" name="email" type="text" class="form-control" placeholder="Email"    [ngClass]="{'is-invalid':email_invalid}" />
-      <input [(ngModel)]="password" name="password" type="password" class="form-control" placeholder="Password" [ngClass]="{'is-invalid':password_invalid}" />
-      <button class="btn btn-primary btn-block" type="submit" style="background:#790e8b; border-color:#790e8b">Login</button>
-      <div class="alert alert-danger"  [hidden]="!error">{{error}}</div>
-    </form>
+  <form role="form" (ngSubmit)="login()">
+    <input [(ngModel)]="email" name="email" type="text" class="form-control" placeholder="Email"    [ngClass]="{'is-invalid':email_invalid}" />
+    <input [(ngModel)]="password" name="password" type="password" class="form-control" placeholder="Password" [ngClass]="{'is-invalid':password_invalid}" />
+    <button class="btn btn-primary btn-block" type="submit">Log In</button>
+    <div class="alert alert-danger"  [hidden]="!error">{{error}}</div>
+  </form>
 </div>

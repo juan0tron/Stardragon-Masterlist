@@ -33,7 +33,7 @@ export class AuthService {
     this.router.navigate(['/home']);
   }
 
-  public get loggedIn(): boolean {
+  public get loggedIn():boolean {
     return (localStorage.getItem('auth_token') !== null);
   }
 
@@ -42,4 +42,5 @@ export class AuthService {
         pw_hash     = btoa(String.fromCharCode.apply(null, pw_hash));
     return pw_hash;
   }
+
 }
