@@ -38,6 +38,7 @@ export const ROUTES: Routes = [
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
 
     { path: 'home',           component: HomeComponent },
+    { path: 'login',          component: HomeComponent },
     { path: 'dashboard',      component: DashboardComponent, canActivate: [AuthGuard] },
     { path: 'discord',        component: DiscordComponent   },
     { path: 'termsofservice', component: TosComponent       },

@@ -3,20 +3,20 @@ import { Component, Input, HostListener, ViewChild, ElementRef } from '@angular/
 import { ActivatedRoute, Router } from '@angular/router';
 
 // 3rd Party
-import { SwalComponent } from '@toverux/ngx-sweetalert2';
-import { JwtHelperService } from '@auth0/angular-jwt';
+import { SwalComponent }    from '@toverux/ngx-sweetalert2';
 
 // Animations
 import { slideInOut, fadeBackground } from 'app/animations/nav.animations';
 
 // Services
+import { AuthService }    from 'app/services/auth.service';
 import { GemExchangeAPI } from 'app/services/api.service';
 
 @Component({
   selector:    'navigation',
   templateUrl: './navigation.template.html',
   animations:  [slideInOut, fadeBackground],
-  providers:   []
+  providers:   [AuthService, GemExchangeAPI]
 })
 export class NavigationComponent {
 
@@ -24,10 +24,12 @@ export class NavigationComponent {
 
   public router_sub:any;
   public user_id:string;
-  public user:any = {};
+  public user:any;
 
   public isScrolledToTop:boolean = true;
-  public sideNavState:string = "hide";
+  public sideNavState:string = 'hide';
+
+  public currentRoute:string = '';
 
   public socialLinks = [
     {
@@ -72,19 +74,15 @@ export class NavigationComponent {
     private route:  ActivatedRoute,
     private router: Router,
     public  el:     ElementRef,
-    public jwtHelper: JwtHelperService
+    public  auth:   AuthService,
   ){}
-
-  ngOnInit(){
-    this.user_id = localStorage.getItem("user_id");
-    this.getUserData();
+  
+  ngAfterViewInit(){
     this.router.events.subscribe(
       data => {
-        if(data['url'] === '/login'){
-          this.loginComponent.show();
-        }
-        else{
-          this.closeSideNav();
+        this.currentRoute = data['url'];
+        if(this.currentRoute === '/login'){
+          // if(!this.auth.loggedIn) this.showLoginForm();
         }
       }
     );
@@ -109,22 +107,40 @@ export class NavigationComponent {
     this.router.navigate([route]);
   }
 
-  getUserData(){
-    let jwt = this.jwtHelper.decodeToken(localStorage.getItem("auth_token"));
-    this.user = jwt.user;
-  }
-
   showLoginForm(){
     this.sideNavState = 'hide';
-    this.loginComponent.show();
+    if(this.currentRoute === '/home' || this.currentRoute === '/login'){
+      document.getElementById('show-login').style.display = "none";
+      document.getElementById('hide-login').style.display = "block";
+
+      document.getElementById('homepage-title').style.animation  = "fadeOut 2s";
+      document.getElementById('homepage-title').style.visibility = "hidden";
+
+      document.getElementById('homepage-login').style.animation  = "fadeIn 2s";
+      document.getElementById('homepage-login').style.visibility = "visible";
+    }
+    else{
+      this.loginComponent.show();
+    }
+  }
+
+  hideLoginForm(){
+    document.getElementById('show-login').style.display = "block";
+    document.getElementById('hide-login').style.display = "none";
+
+    document.getElementById('homepage-login').style.animation  = "fadeOut 2s";
+    document.getElementById('homepage-login').style.visibility = "hidden";
+
+    document.getElementById('homepage-title').style.animation  = "fadeIn 2s";
+    document.getElementById('homepage-title').style.visibility = "visible";
   }
 
   toggleSideNav(){
     if(this.sideNavState == "hide" || this.sideNavState == "hidden"){
       this.sideNavState = "show";
     }
-    else if(this.sideNavState == "show"){
-      this.sideNavState = "hide";
+    else{
+      this.closeSideNav();
     }
   }
 

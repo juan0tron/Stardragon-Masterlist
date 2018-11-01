@@ -2,7 +2,7 @@
   <login *swalPartial></login>
 </swal>
 
-<nav class="navbar navigation" [ngClass]="{'transparent':isScrolledToTop}">
+<nav id="nav" class="navbar navigation" [ngClass]="{'transparent':isScrolledToTop}">
   <div class="container d-md-none">
     <ul id="mobile-navigation" class="horizontal-links float-left col-xs-12 col-sm-12" style="text-align:left;">
       <li><a (click)="toggleSideNav()"><i class="fa fa-bars"></i></a></li>
@@ -21,7 +21,8 @@
         <li><a (click)="api.logout()" href="#"><i class="fa fa-sign-out"></i> Logout</a></li>
       </ng-container>
       <ng-container *ngIf="!api.isLoggedIn()">
-        <li><a (click)="showLoginForm()"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+        <li id="show-login"><a (click)="showLoginForm()"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+        <li id="hide-login" style="display:none;"><a (click)="hideLoginForm()">&#10006;</a></li>
       </ng-container>
     </ul>
   </div>
@@ -35,17 +36,17 @@
   [clickOutsideEvents]="'click,touchstart'"
   clickOutsideEnabled="this.sideNavState === 'show'"
   >
-  <div id="nav-profile" *ngIf="api.isLoggedIn() && user">
+  <div id="nav-profile" *ngIf="auth.loggedIn">
     <a routerLink="/dashboard">
       <img src="assets/img/default_avatar.png" alt="">
-      <h3>{{user.name}}</h3>
+      <!-- <h3>{{user.name}}</h3> -->
     </a>
   </div>
   <div id="sidebar-links">
     <ul>
       <li><a (click)="changeRoute('/home')"><i class="fa fa-home"></i> Home</a></li>
       <li><a (click)="changeRoute('/stardragons')"><i class="fa fa-paw"></i> Traits Compendium</a></li>
-      <li *ngIf="api.isLoggedIn()"><a (click)="changeRoute('/stardragons/list')"><i class="fa fa-star"></i> Master List</a></li>
+      <li *ngIf="auth.loggedIn"><a (click)="changeRoute('/stardragons/list')"><i class="fa fa-star"></i> Master List</a></li>
       <li><a (click)="changeRoute('/comic')"><i class="fas fa-book-open"></i> Comic</a></li>
     </ul>
     <hr>
@@ -58,11 +59,11 @@
     </ul>
     <hr>
     <div id="sidebar-login" class="row">
-      <ul *ngIf="api.isLoggedIn()">
+      <ul *ngIf="auth.loggedIn">
         <li><a (click)="changeRoute('/dashboard')"><i class="fa fa-user-circle"></i> Dashboard</a></li>
         <li><a (click)="api.logout()" href="#"><i class="fa fa-sign-out"></i> Logout</a></li>
       </ul>
-      <ul *ngIf="!api.isLoggedIn()">
+      <ul *ngIf="!auth.loggedIn">
         <li><a (click)="showLoginForm()"><i class="fas fa-sign-in-alt"></i> Login</a></li>
       </ul>
     </div>
