@@ -29,6 +29,9 @@ export class NavigationComponent {
   public isScrolledToTop:boolean = true;
   public sideNavState:string = 'hide';
 
+  public hideNav:boolean = false;
+  public lastScrollPosition:number;
+
   public currentRoute:string = '';
 
   public socialLinks = [
@@ -76,7 +79,7 @@ export class NavigationComponent {
     public  el:     ElementRef,
     public  auth:   AuthService,
   ){}
-  
+
   ngAfterViewInit(){
     this.router.events.subscribe(
       data => {
@@ -90,15 +93,28 @@ export class NavigationComponent {
 
   @HostListener('window:scroll', ['$event'])
   checkScroll() {
-    const componentPosition = this.el.nativeElement.offsetTop
-    const scrollPosition = window.pageYOffset
+    const componentPosition = this.el.nativeElement.offsetTop;
+    const scrollPosition    = window.pageYOffset;
+
+    console.log(`componentPosition: ${componentPosition}`, `scrollPosition: ${scrollPosition}`)
+
+    // User is scrolled within 100px of the top of the page
     if (scrollPosition <= 100) {
       this.isScrolledToTop = true;
+      this.hideNav = false;
     }
+    // User is scrolled below the first 100px of the page
     else{
       this.isScrolledToTop = false;
+      if(scrollPosition > this.lastScrollPosition){
+        this.hideNav = true;
+      }
+      else{
+        this.hideNav = false;
+      }
     }
 
+    this.lastScrollPosition = scrollPosition;
   }
 
   // Used instead of routerLink so we can close the side nav when clicked
