@@ -96,8 +96,6 @@ export class NavigationComponent {
     const componentPosition = this.el.nativeElement.offsetTop;
     const scrollPosition    = window.pageYOffset;
 
-    console.log(`componentPosition: ${componentPosition}`, `scrollPosition: ${scrollPosition}`)
-
     // User is scrolled within 100px of the top of the page
     if (scrollPosition <= 100) {
       this.isScrolledToTop = true;

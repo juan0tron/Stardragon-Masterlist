@@ -7,7 +7,6 @@ import { Component, HostListener } from '@angular/core';
 export class HomeComponent {
 
   title = 'Welcome to The Gem Exchange!';
-
   links = [
     {
       "name":"Patreon",
@@ -45,6 +44,30 @@ export class HomeComponent {
       "link":"https://discord.gg/T9Xrjs5"
     }
   ];
+
+  public lastScrollPosition:number = 0;
+
+  // Handle nav scoll behavior here since this component does not trigger
+  // the window:scroll event in the nav component
+  checkScroll($event) {
+    const scrollPosition = $event.path[0].scrollTop;
+    // User is scrolled within 100px of the top of the page
+    if (scrollPosition <= 100) {
+      document.getElementById("nav").classList.add('transparent');
+      document.getElementById("nav").classList.remove('hideNav');
+    }
+    // User is scrolled below the first 100px of the page
+    else{
+      document.getElementById("nav").classList.remove('transparent');
+      if(scrollPosition > this.lastScrollPosition){
+        document.getElementById("nav").classList.add('hideNav');
+      }
+      else{
+        document.getElementById("nav").classList.remove('hideNav');
+      }
+    }
+    this.lastScrollPosition = scrollPosition;
+  }
 
   // Lazy load animation helpers
   showLayer(index){
