@@ -1,26 +1,20 @@
 // Angular
 import { Component } from '@angular/core';
-import { Router }    from '@angular/router';
-
-// 3rd Party
-import { LoginResponse, LoginOptions, FacebookService, InitParams } from 'ngx-facebook';
-
-// Services
-import { GemExchangeAPI } from 'app/services/api.service';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
     selector:    'tos',
-    templateUrl: 'tos.template.html',
-    providers:   [GemExchangeAPI]
+    templateUrl: 'tos.template.html'
 })
 
 export class TosComponent {
 
-  constructor(
-    private api:    GemExchangeAPI,
-    private fb:     FacebookService,
-    private router: Router
-  ) { }
+  constructor() {}
 
-
+  scrollTo(anchor){
+    let x = document.querySelector(`#${anchor}`);
+    if (x){
+      x.scrollIntoView();
+    }
+  }
 }

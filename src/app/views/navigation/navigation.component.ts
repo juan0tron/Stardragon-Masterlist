@@ -78,7 +78,13 @@ export class NavigationComponent {
     private router: Router,
     public  el:     ElementRef,
     public  auth:   AuthService,
-  ){}
+  ){
+    this.router.events.subscribe(() => {
+      this.hideNav = false;
+      document.getElementById("nav").classList.remove("hideNav");
+      document.getElementById("nav").classList.add("transparent");
+    })
+  }
 
   ngAfterViewInit(){
     this.router.events.subscribe(
