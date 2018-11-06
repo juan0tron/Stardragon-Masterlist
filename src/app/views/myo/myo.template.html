@@ -1,0 +1,91 @@
+<div id="nav-spacer"></div>
+
+<div class="container" style="background-color:#fff">
+  <div class="content">
+
+    <form (ngSubmit)="submit()">
+
+      <div class="row">
+        <div class="col">
+          <h1>{{title}}</h1>
+
+          <label for="name">Name</label>
+          <input type="text" name="name" [(ngModel)]="myo.name" class="form-control" placeholder="Name">
+
+          <br>
+
+          <label for="species">Species</label>
+          <select name="species" class="form-control" [(ngModel)]="myo.species" (change)="getSubspeciesTypes(myo.species)">
+            <option [ngValue]="null">Select Species...</option>
+            <option *ngFor="let species of speciesTypes" [ngValue]="species">{{species | titlecase}}</option>
+          </select>
+
+          <br>
+
+          <label for="subspecies">Subspecies</label>
+          <select name="subspecies" class="form-control" [(ngModel)]="myo.subspecies" (change)="getTraits(myo.species, myo.subspecies)">
+            <option [ngValue]="null">Select Subspecies....</option>
+            <option *ngFor="let subspecies of subspeciesTypes" [ngValue]="subspecies">{{subspecies | titlecase}} {{myo.species | titlecase}}</option>
+          </select>
+        </div>
+      </div>
+
+      <ng-container *ngIf="showTraitPicker">
+        <div class="row">
+          <div class="col-12">
+            <label>Trait</label>
+          </div>
+          <div class="col-6">
+            <select class="form-control" (change)="filterAvailableTraits(myo.species, myo.subspecies, selectedTraitType)" [(ngModel)]="selectedTraitType" name="selectedTraitType">
+              <option [ngValue]="null">Select Trait type...</option>
+              <option *ngFor="let traitType of availableTraitTypes" [ngValue]="traitType">{{traitType | titlecase}}</option>
+            </select>
+          </div>
+          <div class="col-6">
+            <select class="form-control" [(ngModel)]="selectedTrait" name="selectedTrait">
+              <option [ngValue]="null">Select trait...</option>
+              <option *ngFor="let trait of availableTraits" [ngValue]="trait">{{trait.name | titlecase}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <button type="button" name="button" class="btn btn-primary" (click)="addTrait()">Add Trait</button>&nbsp;
+            <button type="button" name="button" class="btn btn-secondary" (click)="showTraitPicker = false">Cancel</button>
+          </div>
+        </div>
+      </ng-container>
+
+      <div *ngIf="!showTraitPicker" class="row">
+        <div class="col">
+          <button type="button" class="btn btn-primary" (click)="showTraitPicker = true"><i class="fa fa-plus"></i> Add Trait</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <hr>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <button type="submit" class="btn btn-primary">Submit</button>&nbsp;
+          <button type="submit" class="btn btn-secondary">Save as Draft</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <pre>
+            {{myo.traits | json}}
+          </pre>
+        </div>
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+<footer></footer>

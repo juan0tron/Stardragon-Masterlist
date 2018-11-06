@@ -14,7 +14,7 @@ import { Stardragon }      from 'app/models/stardragon';
 import { StardragonTrait } from 'app/models/stardragon-trait';
 
 // Services
-import { TraitsService } from './traits-service';
+import { TraitsService }  from 'app/services/traits.service';
 import { GemExchangeAPI } from 'app/services/api.service';
 
 @Component({
@@ -247,7 +247,7 @@ export class TraitsComponent {
       if(
         (this.filters.name == trait.name || this.filters.name  == "")    &&
         (type == trait.type || type == "all") &&
-        (this.filters.rarity == trait.rarity  || this.filters.rarity  == "all") &&
+        (this.filters.rarity  == trait.rarity  || this.filters.rarity  == "all") &&
         (this.filters.subtype == trait.subtype || this.filters.subtype == "all") &&
         (this.filters.sex == trait.sex || (this.filters.sex == "unisex" && !trait.sex)||this.filters.sex == "all")
       ){

@@ -75,5 +75,5 @@ export const ROUTES: Routes = [
     { path: 'species/:species_name', redirectTo: 'stardragons/traits/:species_name', pathMatch: 'full' },
 
     // Handle all other routes
-    { path: '**', redirectTo: '' },
+    { path: '**', redirectTo: '/home' },
 ];
