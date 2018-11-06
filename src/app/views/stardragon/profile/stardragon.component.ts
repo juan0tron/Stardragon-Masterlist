@@ -9,12 +9,13 @@ import * as moment from 'moment';
 import { Stardragon } from 'app/models/stardragon';
 
 // Services
+import { AuthService } from 'app/services/auth.service';
 import { GemExchangeAPI } from 'app/services/api.service';
 
 @Component({
   selector:    'stardragon',
   templateUrl: './stardragon.template.html',
-  providers:   [GemExchangeAPI]
+  providers:   [AuthService, GemExchangeAPI]
 })
 export class StardragonComponent {
   title = 'Stardragon';
@@ -23,7 +24,8 @@ export class StardragonComponent {
   public stardragon:Stardragon;
 
   constructor(
-    private gem: GemExchangeAPI,
+    private auth: AuthService,
+    private api:  GemExchangeAPI,
     private activatedRoute: ActivatedRoute
   ){}
 
@@ -36,7 +38,7 @@ export class StardragonComponent {
 
   // Get a stardragon by ID
   details() {
-    this.gem.api(`/stardragons/${this.id}`, "GET").subscribe(
+    this.api.api(`/stardragons/${this.id}`, "GET").subscribe(
       data => { this.stardragon = data },
       err  => {},
       ()   => {}

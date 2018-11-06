@@ -12,7 +12,7 @@
             <small>{{stardragon.rarity | titlecase}} {{stardragon.gender || stardragon.sex | titlecase}} {{stardragon.species | titlecase}}</small>
           </div>
           <div class="col">
-            <a *ngIf="gem.isLoggedIn()" class="btn btn-primary pull-right" [routerLink]="['/stardragons',stardragon._id,'edit']">Edit</a>
+            <a *ngIf="auth.loggedIn()" class="btn btn-primary float-right" [routerLink]="['/stardragons',stardragon._id,'edit']">Edit</a>
           </div>
           <div class="col-12">
             <hr/>

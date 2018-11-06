@@ -5,7 +5,7 @@ import { Location } from '@angular/common';
 
 import { Http, RequestOptions, URLSearchParams } from '@angular/http';
 
-import { GemExchangeAPI } from 'app/services/api.service';
+import { AuthService } from 'app/services/auth.service';
 
 @Injectable()
 
@@ -14,7 +14,7 @@ export class DevGuard implements CanActivate {
     constructor(
       private router: Router,
       private route:  ActivatedRoute,
-      public  api:    GemExchangeAPI
+      public  auth:   AuthService
     ) {}
 
     /**
@@ -23,9 +23,9 @@ export class DevGuard implements CanActivate {
      *  @return {boolean}
      */
     canActivate() {
-      if(!this.api.isDev()){
+      if(!this.auth.isDev()){
         this.router.navigate(['/']);
       }
-      return this.api.isDev();
+      return this.auth.isDev();
     }
 }

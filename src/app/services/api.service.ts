@@ -25,6 +25,8 @@ import { User } from 'app/models/user'
 
 import { environment } from 'environments/environment';
 
+import { AuthService } from './auth.service';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -33,7 +35,8 @@ export class GemExchangeAPI {
 
   constructor(
     private http:HttpClient,
-    public  router:Router
+    public  router:Router,
+    private auth:AuthService
   ) { }
 
   /**
@@ -47,7 +50,7 @@ export class GemExchangeAPI {
   api(params, request_type = "POST", body = {}) {
 
     // Log all calls to console for devs
-    if(this.isDev()){
+    if(this.auth.isDev()){
       console.log(request_type+":", environment.api_url + params, body);
     }
 
@@ -80,10 +83,10 @@ export class GemExchangeAPI {
       })
       // Error
       .catch((error:any) => {
-        if (this.isDev()) console.error(`ERROR: ${request_type} ${params}`, error);
+        if (this.auth.isDev()) console.error(`ERROR: ${request_type} ${params}`, error);
         switch(error.status){
           case 401: // Unauthorized
-            this.logout();
+            this.auth.logout();
             swal("Session Expired","Your session has expired. Please log in again.","error");
             break;
           default:
@@ -94,34 +97,4 @@ export class GemExchangeAPI {
       });
   }
 
-  logout(){
-    localStorage.clear();
-    this.router.navigate(['/home']);
-  }
-
-  /**
-    *  @function    isLoggedIn
-    *  @description Checks localStorage to see if user is logged in
-    *  @return {boolean}
-    */
-  isLoggedIn(){
-    if(localStorage.getItem("auth_token")){
-      return true;
-    }
-    else{
-      return false;
-    }
-  }
-
-  /**
-   *  @function isDev
-   *  @description Checks if the current environment or user is dev
-   *  @return {boolean}
-   */
-  isDev(){
-    if(!environment.production){
-      return true;
-    }
-    return false;
-  }
 }

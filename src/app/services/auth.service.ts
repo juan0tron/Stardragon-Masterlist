@@ -7,20 +7,19 @@ import { map } from 'rxjs/operators';
 
 import sha256, { Hash, HMAC } from "fast-sha256";
 
-import { GemExchangeAPI } from './api.service';
+import { environment } from 'environments/environment';
 
 @Injectable()
 export class AuthService {
 
   constructor(
     private http:   HttpClient,
-    private api:    GemExchangeAPI,
     public  router: Router
   ) { }
 
   login(email: string, password:string) {
     localStorage.clear();
-    return this.api.api('/auth/login', "POST", {email: email, password: this.hash(password)});
+    return this.http.post(`${environment.api_url}/auth/login`, {email: email, password: this.hash(password)});
   }
 
   logout() {
@@ -30,6 +29,18 @@ export class AuthService {
 
   loggedIn():boolean {
     return (localStorage.getItem('auth_token') !== null);
+  }
+
+  /**
+   *  @function isDev
+   *  @description Checks if the current environment or user is dev
+   *  @return {boolean}
+   */
+  isDev(){
+    if(!environment.production){
+      return true;
+    }
+    return false;
   }
 
   hash(password){

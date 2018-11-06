@@ -13,15 +13,15 @@
     <ul id="desktop-navigation" class="horizontal-links col-md-9 float-left" style="text-align:left">
       <li><a routerLink="/home"><i class="fa fa-home"></i> Home</a></li>
       <li><a routerLink="/stardragons"><i class="fa fa-paw"></i> Traits</a></li>
-      <li><a routerLink="/stardragons/list" *ngIf="api.isLoggedIn()"><i class="fa fa-star"></i> Master List</a></li>
+      <li><a routerLink="/stardragons/list" *ngIf="auth.loggedIn()"><i class="fa fa-star"></i> Master List</a></li>
       <li><a routerLink="/comic"><i class="fas fa-book-open"></i> Comic</a></li>
     </ul>
     <ul class="horizontal-links col-md-3 float-right" style="text-align:right">
-      <ng-container *ngIf="api.isLoggedIn()">
+      <ng-container *ngIf="auth.loggedIn()">
         <li><a routerLink="/dashboard"><i class="fa fa-user-circle"></i> Dashboard</a></li>
-        <li><a (click)="api.logout()" href="#"><i class="fa fa-sign-out"></i> Logout</a></li>
+        <li><a (click)="auth.logout()" href="#"><i class="fa fa-sign-out"></i> Logout</a></li>
       </ng-container>
-      <ng-container *ngIf="!api.isLoggedIn()">
+      <ng-container *ngIf="!auth.loggedIn()">
         <li id="show-login"><a (click)="showLoginForm()"><i class="fas fa-sign-in-alt"></i> Login</a></li>
         <li id="hide-login" style="display:none;"><a (click)="hideLoginForm()">&#10006;</a></li>
       </ng-container>
@@ -37,7 +37,7 @@
   [clickOutsideEvents]="'click,touchstart'"
   clickOutsideEnabled="this.sideNavState === 'show'"
   >
-  <div id="nav-profile" *ngIf="auth.loggedIn">
+  <div id="nav-profile" *ngIf="auth.loggedIn()">
     <a routerLink="/dashboard">
       <img src="assets/img/default_avatar.png" alt="">
       <!-- <h3>{{user.name}}</h3> -->
@@ -47,7 +47,7 @@
     <ul>
       <li><a (click)="changeRoute('/home')"><i class="fa fa-home"></i> Home</a></li>
       <li><a (click)="changeRoute('/stardragons')"><i class="fa fa-paw"></i> Traits Compendium</a></li>
-      <li *ngIf="auth.loggedIn"><a (click)="changeRoute('/stardragons/list')"><i class="fa fa-star"></i> Master List</a></li>
+      <li *ngIf="auth.loggedIn()"><a (click)="changeRoute('/stardragons/list')"><i class="fa fa-star"></i> Master List</a></li>
       <li><a (click)="changeRoute('/comic')"><i class="fas fa-book-open"></i> Comic</a></li>
     </ul>
     <hr>
@@ -60,11 +60,11 @@
     </ul>
     <hr>
     <div id="sidebar-login" class="row">
-      <ul *ngIf="auth.loggedIn">
+      <ul *ngIf="auth.loggedIn()">
         <li><a (click)="changeRoute('/dashboard')"><i class="fa fa-user-circle"></i> Dashboard</a></li>
-        <li><a (click)="api.logout()" href="#"><i class="fa fa-sign-out"></i> Logout</a></li>
+        <li><a (click)="auth.logout()" href="#"><i class="fa fa-sign-out"></i> Logout</a></li>
       </ul>
-      <ul *ngIf="!auth.loggedIn">
+      <ul *ngIf="!auth.loggedIn()">
         <li><a (click)="showLoginForm()"><i class="fas fa-sign-in-alt"></i> Login</a></li>
       </ul>
     </div>

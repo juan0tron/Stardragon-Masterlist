@@ -10,13 +10,12 @@ import { slideInOut, fadeBackground } from 'app/animations/nav.animations';
 
 // Services
 import { AuthService }    from 'app/services/auth.service';
-import { GemExchangeAPI } from 'app/services/api.service';
 
 @Component({
   selector:    'navigation',
   templateUrl: './navigation.template.html',
   animations:  [slideInOut, fadeBackground],
-  providers:   [AuthService, GemExchangeAPI]
+  providers:   [AuthService]
 })
 export class NavigationComponent {
 
@@ -73,7 +72,6 @@ export class NavigationComponent {
   ];
 
   constructor(
-    public  api:    GemExchangeAPI,
     private route:  ActivatedRoute,
     private router: Router,
     public  el:     ElementRef,
