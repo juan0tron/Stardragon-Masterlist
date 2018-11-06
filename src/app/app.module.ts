@@ -53,6 +53,7 @@ import { AuthGuard } from "./guards/auth.guard";
 import { DevGuard }  from "./guards/dev.guard";
 
 // Services
+import { AuthService }    from 'app/services/auth.service';
 import { GemExchangeAPI } from 'app/services/api.service';
 
 import { ROUTES }       from "./routes/app.routes";
@@ -134,10 +135,11 @@ export function tokenGetter() {
   ],
   providers: [
     // Guards
-    DevGuard,
     AuthGuard,
+    DevGuard,
 
     // Services
+    AuthService,
     GemExchangeAPI
   ],
   bootstrap: [AppComponent]

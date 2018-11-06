@@ -2,6 +2,9 @@
 import { Component } from '@angular/core';
 import { Router }    from '@angular/router';
 
+// 3rd Party
+import { default as swal} from 'sweetalert2';
+
 // Services
 import { AuthService } from 'app/services/auth.service';
 
@@ -21,8 +24,8 @@ export class LoginComponent {
   public password_invalid:boolean = false;
 
   constructor(
-    public  auth:   AuthService,
-    private router: Router
+    public auth:   AuthService,
+    public router: Router
   ) {}
 
   login(){
@@ -35,9 +38,7 @@ export class LoginComponent {
     else{
       this.auth.login(this.email, this.password)
         .subscribe(
-          data => {
-            this.router.navigate['/dashboard'];
-          },
+          data => { localStorage.setItem('auth_token', data['auth_token']); },
           err  => {
             this.error = err.message;
             if(err.message == "Invalid email." || err.message == "Email is required."){
@@ -52,6 +53,10 @@ export class LoginComponent {
               this.email_invalid    = false;
               this.password_invalid = false;
             }
+          },
+          ()   => {
+            swal.close();
+            this.router.navigate(['/dashboard']);
           }
         );
     }

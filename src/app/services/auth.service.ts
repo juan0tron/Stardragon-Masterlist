@@ -18,14 +18,9 @@ export class AuthService {
     public  router: Router
   ) { }
 
-  login(email: string, password:string): Observable<boolean> {
+  login(email: string, password:string) {
     localStorage.clear();
-    return this.api.api('/auth/login', "POST", {email: email, password: this.hash(password)}).subscribe(
-      data => {
-        localStorage.setItem('auth_token', data.auth_token);
-        this.router.navigate['/dashboard'];
-      }
-    );
+    return this.api.api('/auth/login', "POST", {email: email, password: this.hash(password)});
   }
 
   logout() {
@@ -33,7 +28,7 @@ export class AuthService {
     this.router.navigate(['/home']);
   }
 
-  public get loggedIn():boolean {
+  loggedIn():boolean {
     return (localStorage.getItem('auth_token') !== null);
   }
 

@@ -6,7 +6,7 @@ import { Http, RequestOptions, URLSearchParams } from '@angular/http';
 
 import { environment } from 'environments/environment';
 
-import { GemExchangeAPI } from 'app/services/api.service';
+import { AuthService } from 'app/services/auth.service';
 
 @Injectable()
 
@@ -15,7 +15,7 @@ export class AuthGuard implements CanActivate {
   constructor(
     private router: Router,
     private route:  ActivatedRoute,
-    public  api:    GemExchangeAPI
+    public  auth:   AuthService
   ) {}
 
   /**
@@ -25,9 +25,9 @@ export class AuthGuard implements CanActivate {
    */
   canActivate() {
     // Check login status - if user isn't logged in, redirect to login
-    if (!this.api.isLoggedIn()) {
+    if (!this.auth.loggedIn()) {
       this.router.navigate(['/home']);
-    } 
-    return this.api.isLoggedIn();
+    }
+    return this.auth.loggedIn();
   }
 }
