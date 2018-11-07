@@ -280,10 +280,12 @@ export class TraitsComponent {
   changeHeader(){
     if(this.filters.species != 'all'){
       let headerObj = this.headers[this.filters.species];
-      let headerType = headerObj[this.filters.subtype] || headerObj['standard'] || "";
+      let headerType = headerObj[this.filters.subtype] || headerObj['standard'];
       if(headerType === "old"){
+        let fileName = 'header-standard.png';
         this.showFancyHeader = false;
-        let fileName = `header-${this.filters.subtype == 'all' ? "standard" : this.filters.subtype}.png`
+        if(headerObj[this.filters.subtype] !== undefined)
+          fileName = `header-${this.filters.subtype == 'all' ? "standard" : this.filters.subtype}.png`
         this.header_img = this.headerImgDir + `${this.filters.species}/${fileName}`;
       }
       else if(headerType === "new"){
@@ -381,6 +383,7 @@ export class TraitsComponent {
     return "";
   }
 
+  // Show a modal with all information about the selected trait
   showTraitDetails(trait){
     let faGender = "fa-transgender";
     switch(trait.sex){

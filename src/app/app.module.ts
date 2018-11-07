@@ -14,7 +14,6 @@ import { DashboardComponent }      from './views/dashboard/dashboard.component';
 import { MYOComponent }            from './views/myo/myo.component';
 import { DiscordComponent }        from './views/discord/discord.component';
 import { CharacterComponent }      from './views/character/character.component';
-import { TraitsComponent }         from './views/stardragon/traits/traits.component';
 import { UserComponent }           from "./views/user/profile/user.component";
 import { UserListComponent }       from "./views/user/list/user-list.component";
 import { InventoryComponent }      from "./views/user/inventory/inventory.component";
@@ -22,7 +21,11 @@ import { TosComponent }            from "app/views/tos/tos.component";
 import { MYOThankYouComponent }    from "app/views/myo/thank-you/myo-thank-you.component";
 import { MapComponent }            from "app/views/map/map.component";
 
-// Stardragon Pages
+// Pages -- Traits
+import { TraitsComponent }         from './views/stardragon/traits/traits.component';
+import { TraitsPickerComponent }   from './views/stardragon/traits/traits-picker/traits-picker.component';
+
+// Pages -- Stardragons
 import { StardragonIndex }           from './views/stardragon/index/stardragon-index.component';
 import { StardragonListComponent }   from './views/stardragon/list/stardragon-list.component';
 import { MasterList }                from './views/stardragon/master-list/master-list.component';
@@ -74,6 +77,7 @@ export function tokenGetter() {
     DiscordComponent,
     CharacterComponent,
     TraitsComponent,
+    TraitsPickerComponent,
     UserComponent,
     UserListComponent,
     InventoryComponent,
