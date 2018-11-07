@@ -1,3 +1,6 @@
 # The Gem Exchange
+![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
 
-This site will be the future home for everything related to the closed species Stardragons. Built on a MEAN stack - MongoDB, Express, Angular 4, and Node.js.
+# Welcome to The Gem Exchange!
+
+This is the repository for the Angular-powered front-end of [thegemexchange.net](http://thegemexchange.net/).
