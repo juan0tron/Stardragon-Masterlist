@@ -81,7 +81,6 @@ export class TraitsComponent {
 
   public rarities = [
     'all',
-    'none',
     'common',
     'uncommon',
     'rare',

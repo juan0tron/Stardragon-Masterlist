@@ -1,7 +1,6 @@
 // Traits Compendium Styles
 
 // Colors - RARITIES
-@none:      #D2E5D6;
 @common:    #B0F171;
 @uncommon:  #FFE476;
 @rare:      #FF855B;
@@ -271,7 +270,6 @@ traits{
   &:hover{
     .trait-img{
       border-radius: 0;
-      &.none{background:@none;}
       &.common{background:@common;}
       &.uncommon{background:@uncommon;}
       &.rare{background:@rare;}
@@ -288,11 +286,6 @@ traits{
 }
 
 // Rarity Colors
-.none{
-  color:@none;
-  &.trait-img{ border: 5px solid @none; }
-}
-
 .common{
   color:@common;
   &.trait-img{ border: 5px solid @common; }
