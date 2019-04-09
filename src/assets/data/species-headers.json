@@ -1,34 +1,10 @@
 {
-  "starcrafter":{
-    "standard": "old",
-    "desert":   "new"
-  },
-  "stardasher":{
-    "standard": "old",
-    "desert":   "new"
-  },
-  "stareater":{
-    "standard":"old",
-    "sloth":"new"
-  },
-  "starfisher":{
-    "standard":   "old",
-    "mudskipper": "old"
-  },
-  "starrobber":{
-    "standard":    "old",
-    "severblight": "old"
-  },
-  "starshooter":{
-    "standard": "old",
-    "arctic":   "old"
-  },
-  "starsweeper":{
-    "standard": "old",
-    "arctic":   "old"
-  },
-  "starweaver":{
-    "standard": "old",
-    "fuu":      "new"
-  }
+  "starcrafter": ["desert"],
+  "starfisher":  ["mudskipper", "deepsea"],
+  "stardasher":  ["kelpie","desert"],
+  "stareater":   ["sloth"],
+  "starrobber":  ["severblight","vampire"],
+  "starshooter": ["arctic","saber"],
+  "starsweeper": ["arctic","tropical"],
+  "starweaver":  ["fuu"]
 }

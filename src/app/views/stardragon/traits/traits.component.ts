@@ -7,7 +7,7 @@ import { default as swal} from 'sweetalert2';
 import { TypeaheadMatch } from 'ngx-bootstrap/typeahead';
 
 // animations
-import { listAnimation, fadeAnimation, shrinkExpand }   from 'app/animations/traits.animations';
+import { listAnimation, fadeAnimation, shrinkExpand, crossFade } from 'app/animations/traits.animations';
 
 // Models
 import { Stardragon }      from 'app/models/stardragon';
@@ -20,7 +20,7 @@ import { GemExchangeAPI } from 'app/services/api.service';
 @Component({
   selector:    'traits',
   templateUrl: './traits.template.html',
-  animations:  [listAnimation, fadeAnimation, shrinkExpand],
+  animations:  [listAnimation, fadeAnimation, shrinkExpand, crossFade],
   providers:   [GemExchangeAPI, TraitsService]
 })
 
@@ -40,18 +40,17 @@ export class TraitsComponent {
 
   public base_img_directory   = 'http://static.thegemexchange.net/traits/';
   public img_directory:string = '';
-  public headers:any = {};
-  public header_img:string = 'http://static.thegemexchange.net/headers/all/header-standard.png';
 
   public traits:Array<StardragonTrait> = [];
   public visibleTraits:Array<StardragonTrait> = [];
   public trait_descriptions = [];
 
-  public showFancyHeader:boolean = true;
+  public headers:any = {};
   public headerImgDir = 'http://static.thegemexchange.net/headers/';
+
   public header = {
-    background: this.headerImgDir + "background.png",
-    characters: this.headerImgDir + "characters.png",
+    background: '',
+    characters: '',
   };
 
 
@@ -130,8 +129,8 @@ export class TraitsComponent {
       this.filters.subtype = subtype;
 
       // Make API calls & get local data
-      this.getTraitDescriptions();
       this.getHeaderImages();
+      this.getTraitDescriptions();
       this.getTraits();
     }
   }
@@ -159,9 +158,7 @@ export class TraitsComponent {
         this.filters[filterToClear] = 'all';
       }
     }
-    let filters = {
-
-    }
+    let filters = {}
     this.traitsService.getTraits(this.filters.species).subscribe(
       data => {
         for(let trait of data){
@@ -207,7 +204,10 @@ export class TraitsComponent {
    *  @param {string} filter - type, sex, etc
    *  @param {string} value - stardasher, "trait name", etc
    */
-  filterTraits(){
+  filterTraits(species = '', subtype = ''){
+    if(species != ''){this.filters.species = species}
+    if(subtype != ''){ this.filters.subtype = subtype}
+
     let filterTypes = Object.keys(this.filters); // Get all filter types
     let filteredTraits = this.traits.filter(trait => {
       return filterTypes.every(filterType => {
@@ -221,6 +221,11 @@ export class TraitsComponent {
         if(matchesExactly || matchesAll) return true;
       });
     });
+
+    if(filteredTraits.length == 0 ){
+      console.log('no traits found, querying again...')
+      this.getTraits()
+    }
 
     let subTypeTitle = this.filters.subtype.replace(/^\w/, c => c.toUpperCase());
     let speciesTitle = this.filters.species.replace(/^\w/, c => c.toUpperCase());
@@ -277,39 +282,52 @@ export class TraitsComponent {
   }
 
   changeHeader(){
-    if(this.filters.species != 'all'){
-      let headerObj = this.headers[this.filters.species];
-      let headerType = headerObj[this.filters.subtype] || headerObj['standard'];
-      if(headerType === "old"){
-        let fileName = 'header-standard.png';
-        this.showFancyHeader = false;
-        if(headerObj[this.filters.subtype] !== undefined)
-          fileName = `header-${this.filters.subtype == 'all' ? "standard" : this.filters.subtype}.png`
-        this.header_img = this.headerImgDir + `${this.filters.species}/${fileName}`;
-      }
-      else if(headerType === "new"){
-        let basePath = this.headerImgDir + this.filters.species + '/' + this.filters.subtype;
-        this.showFancyHeader = true;
+    // Show a random header
+    if(this.filters.species === 'all'){
+      let basePath = `${this.headerImgDir}${this.getRandomSpecies()}/standard`;
+      this.header = {
+        background: `${basePath}/background.jpg`,
+        characters: `${basePath}/characters.png`,
+      };
+    }
+    else{
+      let headerObj        = this.headers[this.filters.species];
+      let headerSubspecies = headerObj.indexOf(this.filters.subtype) > -1;
+      if(headerSubspecies){
+        let basePath = `${this.headerImgDir}${this.filters.species}/${this.filters.subtype == 'all' ? "standard" : this.filters.subtype}`;
         this.header = {
-          background: `${basePath}/background.png`,
+          background: `${basePath}/background.jpg`,
+          characters: `${basePath}/characters.png`,
+        };
+      }
+      else{
+        let basePath = `${this.headerImgDir}${this.filters.species}/standard`;
+        this.header = {
+          background: `${basePath}/background.jpg`,
           characters: `${basePath}/characters.png`,
         };
       }
     }
-    else{
-      this.showFancyHeader = false;
-      this.header_img = this.headerImgDir + `${this.filters.species}/header-standard.png`;
-    }
   }
 
-  // Lazy load animation helpers
-  showHeaderBackground(){
-    document.getElementById('species-header-background').style.backgroundImage = 'url(' + this.header.background + ')';
-    document.getElementById('species-header-background').style.animation = 'fadeIn 1s';
-  }
   showHeaderCharacters(){
     document.getElementById('header-characters').style.visibility = 'visible';
     document.getElementById('header-characters').style.animation = 'fadeIn 1s';
+  }
+
+  showDefaultSpeciesCharacters(){
+    let basePath = `${this.headerImgDir}${this.filters.species}/standard`;
+    this.header.characters = `${basePath}/characters.png`;
+  }
+
+  getRandomSpecies(){
+    let randomSpecies = this.available_species[Math.floor(Math.random()*this.available_species.length)];
+    if(randomSpecies == 'all'){
+      console.log(randomSpecies)
+      this.getRandomSpecies()
+    }
+    else
+      return randomSpecies
   }
 
   /**
@@ -328,9 +346,10 @@ export class TraitsComponent {
    *  @description Get a list of available Species types from the traits object
    */
   getSpeciesTypes(){
-    let types = this.traits.map(a => a.species);
-    let unique_types = types.filter(function(elem, index, self) {return index == self.indexOf(elem)});
-    return unique_types;
+    // let types = this.traits.map(a => a.species);
+    // let unique_types = types.filter(function(elem, index, self) {return index == self.indexOf(elem)});
+    // return unique_types;
+    return ['stareater','starweaver','starshooter','stardasher','starfisher','starrobber','starcrafter','starsweeper']
   }
 
   /**
@@ -338,7 +357,10 @@ export class TraitsComponent {
    *  @description Get a list of available Subspecies Types from the traits object
    */
   getSubspeciesTypes(){
-    let types = this.traits.map(a => a.subtype);
+    let types = this.traits.map(a => {
+      if(a.species == this.filters.species || this.filters.species == 'all')
+        return a.subtype
+    });
     let unique_types = types.filter(function(elem, index, self) {return index == self.indexOf(elem)});
     return unique_types;
   }
@@ -384,17 +406,20 @@ export class TraitsComponent {
 
   // Show a modal with all information about the selected trait
   showTraitDetails(trait){
-    let faGender = "fa-transgender";
+    // Set gender fontawesome icon
+    let faGender = "";
     switch(trait.sex){
       case "feminine":
         faGender = "fa-venus";
+        break;
       case "masculine":
         faGender = "fa-mars";
+        break;
       case "unisex":
       default:
         faGender = "fa-transgender";
+        break;
     }
-
     let src = this.base_img_directory + trait.species+'/' + trait.image;
     swal({
       html:`

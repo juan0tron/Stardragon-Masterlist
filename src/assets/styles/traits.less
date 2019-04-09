@@ -49,9 +49,7 @@ traits{
   }
 }
 
-#trait-filters{
-  overflow: hidden;
-}
+#trait-filters{ }
 
 .trait-placeholder{
   position: relative;
@@ -143,7 +141,7 @@ traits{
   }
 
   &:hover img{
-    filter:   drop-shadow(4px 5px 1px rgba(0, 0, 0, 0.6));
+    filter: drop-shadow(4px 5px 1px rgba(0, 0, 0, 0.6));
   }
 
   h1{
@@ -160,73 +158,153 @@ traits{
   }
 }
 
-
+@species-header-height: 90vh;
 .species-header-full-width{
   position: relative;
   box-shadow: inset 0px 10px 10px -10px #000, inset 0px -10px 10px -10px #000;
   transition: 0.3s ease height;
   #species-header-background{
+    transition: .3s ease all;
     padding: 0;
     width: 100%;
+    min-width: 100%;
+    @media(max-width: 679px){
+      max-height: 60vh;
+    }
+    height: @species-header-height;
+    border-bottom: 1px solid #e5e5e5;
+
+    background:          transparent;
+    background-repeat:   no-repeat;
+    background-position: center;
+
+    position: relative;
+    overflow: hidden;
+
+    z-index: -1;
+
     @media(max-width: 1100px){
       background-attachment: inherit;
     }
     @media(min-width: 1101px){
       background-attachment: fixed;
-      background-position: top;
-      background-size: 100% auto;
+      background-size: cover;
     }
+
     img{
       min-width: 100%;
       max-height: 100%;
-      min-height: 30vh;
+      min-height: @species-header-height;
+      object-fit: cover;
+      position: fixed;
+    }
+  }
+  .title{
+    @media(max-width: 679px){
+      padding: 50px 15px 15px;
+    }
+    position: absolute;
+    /* padding: 30px 15px; */
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 3px #000;
+    z-index: 1;
+    background: radial-gradient(ellipse at bottom, #000, transparent 70%);
+    z-index: 1; // Make sure this shows over any other content
+    bottom: 0;
+    padding: 150px 15px 30px;
+    h1{
+      font-size: 3em;
+      letter-spacing: 5px;
+    }
+  }
+  .species-selector{
+    position: absolute;
+    top: 60px;
+    width: 100%;
+    text-align: center;
+    z-index: 8;
+    background: #333;
+    box-shadow: 0px 0px 5px #222;
+  }
+  .horizontal-links{
+    text-transform: uppercase;
+    li{
+      padding: 2px;
+      position: relative;
+      a, a:hover{
+        color: #fff;
+        transition: 0.3s ease-in-out;
+      }
+      &:after{
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background: #fff;
+        transform: translateX(-50%);
+        left: 50%;
+        transition: 0.3s ease-in-out width;
+        text-shadow: 1px 1px 3px #000;
+      }
+      &.highlighted:after{
+        width: 30%;
+      }
     }
   }
   .species-header-content{
+    color: #fff;
     position: absolute;
-    top: 0;
+    top:    0;
+    right:  0;
     bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 8; // This is right below the header but above the content
-    .species-header-name{
-      position: absolute;
-      left: 15px;
-      color: #fff;
-      text-shadow: 2px 2px 3px #000;
-      z-index: 1; // Make sure this shows over any other content
-      @media(max-width: 1100px){
-        top: 75px;
-      }
-      @media(min-width: 1101px){
-        bottom: 15px;
-      }
-    }
+    left:   0;
+    // z-index: 8; // This is right below the header but above the content
     img.species-header-characters{
-      pointer-events: none; // Click through
+      @media(max-width: 679px){
+        bottom: -10%;
+      }
+
       position: absolute;
       bottom: 0;
-      right: 0;
+      left: 50%;
+      transform: translateX(-50%);
       padding: 15px 15px 0;
 
       height: auto;
       width: auto;
-      max-height: 80%;
-      max-width: 90%;
+      max-height: 90%;
 
       animation: fadeIn 1s;
       // Since all character images are different sizes
       // just put the overlap margin for each one here
-      &.fuu-starweaver-characters{ margin-bottom: -9%; }
-      &.desert-starcrafter-characters{ margin-bottom: -9%; }
-      &.desert-stardasher-characters{ margin-bottom: -2.5%; }
-      &.sloth-stareater-characters{
-        @media(max-width:768px){ margin-bottom: -12%; }
-        @media(max-width:500px){ margin-bottom: -16%; }
-        @media(min-width:501px){ margin-bottom: -10%; }
-        @media(min-width:1000px){ margin-bottom: -9.1%;}
-        @media(min-width:2000px){ margin-bottom: -11%;}
+      &.all-starsweeper-characters,
+      &.tropical-starsweeper-characters,
+      &.standard-starsweeper-characters{
+        margin-bottom: -5%;
       }
+      &.arctic-starsweeper-characters{
+        margin-bottom: -9%;
+      }
+
+      &.mudskipper-starfisher-characters{ margin-bottom: -2%; }
+
+      &.severblight-starrobber-characters{ margin-bottom: -9%; }
+
+      &.fuu-starweaver-characters{ margin-bottom: -9%; }
+
+      &.desert-starcrafter-characters{ margin-bottom: -9%; }
+
+      &.all-stardasher-characters,
+      &.standard-stardasher-characters,
+      &.mountain-stardasher-characters{
+        margin-bottom: -5%;
+      }
+      &.desert-stardasher-characters{ margin-bottom: -2.5%; }
+      &.kelpie-stardasher-characters{ margin-bottom: -5%; }
+
+      &.sloth-stareater-characters{ margin-bottom: -15%; }
     }
   }
 }

@@ -45,3 +45,21 @@ export const fadeAnimation = trigger('fadeAnimation', [
     ),
   ])
 ]);
+
+export const crossFade = trigger('crossFade', [
+  transition('* <=> *', [
+    query(
+      ':leave',
+      stagger(50, [ animate('0.25s', style({ opacity: 0, overflow: 'hidden', height: 0, width: 0 })) ] ),
+      { optional: true }
+    ),
+    query(
+      ':enter',
+      [
+        style({ opacity: 0 }),
+        stagger(150, [ animate('0.25s', style({ opacity: 1 })) ] ),
+      ],
+      { optional: true }
+    ),
+  ])
+]);

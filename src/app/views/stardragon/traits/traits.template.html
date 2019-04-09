@@ -1,26 +1,32 @@
 <traits-picker></traits-picker>
 
-<!-- FANCY HEADER -->
-<div class="species-header-full-width" *ngIf="showFancyHeader">
-  <div id="species-header-background" class="full-width">
-    <!-- Load the background and hide it so the header is the height of the background image -->
-    <img [src]="header.background" (load)="showHeaderBackground()" style="visibility: hidden;"/>
+<div class="species-header-full-width">
+  <div id="species-header-background" [@fadeAnimation]="header.background">
+      <img [src]="header.background" onError="this.src='/assets/img/home/1-background.png'" />
+  </div>
+  <div class="species-selector d-none d-md-block">
+    <ul class="horizontal-links">
+      <li *ngFor="let species of getSpeciesTypes()" [ngClass]="{'highlighted' : filters.species === species }">
+        <a (click)="filterTraits(species, 'all');">{{species}}s</a>
+      </li>
+    </ul>
+  </div>
+  <div class="title fadeInLeft">
+    <h1>
+      <span *ngIf="filters.species && filters.species != 'all'">{{filters.species}}s</span>
+      <span *ngIf="filters.species && filters.species == 'all'">Stardragons</span>
+    </h1>
+    <ul class="horizontal-links d-none d-md-block" *ngIf="filters.species != 'all'">
+      <li [ngClass]="{'highlighted' : filters.subtype === 'all' }">
+        <a (click)="filterTraits('','all');">All</a>
+      </li>
+      <li *ngFor="let subtype of getSubspeciesTypes()" [ngClass]="{'highlighted' : filters.subtype === subtype }">
+        <a (click)="filterTraits('', subtype);">{{subtype}}</a>
+      </li>
+    </ul>
   </div>
   <div class="species-header-content fadeIn container">
-    <div class="species-header-name fadeInLeft">
-      <h1>
-        <span *ngIf="filters.subtype && filters.subtype != 'all' && filters.subtype != 'standard'">{{filters.subtype}} </span>
-        <span *ngIf="filters.species && filters.species != 'all'">{{filters.species}}s</span>
-      </h1>
-    </div>
-    <img id="header-characters" class="species-header-characters fadeInLeft {{filters.subtype}}-{{filters.species}}-characters" [src]="header.characters" (load)="showHeaderCharacters()" style="visibility: hidden;" />
-  </div>
-</div>
-
-<!-- SINGLE IMAGE HEADER -->
-<div class="species-header-full-width" *ngIf="!showFancyHeader">
-  <div class="fadeIn container">
-    <img [src]="header_img" class="species-header" style="padding:60px 15px 30px;">
+    <img id="header-characters" class="species-header-characters fadeInLeft {{filters.subtype}}-{{filters.species}}-characters" [src]="header.characters" (load)="showHeaderCharacters()" (error)="showDefaultSpeciesCharacters()" style="visibility: hidden;" [@fadeAnimation]='header.characters' />
   </div>
 </div>
 
@@ -30,19 +36,10 @@
 
     <div class="row">
       <div class="col-12" style="display:flex;">
-        <h1 class="pull-left" style="flex:50%;">Traits Compendium</h1>
+        <h1 class="pull-left" style="flex:50%;">{{visibleTraits.length}} Traits</h1>
         <button type="button" class="pull-right btn btn-secondary" (click)="showFilters = !showFilters" *ngIf="!showFilters">Show Filters <i class="fa fa-arrow-down"></i> </button>
         <button type="button" class="pull-right btn btn-secondary" (click)="showFilters = !showFilters" *ngIf="showFilters">Hide Filters <i class="fa fa-arrow-up"></i> </button>
       </div>
-      <!--
-        <div class="col-12">
-          <h2 *ngIf="getSubspeciesTypes().length > 0">Current Subtypes
-            <span *ngFor="let subtype of subtypes">
-              | <a (click)="changeSubtype(subtype)">{{subtype}}</a>
-            </span>
-          </h2>
-        </div>
-      -->
       <div class="col-12">
         <hr>
       </div>
