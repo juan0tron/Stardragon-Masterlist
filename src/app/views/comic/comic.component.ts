@@ -11,14 +11,16 @@ import { ComicService } from './comic.service';
 })
 export class ComicComponent {
 
-  public page:number = 1;
-  public pageCount:number = 9;
+  public page:number;
+  public lastPage:number;
 
+  // public baseComicUrl = "http://static.thegemexchange.net/comic/";
   public baseComicUrl = "http://static.thegemexchange.net/comic/";
   public comicUrl:string;
 
-  public loadingPage:boolean = true;
+  public isLastPage:boolean = false;
 
+  public loadingPage:boolean = true;
   public router_sub:any;
 
   constructor(
@@ -33,17 +35,31 @@ export class ComicComponent {
         this.loadingPage = true;
         if(params['page']){
           this.page = params['page'].replace('page-','');
-
-          // Given page number doesn't exist, go to most recent page instead
-          if(this.page > this.pageCount || this.page <= 0){
-            this.page = this.pageCount;
-            this.router.navigate([`/comic/page-${this.pageCount}`],  { replaceUrl: true });
-          }
-          this.comicUrl = this.baseComicUrl + `${this.page}.png`;
+          this.comicService.getPageCount().subscribe(
+            data => {
+              this.lastPage = data;
+              if(this.page == this.lastPage) this.isLastPage = true
+            }
+          );
+          this.comicService.getPage(this.page).subscribe(
+            data => {
+              this.comicUrl = data.url
+              this.page     = data.page
+              if(this.page == this.lastPage) this.isLastPage = true
+            },
+            err  => { this.router.navigate([`/comic`]); }
+          )
         }
         // Default to the latest page if no page is specified
         else{
-          this.router.navigate([`/comic/page-${this.pageCount}`], { replaceUrl: true });
+          this.comicService.getLastPage().subscribe(
+            data => {
+              this.page     = data.page;
+              this.comicUrl = data.url;
+              this.isLastPage = true;
+              this.router.navigate([`/comic/page-${this.page}`],  { replaceUrl: true });
+            }
+          )
         }
       }
     );
@@ -67,13 +83,14 @@ export class ComicComponent {
   previousPage(){
     let previousPage = +(this.page) - 1;
     if(previousPage != 0){
+      this.isLastPage = false;
       this.router.navigate([`/comic/page-${previousPage}`]);
     }
   }
 
   nextPage(){
     let nextPage = +(this.page) + 1;
-    if(nextPage <= this.pageCount){
+    if(!this.isLastPage){
       this.router.navigate([`/comic/page-${nextPage}`]);
     }
   }

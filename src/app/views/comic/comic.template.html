@@ -12,10 +12,12 @@
   </div>
 
   <div class="content">
-    <comic-nav class="row" [page]="page" [pageCount]="pageCount"></comic-nav>
+
+    <comic-nav class="row" [page]="page" [isLastPage]="isLastPage" [lastPage]="lastPage"></comic-nav>
+
     <div id="comic-container" class="row">
       <div class="col">
-        <a routerLink="/comic/page-{{+(page) + 1}}" [class.disabled]="page == pageCount">
+        <a routerLink="/comic/page-{{+(page) + 1}}" [class.disabled]="page == lastPage">
           <div class="comic-placeholder-wrapper" [hidden]="!loadingPage">
             <div class="comic-placeholder">
               <div class="comic-panel"></div>
@@ -31,7 +33,7 @@
       </div>
     </div>
 
-    <comic-nav class="row" [page]="page" [pageCount]="pageCount"></comic-nav>
+    <comic-nav class="row" [page]="page" [isLastPage]="isLastPage" [lastPage]="lastPage"></comic-nav>
 
   </div>
 </div>

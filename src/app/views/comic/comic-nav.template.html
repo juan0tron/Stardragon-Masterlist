@@ -1,8 +1,8 @@
 <div class="col">
-  <a routerLink="/comic/page-1" title="First" [class.disabled]="page == 1"><i class="fas fa-fast-backward"></i></a>
+  <a routerLink="/comic/page-1" title="First" [class.disabled]="page == 1" (click)="isLastPage=false"><i class="fas fa-fast-backward"></i></a>
 </div>
 <div class="col">
-  <a routerLink="/comic/page-{{prevPage}}" title="Previous" [class.disabled]="page == 1"><i class="fas fa-backward"></i></a>
+  <a routerLink="/comic/page-{{prevPage}}" title="Previous" [class.disabled]="page == 1" (click)="isLastPage=false"><i class="fas fa-backward"></i></a>
 </div>
 
 
@@ -20,10 +20,10 @@
 </div>
 
 <div class="col">
-  <a routerLink="/comic/page-{{nextPage}}" title="Next" [class.disabled]="page == pageCount"><i class="fas fa-forward"></i></a>
+  <a routerLink="/comic/page-{{nextPage}}" title="Next" [class.disabled]="isLastPage"><i class="fas fa-forward"></i></a>
 </div>
 <div class="col">
-  <a routerLink="/comic/page-{{pageCount}}" title="Latest" [class.disabled]="page == pageCount"><i class="fas fa-fast-forward"></i></a>
+  <a routerLink="/comic" title="Latest" [class.disabled]="isLastPage"><i class="fas fa-fast-forward"></i></a>
 </div>
 
 <!-- display on mobile only -->

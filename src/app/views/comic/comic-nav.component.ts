@@ -1,4 +1,8 @@
-import { Component, Input }  from '@angular/core';
+import {
+  Component, Input,
+  OnInit,
+  OnChanges, SimpleChanges, SimpleChange
+} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ComicService } from './comic.service';
@@ -11,10 +15,11 @@ import { ComicService } from './comic.service';
 export class ComicNavComponent {
 
   @Input() page:number;
-  @Input() pageCount:number;
+  @Input() lastPage:number;
+  @Input() isLastPage:boolean;
 
   public baseUrl = "/comic";
-  public pageSelector = 1;
+  public pageSelector:number;
   public nextPage = 0;
   public prevPage = 0;
 
@@ -34,19 +39,23 @@ export class ComicNavComponent {
           this.pageSelector = this.page;
           this.nextPage = +(this.page) + 1;
           this.prevPage = +(this.page) - 1;
+          if(this.page == this.lastPage) this.isLastPage = true;
         }
       }
     );
   }
 
-  goToPage(page){
-    if(this.page != 0 && this.page <= this.pageCount){
-      this.page = page;
-      this.pageSelector = this.page;
-      this.nextPage = +(this.page) + 1;
-      this.prevPage = +(this.page) - 1;
-
-      this.router.navigate([`/comic/page-${page}`]);
+  ngOnChanges(changes: SimpleChanges) {
+    if(changes.isLastPage){
+      this.isLastPage = changes.isLastPage.currentValue
     }
+    if(changes.lastPage){
+      this.lastPage = changes.lastPage.currentValue
+    }
+  }
+
+  // Called when someone picks a page by number
+  goToPage(page){
+    this.router.navigate([`/comic/page-${page}`]);
   }
 }
